@@ -58,10 +58,16 @@ Em `index.html`, procure por `var OUT = {` e acrescente `'Nome do produto': true
 
 Em `controle-gta6.html`, no `data-props` do `<script type="text/x-dc">` (perto do fim do arquivo):
 
-- `"price"` → preço atual (547.9)
-- `"priceFrom"` → preço "de" (997.9)
+- `"price"` → preço no Pix (299.37, 70% off)
+- `"priceFrom"` → preço cheio, que vale no cartão (997.9)
 - `"stockBlack"` / `"stockWhite"` → unidades disponíveis
-- `"installments"` → número de parcelas
+- `"installments"` → número de parcelas no cartão (calculadas sobre o preço cheio)
+
+Na página inicial, o mesmo controle fica em `index.html`, em `PRICES[r[0]] = 997.9; PDISC[r[0]] = 0.7;` e nos dois cards fixos da seção Controles. Mude nos dois arquivos.
+
+### Desconto só no Pix
+
+Em todo o site, o preço com desconto (Black Friday) vale só para pagamento no Pix. As formas de pagamento são Pix (já vem selecionado) e cartão de crédito; no cartão, o checkout cobra o preço cheio de cada produto. O carrinho mostra os dois totais, e o checkout troca os valores quando o cliente muda a forma de pagamento.
 
 Atenção: os preços da página inicial ficam separados dos da página do controle. Se mudar o preço do controle ou de um jogo, mude nos dois arquivos.
 

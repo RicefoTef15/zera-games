@@ -18,7 +18,7 @@ body{margin:0}
 .zh a{color:#B3136E}.zh a:hover{color:#0E0E12}
 .zh h1,.zh h2,.zh h3{font-family:Archivo,Inter,sans-serif;margin:0;letter-spacing:-0.02em}
 .zw{max-width:1280px;margin:0 auto;padding:0 24px}
-.znav{display:flex;flex-wrap:wrap;gap:6px 28px}
+.znav{display:flex;flex-wrap:wrap;gap:6px 20px}
 .znav a{color:#0E0E12 !important;font-weight:600;font-size:15px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
 .znav a:hover{color:#B3136E !important}
 .zbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:2px solid #0E0E12;color:#0E0E12 !important;font-weight:700;font-size:15px;text-decoration:none}
@@ -67,17 +67,123 @@ button.zgame:hover{background:#F5F4F0}
 .znob{background:#EFEEEA}
 .znob img{padding:14px;box-sizing:border-box}
 .zpimg{position:relative}
+.zcov img{mix-blend-mode:normal;object-fit:cover}
+.zbfpromo{display:flex;align-items:center;gap:14px;max-width:640px;margin-top:4px;padding:14px 18px;border-radius:16px;background:#5B2BD9;color:#FFFFFF}
+.zbfpromo i{flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.18);font-style:normal}
+.zbfpromo span{font-size:15px;line-height:1.45;color:#ECE6FF}
+.zbfpromo b{display:block;font:900 18px Archivo,Inter,sans-serif;color:#FFFFFF;margin-bottom:2px}
+.zbflay{display:grid;grid-template-columns:264px minmax(0,1fr);gap:28px;align-items:start}
+.zbflay .zfbar{position:sticky;top:96px;max-height:calc(100vh - 112px);overflow-y:auto;margin-bottom:0}
+.zbflay .zfrow{flex-direction:column;align-items:stretch;gap:10px;padding-top:14px;border-top:1px solid #2A2A33}
+.zbflay .zflab{min-width:0}
+.zbflay .zfopts[aria-label="Categorias"]{flex-direction:column}
+.zbflay .zfchk{width:100%}
+.zbflay .zfchk small{margin-left:auto}
+.zfttl{display:flex;align-items:center;gap:8px;font:900 18px Archivo,Inter,sans-serif;color:#FFFFFF}
+.zbfmain .zg4{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.zbflay{grid-template-columns:minmax(0,1fr)}.zbflay .zfbar{position:static;max-height:none}.zbflay .zfopts[aria-label="Categorias"]{flex-direction:row}.zbflay .zfchk{width:auto}}
+@media (max-width:900px){.zbfmain .zg4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.zfbar{display:flex;flex-direction:column;gap:14px;padding:20px 22px;margin-bottom:36px;border-radius:20px;background:#17171D;border:1px solid #2A2A33}
+.zfrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.zflab{min-width:112px;font:800 12px Archivo,Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8C897F}
+.zfopts{display:flex;flex-wrap:wrap;gap:8px;flex:1}
+.zfchk{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 15px 0 11px;border-radius:12px;border:2px solid #34343F;background:#1F1F27;color:#FFFFFF;font:700 15px Inter,sans-serif;cursor:pointer}
+.zfchk:hover{border-color:#5E5B6A}
+.zfchk i{flex:none;width:20px;height:20px;border-radius:6px;border:2px solid #5E5B6A;display:inline-flex;align-items:center;justify-content:center;color:transparent}
+.zfchk.on{border-color:#FF4FA3;background:#2A1522}
+.zfchk.on i{background:#FF4FA3;border-color:#FF4FA3;color:#16060E}
+.zfchk small{color:#8C897F;font-size:12px;font-weight:700}
+.zfopt{min-height:38px;padding:0 15px;border-radius:999px;border:2px solid #34343F;background:transparent;color:#D6D4CD;font:700 14px Inter,sans-serif;cursor:pointer}
+.zfopt:hover{border-color:#8C897F;color:#FFFFFF}
+.zfopt.on{background:#FFFFFF;border-color:#FFFFFF;color:#0E0E12}
+.zflink{border:0;background:none;padding:0;color:#FF6DB5;font:700 14px Inter,sans-serif;cursor:pointer;text-decoration:underline}
+.zbfg{margin-bottom:44px}
+.zbfg:last-child{margin-bottom:0}
+.zbfgh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid #2A2A33}
+.zbfgh h3{font-size:30px;font-weight:900;color:#FFFFFF}
+.zbfgh span{font-size:14px;font-weight:600;color:#8C897F}
+.zfempty{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:28px;border-radius:16px;border:1px dashed #34343F;color:#D6D4CD;font-size:16px}
+@media (max-width:640px){.zflab{min-width:100%}.zfbar{padding:16px}.zbfgh h3{font-size:24px}}
+.zhead{position:relative;z-index:20}
+@media (min-width:1100px){.zhead{position:sticky;top:0}.zhead .zw{gap:10px 12px !important}.zhead .znav{gap:6px 13px}.zhead .znav a{font-size:14px}.zhead .zlogo{gap:10px !important}.zhead .zlogo img{width:40px;height:40px}.zhead .zlogo span{font-size:21px !important}}
+section[id]{scroll-margin-top:100px}
+.ztop{position:fixed;right:18px;bottom:18px;z-index:25;width:52px;height:52px;border-radius:50%;border:0;background:#0E0E12;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(14,14,18,.28)}
+.ztop:hover{background:#B3136E}
+.zchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.zchip{min-height:42px;padding:0 16px;border-radius:999px;border:2px solid #DEDCD5;background:#FFFFFF;color:#0E0E12 !important;font:700 14px Inter,sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.zchip:hover{border-color:#0E0E12}
+.zchip.on{background:#0E0E12;border-color:#0E0E12;color:#FFFFFF !important}
+.zchip small{font-size:12px;opacity:.7}
+.zpromo{display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:14px 16px;border-radius:16px;background:#5B2BD9;color:#FFFFFF;animation:zpin .45s ease-out}
+.zpromo.on{background:#0B7A45}
+.zpromo b{display:block;font:900 17px Archivo,Inter,sans-serif;margin-bottom:3px}
+.zpromo span{font-size:14px;line-height:1.45}
+.zpromo i{flex:none;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);font-style:normal}
+@keyframes zpin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.zfree{align-self:flex-start;padding:3px 8px;border-radius:8px;background:#E3F7EC;color:#0B5A33;font:800 12px Archivo,Inter,sans-serif}
+.zsale{display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:10px;background:#E3F7EC;color:#0B5A33;font:800 12px Archivo,Inter,sans-serif;letter-spacing:.02em;line-height:1.2}
+.zbadge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#FF4FA3;color:#16060E;font:800 12px Archivo,Inter,sans-serif}
+.zver{min-height:48px;padding:0 20px;border-radius:12px;border:2px solid #DEDCD5;background:#FFFFFF;color:#0E0E12;font:700 15px Inter,sans-serif;cursor:pointer}
+.zver.on{border-color:#0E0E12;background:#0E0E12;color:#FFFFFF}
+.zscrim{position:fixed;inset:0;z-index:40;border:0;padding:0;background:rgba(14,14,18,.55);cursor:pointer}
+.zdrawer{position:fixed;top:0;right:0;bottom:0;z-index:41;width:min(460px,100%);display:flex;flex-direction:column;background:#FFFFFF;color:#0E0E12;box-shadow:-16px 0 40px rgba(14,14,18,.22);font-family:Inter,system-ui,sans-serif}
+.zq{width:34px;height:34px;border-radius:50%;border:2px solid #0E0E12;background:#FFFFFF;color:#0E0E12;font:700 17px Inter,sans-serif;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.zlink{border:0;background:none;padding:0;font:600 14px Inter,sans-serif;color:#B3136E;cursor:pointer;text-decoration:underline}
+.zci{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #EAE8E1}
+.zci img,.zrel img{flex:none;width:68px;height:68px;border-radius:12px;background:#EFEEEA;object-fit:contain;mix-blend-mode:multiply}
+.zci img.zcov,.zrel img.zcov{object-fit:cover;mix-blend-mode:normal}
+.zrel{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid #DEDCD5;border-radius:16px;background:#FFFFFF}
+.zrel img{width:58px;height:58px}
+.zrel .zbtn{background:transparent;cursor:pointer;font-family:inherit;min-height:40px;padding:0 14px;font-size:14px;flex:none}
+.zco{position:fixed;inset:0;z-index:45;overflow-y:auto;background:#F5F4F0;font-family:Inter,system-ui,sans-serif;color:#0E0E12}
+.zcog{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px;align-items:start}
+.zcard{display:flex;flex-direction:column;gap:16px;padding:26px;border-radius:20px;background:#FFFFFF;border:1px solid #DEDCD5}
+.zfg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.zfg .full{grid-column:1 / -1}
+.zstep{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#0E0E12;color:#FFFFFF;font:800 15px Archivo,Inter,sans-serif;flex:none}
+.zshipo{display:flex;align-items:center;gap:14px;width:100%;min-height:64px;padding:12px 16px;border-radius:14px;border:2px solid #DEDCD5;background:#FFFFFF;color:#0E0E12;font:400 15px Inter,sans-serif;cursor:pointer}
+.zshipo:hover{border-color:#8C897F}
+.zshipo i{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid #BDBAB0;background:#FFFFFF}
+.zshipo b{font:800 16px Archivo,Inter,sans-serif}
+.zshipo small{font-size:13px;color:#5E5B52}
+.zshipo strong{font:900 17px Archivo,Inter,sans-serif;white-space:nowrap}
+.zshipo.on{border-color:#0E0E12;box-shadow:inset 0 0 0 1px #0E0E12}
+.zshipo.on i{border-color:#0E0E12;background:#0E0E12;box-shadow:inset 0 0 0 4px #FFFFFF}
+.zpaynote{padding:12px 14px;border-radius:12px;background:#E3F7EC;color:#0B5A33;font:600 14px Inter,sans-serif;line-height:1.5}
+.zpaynote.warn{background:#FFF1D6;color:#7A4B00}
+.zpay{flex:1 1 140px;min-height:58px;border-radius:12px;border:2px solid #DEDCD5;background:#FFFFFF;color:#0E0E12;font:700 16px Inter,sans-serif;cursor:pointer}
+.zpay.on{border-color:#0E0E12;box-shadow:inset 0 0 0 1px #0E0E12}
 .zbn{position:absolute;top:8px;left:8px;z-index:2;display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:999px;border:1.5px solid transparent;background:linear-gradient(#0E0E12,#0E0E12) padding-box,linear-gradient(90deg,#2A6BFF,#FF4FA3) border-box;color:#FFFFFF;font:800 9px Archivo,Inter,sans-serif;letter-spacing:.08em;line-height:1;box-shadow:0 4px 10px rgba(14,14,18,.2)}
 .zbn.big{top:14px;left:14px;padding:6px 11px;font-size:12px;gap:6px}
 .zoff{display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;background:#FF4FA3;color:#16060E;font:800 14px Archivo,Inter,sans-serif}
+.znav a.zbf{gap:7px;padding:0 16px;border-radius:999px;border:2px solid transparent;background:linear-gradient(#0E0E12,#0E0E12) padding-box,linear-gradient(90deg,#2A6BFF,#FF4FA3) border-box;color:#FFFFFF !important;font:800 14px Archivo,Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;animation:zbfp 2.2s ease-out infinite}
+.znav a.zbf:hover{color:#FF6DB5 !important}
+@keyframes zbfp{0%{box-shadow:0 0 0 0 rgba(255,79,163,.6)}70%,100%{box-shadow:0 0 0 12px rgba(255,79,163,0)}}
+.zbfs{background:#0E0E12;color:#FFFFFF}
+.zbfs h2{color:#FFFFFF}
+.zbfs .zprod{border-color:#2A2A33}
+.zbfs .zprod:hover{border-color:#FF4FA3}
+.zstk{position:absolute;top:8px;right:8px;z-index:2;width:64px;height:64px;border-radius:50%;background:#FF4FA3;color:#16060E;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;transform:rotate(12deg);box-shadow:0 0 0 3px #FFFFFF,0 6px 14px rgba(14,14,18,.3)}
+.zstk b{font:900 19px Archivo,Inter,sans-serif;letter-spacing:-.03em}
+.zstk small{font:800 10px Archivo,Inter,sans-serif;letter-spacing:.12em;margin-top:2px}
 .zth{width:88px;height:88px;padding:0;border-radius:14px;border:2px solid #DEDCD5;background:#EFEEEA;cursor:pointer;overflow:hidden}
 .zth.on{border-color:#0E0E12}
 .zth img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .zpd{position:fixed;inset:0;z-index:30;overflow-y:auto;background:#F5F4F0}
 .zfield{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
 .zfield input{min-height:50px;padding:0 16px;border-radius:12px;border:2px solid #0E0E12;background:#FFFFFF;color:#0E0E12;font:400 16px Inter,sans-serif}
-@media (prefers-reduced-motion:reduce){.zfloat{animation:none}}
+@media (prefers-reduced-motion:reduce){.zfloat,.znav a.zbf{animation:none}}
 @media (max-width:900px){
+.znav{flex-wrap:nowrap;overflow-x:auto;width:100%;gap:4px 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;order:3}
+.zhead .zw{padding-top:10px !important;padding-bottom:8px !important;row-gap:4px !important}
+.znav::-webkit-scrollbar{display:none}
+.znav a{white-space:nowrap;flex:none}
+section[id]{scroll-margin-top:12px}
+.zcog,.zfg{grid-template-columns:minmax(0,1fr)}
+.zcard{padding:20px}
+.zstk{width:52px;height:52px;top:6px;right:6px}
+.zstk b{font-size:16px}
+.zstk small{font-size:9px}
 .z70box{zoom:.42;margin-top:70px}
 .zcat{min-height:200px;padding:18px}
 .zcat > span:first-child > span:first-child{font-size:24px !important}
@@ -91,29 +197,44 @@ button.zgame:hover{background:#F5F4F0}
 .zbig{font-size:44px !important}
 .zarrow{display:none}
 }
+@media (max-width:520px){
+.zhead .zw{padding-left:16px !important;padding-right:16px !important;column-gap:8px !important}
+.zhead .zlogo{gap:8px !important}
+.zhead .zlogo img{width:36px;height:36px}
+.zhead .zlogo span{font-size:19px !important}
+.zhead .zw > div{gap:6px !important}
+.zhead .zbtn{min-height:42px}
+.zhead button.zbtn[aria-label="Buscar produtos"],.zhead a.zbtn[aria-label]{width:42px !important}
+.zcartxt{display:none}
+.zhead .zbtn.dark{padding:0 12px}
+}
 </style>
 </helmet>
 <div class="zh" style="min-height: 100vh">
 
 <div style="background: #0E0E12; color: #FFFFFF; text-align: center; padding: 10px 16px; font-size: 14px; font-weight: 600">Black Friday Zera: até <span style="display: inline-block; padding: 2px 10px; border-radius: 999px; background: #FF4FA3; color: #16060E; font-weight: 800">70%</span> off em produtos selecionados · Leve 3 jogos, pague 2</div>
 
-<header style="background: #FFFFFF; border-bottom: 1px solid #DEDCD5">
+<header class="zhead" style="background: #FFFFFF; border-bottom: 1px solid #DEDCD5">
 <div class="zw" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 14px; padding-bottom: 14px">
-<a href="#topo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #0E0E12">
+<a class="zlogo" href="#topo" onClick="{{goHome}}" aria-label="Zera Games, voltar ao início" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #0E0E12">
 <img src="assets/img/marca/zera-icone.jpg" alt="" width="44" height="44" style="display: block; border-radius: 10px">
 <span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 24px; letter-spacing: -0.01em">ZERA GAMES</span>
 </a>
 <nav class="znav" aria-label="Seções">
+<a class="zbf" href="#black-friday"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg>Black Friday</a>
 <a href="#consoles">Consoles</a>
 <a href="#controles">Controles</a>
 <a href="#jogos">Jogos</a>
+<a href="#pc">PC</a>
+<a href="#nintendo">Nintendo</a>
 <a href="#acessorios">Acessórios</a>
+<a href="#cartoes">Cartões</a>
 <a href="#loja">Nossa loja</a>
 </nav>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
 <button type="button" class="zbtn" aria-label="Buscar produtos" onClick="{{toggleSearch}}" style="background: transparent; cursor: pointer; padding: 0; width: 48px; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"><circle cx="8.500" cy="8.500" r="6"></circle><path d="M13 13l5 5"></path></svg></button>
-<a class="zbtn" href="controle-gta6.html">Entrar</a>
-<a class="zbtn dark" href="controle-gta6.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Carrinho</a>
+<a class="zbtn" href="controle-gta6.html" aria-label="Entrar na sua conta" title="Entrar na sua conta" style="padding: 0; width: 48px; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3.500"></circle><path d="M3.500 17.500c.8-3.200 3.400-5 6.500-5s5.700 1.800 6.500 5"></path></svg></a>
+<button type="button" class="zbtn dark" onClick="{{openCart}}" aria-label="Abrir carrinho" style="cursor: pointer; font-family: inherit"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg><span class="zcartxt">Carrinho</span><sc-if value="{{hasCartCount}}" hint-placeholder-val="{{false}}"><span class="zbadge" aria-label="itens no carrinho">{{cartCount}}</span></sc-if></button>
 </div>
 </div>
 </header>
@@ -136,7 +257,7 @@ button.zgame:hover{background:#F5F4F0}
 </sc-if>
 
 <section id="topo" class="zhero" aria-label="Destaques">
-<a class="{{s0}}" href="#consoles" style="background: #0E0E12; color: #FFFFFF">
+<a class="{{s0}}" href="#black-friday" style="background: #0E0E12; color: #FFFFFF">
 <div class="zw zsin">
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 18px">
 <span style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; color: #0E0E12; font-weight: 800; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase">Black Friday Zera</span>
@@ -167,22 +288,22 @@ button.zgame:hover{background:#F5F4F0}
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px">
 <span style="padding: 8px 14px; border-radius: 999px; background: #FF4FA3; color: #16060E; font-weight: 800; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase">Black Friday · Edição limitada</span>
 <h1 class="zbig" style="font-size: 78px; line-height: 0.98; font-weight: 900; color: #FFFFFF">O controle do lançamento do ano.</h1>
-<span style="font-size: 20px; line-height: 1.5; color: #C9C4DA; max-width: 480px">Controle Edição Limitada GTA VI, em preto e branco. Só 14 unidades.</span>
+<span style="font-size: 20px; line-height: 1.5; color: #C9C4DA; max-width: 480px">Controle Edição Limitada GTA VI, em preto e branco, com 70% off no Pix. Só 14 unidades.</span>
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
 <span class="zcta" style="background: #FF4FA3; color: #16060E">Ver o controle<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
-<span style="font-size: 17px; color: #C9C4DA">de <s>R$ 997,90</s> por <span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px; color: #FFFFFF">R$ 547,90</span></span>
+<span style="font-size: 17px; color: #C9C4DA">de <s>R$ 997,90</s> por <span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px; color: #FFFFFF">R$ 299,37</span> no Pix</span>
 </span>
 </div>
 <img class="zfloat zsimg" src="assets/img/controle-gta6/preto-diagonal-recorte.png" alt="Controle Edição Limitada GTA VI na cor preta" style="display: block; width: 100%; max-width: 560px; aspect-ratio: 1; object-fit: contain; justify-self: center">
 </div>
 </a>
-<a class="{{s3}}" href="controle-gta6.html" style="background: #FF4FA3; color: #16060E">
+<a class="{{s3}}" href="#jogos" style="background: #FF4FA3; color: #16060E">
 <div class="zw zsin">
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 18px">
-<span style="font-weight: 800; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase">Lançamento</span>
+<span style="padding: 8px 14px; border-radius: 999px; background: #16060E; color: #FFFFFF; font-weight: 800; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase">GTA VI já à venda</span>
 <h2 class="zbig" style="font-size: 150px; line-height: 0.9; font-weight: 900; color: #16060E">19.11</h2>
-<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 30px; line-height: 1.15; max-width: 520px">GTA VI chega. Garanta o seu: PS5, Xbox ou digital.</span>
-<span class="zcta" style="background: #16060E; color: #FFFFFF">Ver os jogos<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 30px; line-height: 1.15; max-width: 520px">Compre agora e receba antes. Jogue a partir de 19/11: PS5, Xbox ou digital.</span>
+<span class="zcta" style="background: #16060E; color: #FFFFFF">Comprar agora<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
 </div>
 <div class="zsimg" style="display: flex; justify-content: center; align-items: center; gap: 0">
 <img src="assets/img/jogos/gta6-ps5-caixa-antiga.jpg" alt="Caixa do GTA VI para PS5" style="width: 46%; max-width: 270px; aspect-ratio: 4 / 5; object-fit: contain; mix-blend-mode: multiply; transform: rotate(-6deg)">
@@ -247,6 +368,78 @@ button.zgame:hover{background:#F5F4F0}
 </div>
 </section>
 
+<section id="black-friday" class="zbfs" aria-label="Black Friday">
+<div class="zw" style="padding-top: 64px; padding-bottom: 72px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; margin-bottom: 28px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span class="zbn big" style="position: static; align-self: flex-start"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">FRIDAY ZERA</span></span>
+<h2 style="font-size: 44px; font-weight: 900">Até <span style="color: #FF4FA3">{{bfMax}}</span> off na Black Friday</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.5; color: #D6D4CD; max-width: 560px">Consoles, controles, jogos e acessórios com desconto, enquanto durar o estoque.</p>
+<div class="zbfpromo">
+<i aria-hidden="true"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="9" rx="1.500"></rect><path d="M2 8h16M10 8v9M10 8S8.500 3 6 3.500 5.500 8 10 8zM10 8s1.500-5 4-4.500S14.500 8 10 8z"></path></svg></i>
+<span><b>Leve 3, pague 2 nos jogos</b>Na compra de 3 jogos, você ganha 1: o de menor preço sai de graça. O desconto aparece direto no carrinho.</span>
+</div>
+</div>
+<span style="font-size: 15px; font-weight: 600; color: #D6D4CD">{{bfShown}}</span>
+</div>
+<div class="zbflay">
+<aside class="zfbar" role="region" aria-label="Filtrar ofertas da Black Friday">
+<span class="zfttl"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M6 10h8M9 15h2"></path></svg>Filtrar ofertas</span>
+<div class="zfrow">
+<span class="zflab">Categorias</span>
+<div class="zfopts" role="group" aria-label="Categorias">
+<sc-for list="{{bfCatChips}}" as="c" hint-placeholder-count="4">
+<button type="button" class="{{c.cls}}" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}"><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.500l2.500 2.500L10 3"></path></svg></i>{{c.label}} <small>{{c.count}}</small></button>
+</sc-for>
+</div>
+</div>
+<div class="zfrow">
+<span class="zflab">Plataforma</span>
+<div class="zfopts" role="group" aria-label="Plataforma">
+<sc-for list="{{bfPlatChips}}" as="c" hint-placeholder-count="5">
+<button type="button" class="{{c.cls}}" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}">{{c.label}}</button>
+</sc-for>
+</div>
+</div>
+<div class="zfrow">
+<span class="zflab">Ordenar por</span>
+<div class="zfopts" role="group" aria-label="Ordenar por">
+<sc-for list="{{bfSortChips}}" as="c" hint-placeholder-count="4">
+<button type="button" class="{{c.cls}}" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}">{{c.label}}</button>
+</sc-for>
+</div>
+</div>
+<sc-if value="{{hasBfFilter}}" hint-placeholder-val="{{false}}"><button type="button" class="zflink" onClick="{{bfClear}}" style="align-self: flex-start">Limpar filtros</button></sc-if>
+</aside>
+<div class="zbfmain">
+<sc-if value="{{bfEmpty}}" hint-placeholder-val="{{false}}">
+<div class="zfempty" role="status">Nenhuma oferta com esses filtros.<button type="button" class="zflink" onClick="{{bfClear}}">Limpar filtros</button></div>
+</sc-if>
+<sc-for list="{{bfGroups}}" as="g" hint-placeholder-count="4">
+<div class="zbfg">
+<sc-if value="{{g.hasTitle}}" hint-placeholder-val="{{true}}"><div class="zbfgh"><h3>{{g.title}}</h3><span>{{g.count}}</span></div></sc-if>
+<div class="zg4">
+<sc-for list="{{g.items}}" as="p" hint-placeholder-count="4">
+<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span><span class="zstk" aria-label="{{p.offAria}}"><b>{{p.offLabel}}</b><small>OFF</small></span><img src="{{p.img}}" alt=""></span></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{false}}"><span class="zpimg zph" style="position: relative"><span class="zstk" aria-label="{{p.offAria}}"><b>{{p.offLabel}}</b><small>OFF</small></span><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
+<span class="ztag">{{p.tag}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">{{p.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><span class="zoff">{{p.offLabel}}</span></span>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
 <section id="consoles" class="zw" style="padding-top: 56px; padding-bottom: 24px">
 <h2 style="font-size: 44px; font-weight: 900; margin-bottom: 24px">Consoles</h2>
 <div class="zg4">
@@ -259,7 +452,7 @@ button.zgame:hover{background:#F5F4F0}
 <span style="display: flex; flex-direction: column; gap: 4px">
 <sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
-<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
 </button>
 </sc-for>
@@ -276,13 +469,13 @@ button.zgame:hover{background:#F5F4F0}
 <span class="zpimg"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span><img src="assets/img/controle-gta6/preto-frente.jpg" alt="Controle Edição Limitada GTA VI preto"></span>
 <span class="ztag">Edição limitada</span>
 <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">Controle GTA VI · Preto</span>
-<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; color: #5E5B52">de <s>R$ 997,90</s></span><span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">R$ 547,90</span><span class="zoff">-45%</span></span><span style="font-size: 14px; color: #5E5B52">ou 6x de R$ 91,32</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; color: #5E5B52">de <s>R$ 997,90</s></span><span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">R$ 299,37</span><span class="zoff">-70%</span></span><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de R$ 166,32 no cartão</span></span>
 </a>
 <a class="zprod" href="controle-gta6.html">
 <span class="zpimg"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span><img src="assets/img/controle-gta6/branco-frente.jpg" alt="Controle Edição Limitada GTA VI branco"></span>
 <span class="ztag">Edição limitada</span>
 <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">Controle GTA VI · Branco</span>
-<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; color: #5E5B52">de <s>R$ 997,90</s></span><span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">R$ 547,90</span><span class="zoff">-45%</span></span><span style="font-size: 14px; color: #5E5B52">ou 6x de R$ 91,32</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; color: #5E5B52">de <s>R$ 997,90</s></span><span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">R$ 299,37</span><span class="zoff">-70%</span></span><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de R$ 166,32 no cartão</span></span>
 </a>
 <sc-for list="{{controls}}" as="p" hint-placeholder-count="2">
 <button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
@@ -293,7 +486,7 @@ button.zgame:hover{background:#F5F4F0}
 <span style="display: flex; flex-direction: column; gap: 4px">
 <sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
-<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
 </button>
 </sc-for>
@@ -301,10 +494,18 @@ button.zgame:hover{background:#F5F4F0}
 </section>
 
 <section id="jogos" class="zw" style="padding-top: 56px; padding-bottom: 24px">
-<h2 style="font-size: 44px; font-weight: 900; margin-bottom: 24px">Jogos</h2>
+<h2 style="font-size: 44px; font-weight: 900; margin-bottom: 18px">Jogos</h2>
+<div class="zchips" role="group" aria-label="Filtrar jogos por plataforma">
+<sc-for list="{{gameChips}}" as="f" hint-placeholder-count="3">
+<button type="button" class="{{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.label}} <small>{{f.count}}</small></button>
+</sc-for>
+<a class="zchip" href="#nintendo">Nintendo Switch 2</a>
+<a class="zchip" href="#pc">PC</a>
+</div>
 <div class="zg4">
 <sc-for list="{{gtaPs}}" as="p" hint-placeholder-count="3">
 <button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasSale}}" hint-placeholder-val="{{false}}"><span class="zsale"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M2.500 7.500l3 3 6-7"></path></svg>{{p.saleLine}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -312,7 +513,7 @@ button.zgame:hover{background:#F5F4F0}
 <span style="display: flex; flex-direction: column; gap: 4px">
 <sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
-<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
 </button>
 </sc-for>
@@ -325,7 +526,51 @@ button.zgame:hover{background:#F5F4F0}
 <span style="display: flex; flex-direction: column; gap: 4px">
 <sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
-<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section id="pc" class="zw" style="padding-top: 56px; padding-bottom: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 24px">
+<h2 style="font-size: 44px; font-weight: 900">Jogos para PC</h2>
+<span style="font-weight: 600; font-size: 16px; color: #5E5B52">Key digital para ativar na sua conta</span>
+</div>
+<div class="zg4">
+<sc-for list="{{pcGames}}" as="p" hint-placeholder-count="15">
+<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
+<span class="ztag">{{p.tag}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">{{p.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section id="nintendo" class="zw" style="padding-top: 56px; padding-bottom: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-bottom: 24px; padding: 22px 26px; border-radius: 22px; background: #E60012; color: #FFFFFF">
+<h2 style="font-size: 44px; font-weight: 900; color: #FFFFFF">Nintendo Switch 2</h2>
+<span style="font-weight: 700; font-size: 16px">Console, controle, cartão de memória e os jogos do momento</span>
+</div>
+<div class="zg4">
+<sc-for list="{{nintendo}}" as="p" hint-placeholder-count="6">
+<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
+<span class="ztag">{{p.tag}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">{{p.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
 </button>
 </sc-for>
@@ -344,7 +589,29 @@ button.zgame:hover{background:#F5F4F0}
 <span style="display: flex; flex-direction: column; gap: 4px">
 <sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
-<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section id="cartoes" class="zw" style="padding-top: 8px; padding-bottom: 72px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 24px">
+<h2 style="font-size: 44px; font-weight: 900">Cartões e assinaturas</h2>
+<span style="font-weight: 600; font-size: 16px; color: #5E5B52">Digital: o código chega no seu e-mail</span>
+</div>
+<div class="zg4">
+<sc-for list="{{cards}}" as="p" hint-placeholder-count="7">
+<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><img src="{{p.img}}" alt=""></span></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
+<span class="ztag">{{p.tag}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">{{p.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
 </button>
 </sc-for>
@@ -398,7 +665,7 @@ button.zgame:hover{background:#F5F4F0}
 <div class="zpd" role="dialog" aria-modal="true" aria-label="Página do produto">
 <div style="background: #FFFFFF; border-bottom: 1px solid #DEDCD5">
 <div class="zw" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; padding-bottom: 14px">
-<span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 24px">ZERA GAMES</span>
+<a href="#topo" onClick="{{goHome}}" aria-label="Zera Games, voltar ao início" style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 24px; color: #0E0E12; text-decoration: none">ZERA GAMES</a>
 <button type="button" class="zbtn" onClick="{{closePd}}" style="background: transparent; cursor: pointer">Voltar à loja</button>
 </div>
 </div>
@@ -421,18 +688,33 @@ button.zgame:hover{background:#F5F4F0}
 <h1 style="font-size: 52px; line-height: 1.02; font-weight: 900">{{pdName}}</h1>
 <div style="display: flex; flex-direction: column; gap: 8px; padding: 22px 24px; border-radius: 20px; background: #FFFFFF; border: 2px solid #0E0E12; align-self: stretch">
 <sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span style="display: flex; align-items: center; gap: 12px"><span class="zoff" style="font-size: 13px; letter-spacing: 0.08em">BLACK FRIDAY</span><span style="font-size: 17px; color: #8C897F">de <s>{{pdOld}}</s> por</span></span></sc-if>
-<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 54px; line-height: 1">{{pdPrice}}</span><sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span class="zoff" style="font-size: 20px; padding: 6px 12px">{{pdOff}}</span></sc-if></span>
-<sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 16px; color: #3A3832">No Pix ou em até <span style="font-weight: 700">6x de {{pdInst}}</span> · Você economiza {{pdSave}}</span></sc-if>
-<sc-if value="{{pdInstOnly}}" hint-placeholder-val="{{false}}"><span style="font-size: 16px; color: #3A3832">No Pix ou em até <span style="font-weight: 700">6x de {{pdInst}}</span></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 54px; line-height: 1">{{pdPrice}}</span><sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span style="font: 800 16px Archivo, Inter, sans-serif; color: #0B7A45">no Pix</span></sc-if><sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span class="zoff" style="font-size: 20px; padding: 6px 12px">{{pdOff}}</span></sc-if></span>
+<sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 16px; color: #3A3832"><span style="font-weight: 700">À vista no Pix</span> (você economiza {{pdSave}}) · ou {{pdOld}} em até <span style="font-weight: 700">6x de {{pdInst}}</span> no cartão</span></sc-if>
+<sc-if value="{{pdInstOnly}}" hint-placeholder-val="{{false}}"><span style="font-size: 16px; color: #3A3832">À vista no Pix ou em até <span style="font-weight: 700">6x de {{pdInst}}</span> no cartão</span></sc-if>
 </div>
 <span class="ztag" style="background: #1B3FD6">{{pdStatus}}</span>
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3A3832">{{pdDesc}}</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5E5B52">{{pdNote}}</p>
+<sc-if value="{{pdHasVers}}" hint-placeholder-val="{{false}}">
+<div role="group" aria-label="Escolha a versão" style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 700">Escolha a versão</span>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{pdVers}}" as="v" hint-placeholder-count="2">
+<button type="button" class="{{v.cls}}" aria-pressed="{{v.pressed}}" onClick="{{v.pick}}">{{v.label}}</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px">
+<sc-if value="{{pdCanBuy}}" hint-placeholder-val="{{true}}">
+<button type="button" class="zcta" onClick="{{pdAdd}}" style="border: 0; cursor: pointer; background: #FF4FA3; color: #16060E"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button>
+</sc-if>
 <sc-if value="{{pdHasPage}}" hint-placeholder-val="{{false}}">
 <a class="zcta" href="controle-gta6.html" style="background: #0E0E12; color: #FFFFFF; text-decoration: none">Ver página completa</a>
 </sc-if>
-<a class="zcta" href="#loja" onClick="{{closePd}}" style="background: #FF4FA3; color: #16060E; text-decoration: none">Quero ser avisado</a>
+<sc-if value="{{pdOut}}" hint-placeholder-val="{{false}}">
+<span class="zcta" style="background: #EAE8E1; color: #5E5B52">Sem estoque no momento</span>
+</sc-if>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px; padding-top: 20px; border-top: 1px solid #DEDCD5; font-size: 15px; font-weight: 600; width: 100%">
 <span>Envio com código de rastreio</span>
@@ -444,19 +726,195 @@ button.zgame:hover{background:#F5F4F0}
 </div>
 </sc-if>
 
+<sc-if value="{{showTopBtn}}" hint-placeholder-val="{{false}}">
+<button type="button" class="ztop" aria-label="Voltar ao topo" onClick="{{goHome}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M11 18V5M5 11l6-6 6 6"></path></svg></button>
+</sc-if>
+
+<sc-if value="{{showCart}}" hint-placeholder-val="{{false}}">
+<button type="button" class="zscrim" aria-label="Fechar carrinho" onClick="{{closeCart}}"></button>
+<aside class="zdrawer" role="dialog" aria-modal="true" aria-label="Carrinho">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 22px; border-bottom: 1px solid #DEDCD5">
+<h2 style="font-size: 26px; font-weight: 900">Seu carrinho</h2>
+<button type="button" class="zq" aria-label="Fechar carrinho" onClick="{{closeCart}}">×</button>
+</div>
+<div style="flex: 1; overflow-y: auto; padding: 2px 22px 22px">
+<sc-if value="{{hasPromo}}" hint-placeholder-val="{{false}}">
+<div class="{{promoCls}}" role="status">
+<i aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="9" rx="1.500"></rect><path d="M2 8h16M10 8v9M10 8S8.500 3 6 3.500 5.500 8 10 8zM10 8s1.500-5 4-4.500S14.500 8 10 8z"></path></svg></i>
+<div><b>{{promoTitle}}</b><span>{{promoText}}</span></div>
+</div>
+</sc-if>
+<sc-if value="{{cartEmpty}}" hint-placeholder-val="{{false}}">
+<p style="margin: 28px 0; font-size: 16px; line-height: 1.55; color: #5E5B52">Seu carrinho está vazio. Abra um produto e toque em "Adicionar ao carrinho".</p>
+</sc-if>
+<sc-for list="{{cartLines}}" as="c" hint-placeholder-count="2">
+<div class="zci">
+<img src="{{c.img}}" alt="" class="{{c.imgCls}}">
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; gap: 10px">
+<span style="font-weight: 700; font-size: 15px; line-height: 1.3">{{c.name}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 16px; white-space: nowrap">{{c.line}}</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px">
+<div style="display: flex; align-items: center; gap: 8px">
+<button type="button" class="zq" aria-label="Diminuir quantidade" onClick="{{c.dec}}">−</button>
+<span style="min-width: 20px; text-align: center; font-weight: 700">{{c.qty}}</span>
+<button type="button" class="zq" aria-label="Aumentar quantidade" onClick="{{c.inc}}">+</button>
+</div>
+<button type="button" class="zlink" onClick="{{c.remove}}">Remover</button>
+</div>
+<span style="font-size: 12px; color: #5E5B52">{{c.unit}}</span>
+<sc-if value="{{c.hasFree}}" hint-placeholder-val="{{false}}"><span class="zfree">{{c.freeLabel}}</span></sc-if>
+</div>
+</div>
+</sc-for>
+<sc-if value="{{hasRelated}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: 22px">
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #B3136E">Itens relacionados</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 18px; line-height: 1.25">{{relTitle}}</span>
+<sc-for list="{{related}}" as="r" hint-placeholder-count="4">
+<div class="zrel">
+<img src="{{r.img}}" alt="" class="{{r.imgCls}}">
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+<span style="font-weight: 700; font-size: 14px; line-height: 1.3">{{r.name}}</span>
+<span style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px"><sc-if value="{{r.hasOld}}" hint-placeholder-val="{{false}}"><s style="font-size: 12px; color: #8C897F">{{r.old}}</s></sc-if><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 16px">{{r.price}}</span></span>
+</div>
+<button type="button" class="zbtn" onClick="{{r.add}}">Adicionar</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{cartFull}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 18px 22px; border-top: 1px solid #DEDCD5">
+<sc-if value="{{promoOn}}" hint-placeholder-val="{{false}}"><div style="display: flex; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 700; color: #0B7A45"><span>Leve 3, pague 2</span><span style="white-space: nowrap">{{promoValue}}</span></div></sc-if>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<span style="font-size: 15px; color: #5E5B52">{{cartTotalLabel}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 30px">{{cartTotal}}</span>
+</div>
+<sc-if value="{{hasCardDiff}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #5E5B52">No cartão: <b style="color: #0E0E12">{{cardTotal}}</b> (preço cheio, em até 6x no cartão)</span></sc-if>
+<sc-if value="{{hasCartSave}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; font-weight: 700; color: #B3136E">Pagando no Pix você economiza {{cartSave}}</span></sc-if>
+<span style="font-size: 13px; color: #5E5B52">{{cartShipLine}}</span>
+<button type="button" class="zcta" onClick="{{openCheckout}}" style="border: 0; cursor: pointer; justify-content: center; width: 100%; box-sizing: border-box; background: #0E0E12; color: #FFFFFF">Finalizar compra</button>
+<button type="button" class="zlink" onClick="{{closeCart}}" style="align-self: center">Continuar comprando</button>
+</div>
+</sc-if>
+</aside>
+</sc-if>
+
+<sc-if value="{{showCheckout}}" hint-placeholder-val="{{false}}">
+<div class="zco" role="dialog" aria-modal="true" aria-label="Finalizar compra">
+<div style="background: #FFFFFF; border-bottom: 1px solid #DEDCD5">
+<div class="zw" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; padding-bottom: 14px">
+<a href="#topo" onClick="{{goHome}}" aria-label="Zera Games, voltar ao início" style="display: flex; align-items: center; gap: 12px; font-family: Archivo, sans-serif; font-weight: 900; font-size: 22px; color: #0E0E12; text-decoration: none"><img src="assets/img/marca/zera-icone.jpg" alt="" width="38" height="38" style="display: block; border-radius: 9px">ZERA GAMES</a>
+<button type="button" class="zbtn" onClick="{{closeCheckout}}" style="background: transparent; cursor: pointer; font-family: inherit">Voltar à loja</button>
+</div>
+</div>
+<div class="zw" style="padding-top: 36px; padding-bottom: 72px; max-width: 1120px">
+<h1 style="font-size: 42px; font-weight: 900; margin-bottom: 26px">Finalizar compra</h1>
+<sc-if value="{{orderDone}}" hint-placeholder-val="{{false}}">
+<div class="zcard" role="status" style="max-width: 640px">
+<h2 style="font-size: 28px; font-weight: 900">Pedido {{lastOrderId}} registrado.</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #5E5B52">Demonstração: o checkout ainda não está ligado a um processador de pagamento, então nenhuma cobrança foi feita.</p>
+<button type="button" class="zcta" onClick="{{closeCheckout}}" style="align-self: flex-start; border: 0; cursor: pointer; background: #0E0E12; color: #FFFFFF">Voltar à loja</button>
+</div>
+</sc-if>
+<sc-if value="{{orderOpen}}" hint-placeholder-val="{{true}}">
+<form class="zcog" onSubmit="{{orderSubmit}}">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div class="zcard">
+<div style="display: flex; align-items: center; gap: 12px"><span class="zstep">1</span><h2 style="font-size: 22px; font-weight: 900">Seus dados</h2></div>
+<div class="zfg">
+<label class="zfield full">Nome completo<input type="text" name="nome" autocomplete="name" required></label>
+<label class="zfield">E-mail<input type="email" name="email" autocomplete="email" required></label>
+<label class="zfield">Celular / WhatsApp<input type="tel" name="celular" autocomplete="tel" placeholder="(00) 00000-0000" required></label>
+<label class="zfield">CPF<input type="text" name="cpf" inputmode="numeric" placeholder="000.000.000-00" required></label>
+</div>
+</div>
+<sc-if value="{{hasPhysical}}" hint-placeholder-val="{{true}}">
+<div class="zcard">
+<div style="display: flex; align-items: center; gap: 12px"><span class="zstep">2</span><h2 style="font-size: 22px; font-weight: 900">Entrega</h2></div>
+<div class="zfg">
+<label class="zfield">CEP<input type="text" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" required></label>
+<label class="zfield">Número<input type="text" name="numero" required></label>
+<label class="zfield full">Rua<input type="text" name="rua" autocomplete="address-line1" required></label>
+<label class="zfield">Complemento (opcional)<input type="text" name="complemento" autocomplete="address-line2"></label>
+<label class="zfield">Bairro<input type="text" name="bairro" required></label>
+<label class="zfield">Cidade<input type="text" name="cidade" autocomplete="address-level2" required></label>
+<label class="zfield">Estado (UF)<input type="text" name="uf" autocomplete="address-level1" maxlength="2" style="text-transform: uppercase" required></label>
+</div>
+<div role="group" aria-label="Escolha o frete" style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 700">Escolha o frete</span>
+<sc-for list="{{shipOptions}}" as="s" hint-placeholder-count="3">
+<button type="button" class="{{s.cls}}" aria-pressed="{{s.pressed}}" onClick="{{s.pick}}"><i aria-hidden="true"></i><span style="flex: 1; display: flex; flex-direction: column; gap: 2px; text-align: left"><b>{{s.name}}</b><small>{{s.time}} · com código de rastreio</small></span><strong>{{s.priceLabel}}</strong></button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{hasDigital}}" hint-placeholder-val="{{false}}">
+<div class="zcard" style="border: 2px solid #0E0E12">
+<h2 style="font-size: 20px; font-weight: 900">Itens digitais</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3A3832">Os códigos e keys chegam no e-mail informado assim que o pagamento for aprovado. Jogos em lançamento já podem ser baixados e liberam para jogar na data oficial. [CONFIRME O PRAZO DE ENVIO DOS CÓDIGOS]</p>
+</div>
+</sc-if>
+<div class="zcard">
+<div style="display: flex; align-items: center; gap: 12px"><span class="zstep">{{payStep}}</span><h2 style="font-size: 22px; font-weight: 900">Pagamento</h2></div>
+<div role="group" aria-label="Forma de pagamento" style="display: flex; flex-wrap: wrap; gap: 12px">
+<button type="button" class="{{payPixCls}}" aria-pressed="{{payPixOn}}" onClick="{{pickPix}}"><span style="display: flex; flex-direction: column; gap: 2px"><span>Pix</span><small style="font-weight: 600; font-size: 13px; color: #0B7A45">{{payPixPrice}} · preço Black Friday</small></span></button>
+<button type="button" class="{{payCardCls}}" aria-pressed="{{payCardOn}}" onClick="{{pickCard}}"><span style="display: flex; flex-direction: column; gap: 2px"><span>Cartão de crédito</span><small style="font-weight: 600; font-size: 13px; color: #5E5B52">{{payCardPrice}} · até 6x de {{payCardInst}}</small></span></button>
+</div>
+<sc-if value="{{hasCardDiff}}" hint-placeholder-val="{{false}}"><div class="{{payNoticeCls}}" role="status">{{payNotice}}</div></sc-if>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5E5B52">{{payInfo}}</p>
+</div>
+</div>
+<div class="zcard" style="position: sticky; top: 20px">
+<h2 style="font-size: 22px; font-weight: 900">Resumo do pedido</h2>
+<sc-for list="{{coLines}}" as="c" hint-placeholder-count="2">
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 15px">
+<span style="line-height: 1.35">{{c.qty}}× {{c.name}}</span>
+<span style="font-weight: 700; white-space: nowrap">{{c.lineCo}}</span>
+</div>
+</sc-for>
+<sc-if value="{{promoOn}}" hint-placeholder-val="{{false}}"><div style="display: flex; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 700; color: #0B7A45"><span>Leve 3, pague 2 (jogo mais barato grátis)</span><span style="white-space: nowrap">{{promoValueCo}}</span></div></sc-if>
+<sc-if value="{{hasPhysical}}" hint-placeholder-val="{{true}}"><div style="display: flex; justify-content: space-between; gap: 12px; font-size: 15px"><span style="line-height: 1.35">{{shipName}}</span><span style="font-weight: 700; white-space: nowrap">{{shipValue}}</span></div></sc-if>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid #DEDCD5">
+<span style="font-size: 15px; color: #5E5B52">{{orderTotalLabel}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 30px">{{orderTotal}}</span>
+</div>
+<sc-if value="{{pixSaveOn}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; font-weight: 700; color: #0B7A45">Pagando no Pix você economiza {{cartSave}}</span></sc-if>
+<button type="submit" class="zcta" style="border: 0; cursor: pointer; justify-content: center; width: 100%; box-sizing: border-box; background: #FF4FA3; color: #16060E">{{payBtnLabel}}</button>
+<span style="font-size: 13px; line-height: 1.5; color: #5E5B52">Demonstração: nenhuma cobrança é feita até o checkout ser ligado ao processador de pagamento.</span>
+</div>
+</form>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
 </div>
 </template>
 <script type="text/x-dc" data-dc-script data-props='{"autoplay":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":6500}}'>
 class Component extends DCLogic {
 componentDidMount() {
 var self = this;
+try { var saved = JSON.parse(localStorage.getItem('zera-cart') || 'null'); if (saved && typeof saved === 'object') { this.setState({ cart: saved }); } } catch (e) {}
+// Botão "voltar ao topo" aparece depois de rolar a página.
+this._onScroll = function () { var t = window.scrollY > 900; if (!!(self.state && self.state.showTop) !== t) { self.setState({ showTop: t }); } };
+window.addEventListener('scroll', this._onScroll, { passive: true });
+// Esc fecha o carrinho, a janela do produto ou a busca.
+this._onKey = function (e) {
+if (e.key !== 'Escape') { return; }
+var s = self.state || {};
+if (s.showCart) { self.setState({ showCart: false }); } else if (s.pid != null) { self.setState({ pid: null }); } else if (s.searchOpen) { self.setState({ searchOpen: false, q: '' }); }
+};
+document.addEventListener('keydown', this._onKey);
 this._t = setInterval(function () {
 if (self._hold || self.props.autoplay === false) { return; }
 var s = (self.state && self.state.slide) || 0;
 self.setState({ slide: (s + 1) % 5 });
 }, 6000);
 }
-componentWillUnmount() { clearInterval(this._t); }
+componentWillUnmount() { clearInterval(this._t); window.removeEventListener('scroll', this._onScroll); document.removeEventListener('keydown', this._onKey); }
 renderVals() {
 var self = this;
 var st = this.state || {};
@@ -472,7 +930,8 @@ var DESC = {
 var IMGS = {
 'PlayStation 5 Pro': ['assets/img/consoles/ps5-pro-1.jpg', 'assets/img/consoles/ps5-pro-3.jpg', 'assets/img/consoles/ps5-pro-2.jpg', 'assets/img/consoles/ps5-pro-4.jpg']
 };
-var PRICES = { 'PlayStation 5 Pro': 5669.99, 'PlayStation 5 Slim': 3447.9, 'Xbox Series S': 2990.9, 'Controle sem fio para PS5': 399.9, 'Controle sem fio para Xbox Series': 289.9, 'Grand Theft Auto VI · PS5': 369.57, 'EA Sports FC 27 · PS5': 289.95, 'Grand Theft Auto VI · Xbox Series': 369.57, 'Grand Theft Auto VI · Digital': 329.9, 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta': 67.9, 'Base de carregamento Sony para controle DualSense · CFI-ZDS1': 99.99, 'Headset sem fio Sony Pulse Elite · PS5 · Branco': 799.9, 'Base de resfriamento multifuncional para PS5': 189.9, 'Suporte vertical para controle de PS5 · Branco': 45.9, 'Suporte para controle DualSense · Tema GTA VI': 99.99, 'Cabo USB-C para carregar controle de PS5': 129.9, 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54': 199.9 };
+var PRICES = { 'PlayStation 5 Pro': 5669.99, 'PlayStation 5 Slim': 3447.9, 'Xbox Series S': 2990.9, 'Controle sem fio para PS5': 399.9, 'Controle sem fio para Xbox Series': 289.9, 'Grand Theft Auto VI · PS5': 369.57, 'EA Sports FC 27 · PS5': 289.95, 'Grand Theft Auto VI · Xbox Series': 369.57, 'Grand Theft Auto VI · Digital': 329.9, 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta': 67.9, 'Base de carregamento Sony para controle DualSense · CFI-ZDS1': 99.99, 'Headset sem fio Sony Pulse Elite · PS5 · Branco': 799.9, 'Base de resfriamento multifuncional para PS5': 189.9, 'Suporte vertical para controle de PS5 · Branco': 45.9, 'Suporte para controle DualSense · Tema GTA VI': 99.99, 'Cabo USB-C para carregar controle de PS5': 129.9, 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54': 199.9,
+'Resident Evil Requiem': 300, 'Crimson Desert': 280, '007 First Light': 210, 'Pragmata': 280, 'Marathon': 165, 'Onimusha: Way of the Sword': 340, 'The Blood of Dawnwalker': 400, 'Control Resonant': 185, 'Halloween': 184, 'Call of Duty: Modern Warfare 4': 350, 'Phantom Blade Zero': 230, 'Ace Combat 8: Wings of Theve': 320, 'The First Berserker: Khazan': 350, 'Reanimal': 230 };
 var INFO = { 'PlayStation 5 Pro': ['Console PlayStation 5 Pro Sony com SSD de 1TB, na cor branca. Acompanha um controle sem fio DualSense.', '[CONFIRME O QUE VEM NA CAIXA, VOLTAGEM E GARANTIA]'] };
 var money = function (v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
 IMGS['PlayStation 5 Slim'] = IMGS['PlayStation 5 Pro'];
@@ -499,35 +958,362 @@ IMGS['Base de carregamento Sony para controle DualSense · CFI-ZDS1'] = ['assets
 INFO['Base de carregamento Sony para controle DualSense · CFI-ZDS1'] = ['Base de carregamento oficial Sony, modelo CFI-ZDS1, para carregar até dois controles DualSense ao mesmo tempo. Basta encaixar o controle, sem precisar ligar o console.', '[CONFIRME O QUE VEM NA CAIXA, A VOLTAGEM DO ADAPTADOR E A GARANTIA]'];
 IMGS['Capa de proteção antipoeira para PlayStation 5 Slim · Preta'] = ['assets/img/acessorios/capa-ps5-slim-1.jpg', 'assets/img/acessorios/capa-ps5-slim-2.jpg', 'assets/img/acessorios/capa-ps5-slim-3.jpg', 'assets/img/acessorios/capa-ps5-slim-4.jpg'];
 INFO['Capa de proteção antipoeira para PlayStation 5 Slim · Preta'] = ['Capa de proteção antipoeira preta para PlayStation 5 Slim, nas versões Digital e com leitor. Mede 37 × 24,4 × 8,4 cm e tem abertura traseira com fecho para passar os cabos.', '[CONFIRME O MATERIAL, A COMPATIBILIDADE EXATA E A GARANTIA]'];
-var NOB = { 'EA Sports FC 27 · PS5': true, 'Grand Theft Auto VI · Digital': true };
+var COVER = {};
+var NOB = {'EA Sports FC 27 · PS5': true, 'Grand Theft Auto VI · Digital': true };
 IMGS['Grand Theft Auto VI · Xbox Series'] = ['assets/img/jogos/gta6-xbox-caixa.jpg', 'assets/img/jogos/gta6-arte.jpg'];
-INFO['Grand Theft Auto VI · Xbox Series'] = ['Grand Theft Auto VI para Xbox Series X|S, em caixa física.', '[CONFIRME SE A CAIXA TRAZ DISCO OU CÓDIGO DE RESGATE]'];
+INFO['Grand Theft Auto VI · Xbox Series'] = ['Grand Theft Auto VI para Xbox Series X|S, em caixa física. Já está à venda e em estoque: você recebe a caixa em casa antes do lançamento e começa a jogar a partir de 19/11.', '[CONFIRME SE A CAIXA TRAZ DISCO OU CÓDIGO DE RESGATE]'];
 IMGS['Grand Theft Auto VI · Digital'] = ['assets/img/jogos/gta6-digital.png'];
 INFO['Grand Theft Auto VI · Digital'] = ['Grand Theft Auto VI em versão digital, entregue como código de resgate.', '[CONFIRME A PLATAFORMA DO CÓDIGO E COMO ELE É ENTREGUE]'];
 IMGS['EA Sports FC 27 · PS5'] = ['assets/img/jogos/fc27-capa.jpg', 'assets/img/jogos/fc27-cena-1.jpg', 'assets/img/jogos/fc27-cena-2.jpg', 'assets/img/jogos/fc27-cena-3.jpg', 'assets/img/jogos/fc27-cena-4.jpg'];
 INFO['EA Sports FC 27 · PS5'] = ['EA Sports FC 27 para PlayStation 5, em mídia física.', '[CONFIRME EDIÇÃO, IDIOMAS E CLASSIFICAÇÃO INDICATIVA]'];
-var STATUS = { 'Grand Theft Auto VI · PS5': 'Pré-venda · lançamento em 19/11', 'Grand Theft Auto VI · Xbox Series': 'Pré-venda · lançamento em 19/11', 'Grand Theft Auto VI · Digital': 'Pré-venda · lançamento em 19/11' };
+var STATUS = { 'Grand Theft Auto VI · PS5': 'À venda · receba em casa antes do dia 19', 'Grand Theft Auto VI · Xbox Series': 'À venda · receba em casa antes do dia 19', 'Grand Theft Auto VI · Digital': 'À venda · baixe agora e jogue em 19/11' };
 IMGS['Grand Theft Auto VI · PS5'] = ['assets/img/jogos/gta6-ps5-caixa.jpg', 'assets/img/jogos/gta6-arte.jpg'];
-INFO['Grand Theft Auto VI · PS5'] = ['Grand Theft Auto VI, Edição Standard para PlayStation 5, em caixa física.', '[CONFIRME SE A CAIXA TRAZ DISCO OU CÓDIGO DE RESGATE]'];
-var PDISC = { 'Controle sem fio para PS5': 0.3, 'Controle sem fio para Xbox Series': 0.3, 'Grand Theft Auto VI · PS5': 0.3, 'EA Sports FC 27 · PS5': 0.5, 'Grand Theft Auto VI · Xbox Series': 0.3, 'Grand Theft Auto VI · Digital': 0.3, 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta': 0, 'Base de carregamento Sony para controle DualSense · CFI-ZDS1': 0, 'Headset sem fio Sony Pulse Elite · PS5 · Branco': 0.7, 'Base de resfriamento multifuncional para PS5': 0.4, 'Suporte vertical para controle de PS5 · Branco': 0, 'Suporte para controle DualSense · Tema GTA VI': 0.3, 'Cabo USB-C para carregar controle de PS5': 0.2, 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54': 0.4 };
+INFO['Grand Theft Auto VI · PS5'] = ['Grand Theft Auto VI, Edição Standard para PlayStation 5, em caixa física. Já está à venda e em estoque: você recebe a caixa em casa antes do lançamento e começa a jogar a partir de 19/11.', '[CONFIRME SE A CAIXA TRAZ DISCO OU CÓDIGO DE RESGATE]'];
+var PDISC = { 'Controle sem fio para PS5': 0.3, 'Controle sem fio para Xbox Series': 0.3, 'Grand Theft Auto VI · PS5': 0.3, 'EA Sports FC 27 · PS5': 0.5, 'Grand Theft Auto VI · Xbox Series': 0.3, 'Grand Theft Auto VI · Digital': 0.3, 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta': 0, 'Base de carregamento Sony para controle DualSense · CFI-ZDS1': 0, 'Headset sem fio Sony Pulse Elite · PS5 · Branco': 0.7, 'Base de resfriamento multifuncional para PS5': 0.4, 'Suporte vertical para controle de PS5 · Branco': 0, 'Suporte para controle DualSense · Tema GTA VI': 0.3, 'Cabo USB-C para carregar controle de PS5': 0.2, 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54': 0.4,
+'Resident Evil Requiem': 0.3, 'Crimson Desert': 0.3, '007 First Light': 0.3, 'Pragmata': 0.5, 'Marathon': 0.5, 'Onimusha: Way of the Sword': 0.5, 'The Blood of Dawnwalker': 0.5, 'Control Resonant': 0.7, 'Halloween': 0.7, 'Call of Duty: Modern Warfare 4': 0.7, 'Phantom Blade Zero': 0.7, 'Ace Combat 8: Wings of Theve': 0.7, 'The First Berserker: Khazan': 0.7, 'Reanimal': 0.7 };
 IMGS['Controle sem fio para Xbox Series'] = ['assets/img/controles/xbox-1.jpg', 'assets/img/controles/xbox-2.jpg', 'assets/img/controles/xbox-3.jpg', 'assets/img/controles/xbox-4.jpg', 'assets/img/controles/xbox-5.jpg'];
 INFO['Controle sem fio para Xbox Series'] = ['Controle sem fio Xbox na cor Robot White, com direcional híbrido, botão Compartilhar, gatilhos texturizados e conexão Xbox Wireless e Bluetooth.', '[CONFIRME O QUE VEM NA CAIXA E A GARANTIA]'];
 IMGS['Controle sem fio para PS5'] = ['assets/img/controles/ps5-1.jpg', 'assets/img/controles/ps5-2.jpg', 'assets/img/controles/ps5-3.jpg', 'assets/img/controles/ps5-4.jpg', 'assets/img/controles/ps5-5.jpg', 'assets/img/controles/ps5-6.jpg'];
 INFO['Controle sem fio para PS5'] = ['Controle sem fio DualSense para PS5, na cor branca, com resposta tátil, gatilhos adaptáveis e sensor de movimento.', '[CONFIRME O QUE VEM NA CAIXA E A GARANTIA]'];
+// GTA VI digital: uma versão para PS5 e outra para Xbox. As duas usam o preço e o desconto de 'Grand Theft Auto VI · Digital'.
+[['PS5', 'PlayStation 5'], ['Xbox', 'Xbox Series X|S']].forEach(function (pl) {
+var src = 'Grand Theft Auto VI · Digital', n = src + ' ' + pl[0];
+PRICES[n] = PRICES[src]; PDISC[n] = PDISC[src]; NOB[n] = NOB[src]; IMGS[n] = IMGS[src]; STATUS[n] = STATUS[src];
+INFO[n] = ['Grand Theft Auto VI em versão digital para ' + pl[1] + ', entregue como código de resgate. Você já pode comprar e baixar; o jogo libera para jogar em 19/11.', '[CONFIRME COMO O CÓDIGO É ENTREGUE E EM QUANTO TEMPO]'];
+});
+// ---------- Produtos novos: controles, acessórios, Nintendo e cartões ----------
+// Foto: [nome do produto, arquivo]. Descrição: INFO[nome] = [texto, observação].
+[
+['Controle sem fio DualSense · Midnight Black', 'controles/dualsense-midnight-black', 'Controle sem fio DualSense para PS5, na cor Midnight Black (preto), com resposta tátil, gatilhos adaptáveis e microfone embutido.'],
+['Controle sem fio DualSense · Cosmic Red', 'controles/dualsense-cosmic-red', 'Controle sem fio DualSense para PS5, na cor Cosmic Red (vermelho), com resposta tátil, gatilhos adaptáveis e microfone embutido.'],
+['Controle sem fio DualSense Edge', 'controles/dualsense-edge', 'Controle profissional DualSense Edge para PS5, com botões traseiros, alavancas e gatilhos ajustáveis, perfis personalizados e estojo para transporte.'],
+['Controle sem fio Xbox · Carbon Black', 'controles/xbox-carbon-black', 'Controle sem fio Xbox na cor Carbon Black (preto), com direcional híbrido, botão Compartilhar e conexão Xbox Wireless e Bluetooth.'],
+['Unidade de disco para PS5 · Sony', 'acessorios/unidade-disco-ps5', 'Unidade de disco oficial Sony para PS5 Slim Edição Digital e PS5 Pro. Encaixa no console e permite jogar jogos em disco e assistir Blu-ray 4K. Precisa de internet para parear na primeira vez.'],
+['PlayStation Portal · Reprodutor remoto', 'acessorios/ps-portal', 'PlayStation Portal: jogue os jogos do seu PS5 pela internet de casa, em uma tela de 8 polegadas com os recursos do controle DualSense.'],
+['Bateria recarregável para controle Xbox + cabo USB-C', 'acessorios/xbox-bateria', 'Bateria recarregável oficial para controle Xbox, com cabo USB-C. Carregue enquanto joga ou com o console em modo de espera, sem gastar com pilhas.'],
+['Headset sem fio Xbox', 'acessorios/xbox-headset', 'Headset sem fio oficial Xbox, com conexão direta ao console, Bluetooth e controle de volume e chat no próprio fone.'],
+['Cartão de expansão Seagate 1TB para Xbox Series X|S', 'acessorios/seagate-xbox-1tb', 'Cartão de expansão Seagate de 1TB para Xbox Series X|S. Encaixa na traseira do console e funciona com a mesma velocidade do armazenamento interno.'],
+['SSD WD_BLACK SN850X 1TB com dissipador', 'acessorios/wd-black-sn850x', 'SSD NVMe WD_BLACK SN850X de 1TB com dissipador, compatível com PS5 e PS5 Pro. Mais espaço para os lançamentos, com leitura de até 7.300 MB/s.'],
+['SSD WD_BLACK SN850X 2TB com dissipador', 'acessorios/wd-black-sn850x', 'SSD NVMe WD_BLACK SN850X de 2TB com dissipador, compatível com PS5 e PS5 Pro. Espaço de sobra para a biblioteca inteira, com leitura de até 7.300 MB/s.'],
+['Headset HyperX Cloud Stinger 2', 'acessorios/hyperx-cloud-stinger-2', 'Headset HyperX Cloud Stinger 2 com fio, leve e confortável, com microfone que silencia ao levantar. Funciona no PS5, no Xbox, no PC e no Switch pelo conector P2.'],
+['Headset HyperX Cloud III', 'acessorios/hyperx-cloud-iii', 'Headset HyperX Cloud III com fio, com o conforto característico da linha Cloud, som surround virtual e microfone removível. Funciona no PS5, no Xbox, no PC e no Switch.'],
+['Nintendo Switch 2 + Mario Kart World', 'nintendo/switch-2-mario-kart-world', 'Console Nintendo Switch 2 com o jogo Mario Kart World. Acompanha os controles Joy-Con 2, base para TV, grip e cabo HDMI.'],
+['Controle Pro Nintendo Switch 2', 'nintendo/switch-2-pro-controller', 'Controle Pro oficial do Nintendo Switch 2, com botões traseiros programáveis, entrada para fone de ouvido e vibração HD.'],
+['Cartão microSD Express SanDisk 256GB para Nintendo Switch 2', 'nintendo/microsd-express-256gb', 'Cartão microSD Express SanDisk de 256GB, licenciado pela Nintendo. O Nintendo Switch 2 só aceita cartões microSD Express.'],
+['Mario Kart World · Switch 2', 'nintendo/mario-kart-world', 'Mario Kart World para Nintendo Switch 2: corridas em um mundo aberto, com até 24 pilotos por corrida.'],
+['Donkey Kong Bananza · Switch 2', 'nintendo/donkey-kong-bananza', 'Donkey Kong Bananza para Nintendo Switch 2: aventura em 3D em que o DK destrói tudo pelo caminho.'],
+['Pokémon Legends: Z-A · Switch 2', 'nintendo/pokemon-legends-za', 'Pokémon Legends: Z-A – Nintendo Switch 2 Edition, aventura em Lumiose City.'],
+['The Legend of Zelda: Ocarina of Time · Switch 2', 'nintendo/zelda-ocarina-of-time', 'The Legend of Zelda: Ocarina of Time para Nintendo Switch 2, lançado em novembro de 2026. A aventura de Link por Hyrule, para jogar na TV ou no modo portátil.'],
+['Cartão PlayStation Store R$ 100', 'cartoes/ps-store-100', 'Crédito de R$ 100 para a PlayStation Store do Brasil. Use para comprar jogos, expansões e assinaturas no PS5 e no PS4.'],
+['Cartão PlayStation Store R$ 250', 'cartoes/ps-store-250', 'Crédito de R$ 250 para a PlayStation Store do Brasil. Use para comprar jogos, expansões e assinaturas no PS5 e no PS4.'],
+['PlayStation Plus Essential · 12 meses', 'cartoes/ps-plus-essential-12', 'Assinatura PlayStation Plus Essential por 12 meses: multiplayer online, jogos mensais e descontos exclusivos.'],
+['PlayStation Plus Extra · 12 meses', 'cartoes/ps-plus-extra-12', 'Assinatura PlayStation Plus Extra por 12 meses: tudo do Essential mais um catálogo com centenas de jogos de PS5 e PS4.'],
+['Xbox Game Pass Ultimate · 1 mês', 'cartoes/game-pass-ultimate-1', 'Assinatura Xbox Game Pass Ultimate por 1 mês: centenas de jogos no console, no PC e na nuvem, com lançamentos no primeiro dia.'],
+['Xbox Game Pass Ultimate · 3 meses', 'cartoes/game-pass-ultimate-3', 'Assinatura Xbox Game Pass Ultimate por 3 meses: centenas de jogos no console, no PC e na nuvem, com lançamentos no primeiro dia.'],
+['Cartão Steam R$ 100', 'cartoes/steam-100', 'Crédito de R$ 100 para a carteira Steam. Use para comprar jogos e itens no PC.']
+].forEach(function (r) {
+IMGS[r[0]] = ['assets/img/' + r[1] + '.jpg'];
+INFO[r[0]] = [r[2], /^Cartão (PlayStation|Steam)|Plus|Game Pass/.test(r[0]) ? 'Produto digital: o código chega no seu e-mail. [CONFIRME COMO O CÓDIGO É ENTREGUE E EM QUANTO TEMPO]' : '[CONFIRME O QUE VEM NA CAIXA E A GARANTIA]'];
+});
+// Fotos extras (outros ângulos) dos produtos novos. A primeira foto continua sendo a de cima.
+var MORE_IMGS = {
+'Controle sem fio DualSense · Midnight Black': ['controles/dualsense-midnight-black-2', 'controles/dualsense-midnight-black-3'],
+'Controle sem fio DualSense · Cosmic Red': ['controles/dualsense-cosmic-red-2', 'controles/dualsense-cosmic-red-3'],
+'Controle sem fio DualSense Edge': ['controles/dualsense-edge-2', 'controles/dualsense-edge-3'],
+'Controle sem fio Xbox · Carbon Black': ['controles/xbox-carbon-black-2', 'controles/xbox-carbon-black-3', 'controles/xbox-carbon-black-4'],
+'PlayStation Portal · Reprodutor remoto': ['acessorios/ps-portal-2', 'acessorios/ps-portal-3'],
+'Headset sem fio Xbox': ['acessorios/xbox-headset-2', 'acessorios/xbox-headset-3'],
+'Cartão de expansão Seagate 1TB para Xbox Series X|S': ['acessorios/seagate-xbox-1tb-2', 'acessorios/seagate-xbox-1tb-3'],
+'Bateria recarregável para controle Xbox + cabo USB-C': ['acessorios/xbox-bateria-2', 'acessorios/xbox-bateria-3'],
+'Headset HyperX Cloud Stinger 2': ['acessorios/hyperx-cloud-stinger-2-2', 'acessorios/hyperx-cloud-stinger-2-3', 'acessorios/hyperx-cloud-stinger-2-4'],
+'Headset HyperX Cloud III': ['acessorios/hyperx-cloud-iii-2', 'acessorios/hyperx-cloud-iii-3', 'acessorios/hyperx-cloud-iii-4'],
+'SSD WD_BLACK SN850X 1TB com dissipador': ['acessorios/wd-black-sn850x-2'],
+'SSD WD_BLACK SN850X 2TB com dissipador': ['acessorios/wd-black-sn850x-2'],
+'Cartão microSD Express SanDisk 256GB para Nintendo Switch 2': ['nintendo/microsd-express-256gb-2'],
+'Nintendo Switch 2 + Mario Kart World': ['nintendo/switch-2-console-1', 'nintendo/switch-2-console-2', 'nintendo/switch-2-console-3', 'nintendo/switch-2-console-4'],
+'Controle Pro Nintendo Switch 2': ['nintendo/switch-2-pro-controller-2', 'nintendo/switch-2-pro-controller-3', 'nintendo/switch-2-pro-controller-4', 'nintendo/switch-2-pro-controller-5'],
+'The Legend of Zelda: Ocarina of Time · Switch 2': ['nintendo/zelda-ocarina-of-time-2', 'nintendo/zelda-ocarina-of-time-3', 'nintendo/zelda-ocarina-of-time-4']
+};
+Object.keys(MORE_IMGS).forEach(function (n) { IMGS[n] = (IMGS[n] || []).concat(MORE_IMGS[n].map(function (f) { return 'assets/img/' + f + '.jpg'; })); });
+// Controles GTA VI: vendidos na página do controle; aqui aparecem com preço e levam para lá.
+[['Controle GTA VI · Preto', 'preto-frente', 'preto'], ['Controle GTA VI · Branco', 'branco-frente', 'branco']].forEach(function (r) {
+PRICES[r[0]] = 997.9; PDISC[r[0]] = 0.7;
+IMGS[r[0]] = ['assets/img/controle-gta6/' + r[1] + '.jpg'];
+INFO[r[0]] = ['Controle DualSense Edição Limitada GTA VI, na cor ' + r[2] + '. Lote único e limitado: veja as fotos, o estoque e compre na página completa do controle.', ''];
+});
+// Controles novos: preço cheio e desconto.
+PRICES['Controle sem fio DualSense · Midnight Black'] = 460; PDISC['Controle sem fio DualSense · Midnight Black'] = 0.45;
+PRICES['Controle sem fio DualSense · Cosmic Red'] = 460; PDISC['Controle sem fio DualSense · Cosmic Red'] = 0.45;
+PRICES['Controle sem fio DualSense Edge'] = 1250; PDISC['Controle sem fio DualSense Edge'] = 0.45;
+PRICES['Controle sem fio Xbox · Carbon Black'] = 400; PDISC['Controle sem fio Xbox · Carbon Black'] = 0.45;
+// Acessórios novos: preço cheio e desconto.
+[['Unidade de disco para PS5 · Sony', 800], ['SSD WD_BLACK SN850X 1TB com dissipador', 1100], ['SSD WD_BLACK SN850X 2TB com dissipador', 2400], ['PlayStation Portal · Reprodutor remoto', 1800], ['Bateria recarregável para controle Xbox + cabo USB-C', 250], ['Cartão de expansão Seagate 1TB para Xbox Series X|S', 3000], ['Headset sem fio Xbox', 700], ['Headset HyperX Cloud Stinger 2', 250], ['Headset HyperX Cloud III', 410]].forEach(function (r) { PRICES[r[0]] = r[1]; PDISC[r[0]] = 0.4; });
+// Nintendo: preço cheio e desconto.
+[['Nintendo Switch 2 + Mario Kart World', 4550], ['Controle Pro Nintendo Switch 2', 600], ['Cartão microSD Express SanDisk 256GB para Nintendo Switch 2', 800], ['Mario Kart World · Switch 2', 450], ['Donkey Kong Bananza · Switch 2', 410], ['Pokémon Legends: Z-A · Switch 2', 340]].forEach(function (r) { PRICES[r[0]] = r[1]; PDISC[r[0]] = 0.35; });
+// Jogos que vendem o ano todo: preço cheio e desconto (a key de PC segue o mesmo preço).
+[['Minecraft', 230], ['Grand Theft Auto V', 160], ['Red Dead Redemption 2', 150], ["Marvel's Spider-Man 2", 300], ['Mortal Kombat 1', 250]].forEach(function (r) { PRICES[r[0]] = r[1]; PDISC[r[0]] = 0.6; });
+// Zelda: de R$ 450 por R$ 237,90 (o desconto é calculado a partir do preço final).
+PRICES['The Legend of Zelda: Ocarina of Time · Switch 2'] = 450; PDISC['The Legend of Zelda: Ocarina of Time · Switch 2'] = 1 - 237.90 / 450;
+// Cartões e assinaturas: preço cheio e desconto.
+[['Cartão PlayStation Store R$ 100', 100], ['Cartão PlayStation Store R$ 250', 250], ['Cartão Steam R$ 100', 100], ['PlayStation Plus Essential · 12 meses', 360], ['PlayStation Plus Extra · 12 meses', 593], ['Xbox Game Pass Ultimate · 1 mês', 81], ['Xbox Game Pass Ultimate · 3 meses', 230]].forEach(function (r) { PRICES[r[0]] = r[1]; PDISC[r[0]] = 0.07; });
+// Cartões de valor fixo: vendidos pelo valor do crédito, sem desconto.
+['Cartão PlayStation Store R$ 100', 'Cartão PlayStation Store R$ 250', 'Cartão Steam R$ 100'].forEach(function (n) { PDISC[n] = 0; });
+DESC['Cartões'] = ['Crédito e assinaturas digitais para PlayStation, Xbox e PC.', '[CONFIRME COMO O CÓDIGO É ENTREGUE]'];
 var catalog = [];
-var add = function (cat, rows, page) { return rows.map(function (r) { var p = { id: catalog.length, cat: cat, short: r[0], tag: r[1], name: r[2], page: !!page }; p.imgs = IMGS[p.name] || []; p.img = p.imgs[0] || ''; p.hasImg = p.imgs.length > 0; p.noImg = !p.hasImg; p.imgCls = 'zpimg' + (NOB[p.name] ? ' znob' : ''); p.old = PRICES[p.name] || 0; p.disc = PDISC[p.name] == null ? DISC : PDISC[p.name]; p.price = p.old > 0 ? Math.round(p.old * (1 - p.disc) * 100) / 100 : 0; p.out = !!OUT[p.name]; p.cardCls = 'zprod' + (p.out ? ' zout' : ''); p.hasOld = !p.out && p.old > 0 && p.disc > 0; p.oldLabel = money(p.old); p.offLabel = '-' + Math.round(p.disc * 100) + '%'; p.instLabel = money(p.price / 6); p.hasInst = !p.out && p.price > 0; p.priceLabel = p.out ? 'Sem estoque' : (p.price > 0 ? money(p.price) : 'R$ [SEU PREÇO]'); p.open = function () { self.setState({ pid: p.id, pimg: 0, searchOpen: false, q: '' }); }; catalog.push(p); return p; }); };
+var add = function (cat, rows, page) { return rows.map(function (r) { var p = { id: catalog.length, cat: cat, short: r[0], tag: r[1], name: r[2], page: !!page }; p.imgs = IMGS[p.name] || []; p.img = p.imgs[0] || ''; p.hasImg = p.imgs.length > 0; p.noImg = !p.hasImg; p.imgCls = 'zpimg' + (NOB[p.name] ? ' znob' : '') + (COVER[p.name] ? ' zcov' : ''); p.old = PRICES[p.name] || 0; p.disc = PDISC[p.name] == null ? DISC : PDISC[p.name]; p.price = p.old > 0 ? Math.round(p.old * (1 - p.disc) * 100) / 100 : 0; p.out = !!OUT[p.name]; p.cardCls = 'zprod' + (p.out ? ' zout' : ''); p.hasOld = !p.out && p.old > 0 && p.disc > 0; p.oldLabel = money(p.old); p.offLabel = '-' + Math.round(p.disc * 100) + '%'; p.instLabel = money((p.hasOld ? p.old : p.price) / 6); p.hasInst = !p.out && p.price > 0; p.priceLabel = p.out ? 'Sem estoque' : (p.price > 0 ? money(p.price) : 'R$ [SEU PREÇO]'); p.open = function () { self.setState({ pid: p.id, pimg: 0, pver: 0, searchOpen: false, q: '' }); }; catalog.push(p); return p; }); };
 var consoles = add('Consoles', [['PS5 PRO', 'PlayStation · SSD 1TB', 'PlayStation 5 Pro'], ['PS5 SLIM', 'PlayStation · Slim', 'PlayStation 5 Slim'], ['SERIES X', 'Xbox', 'Xbox Series X'], ['SERIES S', 'Xbox · SSD 512GB', 'Xbox Series S']]);
 add('Controles', [['GTA VI', 'Edição limitada', 'Controle GTA VI · Preto'], ['GTA VI', 'Edição limitada', 'Controle GTA VI · Branco']], true);
-var controls = add('Controles', [['PS5', 'PlayStation · DualSense', 'Controle sem fio para PS5'], ['XBOX', 'Xbox · Robot White', 'Controle sem fio para Xbox Series']]);
-var gtaGames = add('Jogos', [['GTA VI', 'PS5 · Físico', 'Grand Theft Auto VI · PS5'], ['GTA VI', 'Xbox Series · Físico', 'Grand Theft Auto VI · Xbox Series'], ['GTA VI', 'Digital', 'Grand Theft Auto VI · Digital']], true);
-var newGames = add('Jogos', [['FC 27', 'PS5 · Físico', 'EA Sports FC 27 · PS5']]);
-var accessories = add('Acessórios', [['CAPA', 'PS5 Slim', 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta'], ['BASE', 'PS5 · Sony', 'Base de carregamento Sony para controle DualSense · CFI-ZDS1'], ['HEADSET', 'PS5 · Sony · CFI-ZWH2L', 'Headset sem fio Sony Pulse Elite · PS5 · Branco'], ['BASE', 'PS5 · Ventilação', 'Base de resfriamento multifuncional para PS5'], ['SUPORTE', 'PS5 · 2 controles', 'Suporte vertical para controle de PS5 · Branco'], ['SUPORTE', 'PS5 · Tema GTA VI', 'Suporte para controle DualSense · Tema GTA VI'], ['CABO', 'PS5 · USB-C', 'Cabo USB-C para carregar controle de PS5'], ['ESTAÇÃO', 'PS5 · Krab · RGB', 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54']]);
+var controls = add('Controles', [['PS5', 'PlayStation · DualSense', 'Controle sem fio para PS5'], ['PS5', 'PlayStation · Midnight Black', 'Controle sem fio DualSense · Midnight Black'], ['PS5', 'PlayStation · Cosmic Red', 'Controle sem fio DualSense · Cosmic Red'], ['EDGE', 'PlayStation · Profissional', 'Controle sem fio DualSense Edge'], ['XBOX', 'Xbox · Robot White', 'Controle sem fio para Xbox Series'], ['XBOX', 'Xbox · Carbon Black', 'Controle sem fio Xbox · Carbon Black']]);
+var gtaGames = add('Jogos', [['GTA VI', 'PS5 · Físico', 'Grand Theft Auto VI · PS5'], ['GTA VI', 'Xbox Series · Físico', 'Grand Theft Auto VI · Xbox Series'], ['GTA VI', 'PS5 · Digital', 'Grand Theft Auto VI · Digital PS5'], ['GTA VI', 'Xbox Series · Digital', 'Grand Theft Auto VI · Digital Xbox']], true);
+// Jogos novos: capa oficial da PlayStation Store. Para cada um: [TEXTO CURTO, Etiqueta, Nome, Plataformas, Gênero, Arquivo da capa]
+var NEW_GAMES = [
+['RE REQUIEM', 'PS5 · Xbox Series · Terror', 'Resident Evil Requiem', 'PS5 e Xbox Series X|S', 'terror', 're-requiem'],
+['CRIMSON', 'PS5 · Xbox Series · RPG', 'Crimson Desert', 'PS5 e Xbox Series X|S', 'RPG', 'crimson-desert'],
+['007', 'PS5 · Xbox Series · Ação', '007 First Light', 'PS5 e Xbox Series X|S', 'ação', '007-first-light'],
+['PRAGMATA', 'PS5 · Xbox Series · Ficção científica', 'Pragmata', 'PS5 e Xbox Series X|S', 'ficção científica', 'pragmata'],
+['MARATHON', 'PS5 · Xbox Series · Tiro', 'Marathon', 'PS5 e Xbox Series X|S', 'tiro', 'marathon'],
+['ONIMUSHA', 'PS5 · Xbox Series · Ação', 'Onimusha: Way of the Sword', 'PS5 e Xbox Series X|S', 'ação', 'onimusha'],
+['DAWNWALKER', 'PS5 · Xbox Series · RPG', 'The Blood of Dawnwalker', 'PS5 e Xbox Series X|S', 'RPG', 'dawnwalker'],
+['CONTROL', 'PS5 · Xbox Series · Ação', 'Control Resonant', 'PS5 e Xbox Series X|S', 'ação', 'control-resonant'],
+['HALLOWEEN', 'PS5 · Xbox Series · Terror', 'Halloween', 'PS5 e Xbox Series X|S', 'terror', 'halloween'],
+['COD MW4', 'PS5 · Xbox Series · Tiro', 'Call of Duty: Modern Warfare 4', 'PS5 e Xbox Series X|S', 'tiro', 'cod-mw4'],
+['PHANTOM', 'PS5 · Ação', 'Phantom Blade Zero', 'PS5', 'ação', 'phantom-blade-zero'],
+['ACE COMBAT 8', 'PS5 · Simulação', 'Ace Combat 8: Wings of Theve', 'PS5', 'simulação', 'ace-combat-8'],
+['KHAZAN', 'PS5 · Xbox Series · RPG', 'The First Berserker: Khazan', 'PS5 e Xbox Series X|S', 'RPG', 'khazan'],
+['REANIMAL', 'PS5 · Xbox Series · Terror', 'Reanimal', 'PS5 e Xbox Series X|S', 'terror', 'reanimal'],
+['MINECRAFT', 'PS5 · Xbox Series · Aventura', 'Minecraft', 'PS5 e Xbox Series X|S', 'aventura', 'minecraft'],
+['GTA V', 'PS5 · Xbox Series · Mundo aberto', 'Grand Theft Auto V', 'PS5 e Xbox Series X|S', 'mundo aberto', 'gta-v'],
+['RDR 2', 'PS5 · Xbox Series · Mundo aberto', 'Red Dead Redemption 2', 'PS4 e Xbox One (roda no PS5 e no Xbox Series X|S)', 'mundo aberto', 'red-dead-redemption-2'],
+['SPIDER-MAN 2', 'PS5 · Ação', "Marvel's Spider-Man 2", 'PS5', 'ação', 'spider-man-2'],
+['MK1', 'PS5 · Xbox Series · Luta', 'Mortal Kombat 1', 'PS5 e Xbox Series X|S', 'luta', 'mortal-kombat-1']
+];
+NEW_GAMES.forEach(function (g) {
+COVER[g[2]] = true;
+IMGS[g[2]] = ['assets/img/jogos/' + g[5] + '.jpg'];
+INFO[g[2]] = [g[2] + ' para ' + g[3] + '. Jogo de ' + g[4] + '.', '[CONFIRME O PREÇO, A PLATAFORMA DISPONÍVEL, SE É MÍDIA FÍSICA OU DIGITAL E A CLASSIFICAÇÃO INDICATIVA]'];
+});
+var newGames = add('Jogos', [['FC 27', 'PS5 · Físico', 'EA Sports FC 27 · PS5']].concat(NEW_GAMES.map(function (g) { return [g[0], g[1], g[2]]; })));
+// Versões para PC (key digital). O preço e o desconto seguem automaticamente os da versão de PS5
+// (o nome da última coluna). Para mudar, altere o jogo de PS5 em PRICES e PDISC.
+// [TEXTO CURTO, Gênero, Nome do jogo, Foto, Nome da versão de PS5]
+var PC_GAMES = [
+['FC 27', 'Esporte', 'EA Sports FC 27', 'assets/img/jogos/fc27-cena-1.jpg', 'EA Sports FC 27 · PS5'],
+['RE REQUIEM', 'Terror', 'Resident Evil Requiem', 'assets/img/jogos/re-requiem.jpg', 'Resident Evil Requiem'],
+['CRIMSON', 'RPG', 'Crimson Desert', 'assets/img/jogos/crimson-desert.jpg', 'Crimson Desert'],
+['007', 'Ação', '007 First Light', 'assets/img/jogos/007-first-light.jpg', '007 First Light'],
+['PRAGMATA', 'Ficção científica', 'Pragmata', 'assets/img/jogos/pragmata.jpg', 'Pragmata'],
+['MARATHON', 'Tiro', 'Marathon', 'assets/img/jogos/marathon.jpg', 'Marathon'],
+['ONIMUSHA', 'Ação', 'Onimusha: Way of the Sword', 'assets/img/jogos/onimusha.jpg', 'Onimusha: Way of the Sword'],
+['DAWNWALKER', 'RPG', 'The Blood of Dawnwalker', 'assets/img/jogos/dawnwalker.jpg', 'The Blood of Dawnwalker'],
+['CONTROL', 'Ação', 'Control Resonant', 'assets/img/jogos/control-resonant.jpg', 'Control Resonant'],
+['HALLOWEEN', 'Terror', 'Halloween', 'assets/img/jogos/halloween.jpg', 'Halloween'],
+['COD MW4', 'Tiro', 'Call of Duty: Modern Warfare 4', 'assets/img/jogos/cod-mw4.jpg', 'Call of Duty: Modern Warfare 4'],
+['PHANTOM', 'Ação', 'Phantom Blade Zero', 'assets/img/jogos/phantom-blade-zero.jpg', 'Phantom Blade Zero'],
+['ACE COMBAT 8', 'Simulação', 'Ace Combat 8: Wings of Theve', 'assets/img/jogos/ace-combat-8.jpg', 'Ace Combat 8: Wings of Theve'],
+['KHAZAN', 'RPG', 'The First Berserker: Khazan', 'assets/img/jogos/khazan.jpg', 'The First Berserker: Khazan'],
+['REANIMAL', 'Terror', 'Reanimal', 'assets/img/jogos/reanimal.jpg', 'Reanimal'],
+['GTA V', 'Mundo aberto', 'Grand Theft Auto V', 'assets/img/jogos/gta-v.jpg', 'Grand Theft Auto V'],
+['RDR 2', 'Mundo aberto', 'Red Dead Redemption 2', 'assets/img/jogos/red-dead-redemption-2.jpg', 'Red Dead Redemption 2'],
+['SPIDER-MAN 2', 'Ação', "Marvel's Spider-Man 2", 'assets/img/jogos/spider-man-2.jpg', "Marvel's Spider-Man 2"],
+['MK1', 'Luta', 'Mortal Kombat 1', 'assets/img/jogos/mortal-kombat-1.jpg', 'Mortal Kombat 1']
+];
+PC_GAMES.forEach(function (g) {
+var n = g[2] + ' · PC';
+PRICES[n] = PRICES[g[4]];
+PDISC[n] = PDISC[g[4]];
+IMGS[n] = [g[3]];
+COVER[n] = true;
+INFO[n] = [g[2] + ' para PC, entregue como key digital para ativar na sua conta. Gênero: ' + g[1] + '.', '[CONFIRME A LOJA DA KEY (STEAM, EPIC...), A REGIÃO E COMO A KEY É ENTREGUE]'];
+});
+var pcGames = add('Jogos', PC_GAMES.map(function (g) { return [g[0], 'PC · Key digital · ' + g[1], g[2] + ' · PC']; }));
+var accessories = add('Acessórios', [['CAPA', 'PS5 Slim', 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta'], ['BASE', 'PS5 · Sony', 'Base de carregamento Sony para controle DualSense · CFI-ZDS1'], ['HEADSET', 'PS5 · Sony · CFI-ZWH2L', 'Headset sem fio Sony Pulse Elite · PS5 · Branco'], ['BASE', 'PS5 · Ventilação', 'Base de resfriamento multifuncional para PS5'], ['SUPORTE', 'PS5 · 2 controles', 'Suporte vertical para controle de PS5 · Branco'], ['SUPORTE', 'PS5 · Tema GTA VI', 'Suporte para controle DualSense · Tema GTA VI'], ['CABO', 'PS5 · USB-C', 'Cabo USB-C para carregar controle de PS5'], ['ESTAÇÃO', 'PS5 · Krab · RGB', 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54'], ['DISCO', 'PS5 Slim Digital · PS5 Pro', 'Unidade de disco para PS5 · Sony'], ['SSD', 'PS5 · 1TB · Dissipador', 'SSD WD_BLACK SN850X 1TB com dissipador'], ['SSD', 'PS5 · 2TB · Dissipador', 'SSD WD_BLACK SN850X 2TB com dissipador'], ['PORTAL', 'PS5 · Sony', 'PlayStation Portal · Reprodutor remoto'], ['BATERIA', 'Xbox · USB-C', 'Bateria recarregável para controle Xbox + cabo USB-C'], ['SSD', 'Xbox Series · 1TB', 'Cartão de expansão Seagate 1TB para Xbox Series X|S'], ['HEADSET', 'Xbox · Sem fio', 'Headset sem fio Xbox'], ['HEADSET', 'PS5 · Xbox · PC · Switch', 'Headset HyperX Cloud Stinger 2'], ['HEADSET', 'PS5 · Xbox · PC · Switch', 'Headset HyperX Cloud III']]);
+var nintendo = [].concat(
+add('Consoles', [['SWITCH 2', 'Nintendo · Mario Kart World', 'Nintendo Switch 2 + Mario Kart World']]),
+add('Controles', [['PRO', 'Nintendo Switch 2', 'Controle Pro Nintendo Switch 2']]),
+add('Jogos', [['MARIO KART', 'Switch 2 · Corrida', 'Mario Kart World · Switch 2'], ['DK', 'Switch 2 · Aventura', 'Donkey Kong Bananza · Switch 2'], ['POKÉMON', 'Switch 2 · RPG', 'Pokémon Legends: Z-A · Switch 2'], ['ZELDA', 'Switch 2 · Aventura · Lançamento', 'The Legend of Zelda: Ocarina of Time · Switch 2']]),
+add('Acessórios', [['MICROSD', 'Switch 2 · 256GB', 'Cartão microSD Express SanDisk 256GB para Nintendo Switch 2']])
+);
+var cards = add('Cartões', [['PS STORE', 'PlayStation · Crédito', 'Cartão PlayStation Store R$ 100'], ['PS STORE', 'PlayStation · Crédito', 'Cartão PlayStation Store R$ 250'], ['PS PLUS', 'PlayStation · Assinatura', 'PlayStation Plus Essential · 12 meses'], ['PS PLUS', 'PlayStation · Assinatura', 'PlayStation Plus Extra · 12 meses'], ['GAME PASS', 'Xbox · Assinatura', 'Xbox Game Pass Ultimate · 1 mês'], ['GAME PASS', 'Xbox · Assinatura', 'Xbox Game Pass Ultimate · 3 meses'], ['STEAM', 'PC · Crédito', 'Cartão Steam R$ 100']]);
+// ---------- Carrinho ----------
+// Plataforma de cada produto (para escolher a versão e montar os itens relacionados).
+var GENRE = { 'Grand Theft Auto VI · PS5': 'mundo aberto', 'Grand Theft Auto VI · Xbox Series': 'mundo aberto', 'Grand Theft Auto VI · Digital PS5': 'mundo aberto', 'Grand Theft Auto VI · Digital Xbox': 'mundo aberto', 'EA Sports FC 27 · PS5': 'esporte' };
+var MULTI = {};
+NEW_GAMES.forEach(function (g) { GENRE[g[2]] = g[4].toLowerCase(); MULTI[g[2]] = /Xbox/.test(g[3]); });
+PC_GAMES.forEach(function (g) { GENRE[g[2] + ' · PC'] = g[1].toLowerCase(); });
+catalog.forEach(function (p) {
+var n = p.name;
+p.plat = / · PC$|Steam/.test(n) ? 'pc' : (/Switch/.test(n) ? 'switch' : (/HyperX/.test(n) ? 'all' : (/Xbox/.test(n) ? 'xbox' : 'ps')));
+if (MULTI[n] === true) { p.plat = 'both'; }
+p.genre = GENRE[n] || '';
+p.vers = p.plat === 'both' ? [{ label: 'PS5', plat: 'ps' }, { label: 'Xbox Series', plat: 'xbox' }] : [{ label: '', plat: p.plat }];
+p.canBuy = !p.out && p.price > 0 && !(p.page && p.cat === 'Controles');
+p.digital = /Digital| · PC$|^Cartão (PlayStation|Steam)|PlayStation Plus|Game Pass/.test(n);
+p.hasSale = !!STATUS[n] && p.canBuy;
+p.saleLine = p.digital ? 'Já à venda · baixe agora' : 'Já à venda · receba antes do dia 19';
+});
+var byName = {};
+catalog.forEach(function (p) { byName[p.name] = p; });
+// Jogos que também têm key de PC ganham a opção "PC" na janela do produto (adiciona a versão "· PC" ao carrinho).
+var pcBySrc = {};
+PC_GAMES.forEach(function (g) { pcBySrc[g[4]] = g[2] + ' · PC'; });
+catalog.forEach(function (p) {
+if (p.cat !== 'Jogos' || p.plat === 'pc' || !pcBySrc[p.name]) { return; }
+var pc = byName[pcBySrc[p.name]];
+if (!pc || !pc.canBuy) { return; }
+if (p.vers.length === 1) { p.vers = [{ label: 'PS5', plat: 'ps' }]; }
+p.vers.push({ label: 'PC', plat: 'pc', prod: pc });
+p.tag = MULTI.hasOwnProperty(p.name) ? p.tag.replace(/ · ([^·]+)$/, ' · PC · $1') : p.tag + ' · PC digital';
+if (INFO[p.name]) { INFO[p.name] = [INFO[p.name][0] + ' Também tem versão para PC, em key digital.', INFO[p.name][1]]; }
+});
+var cart = st.cart || {};
+var keyOf = function (p, vi) { return p.name + '||' + p.vers[vi].label; };
+var dispName = function (p, v) { var s = v && v.label ? ' · ' + v.label : ''; return s && p.name.slice(-s.length) !== s ? p.name + s : p.name; };
+var setCart = function (c, extra) {
+try { localStorage.setItem('zera-cart', JSON.stringify(c)); } catch (e) {}
+self.setState(Object.assign({ cart: c }, extra || {}));
+};
+var addToCart = function (p, vi, isAnchor) {
+if (p.vers[vi] && p.vers[vi].prod) { p = p.vers[vi].prod; vi = 0; }
+var c = Object.assign({}, cart), k = keyOf(p, vi);
+c[k] = Math.min(99, (c[k] || 0) + 1);
+var ex = { showCart: true, pid: null, showCheckout: false, orderDone: false };
+if (isAnchor) { ex.anchor = k; }
+setCart(c, ex);
+};
+var setQty = function (k, n) { var c = Object.assign({}, cart); if (n <= 0) { delete c[k]; } else { c[k] = Math.min(99, n); } setCart(c); };
+var lines = [], cartCount = 0, cartSum = 0, cartOldSum = 0, hasPhysical = false, hasDigital = false;
+Object.keys(cart).forEach(function (k) {
+var parts = k.split('||'), p = byName[parts[0]], q = cart[k];
+if (!p || !p.canBuy || !(q > 0)) { return; }
+var v = p.vers.filter(function (x) { return x.label === parts[1]; })[0] || p.vers[0];
+cartCount += q; cartSum += p.price * q; cartOldSum += (p.hasOld ? p.old : p.price) * q;
+if (p.digital) { hasDigital = true; } else { hasPhysical = true; }
+lines.push({ key: k, p: p, v: v, q: q });
+});
+// Leve 3, pague 2: a cada 3 jogos no carrinho (console ou PC), os mais baratos saem de graça.
+// Com 3 a 5 jogos, 1 sai de graça; com 6 a 8, os 2 mais baratos; e assim por diante. Os mais caros são sempre cobrados.
+var gameUnits = [];
+lines.forEach(function (l) { if (l.p.cat === 'Jogos') { for (var i = 0; i < l.q; i++) { gameUnits.push(l); } } });
+var nGames = gameUnits.length, freeCount = Math.floor(nGames / 3), freeBy = {}, freeValue = 0, freeFull = 0;
+gameUnits.slice().sort(function (x, y) { return x.p.price - y.p.price; }).slice(0, freeCount).forEach(function (l) { freeBy[l.key] = (freeBy[l.key] || 0) + 1; freeValue += l.p.price; freeFull += (l.p.hasOld ? l.p.old : l.p.price); });
+var needMore = nGames % 3 === 0 ? 0 : 3 - (nGames % 3);
+var freeNames = lines.filter(function (l) { return freeBy[l.key]; }).map(function (l) { return (freeBy[l.key] > 1 ? freeBy[l.key] + '× ' : '') + dispName(l.p, l.v); });
+var promoTitle = freeCount > 0 ? 'Leve 3, pague 2 ativado!' : (needMore === 1 ? 'Falta só 1 jogo!' : 'Leve 3, pague 2');
+var promoText = freeCount > 0
+? (freeCount === 1 ? 'O jogo mais barato, ' + freeNames[0] + ', é por nossa conta.' : 'Os ' + freeCount + ' jogos mais baratos são por nossa conta: ' + freeNames.join(', ') + '.') + ' Você economiza ' + money(freeValue) + '.' + (needMore ? ' Adicione mais ' + needMore + (needMore === 1 ? ' jogo' : ' jogos') + ' e ganhe outro.' : '')
+: (needMore === 1 ? 'Adicione mais um jogo e o mais barato dos 3 sai de graça.' : 'Na compra de 2 jogos, o 3º é por nossa conta. Adicione mais 2 e o mais barato sai de graça.');
+var shortImg = function (p) { return { img: p.img, imgCls: COVER[p.name] ? 'zcov' : '' }; };
+var cartLines = lines.map(function (l) {
+var im = shortImg(l.p);
+var fr = freeBy[l.key] || 0;
+return { name: dispName(l.p, l.v), img: im.img, imgCls: im.imgCls, qty: String(l.q), unit: money(l.p.price) + ' cada', line: fr >= l.q ? 'GRÁTIS' : money(l.p.price * (l.q - fr)), lineFull: fr >= l.q ? 'GRÁTIS' : money((l.p.hasOld ? l.p.old : l.p.price) * (l.q - fr)),
+hasFree: fr > 0, freeLabel: fr >= l.q ? 'Leve 3, pague 2: este sai de graça' : 'Leve 3, pague 2: ' + fr + ' sai de graça', fullLine: money(l.p.price * l.q),
+inc: function () { setQty(l.key, l.q + 1); }, dec: function () { setQty(l.key, l.q - 1); }, remove: function () { setQty(l.key, 0); } };
+});
+// Itens relacionados: partem do último produto adicionado e só mostram o que combina com a plataforma dele.
+var anchorLine = lines.filter(function (l) { return l.key === st.anchor; })[0] || lines[lines.length - 1];
+var related = [], relTitle = '';
+if (anchorLine) {
+var a = anchorLine.p, ap = anchorLine.v.plat;
+var inCart = {};
+var baseOf = function (n) { return n.split(' · ')[0]; };
+lines.forEach(function (l) { inCart[l.p.name] = true; inCart['base:' + baseOf(l.p.name)] = true; });
+var fits = function (p) {
+if (p.plat === 'all') { return true; }
+if (ap === 'all') { return p.cat !== 'Jogos' && p.cat !== 'Cartões'; }
+if (ap === 'pc' || p.plat === 'pc' || ap === 'switch' || p.plat === 'switch') { return ap === p.plat; }
+return p.plat === 'both' || p.plat === ap;
+};
+var score = function (p) {
+var g = p.cat === 'Jogos';
+if (p.cat === 'Cartões') { return a.cat === 'Consoles' ? 3 : (a.cat === 'Jogos' ? 1 : 0); }
+if (a.cat === 'Jogos') { return g ? (a.genre && p.genre === a.genre ? 4 : 1) : (p.cat === 'Controles' ? 3 : (p.cat === 'Acessórios' ? 2 : 0)); }
+if (a.cat === 'Consoles') { return p.cat === 'Controles' ? 4 : (g ? 3 : (p.cat === 'Acessórios' ? 2 : 0)); }
+if (a.cat === 'Controles') { return p.cat === 'Acessórios' ? 3 : (g ? 2 : 0); }
+return p.cat === 'Acessórios' ? 3 : (p.cat === 'Controles' ? 2 : (g ? 1 : 0));
+};
+related = catalog.filter(function (p) { return p.canBuy && !inCart[p.name] && !(p.cat === 'Jogos' && inCart['base:' + baseOf(p.name)]) && p.cat !== 'Consoles' && fits(p) && score(p) > 0; })
+.sort(function (x, y) { return (score(y) - score(x)) || (y.disc - x.disc); }).slice(0, 4)
+.map(function (p) {
+var vi = Math.max(0, p.vers.map(function (v) { return v.plat; }).indexOf(ap));
+var im = shortImg(p);
+return { name: dispName(p, p.vers[vi]), img: im.img, imgCls: im.imgCls, price: money(p.price), old: p.oldLabel, hasOld: p.hasOld, add: function () { addToCart(p, vi, false); } };
+});
+relTitle = (a.cat === 'Jogos' && needMore ? 'Complete o Leve 3, pague 2 · ' : 'Combina com ') + dispName(a, anchorLine.v);
+}
+// Filtro de plataforma da seção Jogos (Todos / PlayStation / Xbox).
+var gplat = st.gplat || 'all';
+var platOk = function (p, pl) { return pl === 'all' || p.plat === pl || p.plat === 'both'; };
+var byPlat = function (list) { return list.filter(function (p) { return platOk(p, gplat); }); };
+var consoleGames = gtaGames.concat(newGames);
+var gameChips = [['all', 'Todos'], ['ps', 'PlayStation'], ['xbox', 'Xbox']].map(function (c) {
+var on = gplat === c[0];
+return { label: c[1], count: String(consoleGames.filter(function (p) { return platOk(p, c[0]); }).length), cls: 'zchip' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { self.setState({ gplat: c[0] }); } };
+});
+// Frete: três opções. Só é cobrado quando o pedido tem item físico (itens digitais vão por e-mail).
+var SHIP = [
+{ id: 'free', name: 'Frete grátis', time: 'Até 10 dias úteis', price: 0 },
+{ id: 'normal', name: 'Frete normal', time: 'Até 5 dias úteis', price: 30 },
+{ id: 'premium', name: 'Frete premium', time: 'Entrega no dia seguinte', price: 90 }
+];
+var shipSel = SHIP.filter(function (s) { return s.id === st.ship; })[0] || SHIP[0];
+var shipCost = hasPhysical ? shipSel.price : 0;
+var shipOptions = SHIP.map(function (s) {
+var on = s.id === shipSel.id;
+return { name: s.name, time: s.time, priceLabel: s.price > 0 ? money(s.price) : 'Grátis', cls: 'zshipo' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { self.setState({ ship: s.id }); } };
+});
+var pay = st.pay === 'card' ? 'card' : 'pix';
+var pickPay = function (p) { return function () { self.setState({ pay: p }); }; };
+// Preço de Black Friday só no Pix. No cartão, o preço é o cheio. Formas de pagamento: Pix (padrão) e cartão.
+var payIsPix = pay === 'pix';
+var pixTotal = cartSum - freeValue, fullTotal = cartOldSum - freeFull;
+var pixDiff = fullTotal - pixTotal;
+var GTA_CTRL_DISC = 0.7;
+var bfDeals = catalog.filter(function (p) { return p.hasOld && (p.cat === 'Consoles' || p.cat === 'Controles' || p.cat === 'Jogos' || p.cat === 'Acessórios'); }).sort(function (a, b) { return b.disc - a.disc; });
+bfDeals.forEach(function (p) { p.offAria = Math.round(p.disc * 100) + '% de desconto'; });
+var bfMax = bfDeals.reduce(function (m, p) { return Math.max(m, p.disc); }, GTA_CTRL_DISC);
+// Filtros da Black Friday: categorias (várias ao mesmo tempo), plataforma e ordem.
+var BF_ORDER = ['Jogos', 'Consoles', 'Controles', 'Acessórios'];
+var bfCats = st.bfCats || [];
+var bfPlat = st.bfPlat || 'all';
+var bfSort = st.bfSort || 'rel';
+var platFits = function (p, pl) { return pl === 'all' || p.plat === pl || p.plat === 'all' || (p.plat === 'both' && (pl === 'ps' || pl === 'xbox')); };
+var catFits = function (p, cats) { return cats.length === 0 || cats.indexOf(p.cat) >= 0; };
+var bfFiltered = bfDeals.filter(function (p) { return catFits(p, bfCats) && platFits(p, bfPlat); });
+var bfSorters = { disc: function (a, b) { return (b.disc - a.disc) || (a.price - b.price); }, low: function (a, b) { return a.price - b.price; }, high: function (a, b) { return b.price - a.price; } };
+var bfGroups = bfSort === 'rel'
+? BF_ORDER.map(function (c) { return { title: c, items: bfFiltered.filter(function (p) { return p.cat === c; }).sort(bfSorters.disc) }; }).filter(function (g) { return g.items.length > 0; })
+: [{ title: '', items: bfFiltered.slice().sort(bfSorters[bfSort]) }];
+bfGroups.forEach(function (g) { g.hasTitle = !!g.title; g.count = g.items.length + (g.items.length === 1 ? ' oferta' : ' ofertas'); g.anchor = 'bf-' + norm(g.title).replace(/ /g, '-'); });
+var bfSet = function (patch) {
+self.setState(patch);
+setTimeout(function () { var m = document.querySelector('.zbfmain'); if (!m) { return; } var t = m.getBoundingClientRect().top; if (t < 0) { window.scrollTo({ top: window.scrollY + t - 100, behavior: 'smooth' }); } }, 30);
+};
+var bfCatChips = BF_ORDER.map(function (c) {
+var on = bfCats.indexOf(c) >= 0;
+return { label: c, count: String(bfDeals.filter(function (p) { return p.cat === c && platFits(p, bfPlat); }).length), cls: 'zfchk' + (on ? ' on' : ''), pressed: on ? 'true' : 'false',
+pick: function () { var n = on ? bfCats.filter(function (x) { return x !== c; }) : bfCats.concat([c]); bfSet({ bfCats: n }); } };
+});
+var bfPlatChips = [['all', 'Todas'], ['ps', 'PlayStation'], ['xbox', 'Xbox'], ['switch', 'Nintendo'], ['pc', 'PC']].map(function (c) {
+var on = bfPlat === c[0];
+return { label: c[1], cls: 'zfopt' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { bfSet({ bfPlat: c[0] }); } };
+});
+var bfSortChips = [['rel', 'Por categoria'], ['disc', 'Maior desconto'], ['low', 'Menor preço'], ['high', 'Maior preço']].map(function (c) {
+var on = bfSort === c[0];
+return { label: c[1], cls: 'zfopt' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { bfSet({ bfSort: c[0] }); } };
+});
 var q = norm(st.q).trim();
 var results = q.length < 2 ? [] : catalog.filter(function (p) { return norm(p.name + ' ' + p.cat + ' ' + p.tag).indexOf(q) >= 0; }).slice(0, 12);
 var pd = st.pid == null ? null : catalog[st.pid];
 var N = 5;
 return {
-gtaPs: gtaGames, newGames: newGames, consoles: consoles, controls: controls, accessories: accessories,
+bfDeals: bfDeals, bfMax: Math.round(bfMax * 100) + '%', bfCount: String(bfDeals.length),
+bfGroups: bfGroups, bfCatChips: bfCatChips, bfPlatChips: bfPlatChips, bfSortChips: bfSortChips,
+bfShown: bfFiltered.length === bfDeals.length ? bfDeals.length + ' ofertas' : bfFiltered.length + ' de ' + bfDeals.length + ' ofertas',
+bfEmpty: bfFiltered.length === 0,
+hasBfFilter: bfCats.length > 0 || bfPlat !== 'all' || bfSort !== 'rel',
+bfClear: function () { bfSet({ bfCats: [], bfPlat: 'all', bfSort: 'rel' }); },
+gtaPs: byPlat(gtaGames), newGames: byPlat(newGames), gameChips: gameChips, pcGames: pcGames, nintendo: nintendo, cards: cards, consoles: consoles, controls: controls, accessories: accessories,
 searchOpen: !!st.searchOpen,
 toggleSearch: function () { self.setState({ searchOpen: !st.searchOpen, q: '' }); },
 searchType: function (e) { self.setState({ q: e.target.value }); },
@@ -547,6 +1333,70 @@ pdDesc: pd ? (INFO[pd.name] ? INFO[pd.name][0] : (pd.page ? 'Produto em destaque
 pdNote: pd ? (INFO[pd.name] ? INFO[pd.name][1] : (pd.page ? '' : DESC[pd.cat][1])) : '',
 pdHasPage: !!(pd && pd.page),
 closePd: function () { self.setState({ pid: null }); },
+goHome: function (e) {
+if (e && e.preventDefault) { e.preventDefault(); }
+self.setState({ pid: null, showCart: false, showCheckout: false, orderDone: false, searchOpen: false, q: '' });
+try { history.replaceState(null, '', location.pathname + location.search); } catch (x) {}
+window.scrollTo({ top: 0, behavior: 'smooth' });
+},
+pdCanBuy: !!(pd && pd.canBuy),
+pdOut: !!(pd && pd.out),
+pdHasVers: !!(pd && pd.canBuy && pd.vers.length > 1),
+pdVers: pd ? pd.vers.map(function (v, i) { var on = i === Math.min(st.pver || 0, pd.vers.length - 1); return { label: v.label, cls: 'zver' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { self.setState({ pver: i }); } }; }) : [],
+pdAdd: function () { if (pd && pd.canBuy) { addToCart(pd, Math.min(st.pver || 0, pd.vers.length - 1), true); } },
+showCart: !!st.showCart,
+showTopBtn: !!st.showTop && !pd && !st.showCart && !st.showCheckout,
+openCart: function () { self.setState({ showCart: true, searchOpen: false }); },
+closeCart: function () { self.setState({ showCart: false }); },
+cartLines: cartLines,
+cartEmpty: cartLines.length === 0,
+cartFull: cartLines.length > 0,
+cartCount: String(cartCount),
+hasCartCount: cartCount > 0,
+cartTotal: money(cartSum - freeValue),
+hasPromo: nGames > 0,
+promoOn: freeCount > 0,
+promoCls: 'zpromo' + (freeCount > 0 ? ' on' : ''),
+promoTitle: promoTitle,
+promoText: promoText,
+promoValue: '− ' + money(freeValue),
+hasCartSave: cartOldSum - cartSum > 0.004,
+cartSave: money(pixDiff),
+cartTotalLabel: pixDiff > 0.004 ? 'Total no Pix' : 'Total',
+cardTotal: money(fullTotal),
+hasCardDiff: pixDiff > 0.004,
+pixSaveOn: payIsPix && pixDiff > 0.004,
+coLines: cartLines.map(function (c) { return Object.assign({}, c, { lineCo: payIsPix ? c.line : c.lineFull }); }),
+promoValueCo: '− ' + money(payIsPix ? freeValue : freeFull),
+payPixPrice: money(pixTotal + shipCost),
+payCardPrice: money(fullTotal + shipCost),
+payCardInst: money((fullTotal + shipCost) / 6),
+payNotice: payIsPix ? 'Preço de Black Friday aplicado: pagando no Pix você economiza ' + money(pixDiff) + ' em relação ao cartão.' : 'O preço de Black Friday é exclusivo do Pix. No cartão, os produtos saem pelo preço cheio. Pague no Pix e economize ' + money(pixDiff) + '.',
+payNoticeCls: 'zpaynote' + (payIsPix ? '' : ' warn'),
+orderTotalLabel: payIsPix ? 'Total no Pix' : 'Total no cartão',
+cartShipLine: hasPhysical ? 'Frete grátis em até 10 dias úteis, ou mais rápido a partir de R$ 30,00: você escolhe no checkout.' + (hasDigital ? ' Os itens digitais chegam por e-mail.' : '') : 'Itens digitais: o código chega no seu e-mail, sem frete.',
+shipOptions: shipOptions,
+shipName: shipSel.name + ' · ' + shipSel.time,
+shipValue: shipCost > 0 ? money(shipCost) : 'Grátis',
+orderTotal: money((payIsPix ? pixTotal : fullTotal) + shipCost),
+related: related,
+hasRelated: related.length > 0,
+relTitle: relTitle,
+showCheckout: !!st.showCheckout,
+orderDone: !!st.orderDone,
+orderOpen: !st.orderDone,
+lastOrderId: st.lastOrderId || '',
+hasPhysical: hasPhysical,
+hasDigital: hasDigital,
+payStep: hasPhysical ? '3' : '2',
+openCheckout: function () { if (lines.length === 0) { return; } self.setState({ showCheckout: true, showCart: false, orderDone: false }); },
+closeCheckout: function () { self.setState({ showCheckout: false, orderDone: false }); },
+payPixCls: 'zpay' + (pay === 'pix' ? ' on' : ''), payCardCls: 'zpay' + (pay === 'card' ? ' on' : ''),
+payPixOn: pay === 'pix' ? 'true' : 'false', payCardOn: pay === 'card' ? 'true' : 'false',
+pickPix: pickPay('pix'), pickCard: pickPay('card'),
+payInfo: { pix: 'O código Pix aparece na próxima tela, logo depois de confirmar o pedido.', card: 'Os dados do cartão são digitados na próxima etapa, no ambiente seguro do processador de pagamento. [SUAS CONDIÇÕES DE PARCELAMENTO]' }[pay],
+payBtnLabel: { pix: 'Pagar com Pix', card: 'Ir para o pagamento com cartão' }[pay],
+orderSubmit: function (e) { e.preventDefault(); var n = (st.orderN || 0) + 1; setCart({}, { orderDone: true, orderN: n, lastOrderId: 'ZG-' + (1000 + n) }); },
 s3: 'zslide' + (s === 3 ? ' on' : ''), s4: 'zslide' + (s === 4 ? ' on' : ''),
 d3: 'zdot' + (s === 3 ? ' on' : ''), d4: 'zdot' + (s === 4 ? ' on' : ''),
 go3: go(3), go4: go(4),

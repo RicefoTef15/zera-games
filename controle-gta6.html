@@ -93,6 +93,15 @@ body{margin:0}
 .scrim{position:fixed;inset:0;z-index:20;border:0;padding:0;background:rgba(8,6,16,.72);cursor:pointer}
 .drawer{position:fixed;top:0;right:0;bottom:0;z-index:21;width:100%;max-width:440px;box-sizing:border-box;background:var(--surface);color:var(--fg);border-left:1px solid var(--line);display:flex;flex-direction:column}
 .citem{display:flex;flex-direction:column;gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}
+.paynote{padding:12px 14px;border-radius:12px;border:1px solid var(--accent);color:var(--fg);font-size:14px;line-height:1.5}
+.paynote.warn{border-color:#E8B731;background:rgba(232,183,49,.12)}
+.relbox{display:flex;flex-direction:column;gap:10px;margin:20px 0 8px;padding:16px;border-radius:16px;border:2px solid var(--accent);background:var(--surface)}
+.relkick{font:700 12px 'Space Grotesk',Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.relrow{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--bg)}
+.relrow img{flex:none;width:64px;height:64px;border-radius:10px;object-fit:cover;background:#FFFFFF}
+.reloff{display:inline-flex;align-items:center;padding:1px 7px;border-radius:6px;background:var(--cta);color:var(--ctaText);font:700 12px 'Space Grotesk',Inter,sans-serif}
+.reladd{flex:none;min-height:40px;padding:0 12px;border-radius:10px;border:2px solid var(--accent);background:transparent;color:var(--fg);font:700 14px 'Space Grotesk',Inter,sans-serif;cursor:pointer;white-space:nowrap}
+.reladd:hover{background:var(--accent);color:var(--ctaText)}
 .linkbtn{border:0;background:transparent;padding:0;min-height:44px;color:var(--muted);font:500 13px Inter,sans-serif;text-decoration:underline;cursor:pointer}
 button.cta2{background:transparent;cursor:pointer}
 .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;margin:0}
@@ -106,7 +115,7 @@ button.cta2{background:transparent;cursor:pointer}
 .full{grid-column:1 / -1}
 .stepn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--cta);color:var(--ctaText);font:700 16px 'Space Grotesk',Inter,sans-serif;flex:none}
 .sumrow{display:flex;justify-content:space-between;gap:16px;font-size:15px;line-height:1.45}
-@media (max-width:860px){.cogrid,.fgrid{grid-template-columns:minmax(0,1fr)}.cosum{order:-1}}
+@media (max-width:860px){.cogrid,.fgrid{grid-template-columns:minmax(0,1fr)}.cosum{order:-1;position:static !important}}
 .accgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:28px;align-items:start}
 .ordbtn{display:flex;flex-direction:column;gap:8px;width:100%;text-align:left;padding:18px 20px;border-radius:16px;border:2px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;cursor:pointer}
 .ordbtn.on{border-color:var(--accent)}
@@ -139,10 +148,10 @@ button.cta2{background:transparent;cursor:pointer}
 
 <div class="bf">Black Friday · {{bfLine}}</div>
 <header class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 22px; padding-bottom: 22px">
-<div style="display: flex; align-items: center; gap: 10px">
+<a href="index.html" aria-label="Zera Games, voltar à página inicial" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit">
 <img src="assets/img/marca/zera-icone.jpg" alt="" width="40" height="40" style="display: block; border-radius: 10px">
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em">ZERA GAMES</span>
-</div>
+</a>
 <nav aria-label="Conta" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
 <a class="hbtn" href="index.html" style="text-decoration: none; color: var(--fg)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.500 8.500L9 3l6.500 5.500V15h-4.500v-4h-4v4H2.500z"></path></svg>Início</a>
 <button type="button" class="hbtn" onClick="{{demoAccount}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.500L9 2l7 3.500v7L9 16l-7-3.500zM2 5.500L9 9l7-3.500M9 9v7"></path></svg>Meus pedidos</button>
@@ -195,9 +204,9 @@ button.cta2{background:transparent;cursor:pointer}
 <span style="font-size: 17px; color: var(--muted)">de <s>{{fromLabel}}</s> por</span>
 </div>
 </sc-if>
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 60px; line-height: 1; letter-spacing: -0.02em">{{totalLabel}}</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 60px; line-height: 1; letter-spacing: -0.02em">{{totalLabel}}</span><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: var(--accent)">no Pix</span>
 <sc-if value="{{instOn}}" hint-placeholder-val="{{true}}">
-<span style="font-size: 18px; font-weight: 600">ou em até <span style="color: var(--accent); font-weight: 700">{{instCount}}x de {{instValue}}</span> no cartão</span>
+<span style="font-size: 18px; font-weight: 600">à vista no Pix · ou {{fromLabel}} em até <span style="color: var(--accent); font-weight: 700">{{instCount}}x de {{instValue}}</span> no cartão</span>
 </sc-if>
 <sc-if value="{{hasFrom}}" hint-placeholder-val="{{true}}">
 <span style="font-size: 15px; font-weight: 600; color: var(--accent)">Você economiza {{saveLabel}}</span>
@@ -239,6 +248,7 @@ button.cta2{background:transparent;cursor:pointer}
 </span>
 <span class="badge" style="min-height: 40px; padding: 0 16px; font-size: 17px; letter-spacing: 0.04em">FRETE GRÁTIS</span>
 </div>
+<span style="font-size: 13px; line-height: 1.5; color: var(--muted)">Grátis em até 10 dias úteis · Normal R$ 30,00 em até 5 dias úteis · Premium R$ 90,00 com entrega no dia seguinte. Você escolhe no checkout.</span>
 </sc-if>
 </div>
 <button type="button" class="cta" style="border: 0; cursor: pointer" onClick="{{addController}}">
@@ -419,7 +429,7 @@ button.cta2{background:transparent;cursor:pointer}
 <section id="relacionados" class="wrap" style="padding-top: 40px; padding-bottom: 80px">
 <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; max-width: 640px">
 <h2 class="h2">Produtos relacionados</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--muted)">O controle já está escolhido. Falta o jogo: Grand Theft Auto VI chega em 19 de novembro.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--muted)">O controle já está escolhido. Falta o jogo: Grand Theft Auto VI já está à venda. Receba antes e jogue a partir de 19/11.</p>
 </div>
 <div class="cols3">
 <div class="card prod">
@@ -440,11 +450,19 @@ button.cta2{background:transparent;cursor:pointer}
 </div>
 <div class="card prod">
 <img src="assets/img/jogos/gta6-digital.png" alt="Arte do Grand Theft Auto VI, versão digital" style="display: block; width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 12px; background: #1B0B33">
-<span class="tag">Digital</span>
-<h3 style="font-size: 21px">Grand Theft Auto VI — Digital</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Versão digital. [PLATAFORMA, COMO O CÓDIGO É ENTREGUE E EM QUANTO TEMPO]</p>
+<span class="tag">PS5 · Digital</span>
+<h3 style="font-size: 21px">Grand Theft Auto VI — Digital PS5</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Código digital para PlayStation 5. Já dá para comprar e baixar; libera para jogar em 19/11. [COMO O CÓDIGO É ENTREGUE E EM QUANTO TEMPO]</p>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px">{{digitalPrice}}</span>
 <button type="button" class="cta2" onClick="{{addDigital}}">Adicionar ao carrinho</button>
+</div>
+<div class="card prod">
+<img src="assets/img/jogos/gta6-digital.png" alt="Arte do Grand Theft Auto VI, versão digital para Xbox" style="display: block; width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 12px; background: #1B0B33">
+<span class="tag">Xbox Series · Digital</span>
+<h3 style="font-size: 21px">Grand Theft Auto VI — Digital Xbox</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Código digital para Xbox Series X|S. Já dá para comprar e baixar; libera para jogar em 19/11. [COMO O CÓDIGO É ENTREGUE E EM QUANTO TEMPO]</p>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px">{{digitalPrice}}</span>
+<button type="button" class="cta2" onClick="{{addDigitalX}}">Adicionar ao carrinho</button>
 </div>
 </div>
 </section>
@@ -585,12 +603,35 @@ button.cta2{background:transparent;cursor:pointer}
 </div>
 </div>
 </sc-for>
+<sc-if value="{{hasRel}}" hint-placeholder-val="{{false}}">
+<div class="relbox">
+<span class="relkick">Combina com a sua compra</span>
+<h3 style="font-size: 20px; margin: 2px 0 2px">{{relTitle}}</h3>
+<span style="font-size: 14px; color: var(--muted)">{{relSub}}</span>
+<sc-for list="{{relItems}}" as="r" hint-placeholder-count="4">
+<div class="relrow">
+<img src="{{r.img}}" alt="">
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+<span style="font-weight: 700; font-size: 14px; line-height: 1.3">{{r.name}}</span>
+<span style="font-size: 12px; line-height: 1.4; color: var(--muted)">{{r.why}}</span>
+<span style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px"><sc-if value="{{r.hasOld}}" hint-placeholder-val="{{false}}"><s style="font-size: 12px; color: var(--muted)">{{r.old}}</s></sc-if><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">{{r.price}}</span><sc-if value="{{r.hasOld}}" hint-placeholder-val="{{false}}"><span class="reloff">{{r.off}}</span></sc-if></span>
+</div>
+<button type="button" class="reladd" onClick="{{r.add}}" aria-label="Adicionar ao carrinho">+ Adicionar</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
 </div>
 <div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 24px; border-top: 1px solid var(--line)">
+<sc-if value="{{couponFormOn}}" hint-placeholder-val="{{false}}">
 <form onSubmit="{{couponSubmit}}" style="display: flex; align-items: flex-end; gap: 10px">
 <label class="field" style="flex: 1">Cupom de desconto<input type="text" name="cupom" autocomplete="off" placeholder="Digite seu cupom" style="text-transform: uppercase"></label>
 <button type="submit" class="cta2" style="min-height: 48px">Aplicar</button>
 </form>
+</sc-if>
+<sc-if value="{{couponLinkOn}}" hint-placeholder-val="{{true}}">
+<button type="button" class="linkbtn" onClick="{{couponOpen}}" style="align-self: flex-start">Tem um cupom de desconto?</button>
+</sc-if>
 <sc-if value="{{couponErr}}" hint-placeholder-val="{{false}}">
 <span role="alert" style="font-size: 14px; color: var(--accent)">Cupom inválido. Confira o código e tente de novo.</span>
 </sc-if>
@@ -601,9 +642,10 @@ button.cta2{background:transparent;cursor:pointer}
 </div>
 </sc-if>
 <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
-<span style="font-size: 15px; color: var(--muted)">Total</span>
+<span style="font-size: 15px; color: var(--muted)">{{cartTotalLabel}}</span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">{{cartTotal}}</span>
 </div>
+<sc-if value="{{hasCardDiff}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: var(--muted)">No cartão: <b style="color: var(--fg)">{{cardTotal}}</b> (preço cheio)</span></sc-if>
 <span style="font-size: 13px; color: var(--muted)">{{cartShipLine}}</span>
 <button type="button" class="cta" onClick="{{openCheckout}}" style="border: 0; cursor: pointer; width: 100%; box-sizing: border-box">Finalizar compra</button>
 <button type="button" class="linkbtn" onClick="{{closeCart}}">Continuar comprando</button>
@@ -614,7 +656,7 @@ button.cta2{background:transparent;cursor:pointer}
 <sc-if value="{{showCheckout}}" hint-placeholder-val="{{false}}">
 <div class="co" role="dialog" aria-modal="true" aria-label="Finalizar compra">
 <div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; padding-bottom: 20px">
-<span style="display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em"><img src="assets/img/marca/zera-icone.jpg" alt="" width="36" height="36" style="display: block; border-radius: 9px">ZERA GAMES</span>
+<a href="index.html" aria-label="Zera Games, voltar à página inicial" style="display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em; text-decoration: none; color: inherit"><img src="assets/img/marca/zera-icone.jpg" alt="" width="36" height="36" style="display: block; border-radius: 9px">ZERA GAMES</a>
 <span class="trust"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="12" height="8" rx="2"></rect><path d="M6 8V5a3 3 0 0 1 6 0v3"></path></svg>Compra segura</span>
 <button type="button" class="hbtn" onClick="{{closeCheckout}}">Voltar à loja</button>
 </div>
@@ -655,9 +697,11 @@ button.cta2{background:transparent;cursor:pointer}
 <label class="field">Cidade<input type="text" name="cidade" autocomplete="address-level2" required></label>
 <label class="field">Estado (UF)<input type="text" name="uf" autocomplete="address-level1" maxlength="2" style="text-transform: uppercase" required></label>
 </div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; border: 2px solid var(--accent); border-radius: 12px">
-<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 15px">Envio padrão com rastreio</span><span style="font-size: 13px; color: var(--muted)">{{shipDest}} · [SEU PRAZO DE ENTREGA]</span></span>
-<span class="badge">FRETE GRÁTIS</span>
+<div role="group" aria-label="Escolha o frete" style="display: flex; flex-direction: column; gap: 10px">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 15px">Escolha o frete</span><span style="font-size: 13px; color: var(--muted)">{{shipDest}} · todos com código de rastreio</span></span>
+<sc-for list="{{shipOpts}}" as="s" hint-placeholder-count="3">
+<button type="button" class="{{s.cls}}" aria-pressed="{{s.pressed}}" onClick="{{s.pick}}" style="min-height: 64px; flex: none; width: 100%"><span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px">{{s.name}}</span><span style="font-size: 13px; color: var(--muted)">{{s.time}}</span></span><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; white-space: nowrap">{{s.priceLabel}}</span></button>
+</sc-for>
 </div>
 </div>
 <sc-if value="{{hasBump}}" hint-placeholder-val="{{false}}">
@@ -683,29 +727,29 @@ button.cta2{background:transparent;cursor:pointer}
 <div class="card" style="display: flex; flex-direction: column; gap: 18px">
 <div style="display: flex; align-items: center; gap: 12px"><span class="stepn">3</span><h2 style="font-size: 22px">Pagamento</h2></div>
 <div role="group" aria-label="Forma de pagamento" style="display: flex; flex-wrap: wrap; gap: 12px">
-<button type="button" class="{{payPixCls}}" aria-pressed="{{payPixOn}}" onClick="{{pickPix}}" style="min-height: 60px; flex: 1 1 150px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">Pix</span></button>
-<button type="button" class="{{payCardCls}}" aria-pressed="{{payCardOn}}" onClick="{{pickCard}}" style="min-height: 60px; flex: 1 1 150px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">Cartão de crédito</span></button>
-<button type="button" class="{{payBolCls}}" aria-pressed="{{payBolOn}}" onClick="{{pickBol}}" style="min-height: 60px; flex: 1 1 150px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">Boleto</span></button>
+<button type="button" class="{{payPixCls}}" aria-pressed="{{payPixOn}}" onClick="{{pickPix}}" style="min-height: 60px; flex: 1 1 150px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">Pix<br><small style="font-size: 13px; font-weight: 600; color: var(--accent)">{{payPixPrice}} · preço Black Friday</small></span></button>
+<button type="button" class="{{payCardCls}}" aria-pressed="{{payCardOn}}" onClick="{{pickCard}}" style="min-height: 60px; flex: 1 1 150px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">Cartão de crédito<br><small style="font-size: 13px; font-weight: 600; color: var(--muted)">{{payCardPrice}} · até {{instCount}}x de {{payCardInst}}</small></span></button>
 </div>
+<sc-if value="{{hasCardDiff}}" hint-placeholder-val="{{false}}"><div class="{{payNoticeCls}}" role="status">{{payNotice}}</div></sc-if>
 <p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">{{payInfo}}</p>
 </div>
 </div>
 <div class="card cosum" style="display: flex; flex-direction: column; gap: 16px; position: sticky; top: 20px">
 <h2 style="font-size: 22px">Resumo do pedido</h2>
-<sc-for list="{{cartItems}}" as="c" hint-placeholder-count="2">
-<div class="sumrow"><span>{{c.qty}} × {{c.name}}</span><span style="font-weight: 700; white-space: nowrap">{{c.line}}</span></div>
+<sc-for list="{{coItems}}" as="c" hint-placeholder-count="2">
+<div class="sumrow"><span>{{c.qty}} × {{c.name}}</span><span style="font-weight: 700; white-space: nowrap">{{c.lineCo}}</span></div>
 </sc-for>
 <div style="height: 1px; background: var(--line)"></div>
 <sc-if value="{{couponOn}}" hint-placeholder-val="{{false}}">
 <div class="sumrow" style="color: var(--accent); font-weight: 700"><span>{{couponLine}}</span><span style="white-space: nowrap">{{couponValue}}</span></div>
 </sc-if>
-<div class="sumrow"><span>Frete</span><span style="font-weight: 700; color: var(--accent)">GRÁTIS</span></div>
+<div class="sumrow"><span>{{coShipName}}</span><span style="font-weight: 700; color: var(--accent); white-space: nowrap">{{coShipValue}}</span></div>
 <sc-if value="{{bfSaveOn}}" hint-placeholder-val="{{true}}">
 <div class="sumrow" style="color: var(--muted)"><span>Economia de Black Friday</span><span style="white-space: nowrap">{{bfSaveLabel}}</span></div>
 </sc-if>
 <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 6px">
-<span style="font-size: 16px; font-weight: 600">Total</span>
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 36px; line-height: 1">{{cartTotal}}</span>
+<span style="font-size: 16px; font-weight: 600">{{coTotalLabel}}</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 36px; line-height: 1">{{coTotal}}</span>
 </div>
 <button type="submit" class="cta" style="border: 0; cursor: pointer; width: 100%; box-sizing: border-box">{{payBtnLabel}}</button>
 <span class="trust"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a6 6 0 1 0 2-4.5M3 3v3h3"></path></svg>7 dias para desistir da compra após receber</span>
@@ -720,7 +764,7 @@ button.cta2{background:transparent;cursor:pointer}
 <sc-if value="{{showAccount}}" hint-placeholder-val="{{false}}">
 <div class="co" role="dialog" aria-modal="true" aria-label="Minha conta">
 <div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; padding-bottom: 20px">
-<span style="display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em"><img src="assets/img/marca/zera-icone.jpg" alt="" width="36" height="36" style="display: block; border-radius: 9px">ZERA GAMES</span>
+<a href="index.html" aria-label="Zera Games, voltar à página inicial" style="display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em; text-decoration: none; color: inherit"><img src="assets/img/marca/zera-icone.jpg" alt="" width="36" height="36" style="display: block; border-radius: 9px">ZERA GAMES</a>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
 <button type="button" class="hbtn" onClick="{{closeAccount}}">Voltar à loja</button>
 <button type="button" class="hbtn" onClick="{{logout}}">Sair</button>
@@ -798,7 +842,7 @@ button.cta2{background:transparent;cursor:pointer}
 <span style="font-size: 13px; color: var(--muted)">{{stockLine}}</span>
 </div>
 <div style="display: flex; align-items: center; gap: 16px; flex: 1; justify-content: flex-end">
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; white-space: nowrap">{{totalLabel}}</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; white-space: nowrap">{{totalLabel}} <small style="font-size: 13px; color: var(--accent)">no Pix</small></span>
 <button type="button" class="cta" onClick="{{addController}}" style="border: 0; cursor: pointer; min-height: 48px; padding: 0 22px; font-size: 16px; width: auto">{{ctaLabel}}</button>
 </div>
 </div>
@@ -806,14 +850,14 @@ button.cta2{background:transparent;cursor:pointer}
 
 </div>
 </template>
-<script type="text/x-dc" data-dc-script data-props='{"price":{"editor":"float","default":547.9,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"demoStep":{"editor":"int","default":0,"min":0,"max":4,"section":"Demonstração"},"installments":{"editor":"int","default":6,"min":1,"max":24,"section":"Venda"},"priceFrom":{"editor":"float","default":997.9,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"stockBlack":{"editor":"int","default":8,"min":0,"max":8,"section":"Estoque"},"stockWhite":{"editor":"int","default":6,"min":0,"max":6,"section":"Estoque"},"priceGamePs5":{"editor":"float","default":258.7,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"priceGameXbox":{"editor":"float","default":258.7,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"priceGameDigital":{"editor":"float","default":230.93,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"checkoutCart":{"editor":"text","default":"","section":"Venda"},"couponCode":{"editor":"text","default":"TESTE10","section":"Cupom"},"couponPct":{"editor":"int","default":10,"min":0,"max":90,"unit":"%","section":"Cupom"},"$preview":{"width":1440,"height":4100}}'>
+<script type="text/x-dc" data-dc-script data-props='{"price":{"editor":"float","default":299.37,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"demoStep":{"editor":"int","default":0,"min":0,"max":4,"section":"Demonstração"},"installments":{"editor":"int","default":6,"min":1,"max":24,"section":"Venda"},"priceFrom":{"editor":"float","default":997.9,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"stockBlack":{"editor":"int","default":8,"min":0,"max":8,"section":"Estoque"},"stockWhite":{"editor":"int","default":6,"min":0,"max":6,"section":"Estoque"},"priceGamePs5":{"editor":"float","default":258.7,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"priceGameXbox":{"editor":"float","default":258.7,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"priceGameDigital":{"editor":"float","default":230.93,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"checkoutCart":{"editor":"text","default":"","section":"Venda"},"couponCode":{"editor":"text","default":"TESTE10","section":"Cupom"},"couponPct":{"editor":"int","default":10,"min":0,"max":90,"unit":"%","section":"Cupom"},"$preview":{"width":1440,"height":4100}}'>
 class Component extends DCLogic {
 renderVals() {
 var self = this;
 var st = this.state || {};
 var sb = Math.max(0, Math.min(8, this.props.stockBlack ?? 8));
 var sw = Math.max(0, Math.min(6, this.props.stockWhite ?? 6));
-var price = Number(this.props.price ?? 547.9) || 0;
+var price = Number(this.props.price ?? 299.37) || 0;
 var from = Number(this.props.priceFrom ?? 997.9) || 0;
 var hasFrom = price > 0 && from > price;
 var pct = hasFrom ? Math.round((1 - price / from) * 100) : 0;
@@ -846,23 +890,35 @@ var catalog = [
 { id: 'white', name: 'DualSense GTA VI · Branco', price: price, max: sw },
 { id: 'ps5', name: 'Grand Theft Auto VI · PS5 (físico)', price: pPs5, max: 99 },
 { id: 'xbox', name: 'Grand Theft Auto VI · Xbox Series (físico)', price: pXbox, max: 99 },
-{ id: 'digital', name: 'Grand Theft Auto VI · Digital', price: pDig, max: 99 },
+{ id: 'digital', name: 'Grand Theft Auto VI · Digital PS5', price: pDig, max: 99 },
+{ id: 'digitalx', name: 'Grand Theft Auto VI · Digital Xbox', price: pDig, max: 99 },
 { id: 'fc27', name: 'EA Sports FC 27 · PS5', price: 144.98, max: 99 },
 { id: 'cps5', name: 'Controle sem fio para PS5', price: 279.93, max: 99 },
-{ id: 'cxbox', name: 'Controle sem fio para Xbox Series', price: 202.93, max: 99 }
+{ id: 'cxbox', name: 'Controle sem fio para Xbox Series', price: 202.93, max: 99 },
+// Produtos que combinam com o controle (sugeridos no carrinho). Mesmos preços da página inicial.
+{ id: 'suporte', name: 'Suporte para controle DualSense · Tema GTA VI', old: 99.99, price: 69.99, max: 99, img: 'assets/img/acessorios/suporte-gta6-1.jpg', why: 'Mesmo tema do controle, para deixar ele em destaque na mesa' },
+{ id: 'krab', name: 'Estação de carregamento Krab 4 em 1 RGB para PS5', old: 199.9, price: 119.94, max: 99, img: 'assets/img/acessorios/estacao-krab-1.jpg', why: 'Carrega até 4 controles: o GTA VI nunca fica sem bateria' },
+{ id: 'baseds', name: 'Base de carregamento Sony para controle DualSense', old: 0, price: 99.99, max: 99, img: 'assets/img/acessorios/base-dualsense-1.jpg', why: 'Base oficial Sony: carrega 2 controles sem ligar o console' },
+{ id: 'pulse', name: 'Headset sem fio Sony Pulse Elite · PS5', old: 799.9, price: 239.97, max: 99, img: 'assets/img/acessorios/pulse-elite-1.jpg', why: 'Áudio 3D oficial do PS5 para ouvir cada detalhe de Vice City' },
+{ id: 'stinger', name: 'Headset HyperX Cloud Stinger 2', old: 250, price: 150, max: 99, img: 'assets/img/acessorios/hyperx-cloud-stinger-2.jpg', why: 'Headset leve com microfone para jogar online' },
+{ id: 'ssd1', name: 'SSD WD_BLACK SN850X 1TB com dissipador', old: 1100, price: 660, max: 99, img: 'assets/img/acessorios/wd-black-sn850x.jpg', why: 'Mais 1TB no PS5: espaço de sobra para o GTA VI' },
+{ id: 'psplus', name: 'PlayStation Plus Essential · 12 meses', old: 360, price: 334.8, max: 99, img: 'assets/img/cartoes/ps-plus-essential-12.jpg', why: 'Libera o multiplayer online no PS5', digital: true }
 ];
 var setQty = function (id, n, open) { var c = Object.assign({}, cart); if (n <= 0) { delete c[id]; } else { c[id] = n; } var ns = { cart: c }; if (open) { ns.showCart = true; } self.setState(ns); };
 var addFn = function (id, n, max) { return function () { if (max <= 0) { return; } setQty(id, Math.min(max, (cart[id] || 0) + n), true); }; };
 var cartCount = 0;
-var cartSum = 0;
+var cartSum = 0, cartFull = 0;
+// Preço cheio de cada item: é o que vale no cartão. O preço com desconto é só no Pix.
+var FULL = { black: from > price ? from : price, white: from > price ? from : price, ps5: 369.57, xbox: 369.57, digital: 329.9, digitalx: 329.9, fc27: 289.95, cps5: 399.9, cxbox: 289.9 };
+var fullOf = function (c) { return FULL[c.id] || (c.old > c.price ? c.old : c.price); };
 var allPriced = true;
 var cartItems = [];
 catalog.forEach(function (c) {
 var q = Math.min(cart[c.id] || 0, c.max);
 if (q <= 0) { return; }
 cartCount += q;
-if (c.price > 0) { cartSum += c.price * q; } else { allPriced = false; }
-cartItems.push({ name: c.name, qty: q, unit: c.price > 0 ? money(c.price) + ' cada' : 'Preço a definir', line: c.price > 0 ? money(c.price * q) : '—', inc: function () { setQty(c.id, Math.min(c.max, q + 1)); }, dec: function () { setQty(c.id, q - 1); }, remove: function () { setQty(c.id, 0); } });
+if (c.price > 0) { cartSum += c.price * q; cartFull += fullOf(c) * q; } else { allPriced = false; }
+cartItems.push({ name: c.name, qty: q, unit: c.price > 0 ? money(c.price) + ' cada' : 'Preço a definir', line: c.price > 0 ? money(c.price * q) : '—', lineFull: c.price > 0 ? money(fullOf(c) * q) : '—', inc: function () { setQty(c.id, Math.min(c.max, q + 1)); }, dec: function () { setQty(c.id, q - 1); }, remove: function () { setQty(c.id, 0); } });
 });
 var bumpAll = [
 { id: 'fc27', name: 'EA Sports FC 27 · PS5', old: 289.95, price: 144.98, img: 'assets/img/jogos/fc27-capa.jpg' },
@@ -870,7 +926,8 @@ var bumpAll = [
 { id: 'cxbox', name: 'Controle sem fio para Xbox Series', old: 289.9, price: 202.93, img: 'assets/img/controles/xbox-1.jpg' },
 { id: 'ps5', name: 'Grand Theft Auto VI · PS5', old: 369.57, price: pPs5, img: 'assets/img/jogos/gta6-ps5-caixa.jpg' },
 { id: 'xbox', name: 'Grand Theft Auto VI · Xbox Series', old: 369.57, price: pXbox, img: 'assets/img/jogos/gta6-xbox-caixa.jpg' },
-{ id: 'digital', name: 'Grand Theft Auto VI · Digital', old: 329.9, price: pDig, img: 'assets/img/jogos/gta6-digital.png' }
+{ id: 'digital', name: 'Grand Theft Auto VI · Digital PS5', old: 329.9, price: pDig, img: 'assets/img/jogos/gta6-digital.png' },
+{ id: 'digitalx', name: 'Grand Theft Auto VI · Digital Xbox', old: 329.9, price: pDig, img: 'assets/img/jogos/gta6-digital.png' }
 ];
 var bump = bumpAll.filter(function (b) { return !(cart[b.id] > 0) && b.price > 0 && b.old > b.price; }).map(function (b) { return { id: b.id, name: b.name, img: b.img, pct: Math.round((1 - b.price / b.old) * 100), old: money(b.old), price: money(b.price) }; }).sort(function (a, b) { return b.pct - a.pct; }).slice(0, 4).map(function (b) { b.off = '-' + b.pct + '%'; b.add = function () { setQty(b.id, (cart[b.id] || 0) + 1); }; return b; });
 var gameLabel = function (p) { return p > 0 ? money(p) : 'R$ [SEU PREÇO]'; };
@@ -898,11 +955,41 @@ var cCode = String(this.props.couponCode ?? 'TESTE10').trim().toUpperCase();
 var cPct = Math.max(0, Math.min(90, Number(this.props.couponPct ?? 10) || 0));
 var couponOn = !!st.coupon && !!cCode && st.coupon === cCode && cPct > 0;
 var disc = couponOn ? cartSum * cPct / 100 : 0;
-var pay = st.pay || 'pix';
+var pay = st.pay === 'card' ? 'card' : 'pix';
 var ctrlQty = Math.min(cart.black || 0, sb) + Math.min(cart.white || 0, sw);
-var payInfos = { pix: 'O código Pix aparece na próxima tela, logo depois de confirmar o pedido.', card: 'Os dados do cartão são digitados na próxima etapa, direto no ambiente seguro do processador de pagamento. [SUAS CONDIÇÕES DE PARCELAMENTO]', boleto: 'O boleto é gerado na próxima tela. O pedido é separado depois da compensação do pagamento.' };
-var payNames = { pix: 'Pagar com Pix', card: 'Ir para o pagamento com cartão', boleto: 'Gerar boleto' };
+var payInfos = { pix: 'O código Pix aparece na próxima tela, logo depois de confirmar o pedido.', card: 'Os dados do cartão são digitados na próxima etapa, direto no ambiente seguro do processador de pagamento. [SUAS CONDIÇÕES DE PARCELAMENTO]' };
+var payNames = { pix: 'Pagar com Pix', card: 'Ir para o pagamento com cartão' };
 var pickPay = function (p) { return function () { self.setState({ pay: p }); }; };
+// Frete: três opções. Só é cobrado quando o pedido tem item físico (o GTA VI digital vai por e-mail).
+var SHIP = [
+{ id: 'free', name: 'Frete grátis', time: 'Até 10 dias úteis', price: 0 },
+{ id: 'normal', name: 'Frete normal', time: 'Até 5 dias úteis', price: 30 },
+{ id: 'premium', name: 'Frete premium', time: 'Entrega no dia seguinte', price: 90 }
+];
+var coShip = SHIP.filter(function (s) { return s.id === st.ship; })[0] || SHIP[0];
+var payIsPix = pay === 'pix';
+var discFull = couponOn ? cartFull * cPct / 100 : 0;
+var pixTotal = cartSum - disc, fullTotal = cartFull - discFull, pixDiff = fullTotal - pixTotal;
+var hasPhys = catalog.some(function (c) { return c.id !== 'digital' && c.id !== 'digitalx' && !c.digital && Math.min(cart[c.id] || 0, c.max) > 0; });
+// Combina com a compra: sugestões no carrinho, na ordem de prioridade. Mostra até 4 que ainda não estão no carrinho.
+var hasCtrl = (cart.black || 0) + (cart.white || 0) > 0;
+var hasGta = (cart.ps5 || 0) + (cart.digital || 0) + (cart.xbox || 0) + (cart.digitalx || 0) > 0;
+var hasCharger = (cart.krab || 0) + (cart.baseds || 0) > 0;
+var hasHeadset = (cart.pulse || 0) + (cart.stinger || 0) > 0;
+var relOrder = ['ps5', 'suporte', 'krab', 'pulse', 'ssd1', 'baseds', 'stinger', 'psplus'];
+var relWhy = { ps5: 'O jogo do controle: receba antes e jogue a partir de 19/11' };
+var relItems = relOrder.filter(function (id) {
+if (cart[id] > 0) { return false; }
+if (id === 'ps5' && hasGta) { return false; }
+if ((id === 'krab' || id === 'baseds') && hasCharger) { return false; }
+if ((id === 'pulse' || id === 'stinger') && hasHeadset) { return false; }
+return true;
+}).map(function (id) { return catalog.filter(function (c) { return c.id === id; })[0]; }).filter(function (c) { return c && c.price > 0; }).slice(0, 4).map(function (c) {
+var img = c.img || (c.id === 'ps5' ? 'assets/img/jogos/gta6-ps5-caixa.jpg' : '');
+var old = c.id === 'ps5' ? 369.57 : (c.old || 0);
+return { name: c.name, img: img, why: c.why || relWhy[c.id] || '', price: money(c.price), old: old > c.price ? money(old) : '', hasOld: old > c.price, off: old > c.price ? '-' + Math.round((1 - c.price / old) * 100) + '%' : '', add: function () { setQty(c.id, Math.min(c.max, (cart[c.id] || 0) + 1), true); } };
+});
+var shipCost = hasPhys ? coShip.price : 0;
 var nInst = Math.max(1, Math.min(24, Math.round(Number(this.props.installments ?? 6) || 6)));
 var user = st.user || null;
 var ordersRaw = st.orders || [];
@@ -911,7 +998,7 @@ var sel = ordersRaw[selIdx] || null;
 var stepNames = ['Pedido recebido', 'Pagamento aprovado', 'Em separação', 'Enviado', 'Entregue'];
 var stepDescs = ['Recebemos o seu pedido.', 'Pagamento confirmado.', 'Estamos embalando o seu controle.', 'Saiu para entrega com código de rastreio.', 'Pedido entregue. Bom jogo!'];
 var cur = Math.max(0, Math.min(4, Math.round(Number(this.props.demoStep ?? 0) || 0)));
-var payShort = { pix: 'Pix', card: 'Cartão de crédito', boleto: 'Boleto' };
+var payShort = { pix: 'Pix', card: 'Cartão de crédito' };
 return {
 bump: bump,
 hasBump: bump.length > 0,
@@ -941,26 +1028,23 @@ trackCode: cur >= 3 ? '[CÓDIGO DE RASTREIO]' : 'Ainda não disponível',
 trackNote: cur >= 3 ? 'Use o código no site da transportadora para ver onde está o pacote.' : 'O código aparece aqui assim que o pedido for enviado.',
 instOn: price > 0 && nInst > 1,
 instCount: String(nInst),
-instValue: money(price * qty / nInst),
+instValue: money((hasFrom ? from : price) * qty / nInst),
 showCheckout: !!st.showCheckout,
 orderDone: !!st.orderDone,
 orderOpen: !st.orderDone,
 openCheckout: function () { if (cartItems.length === 0) { return; } self.setState({ showCheckout: true, showCart: false, orderDone: false }); },
 closeCheckout: function () { self.setState({ showCheckout: false, orderDone: false }); },
-orderSubmit: function (e) { e.preventDefault(); var f = e.currentTarget.elements || {}; var em = String((f.email && f.email.value) || '').trim(); var nm = String((f.nome && f.nome.value) || '').trim() || 'cliente'; var list = (st.orders || []).slice(); var oid = 'ZG-' + (1001 + list.length); list.push({ id: oid, date: new Date().toLocaleDateString('pt-BR'), total: cartItems.length && allPriced ? money(cartSum - disc) : 'A definir', pay: payShort[pay], ship: st.cep ? 'Frete grátis · CEP ' + st.cep : 'Frete grátis', items: cartItems.map(function (c) { return { name: c.name, qty: c.qty, line: c.line }; }) }); self.setState({ orderDone: true, orders: list, selOrder: list.length - 1, lastOrderId: oid, cart: {}, coupon: null, user: st.user || { name: nm, email: em } }); },
+orderSubmit: function (e) { e.preventDefault(); var f = e.currentTarget.elements || {}; var em = String((f.email && f.email.value) || '').trim(); var nm = String((f.nome && f.nome.value) || '').trim() || 'cliente'; var list = (st.orders || []).slice(); var oid = 'ZG-' + (1001 + list.length); list.push({ id: oid, date: new Date().toLocaleDateString('pt-BR'), total: cartItems.length && allPriced ? money((payIsPix ? pixTotal : fullTotal) + shipCost) : 'A definir', pay: payShort[pay], ship: (hasPhys ? coShip.name + ' · ' + coShip.time : 'Entrega digital por e-mail') + (st.cep ? ' · CEP ' + st.cep : ''), items: cartItems.map(function (c) { return { name: c.name, qty: c.qty, line: c.line }; }) }); self.setState({ orderDone: true, orders: list, selOrder: list.length - 1, lastOrderId: oid, cart: {}, coupon: null, user: st.user || { name: nm, email: em } }); },
 payPixCls: 'opt' + (pay === 'pix' ? ' on' : ''),
 payCardCls: 'opt' + (pay === 'card' ? ' on' : ''),
-payBolCls: 'opt' + (pay === 'boleto' ? ' on' : ''),
 payPixOn: pay === 'pix' ? 'true' : 'false',
 payCardOn: pay === 'card' ? 'true' : 'false',
-payBolOn: pay === 'boleto' ? 'true' : 'false',
 pickPix: pickPay('pix'),
 pickCard: pickPay('card'),
-pickBol: pickPay('boleto'),
 payInfo: payInfos[pay],
 payBtnLabel: payNames[pay],
 shipDest: st.cep ? (st.cepAddr || ufOf(st.cep)) : 'Informe o CEP acima',
-bfSaveOn: hasFrom && ctrlQty > 0,
+bfSaveOn: hasFrom && ctrlQty > 0 && payIsPix,
 bfSaveLabel: hasFrom ? money((from - price) * ctrlQty) : '',
 cepOpen: !!st.cepOpen,
 cepErr: !!st.cepErr,
@@ -975,7 +1059,28 @@ cepPlace: st.cepAddr || ufOf(st.cep),
 newsDone: !!st.newsDone,
 newsSubmit: function (e) { e.preventDefault(); self.setState({ newsDone: true }); },
 cartItems: cartItems,
-cartShipLine: st.cep ? 'Frete grátis para ' + st.cep : 'Informe seu CEP na página para calcular o frete.',
+cartShipLine: (st.cep ? 'Frete grátis para ' + st.cep + ' em até 10 dias úteis.' : 'Frete grátis em até 10 dias úteis.') + ' Entrega mais rápida a partir de R$ 30,00: você escolhe no checkout.',
+couponFormOn: (!!st.couponOpen && !couponOn) || !!st.couponErr,
+couponLinkOn: !st.couponOpen && !st.couponErr && !couponOn,
+couponOpen: function () { self.setState({ couponOpen: true }); },
+relItems: relItems,
+coItems: cartItems.map(function (c) { return Object.assign({}, c, { lineCo: payIsPix ? c.line : c.lineFull }); }),
+coTotalLabel: payIsPix ? 'Total no Pix' : 'Total no cartão',
+cartTotalLabel: pixDiff > 0.004 ? 'Total no Pix' : 'Total',
+cardTotal: money(fullTotal),
+hasCardDiff: pixDiff > 0.004 && cartItems.length > 0,
+payPixPrice: money(pixTotal + shipCost),
+payCardPrice: money(fullTotal + shipCost),
+payCardInst: money((fullTotal + shipCost) / nInst),
+payNotice: payIsPix ? 'Preço de Black Friday aplicado: pagando no Pix você economiza ' + money(pixDiff) + ' em relação ao cartão.' : 'O preço de Black Friday é exclusivo do Pix. No cartão, os produtos saem pelo preço cheio. Pague no Pix e economize ' + money(pixDiff) + '.',
+payNoticeCls: 'paynote' + (payIsPix ? '' : ' warn'),
+hasRel: relItems.length > 0 && cartItems.length > 0,
+relTitle: hasCtrl ? 'Complete seu combo Vice City' : 'Leve junto e jogue completo',
+relSub: hasCtrl ? 'Quem leva o controle GTA VI também leva:' : 'Combina com o que está no seu carrinho:',
+shipOpts: SHIP.map(function (s) { var on = s.id === coShip.id; return { name: s.name, time: s.time, priceLabel: s.price > 0 ? money(s.price) : 'Grátis', cls: 'opt' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { self.setState({ ship: s.id }); } }; }),
+coShipName: hasPhys ? coShip.name : 'Entrega digital',
+coShipValue: shipCost > 0 ? money(shipCost) : 'GRÁTIS',
+coTotal: cartItems.length === 0 ? money(0) : (allPriced ? money((payIsPix ? pixTotal : fullTotal) + shipCost) : 'A definir'),
 cartCount: cartCount,
 cartEmpty: cartItems.length === 0,
 cartTotal: cartItems.length === 0 ? money(0) : (allPriced ? money(cartSum - disc) : 'A definir'),
@@ -992,6 +1097,7 @@ addController: addFn(color, qty, stock),
 addPs5: addFn('ps5', 1, 99),
 addXbox: addFn('xbox', 1, 99),
 addDigital: addFn('digital', 1, 99),
+addDigitalX: addFn('digitalx', 1, 99),
 ps5Price: gameLabel(pPs5),
 xboxPrice: gameLabel(pXbox),
 digitalPrice: gameLabel(pDig),
