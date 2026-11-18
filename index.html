@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Zera Games — Página inicial</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Zera Games: consoles, controles, jogos e acessórios. Loja em Praia Grande – SP.">
+<link rel="icon" href="assets/img/marca/zera-icone.png">
+<script src="assets/js/zera-runtime.js" defer></script>
+</head>
+<body>
+<template id="dc-template">
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+.zh{font-family:Inter,system-ui,sans-serif;background:#F5F4F0;color:#0E0E12}
+.zh a{color:#B3136E}.zh a:hover{color:#0E0E12}
+.zh h1,.zh h2,.zh h3{font-family:Archivo,Inter,sans-serif;margin:0;letter-spacing:-0.02em}
+.zw{max-width:1280px;margin:0 auto;padding:0 24px}
+.znav{display:flex;flex-wrap:wrap;gap:6px 28px}
+.znav a{color:#0E0E12 !important;font-weight:600;font-size:15px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.znav a:hover{color:#B3136E !important}
+.zbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:2px solid #0E0E12;color:#0E0E12 !important;font-weight:700;font-size:15px;text-decoration:none}
+.zbtn.dark{background:#0E0E12;color:#FFFFFF !important}
+.zhero{position:relative;height:540px;overflow:hidden}
+.zslide{position:absolute;inset:0;display:flex;align-items:center;text-decoration:none;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s ease}
+.zslide.on{opacity:1;visibility:visible}
+.zsin{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center;width:100%}
+.zcta{display:inline-flex;align-items:center;gap:10px;min-height:58px;padding:0 30px;border-radius:999px;font:800 18px Archivo,Inter,sans-serif}
+.zarrow{position:absolute;top:50%;margin-top:-26px;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#0E0E12;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3}
+.zdots{position:absolute;left:0;right:0;bottom:18px;display:flex;justify-content:center;gap:6px;z-index:3}
+.zdot{width:44px;height:44px;border:0;background:transparent;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.zdot span{display:block;width:34px;height:6px;border-radius:3px;background:rgba(255,255,255,.45)}
+.zdot.on span{background:#FFFFFF}
+.zfloat{animation:zf 5s ease-in-out infinite}
+@keyframes zf{0%,100%{translate:0 8px;rotate:-1deg}50%{translate:0 -12px;rotate:1deg}}
+.zg4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.zg2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.zcat{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:270px;padding:26px;border-radius:26px;color:#FFFFFF !important;text-decoration:none;transition:transform .25s ease}
+.zcat.zdk{color:#16060E !important}
+.zcat:hover{transform:translateY(-6px)}
+.zgo{position:relative;z-index:1;width:54px;height:54px;border-radius:50%;background:#FFFFFF;color:#0E0E12;display:flex;align-items:center;justify-content:center}
+.zprod{display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:20px;background:#FFFFFF;border:1px solid #DEDCD5;color:#0E0E12 !important;text-decoration:none}
+.zprod:hover{border-color:#0E0E12}
+.zpimg{aspect-ratio:1;border-radius:14px;background:#EFEEEA;overflow:hidden}
+.zpimg img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.ztag{align-self:flex-start;padding:5px 10px;border-radius:999px;background:#0E0E12;color:#FFFFFF;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.zslot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:320px;padding:16px;border-radius:20px;border:2px dashed #BDBAB0;color:#5E5B52;font-weight:700;font-size:14px;text-align:center}
+.zph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#8C897F;font-size:12px;font-weight:700;text-align:center;padding:10px;box-sizing:border-box}
+.zphn{font-family:Archivo,Inter,sans-serif;font-weight:900;font-size:34px;line-height:1.05;color:#BDBAB0}
+.zrank{display:flex;flex-direction:column;border-radius:20px;background:#FFFFFF;border:1px solid #DEDCD5;overflow:hidden}
+.zgame{display:flex;align-items:center;gap:16px;padding:14px 20px;border-top:1px solid #EAE8E1}
+.zgn{font-family:Archivo,Inter,sans-serif;font-weight:900;font-size:26px;color:#B3136E;min-width:38px}
+.zart{position:absolute;right:-34px;bottom:-34px;width:230px;height:230px;transition:transform .4s ease}
+.zcat:hover .zart{transform:scale(1.08) rotate(-6deg)}
+button.zprod,button.zgame{font:inherit;text-align:left;cursor:pointer;width:100%}
+button.zgame{background:#FFFFFF;border:0;border-top:1px solid #EAE8E1;color:#0E0E12}
+button.zgame:hover{background:#F5F4F0}
+.zres{display:flex;justify-content:space-between;gap:16px;width:100%;min-height:48px;align-items:center;padding:0 14px;border:0;border-bottom:1px solid #EAE8E1;background:#FFFFFF;font:600 16px Inter,sans-serif;color:#0E0E12;text-align:left;cursor:pointer}
+.zres:hover{background:#F5F4F0}
+.zout .zpimg{position:relative;filter:grayscale(1);opacity:.6}
+.zout .zpimg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 2px),#0E0E12 calc(50% - 2px),#0E0E12 calc(50% + 2px),transparent calc(50% + 2px))}
+.zout{color:#8C897F !important}
+.zout .ztag{background:#8C897F}
+.znob img,.zth.znob img{mix-blend-mode:normal}
+.znob{background:#EFEEEA}
+.znob img{padding:14px;box-sizing:border-box}
+.zpimg{position:relative}
+.zbn{position:absolute;top:8px;left:8px;z-index:2;display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:999px;border:1.5px solid transparent;background:linear-gradient(#0E0E12,#0E0E12) padding-box,linear-gradient(90deg,#2A6BFF,#FF4FA3) border-box;color:#FFFFFF;font:800 9px Archivo,Inter,sans-serif;letter-spacing:.08em;line-height:1;box-shadow:0 4px 10px rgba(14,14,18,.2)}
+.zbn.big{top:14px;left:14px;padding:6px 11px;font-size:12px;gap:6px}
+.zoff{display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;background:#FF4FA3;color:#16060E;font:800 14px Archivo,Inter,sans-serif}
+.zth{width:88px;height:88px;padding:0;border-radius:14px;border:2px solid #DEDCD5;background:#EFEEEA;cursor:pointer;overflow:hidden}
+.zth.on{border-color:#0E0E12}
+.zth img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.zpd{position:fixed;inset:0;z-index:30;overflow-y:auto;background:#F5F4F0}
+.zfield{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+.zfield input{min-height:50px;padding:0 16px;border-radius:12px;border:2px solid #0E0E12;background:#FFFFFF;color:#0E0E12;font:400 16px Inter,sans-serif}
+@media (prefers-reduced-motion:reduce){.zfloat{animation:none}}
+@media (max-width:900px){
+.z70box{zoom:.42;margin-top:70px}
+.zcat{min-height:200px;padding:18px}
+.zcat > span:first-child > span:first-child{font-size:24px !important}
+.zcat > span:first-child > span:last-child{font-size:13px !important}
+.zart{width:140px;height:140px;right:-28px;bottom:-28px}
+.zhero{height:680px}
+.zsin{grid-template-columns:minmax(0,1fr);gap:8px}
+.zsimg{max-height:250px}
+.zg4{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.zg2{grid-template-columns:minmax(0,1fr)}
+.zbig{font-size:44px !important}
+.zarrow{display:none}
+}
+</style>
+</helmet>
+<div class="zh" style="min-height: 100vh">
+
+<div style="background: #0E0E12; color: #FFFFFF; text-align: center; padding: 10px 16px; font-size: 14px; font-weight: 600">Black Friday Zera: até <span style="display: inline-block; padding: 2px 10px; border-radius: 999px; background: #FF4FA3; color: #16060E; font-weight: 800">70%</span> off em produtos selecionados · Leve 3 jogos, pague 2</div>
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #DEDCD5">
+<div class="zw" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 14px; padding-bottom: 14px">
+<a href="#topo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #0E0E12">
+<img src="assets/img/marca/zera-icone.jpg" alt="" width="44" height="44" style="display: block; border-radius: 10px">
+<span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 24px; letter-spacing: -0.01em">ZERA GAMES</span>
+</a>
+<nav class="znav" aria-label="Seções">
+<a href="#consoles">Consoles</a>
+<a href="#controles">Controles</a>
+<a href="#jogos">Jogos</a>
+<a href="#acessorios">Acessórios</a>
+<a href="#loja">Nossa loja</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" class="zbtn" aria-label="Buscar produtos" onClick="{{toggleSearch}}" style="background: transparent; cursor: pointer; padding: 0; width: 48px; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"><circle cx="8.500" cy="8.500" r="6"></circle><path d="M13 13l5 5"></path></svg></button>
+<a class="zbtn" href="controle-gta6.html">Entrar</a>
+<a class="zbtn dark" href="controle-gta6.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Carrinho</a>
+</div>
+</div>
+</header>
+<sc-if value="{{searchOpen}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border-bottom: 1px solid #DEDCD5">
+<div class="zw" style="display: flex; flex-direction: column; gap: 12px; padding-top: 18px; padding-bottom: 18px; max-width: 760px">
+<label class="zfield">Buscar produtos<input type="search" name="q" placeholder="Ex.: headset, PS5, Minecraft" autocomplete="off" onChange="{{searchType}}"></label>
+<sc-if value="{{hasResults}}" hint-placeholder-val="{{false}}">
+<div style="border: 1px solid #DEDCD5; border-radius: 14px; overflow: hidden; max-height: 340px; overflow-y: auto">
+<sc-for list="{{results}}" as="r" hint-placeholder-count="3">
+<button type="button" class="zres" onClick="{{r.open}}"><span>{{r.name}}</span><span style="font-size: 13px; color: #5E5B52; white-space: nowrap">{{r.cat}}</span></button>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{noResults}}" hint-placeholder-val="{{false}}">
+<span role="status" style="font-size: 15px; color: #5E5B52">Nenhum produto encontrado para essa busca.</span>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<section id="topo" class="zhero" aria-label="Destaques">
+<a class="{{s0}}" href="#consoles" style="background: #0E0E12; color: #FFFFFF">
+<div class="zw zsin">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 18px">
+<span style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; color: #0E0E12; font-weight: 800; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase">Black Friday Zera</span>
+<h1 class="zbig" style="font-size: 84px; line-height: 0.96; font-weight: 900; color: #FFFFFF">A sexta que zera os preços.</h1>
+<span style="font-size: 20px; line-height: 1.5; color: #D6D4CD; max-width: 480px">Descontos de até 70% em produtos selecionados, enquanto durar o estoque.</span>
+<span class="zcta" style="background: #FF4FA3; color: #16060E">Ver ofertas<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+</div>
+<div class="zsimg z70box" style="display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 0.82">
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 34px; letter-spacing: 0.3em; color: #FFFFFF; line-height: 1.4">ATÉ</span>
+<span class="zfloat" style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 250px; letter-spacing: -0.05em; color: #FF4FA3">70%</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 92px; letter-spacing: 0.12em; color: #FFFFFF; line-height: 1.1">OFF</span>
+</div>
+</div>
+</a>
+<a class="{{s1}}" href="#jogos" style="background: #5B2BD9; color: #FFFFFF">
+<div class="zw zsin">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 18px">
+<span style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; color: #2A1173; font-weight: 800; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase">Promoção de jogos</span>
+<h2 class="zbig" style="font-size: 104px; line-height: 0.92; font-weight: 900; color: #FFFFFF">Leve 3,<br>pague 2.</h2>
+<span style="font-size: 21px; line-height: 1.5; color: #FFFFFF; max-width: 480px">Na compra de 2 jogos, o 3º é por nossa conta. E quem escolhe é você.</span>
+<span class="zcta" style="background: #FFFFFF; color: #2A1173">Escolher os jogos<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+</div>
+<svg class="zsimg zfloat" aria-hidden="true" viewBox="0 0 420 300" style="width: 100%; max-width: 520px; justify-self: center"><g transform="rotate(-10 90 150)"><rect x="30" y="50" width="130" height="190" rx="14" fill="#FFFFFF"></rect><rect x="30" y="50" width="130" height="34" rx="14" fill="#2A6BFF"></rect><path d="M78 128l44 26-44 26z" fill="#2A1173"></path></g><rect x="145" y="40" width="130" height="190" rx="14" fill="#FFFFFF"></rect><rect x="145" y="40" width="130" height="34" rx="14" fill="#2A6BFF"></rect><path d="M193 118l44 26-44 26z" fill="#2A1173"></path><g transform="rotate(10 330 150)"><rect x="262" y="58" width="130" height="190" rx="14" fill="#FF4FA3"></rect><rect x="262" y="58" width="130" height="34" rx="14" fill="#16060E"></rect><text x="327" y="184" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="52" fill="#16060E">R$ 0</text></g></svg>
+</div>
+</a>
+<a class="{{s2}}" href="controle-gta6.html" style="background: radial-gradient(circle at 74% 50%, rgba(122,63,209,.6), rgba(11,10,18,0) 46%), #0B0A12; color: #FFFFFF">
+<div class="zw zsin">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px">
+<span style="padding: 8px 14px; border-radius: 999px; background: #FF4FA3; color: #16060E; font-weight: 800; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase">Black Friday · Edição limitada</span>
+<h1 class="zbig" style="font-size: 78px; line-height: 0.98; font-weight: 900; color: #FFFFFF">O controle do lançamento do ano.</h1>
+<span style="font-size: 20px; line-height: 1.5; color: #C9C4DA; max-width: 480px">Controle Edição Limitada GTA VI, em preto e branco. Só 14 unidades.</span>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<span class="zcta" style="background: #FF4FA3; color: #16060E">Ver o controle<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+<span style="font-size: 17px; color: #C9C4DA">de <s>R$ 997,90</s> por <span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px; color: #FFFFFF">R$ 547,90</span></span>
+</span>
+</div>
+<img class="zfloat zsimg" src="assets/img/controle-gta6/preto-diagonal-recorte.png" alt="Controle Edição Limitada GTA VI na cor preta" style="display: block; width: 100%; max-width: 560px; aspect-ratio: 1; object-fit: contain; justify-self: center">
+</div>
+</a>
+<a class="{{s3}}" href="controle-gta6.html" style="background: #FF4FA3; color: #16060E">
+<div class="zw zsin">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 18px">
+<span style="font-weight: 800; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase">Lançamento</span>
+<h2 class="zbig" style="font-size: 150px; line-height: 0.9; font-weight: 900; color: #16060E">19.11</h2>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 30px; line-height: 1.15; max-width: 520px">GTA VI chega. Garanta o seu: PS5, Xbox ou digital.</span>
+<span class="zcta" style="background: #16060E; color: #FFFFFF">Ver os jogos<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+</div>
+<div class="zsimg" style="display: flex; justify-content: center; align-items: center; gap: 0">
+<img src="assets/img/jogos/gta6-ps5-caixa-antiga.jpg" alt="Caixa do GTA VI para PS5" style="width: 46%; max-width: 270px; aspect-ratio: 4 / 5; object-fit: contain; mix-blend-mode: multiply; transform: rotate(-6deg)">
+<img src="assets/img/jogos/gta6-xbox-caixa.jpg" alt="Caixa do GTA VI para Xbox Series" style="width: 46%; max-width: 270px; aspect-ratio: 4 / 5; object-fit: contain; mix-blend-mode: multiply; transform: rotate(6deg); margin-left: -24px">
+</div>
+</div>
+</a>
+<a class="{{s4}}" href="#loja" style="background: #1B3FD6; color: #FFFFFF">
+<div class="zw zsin">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px">
+<span style="font-weight: 800; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #FFFFFF">Nossa loja</span>
+<h2 class="zbig" style="font-size: 78px; line-height: 0.98; font-weight: 900; color: #FFFFFF">Vem jogar conversa fora em Praia Grande.</h2>
+<span style="font-size: 20px; line-height: 1.5; color: #FFFFFF">Rua Fumio Miyazi, 752 · Segunda a sábado, das 08h30 às 18h30</span>
+<span class="zcta" style="background: #FFFFFF; color: #0E0E12">Como chegar<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+</div>
+<svg class="zsimg zfloat" aria-hidden="true" viewBox="0 0 200 240" style="width: 100%; max-width: 300px; justify-self: center"><ellipse cx="100" cy="226" rx="46" ry="9" fill="#0E2A9A"></ellipse><path d="M100 8C55 8 20 42 20 86c0 58 80 134 80 134s80-76 80-134C180 42 145 8 100 8z" fill="#FFFFFF"></path><circle cx="100" cy="86" r="30" fill="#1B3FD6"></circle></svg>
+</div>
+</a>
+<button type="button" class="zarrow" style="left: 18px" aria-label="Banner anterior" onClick="{{prev}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l-7 7 7 7"></path></svg></button>
+<button type="button" class="zarrow" style="right: 18px" aria-label="Próximo banner" onClick="{{next}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l7 7-7 7"></path></svg></button>
+<div class="zdots">
+<button type="button" class="{{d0}}" aria-label="Banner 1: Black Friday" onClick="{{go0}}"><span></span></button>
+<button type="button" class="{{d1}}" aria-label="Banner 2: leve 3, pague 2" onClick="{{go1}}"><span></span></button>
+<button type="button" class="{{d2}}" aria-label="Banner 3: controle" onClick="{{go2}}"><span></span></button>
+<button type="button" class="{{d3}}" aria-label="Banner 4: lançamento" onClick="{{go3}}"><span></span></button>
+<button type="button" class="{{d4}}" aria-label="Banner 5: loja" onClick="{{go4}}"><span></span></button>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border-bottom: 1px solid #DEDCD5">
+<div class="zw zg4" style="padding-top: 22px; padding-bottom: 22px">
+<span style="display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 15px"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#B3136E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h13v10H2zM15 11h5l4 4v2h-9"></path><circle cx="7" cy="19" r="2"></circle><circle cx="19" cy="19" r="2"></circle></svg>Envio com rastreio</span>
+<span style="display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 15px"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#B3136E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="12" width="16" height="11" rx="2"></rect><path d="M9 12V8a4 4 0 0 1 8 0v4"></path></svg>Pagamento seguro</span>
+<span style="display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 15px"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#B3136E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a9 9 0 1 0 3-6.700M4 4v5h5"></path></svg>7 dias para desistir</span>
+<span style="display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 15px"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#B3136E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 23s8-7 8-13a8 8 0 0 0-16 0c0 6 8 13 8 13z"></path><circle cx="13" cy="10" r="3"></circle></svg>Loja física em Praia Grande</span>
+</div>
+</section>
+
+<section id="categorias" class="zw" style="padding-top: 64px; padding-bottom: 24px">
+<h2 style="font-size: 44px; font-weight: 900; margin-bottom: 24px">Escolha o seu jogo.</h2>
+<div class="zg4">
+<a class="zcat" href="#consoles" style="background: #1B3FD6">
+<span style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 8px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 36px; line-height: 1">Consoles</span><span style="font-size: 15px; font-weight: 600; max-width: 170px">PS5 e Xbox Series</span></span>
+<span class="zgo"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+<svg class="zart" aria-hidden="true" viewBox="0 0 120 120" fill="none" stroke="#FFFFFF" stroke-width="4.500" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"><rect x="38" y="12" width="44" height="96" rx="10"></rect><path d="M50 26h20"></path><circle cx="60" cy="88" r="7"></circle><path d="M30 108h60"></path></svg>
+</a>
+<a class="zcat zdk" href="#controles" style="background: #FF4FA3">
+<span style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 8px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 36px; line-height: 1">Controles</span><span style="font-size: 15px; font-weight: 600; max-width: 170px">Edições limitadas e sem fio</span></span>
+<span class="zgo"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+<svg class="zart" aria-hidden="true" viewBox="0 0 120 120" fill="none" stroke="#16060E" stroke-width="4.500" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"><path d="M34 38h52a22 22 0 0 1 22 22v14a14 14 0 0 1-26 7l-5-9H43l-5 9a14 14 0 0 1-26-7V60a22 22 0 0 1 22-22z"></path><path d="M36 52v16M28 60h16"></path><circle cx="80" cy="54" r="4"></circle><circle cx="90" cy="65" r="4"></circle></svg>
+</a>
+<a class="zcat" href="#jogos" style="background: #5B2BD9">
+<span style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 8px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 36px; line-height: 1">Jogos</span><span style="font-size: 15px; font-weight: 600; max-width: 170px">Lançamentos e os mais jogados</span></span>
+<span class="zgo"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+<svg class="zart" aria-hidden="true" viewBox="0 0 120 120" fill="none" stroke="#FFFFFF" stroke-width="4.500" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"><rect x="28" y="14" width="64" height="92" rx="10"></rect><path d="M28 34h64"></path><path d="M51 56l22 13-22 13z"></path></svg>
+</a>
+<a class="zcat" href="#acessorios" style="background: #0E0E12">
+<span style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 8px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 36px; line-height: 1">Acessórios</span><span style="font-size: 15px; font-weight: 600; max-width: 170px">Headsets, capinhas e carregadores</span></span>
+<span class="zgo"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></span>
+<svg class="zart" aria-hidden="true" viewBox="0 0 120 120" fill="none" stroke="#FFFFFF" stroke-width="4.500" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"><path d="M24 72V58a36 36 0 0 1 72 0v14"></path><rect x="14" y="66" width="20" height="36" rx="9"></rect><rect x="86" y="66" width="20" height="36" rx="9"></rect><path d="M96 102c0 8-9 11-22 11"></path></svg>
+</a>
+</div>
+</section>
+
+<section id="consoles" class="zw" style="padding-top: 56px; padding-bottom: 24px">
+<h2 style="font-size: 44px; font-weight: 900; margin-bottom: 24px">Consoles</h2>
+<div class="zg4">
+<sc-for list="{{consoles}}" as="p" hint-placeholder-count="4">
+<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
+<span class="ztag">{{p.tag}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">{{p.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section id="controles" class="zw" style="padding-top: 56px; padding-bottom: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 24px">
+<h2 style="font-size: 44px; font-weight: 900">Controles</h2>
+<a href="controle-gta6.html" style="font-weight: 700; font-size: 16px">Ver página do controle</a>
+</div>
+<div class="zg4">
+<a class="zprod" href="controle-gta6.html">
+<span class="zpimg"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span><img src="assets/img/controle-gta6/preto-frente.jpg" alt="Controle Edição Limitada GTA VI preto"></span>
+<span class="ztag">Edição limitada</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">Controle GTA VI · Preto</span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; color: #5E5B52">de <s>R$ 997,90</s></span><span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">R$ 547,90</span><span class="zoff">-45%</span></span><span style="font-size: 14px; color: #5E5B52">ou 6x de R$ 91,32</span></span>
+</a>
+<a class="zprod" href="controle-gta6.html">
+<span class="zpimg"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span><img src="assets/img/controle-gta6/branco-frente.jpg" alt="Controle Edição Limitada GTA VI branco"></span>
+<span class="ztag">Edição limitada</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">Controle GTA VI · Branco</span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; color: #5E5B52">de <s>R$ 997,90</s></span><span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">R$ 547,90</span><span class="zoff">-45%</span></span><span style="font-size: 14px; color: #5E5B52">ou 6x de R$ 91,32</span></span>
+</a>
+<sc-for list="{{controls}}" as="p" hint-placeholder-count="2">
+<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
+<span class="ztag">{{p.tag}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">{{p.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section id="jogos" class="zw" style="padding-top: 56px; padding-bottom: 24px">
+<h2 style="font-size: 44px; font-weight: 900; margin-bottom: 24px">Jogos</h2>
+<div class="zg4">
+<sc-for list="{{gtaPs}}" as="p" hint-placeholder-count="3">
+<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
+<span class="ztag">{{p.tag}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">{{p.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+</span>
+</button>
+</sc-for>
+<sc-for list="{{newGames}}" as="p" hint-placeholder-count="1">
+<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
+<span class="ztag">{{p.tag}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">{{p.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section id="acessorios" class="zw" style="padding-top: 56px; padding-bottom: 72px">
+<h2 style="font-size: 44px; font-weight: 900; margin-bottom: 24px">Acessórios</h2>
+<div class="zg4">
+<sc-for list="{{accessories}}" as="p" hint-placeholder-count="9">
+<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
+<span class="ztag">{{p.tag}}</span>
+<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2">{{p.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 14px; color: #8C897F"><s>{{p.oldLabel}}</s></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
+<sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">No Pix ou 6x de {{p.instLabel}}</span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section style="background: #0E0E12; color: #FFFFFF">
+<div class="zw zg2" style="padding-top: 88px; padding-bottom: 88px; align-items: center">
+<h2 class="zbig" style="font-size: 96px; line-height: 0.94; font-weight: 900; color: #FFFFFF">Feito pra quem <span style="color: #FF4FA3">zera.</span></h2>
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 20px; line-height: 1.6; color: #D6D4CD">Zerar é ir até o fim: todas as missões, todos os troféus, sem pular cena. A Zera Games nasceu em Praia Grande para quem joga assim.</p>
+<p style="margin: 0; font-size: 20px; line-height: 1.6; color: #D6D4CD">Controles, jogos e acessórios escolhidos a dedo, com estoque de verdade na prateleira e atendimento de quem também joga.</p>
+</div>
+</div>
+</section>
+
+<section id="loja" class="zw" style="padding-top: 72px; padding-bottom: 88px">
+<div class="zg2" style="align-items: stretch">
+<div style="display: flex; flex-direction: column; gap: 16px; padding: 36px; border-radius: 24px; background: #1B3FD6; color: #FFFFFF">
+<span style="font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase">Nossa loja</span>
+<h2 style="font-size: 44px; line-height: 1.05; font-weight: 900; color: #FFFFFF">Rua Fumio Miyazi, 752</h2>
+<span style="font-size: 18px; line-height: 1.5">Praia Grande – SP · CEP 11701-160</span>
+<span style="font-size: 18px; line-height: 1.5; font-weight: 700">Segunda a sábado, das 08h30 às 18h30</span>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Fumio+Miyazi%2C+752%2C+Praia+Grande+-+SP%2C+11701-160" class="zcta" style="align-self: flex-start; margin-top: 8px; background: #FFFFFF; color: #0E0E12; text-decoration: none">Abrir no mapa</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; padding: 36px; border-radius: 24px; background: #FFFFFF; border: 1px solid #DEDCD5">
+<span style="font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #B3136E">Ofertas por e-mail</span>
+<h2 style="font-size: 36px; line-height: 1.08; font-weight: 900">Saiba antes quando chegar lote novo.</h2>
+<form onSubmit="{{newsSubmit}}" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px">
+<label class="zfield" style="flex: 1 1 240px">Seu melhor e-mail<input type="email" name="email" autocomplete="email" placeholder="voce@email.com" required></label>
+<button type="submit" class="zcta" style="border: 0; cursor: pointer; min-height: 54px; background: #0E0E12; color: #FFFFFF">Quero receber</button>
+</form>
+<sc-if value="{{newsDone}}" hint-placeholder-val="{{false}}">
+<span role="status" style="font-size: 14px; line-height: 1.5; color: #B3136E">Demonstração: o cadastro passa a funcionar quando o formulário for conectado à sua ferramenta de e-mail.</span>
+</sc-if>
+<span style="font-size: 13px; line-height: 1.5; color: #5E5B52">Ao se cadastrar, você aceita receber e-mails da Zera Games. Dá para sair da lista quando quiser.</span>
+</div>
+</div>
+</section>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #DEDCD5">
+<div class="zw" style="display: flex; flex-direction: column; gap: 10px; padding-top: 32px; padding-bottom: 40px; font-size: 13px; line-height: 1.6; color: #5E5B52">
+<span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 18px; color: #0E0E12">ZERA GAMES</span>
+<span>Rua Fumio Miyazi, 752, Praia Grande – SP, CEP 11701-160 · Segunda a sábado, das 08h30 às 18h30</span>
+<span>[RAZÃO SOCIAL] · CNPJ [SEU CNPJ] · [E-MAIL OU WHATSAPP DE ATENDIMENTO]</span>
+<span>A Zera Games é uma loja independente e não tem vínculo com a Sony Interactive Entertainment, a Microsoft nem a Rockstar Games. As marcas citadas pertencem aos seus respectivos donos.</span>
+</div>
+</footer>
+
+<sc-if value="{{pdOpen}}" hint-placeholder-val="{{false}}">
+<div class="zpd" role="dialog" aria-modal="true" aria-label="Página do produto">
+<div style="background: #FFFFFF; border-bottom: 1px solid #DEDCD5">
+<div class="zw" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; padding-bottom: 14px">
+<span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 24px">ZERA GAMES</span>
+<button type="button" class="zbtn" onClick="{{closePd}}" style="background: transparent; cursor: pointer">Voltar à loja</button>
+</div>
+</div>
+<div class="zw zg2" style="padding-top: 44px; padding-bottom: 80px; align-items: start; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<sc-if value="{{pdNoImg}}" hint-placeholder-val="{{false}}">
+<div class="zpimg zph" style="border: 1px solid #DEDCD5"><span class="zphn" style="font-size: 72px">{{pdShort}}</span><span style="font-size: 15px">[FOTO DO PRODUTO]</span></div>
+</sc-if>
+<sc-if value="{{pdHasImg}}" hint-placeholder-val="{{false}}">
+<div class="{{pdImgCls}}" style="border: 1px solid #DEDCD5; border-radius: 20px"><sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span class="zbn big" aria-label="Black November"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{pdImg}}" alt="{{pdName}}"></div>
+<div role="group" aria-label="Fotos do produto" style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{pdThumbs}}" as="t" hint-placeholder-count="4">
+<button type="button" class="{{t.cls}}" aria-label="{{t.label}}" aria-pressed="{{t.pressed}}" onClick="{{t.pick}}"><img src="{{t.src}}" alt=""></button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 18px">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #B3136E">{{pdCat}}</span>
+<h1 style="font-size: 52px; line-height: 1.02; font-weight: 900">{{pdName}}</h1>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 22px 24px; border-radius: 20px; background: #FFFFFF; border: 2px solid #0E0E12; align-self: stretch">
+<sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span style="display: flex; align-items: center; gap: 12px"><span class="zoff" style="font-size: 13px; letter-spacing: 0.08em">BLACK FRIDAY</span><span style="font-size: 17px; color: #8C897F">de <s>{{pdOld}}</s> por</span></span></sc-if>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 54px; line-height: 1">{{pdPrice}}</span><sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span class="zoff" style="font-size: 20px; padding: 6px 12px">{{pdOff}}</span></sc-if></span>
+<sc-if value="{{pdHasOld}}" hint-placeholder-val="{{false}}"><span style="font-size: 16px; color: #3A3832">No Pix ou em até <span style="font-weight: 700">6x de {{pdInst}}</span> · Você economiza {{pdSave}}</span></sc-if>
+<sc-if value="{{pdInstOnly}}" hint-placeholder-val="{{false}}"><span style="font-size: 16px; color: #3A3832">No Pix ou em até <span style="font-weight: 700">6x de {{pdInst}}</span></span></sc-if>
+</div>
+<span class="ztag" style="background: #1B3FD6">{{pdStatus}}</span>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3A3832">{{pdDesc}}</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5E5B52">{{pdNote}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px">
+<sc-if value="{{pdHasPage}}" hint-placeholder-val="{{false}}">
+<a class="zcta" href="controle-gta6.html" style="background: #0E0E12; color: #FFFFFF; text-decoration: none">Ver página completa</a>
+</sc-if>
+<a class="zcta" href="#loja" onClick="{{closePd}}" style="background: #FF4FA3; color: #16060E; text-decoration: none">Quero ser avisado</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px; padding-top: 20px; border-top: 1px solid #DEDCD5; font-size: 15px; font-weight: 600; width: 100%">
+<span>Envio com código de rastreio</span>
+<span>7 dias para desistir da compra após receber</span>
+<span>Retirada na loja: Rua Fumio Miyazi, 752, Praia Grande – SP</span>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</template>
+<script type="text/x-dc" data-dc-script data-props='{"autoplay":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":6500}}'>
+class Component extends DCLogic {
+componentDidMount() {
+var self = this;
+this._t = setInterval(function () {
+if (self._hold || self.props.autoplay === false) { return; }
+var s = (self.state && self.state.slide) || 0;
+self.setState({ slide: (s + 1) % 5 });
+}, 6000);
+}
+componentWillUnmount() { clearInterval(this._t); }
+renderVals() {
+var self = this;
+var st = this.state || {};
+var s = st.slide || 0;
+var go = function (i) { return function () { self._hold = true; self.setState({ slide: (i + 5) % 5 }); }; };
+var norm = function (t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
+var DESC = {
+'Consoles': ['Console da geração atual para jogar os lançamentos com o máximo de desempenho.', '[MODELO EXATO, ARMAZENAMENTO E O QUE ACOMPANHA NA CAIXA]'],
+'Controles': ['Controle sem fio para jogar com conforto, do primeiro ao último chefe.', '[MARCA, MODELO, COR E COMPATIBILIDADE]'],
+'Jogos': ['Um dos jogos mais jogados da plataforma, para entrar na fila do seu próximo zeramento.', '[EDIÇÃO, MÍDIA FÍSICA OU DIGITAL E CLASSIFICAÇÃO INDICATIVA]'],
+'Acessórios': ['Acessório para deixar o seu setup mais completo e o controle sempre pronto.', '[MARCA, MODELO, MEDIDAS E COMPATIBILIDADE]']
+};
+var IMGS = {
+'PlayStation 5 Pro': ['assets/img/consoles/ps5-pro-1.jpg', 'assets/img/consoles/ps5-pro-3.jpg', 'assets/img/consoles/ps5-pro-2.jpg', 'assets/img/consoles/ps5-pro-4.jpg']
+};
+var PRICES = { 'PlayStation 5 Pro': 5669.99, 'PlayStation 5 Slim': 3447.9, 'Xbox Series S': 2990.9, 'Controle sem fio para PS5': 399.9, 'Controle sem fio para Xbox Series': 289.9, 'Grand Theft Auto VI · PS5': 369.57, 'EA Sports FC 27 · PS5': 289.95, 'Grand Theft Auto VI · Xbox Series': 369.57, 'Grand Theft Auto VI · Digital': 329.9, 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta': 67.9, 'Base de carregamento Sony para controle DualSense · CFI-ZDS1': 99.99, 'Headset sem fio Sony Pulse Elite · PS5 · Branco': 799.9, 'Base de resfriamento multifuncional para PS5': 189.9, 'Suporte vertical para controle de PS5 · Branco': 45.9, 'Suporte para controle DualSense · Tema GTA VI': 99.99, 'Cabo USB-C para carregar controle de PS5': 129.9, 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54': 199.9 };
+var INFO = { 'PlayStation 5 Pro': ['Console PlayStation 5 Pro Sony com SSD de 1TB, na cor branca. Acompanha um controle sem fio DualSense.', '[CONFIRME O QUE VEM NA CAIXA, VOLTAGEM E GARANTIA]'] };
+var money = function (v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+IMGS['PlayStation 5 Slim'] = IMGS['PlayStation 5 Pro'];
+INFO['PlayStation 5 Slim'] = ['Console PlayStation 5 Slim Sony. Acompanha um controle sem fio DualSense.', '[CONFIRME MODELO, ARMAZENAMENTO, O QUE VEM NA CAIXA E GARANTIA]'];
+IMGS['Xbox Series S'] = ['assets/img/consoles/xbox-series-s-1.jpg', 'assets/img/consoles/xbox-series-s-2.jpg', 'assets/img/consoles/xbox-series-s-3.jpg', 'assets/img/consoles/xbox-series-s-4.jpg', 'assets/img/consoles/xbox-series-s-5.jpg'];
+INFO['Xbox Series S'] = ['Console Xbox Series S com SSD de 512GB, na cor branca. Acompanha um controle sem fio.', '[CONFIRME O QUE VEM NA CAIXA, VOLTAGEM E GARANTIA]'];
+var OUT = { 'Xbox Series X': true };
+IMGS['Xbox Series X'] = ['assets/img/consoles/xbox-series-x.jpg'];
+INFO['Xbox Series X'] = ['Console Xbox Series X, na cor preta. Acompanha um controle sem fio.', 'Sem estoque no momento. Deixe seu e-mail para ser avisado quando chegar.'];
+var DISC = 0.2;
+IMGS['Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54'] = ['assets/img/acessorios/estacao-krab-1.jpg', 'assets/img/acessorios/estacao-krab-2.jpg'];
+INFO['Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54'] = ['Estação de carregamento Krab, modelo KBDCM54, na cor preta, com encaixe para até quatro controles DualSense de PS5 e coluna de luz RGB.', '[CONFIRME O QUE VEM NA CAIXA, A FONTE DE ENERGIA E A GARANTIA]'];
+IMGS['Cabo USB-C para carregar controle de PS5'] = ['assets/img/acessorios/cabo-usbc-1.jpg', 'assets/img/acessorios/cabo-usbc-2.jpg'];
+INFO['Cabo USB-C para carregar controle de PS5'] = ['Cabo USB-A para USB-C com revestimento trançado, para carregar o controle DualSense de PS5 enquanto joga.', '[CONFIRME O COMPRIMENTO E A GARANTIA]'];
+IMGS['Suporte para controle DualSense · Tema GTA VI'] = ['assets/img/acessorios/suporte-gta6-1.jpg', 'assets/img/acessorios/suporte-gta6-2.jpg'];
+INFO['Suporte para controle DualSense · Tema GTA VI'] = ['Suporte de mesa preto para um controle DualSense de PS5, com o logo de GTA VI em relevo nas cores rosa e azul.', '[CONFIRME O MATERIAL, AS MEDIDAS, AS CORES DISPONÍVEIS E A GARANTIA]'];
+IMGS['Suporte vertical para controle de PS5 · Branco'] = ['assets/img/acessorios/suporte-vertical.jpg'];
+INFO['Suporte vertical para controle de PS5 · Branco'] = ['Suporte vertical branco para guardar dois controles de PS5 na mesa, feito em PLA leve e resistente. Tem passagem para o cabo USB, para deixar os controles carregando no suporte. Não acompanha controles nem cabo USB.', '[CONFIRME AS MEDIDAS E A GARANTIA]'];
+IMGS['Base de resfriamento multifuncional para PS5'] = ['assets/img/acessorios/base-resfriamento-1.jpg', 'assets/img/acessorios/base-resfriamento-2.jpg', 'assets/img/acessorios/base-resfriamento-3.jpg', 'assets/img/acessorios/base-resfriamento-4.jpg'];
+INFO['Base de resfriamento multifuncional para PS5'] = ['Base vertical para PS5 com duas ventoinhas de resfriamento, carregador para dois controles, suporte para headset, espaço para 12 jogos e três portas USB. Acompanha cabo USB-C.', '[CONFIRME A COMPATIBILIDADE COM PS5 SLIM E PRO, A MARCA E A GARANTIA]'];
+IMGS['Headset sem fio Sony Pulse Elite · PS5 · Branco'] = ['assets/img/acessorios/pulse-elite-1.jpg', 'assets/img/acessorios/pulse-elite-2.jpg', 'assets/img/acessorios/pulse-elite-3.jpg', 'assets/img/acessorios/pulse-elite-4.jpg'];
+INFO['Headset sem fio Sony Pulse Elite · PS5 · Branco'] = ['Headset sem fio Sony PULSE Elite, modelo CFI-ZWH2L, na cor branca. Conecta no PS5, no PC/Mac e no celular por Bluetooth, e acompanha suporte de parede para pendurar e carregar.', '[CONFIRME O QUE VEM NA CAIXA E A GARANTIA]'];
+IMGS['Base de carregamento Sony para controle DualSense · CFI-ZDS1'] = ['assets/img/acessorios/base-dualsense-1.jpg', 'assets/img/acessorios/base-dualsense-2.jpg', 'assets/img/acessorios/base-dualsense-3.jpg'];
+INFO['Base de carregamento Sony para controle DualSense · CFI-ZDS1'] = ['Base de carregamento oficial Sony, modelo CFI-ZDS1, para carregar até dois controles DualSense ao mesmo tempo. Basta encaixar o controle, sem precisar ligar o console.', '[CONFIRME O QUE VEM NA CAIXA, A VOLTAGEM DO ADAPTADOR E A GARANTIA]'];
+IMGS['Capa de proteção antipoeira para PlayStation 5 Slim · Preta'] = ['assets/img/acessorios/capa-ps5-slim-1.jpg', 'assets/img/acessorios/capa-ps5-slim-2.jpg', 'assets/img/acessorios/capa-ps5-slim-3.jpg', 'assets/img/acessorios/capa-ps5-slim-4.jpg'];
+INFO['Capa de proteção antipoeira para PlayStation 5 Slim · Preta'] = ['Capa de proteção antipoeira preta para PlayStation 5 Slim, nas versões Digital e com leitor. Mede 37 × 24,4 × 8,4 cm e tem abertura traseira com fecho para passar os cabos.', '[CONFIRME O MATERIAL, A COMPATIBILIDADE EXATA E A GARANTIA]'];
+var NOB = { 'EA Sports FC 27 · PS5': true, 'Grand Theft Auto VI · Digital': true };
+IMGS['Grand Theft Auto VI · Xbox Series'] = ['assets/img/jogos/gta6-xbox-caixa.jpg', 'assets/img/jogos/gta6-arte.jpg'];
+INFO['Grand Theft Auto VI · Xbox Series'] = ['Grand Theft Auto VI para Xbox Series X|S, em caixa física.', '[CONFIRME SE A CAIXA TRAZ DISCO OU CÓDIGO DE RESGATE]'];
+IMGS['Grand Theft Auto VI · Digital'] = ['assets/img/jogos/gta6-digital.png'];
+INFO['Grand Theft Auto VI · Digital'] = ['Grand Theft Auto VI em versão digital, entregue como código de resgate.', '[CONFIRME A PLATAFORMA DO CÓDIGO E COMO ELE É ENTREGUE]'];
+IMGS['EA Sports FC 27 · PS5'] = ['assets/img/jogos/fc27-capa.jpg', 'assets/img/jogos/fc27-cena-1.jpg', 'assets/img/jogos/fc27-cena-2.jpg', 'assets/img/jogos/fc27-cena-3.jpg', 'assets/img/jogos/fc27-cena-4.jpg'];
+INFO['EA Sports FC 27 · PS5'] = ['EA Sports FC 27 para PlayStation 5, em mídia física.', '[CONFIRME EDIÇÃO, IDIOMAS E CLASSIFICAÇÃO INDICATIVA]'];
+var STATUS = { 'Grand Theft Auto VI · PS5': 'Pré-venda · lançamento em 19/11', 'Grand Theft Auto VI · Xbox Series': 'Pré-venda · lançamento em 19/11', 'Grand Theft Auto VI · Digital': 'Pré-venda · lançamento em 19/11' };
+IMGS['Grand Theft Auto VI · PS5'] = ['assets/img/jogos/gta6-ps5-caixa.jpg', 'assets/img/jogos/gta6-arte.jpg'];
+INFO['Grand Theft Auto VI · PS5'] = ['Grand Theft Auto VI, Edição Standard para PlayStation 5, em caixa física.', '[CONFIRME SE A CAIXA TRAZ DISCO OU CÓDIGO DE RESGATE]'];
+var PDISC = { 'Controle sem fio para PS5': 0.3, 'Controle sem fio para Xbox Series': 0.3, 'Grand Theft Auto VI · PS5': 0.3, 'EA Sports FC 27 · PS5': 0.5, 'Grand Theft Auto VI · Xbox Series': 0.3, 'Grand Theft Auto VI · Digital': 0.3, 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta': 0, 'Base de carregamento Sony para controle DualSense · CFI-ZDS1': 0, 'Headset sem fio Sony Pulse Elite · PS5 · Branco': 0.7, 'Base de resfriamento multifuncional para PS5': 0.4, 'Suporte vertical para controle de PS5 · Branco': 0, 'Suporte para controle DualSense · Tema GTA VI': 0.3, 'Cabo USB-C para carregar controle de PS5': 0.2, 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54': 0.4 };
+IMGS['Controle sem fio para Xbox Series'] = ['assets/img/controles/xbox-1.jpg', 'assets/img/controles/xbox-2.jpg', 'assets/img/controles/xbox-3.jpg', 'assets/img/controles/xbox-4.jpg', 'assets/img/controles/xbox-5.jpg'];
+INFO['Controle sem fio para Xbox Series'] = ['Controle sem fio Xbox na cor Robot White, com direcional híbrido, botão Compartilhar, gatilhos texturizados e conexão Xbox Wireless e Bluetooth.', '[CONFIRME O QUE VEM NA CAIXA E A GARANTIA]'];
+IMGS['Controle sem fio para PS5'] = ['assets/img/controles/ps5-1.jpg', 'assets/img/controles/ps5-2.jpg', 'assets/img/controles/ps5-3.jpg', 'assets/img/controles/ps5-4.jpg', 'assets/img/controles/ps5-5.jpg', 'assets/img/controles/ps5-6.jpg'];
+INFO['Controle sem fio para PS5'] = ['Controle sem fio DualSense para PS5, na cor branca, com resposta tátil, gatilhos adaptáveis e sensor de movimento.', '[CONFIRME O QUE VEM NA CAIXA E A GARANTIA]'];
+var catalog = [];
+var add = function (cat, rows, page) { return rows.map(function (r) { var p = { id: catalog.length, cat: cat, short: r[0], tag: r[1], name: r[2], page: !!page }; p.imgs = IMGS[p.name] || []; p.img = p.imgs[0] || ''; p.hasImg = p.imgs.length > 0; p.noImg = !p.hasImg; p.imgCls = 'zpimg' + (NOB[p.name] ? ' znob' : ''); p.old = PRICES[p.name] || 0; p.disc = PDISC[p.name] == null ? DISC : PDISC[p.name]; p.price = p.old > 0 ? Math.round(p.old * (1 - p.disc) * 100) / 100 : 0; p.out = !!OUT[p.name]; p.cardCls = 'zprod' + (p.out ? ' zout' : ''); p.hasOld = !p.out && p.old > 0 && p.disc > 0; p.oldLabel = money(p.old); p.offLabel = '-' + Math.round(p.disc * 100) + '%'; p.instLabel = money(p.price / 6); p.hasInst = !p.out && p.price > 0; p.priceLabel = p.out ? 'Sem estoque' : (p.price > 0 ? money(p.price) : 'R$ [SEU PREÇO]'); p.open = function () { self.setState({ pid: p.id, pimg: 0, searchOpen: false, q: '' }); }; catalog.push(p); return p; }); };
+var consoles = add('Consoles', [['PS5 PRO', 'PlayStation · SSD 1TB', 'PlayStation 5 Pro'], ['PS5 SLIM', 'PlayStation · Slim', 'PlayStation 5 Slim'], ['SERIES X', 'Xbox', 'Xbox Series X'], ['SERIES S', 'Xbox · SSD 512GB', 'Xbox Series S']]);
+add('Controles', [['GTA VI', 'Edição limitada', 'Controle GTA VI · Preto'], ['GTA VI', 'Edição limitada', 'Controle GTA VI · Branco']], true);
+var controls = add('Controles', [['PS5', 'PlayStation · DualSense', 'Controle sem fio para PS5'], ['XBOX', 'Xbox · Robot White', 'Controle sem fio para Xbox Series']]);
+var gtaGames = add('Jogos', [['GTA VI', 'PS5 · Físico', 'Grand Theft Auto VI · PS5'], ['GTA VI', 'Xbox Series · Físico', 'Grand Theft Auto VI · Xbox Series'], ['GTA VI', 'Digital', 'Grand Theft Auto VI · Digital']], true);
+var newGames = add('Jogos', [['FC 27', 'PS5 · Físico', 'EA Sports FC 27 · PS5']]);
+var accessories = add('Acessórios', [['CAPA', 'PS5 Slim', 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta'], ['BASE', 'PS5 · Sony', 'Base de carregamento Sony para controle DualSense · CFI-ZDS1'], ['HEADSET', 'PS5 · Sony · CFI-ZWH2L', 'Headset sem fio Sony Pulse Elite · PS5 · Branco'], ['BASE', 'PS5 · Ventilação', 'Base de resfriamento multifuncional para PS5'], ['SUPORTE', 'PS5 · 2 controles', 'Suporte vertical para controle de PS5 · Branco'], ['SUPORTE', 'PS5 · Tema GTA VI', 'Suporte para controle DualSense · Tema GTA VI'], ['CABO', 'PS5 · USB-C', 'Cabo USB-C para carregar controle de PS5'], ['ESTAÇÃO', 'PS5 · Krab · RGB', 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54']]);
+var q = norm(st.q).trim();
+var results = q.length < 2 ? [] : catalog.filter(function (p) { return norm(p.name + ' ' + p.cat + ' ' + p.tag).indexOf(q) >= 0; }).slice(0, 12);
+var pd = st.pid == null ? null : catalog[st.pid];
+var N = 5;
+return {
+gtaPs: gtaGames, newGames: newGames, consoles: consoles, controls: controls, accessories: accessories,
+searchOpen: !!st.searchOpen,
+toggleSearch: function () { self.setState({ searchOpen: !st.searchOpen, q: '' }); },
+searchType: function (e) { self.setState({ q: e.target.value }); },
+results: results.map(function (p) { return { name: p.name, cat: p.cat, open: p.open }; }),
+hasResults: results.length > 0,
+noResults: q.length >= 2 && results.length === 0,
+pdOpen: !!pd,
+pdImgCls: pd ? pd.imgCls : 'zpimg',
+pdHasImg: !!(pd && pd.hasImg), pdNoImg: !!(pd && !pd.hasImg),
+pdImg: pd && pd.hasImg ? pd.imgs[Math.min(st.pimg || 0, pd.imgs.length - 1)] : '',
+pdThumbs: pd ? pd.imgs.map(function (u, i) { var on = i === Math.min(st.pimg || 0, pd.imgs.length - 1); return { src: u, cls: 'zth' + (on ? ' on' : '') + (NOB[pd.name] ? ' znob' : ''), pressed: on ? 'true' : 'false', label: 'Foto ' + (i + 1), pick: function () { self.setState({ pimg: i }); } }; }) : [],
+pdName: pd ? pd.name : '', pdCat: pd ? pd.cat : '', pdShort: pd ? pd.short : '',
+pdPrice: pd ? pd.priceLabel : '',
+pdHasOld: !!(pd && pd.hasOld), pdInstOnly: !!(pd && !pd.hasOld && pd.hasInst), pdOld: pd ? pd.oldLabel : '', pdOff: pd ? pd.offLabel : '', pdInst: pd ? pd.instLabel : '', pdSave: pd ? money(pd.old - pd.price) : '',
+pdStatus: pd && STATUS[pd.name] ? STATUS[pd.name] : pd && pd.page ? 'Disponível na Black Friday' : (pd && pd.out ? 'Sem estoque no momento' : (pd && pd.price > 0 ? 'Disponível' : 'Em breve na Zera')),
+pdDesc: pd ? (INFO[pd.name] ? INFO[pd.name][0] : (pd.page ? 'Produto em destaque na Zera Games. Veja fotos, detalhes e condições na página completa.' : DESC[pd.cat][0])) : '',
+pdNote: pd ? (INFO[pd.name] ? INFO[pd.name][1] : (pd.page ? '' : DESC[pd.cat][1])) : '',
+pdHasPage: !!(pd && pd.page),
+closePd: function () { self.setState({ pid: null }); },
+s3: 'zslide' + (s === 3 ? ' on' : ''), s4: 'zslide' + (s === 4 ? ' on' : ''),
+d3: 'zdot' + (s === 3 ? ' on' : ''), d4: 'zdot' + (s === 4 ? ' on' : ''),
+go3: go(3), go4: go(4),
+s0: 'zslide' + (s === 0 ? ' on' : ''),
+s1: 'zslide' + (s === 1 ? ' on' : ''),
+s2: 'zslide' + (s === 2 ? ' on' : ''),
+d0: 'zdot' + (s === 0 ? ' on' : ''),
+d1: 'zdot' + (s === 1 ? ' on' : ''),
+d2: 'zdot' + (s === 2 ? ' on' : ''),
+go0: go(0), go1: go(1), go2: go(2),
+prev: go(s - 1),
+next: go(s + 1),
+newsDone: !!st.newsDone,
+newsSubmit: function (e) { e.preventDefault(); self.setState({ newsDone: true }); }
+};
+}
+}
+</script>
+</body>
+</html>

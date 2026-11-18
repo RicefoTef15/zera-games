@@ -1,0 +1,1065 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Zera Games — DualSense Edição Limitada GTA VI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Controle DualSense Edição Limitada GTA VI, preto e branco. Zera Games, Praia Grande – SP.">
+<link rel="icon" href="assets/img/marca/zera-icone.png">
+<script src="assets/js/zera-runtime.js" defer></script>
+</head>
+<body>
+<template id="dc-template">
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+body{margin:0}
+.lr{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--fg);transition:background .5s ease,color .5s ease}
+.lr.night{--bg:#0B0A12;--surface:#15131F;--line:#2D2A3D;--fg:#F4F2FA;--muted:#ABA6BF;--accent:#FF6DB5;--accent2:#8CA2FF;--cta:#FF4FA3;--ctaText:#16060E}
+.lr.day{--bg:#F3F0F8;--surface:#FFFFFF;--line:#D9D3E6;--fg:#14121C;--muted:#57526C;--accent:#B3136E;--accent2:#2B45C8;--cta:#B3136E;--ctaText:#FFFFFF}
+.lr a{color:var(--accent)}.lr a:hover{color:var(--fg)}
+.lr h1,.lr h2,.lr h3{font-family:'Space Grotesk',Inter,sans-serif;margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;align-items:center}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.tiles{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
+.h1{font-size:68px;line-height:1.02;letter-spacing:-0.02em}
+.h2{font-size:40px;line-height:1.1;letter-spacing:-0.01em}
+.opt{display:flex;align-items:center;gap:14px;flex:1 1 220px;min-height:76px;padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;text-align:left;cursor:pointer}
+.opt.on{border-color:var(--accent)}
+.spin{width:20px;height:20px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:zspin .8s linear infinite}
+@keyframes zspin{to{rotate:360deg}}
+.stkline{display:flex;align-items:center;gap:8px;font:700 15px Inter,sans-serif;color:var(--accent)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);animation:zpulse 1.6s ease-in-out infinite}
+@keyframes zpulse{0%,100%{opacity:1;scale:1}50%{opacity:.35;scale:.7}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+.opt:disabled{opacity:.45;cursor:not-allowed}
+.sw{width:36px;height:36px;border-radius:50%;flex:none;border:2px solid var(--line)}
+.sw-b{background:#17161C}.sw-w{background:#FFFFFF}
+.pip{flex:1;height:8px;border-radius:4px;background:var(--line)}
+.pip.on{background:var(--accent)}
+.qbtn{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font:600 20px Inter,sans-serif;cursor:pointer}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:0 32px;border-radius:14px;background:var(--cta);color:var(--ctaText) !important;font:700 18px 'Space Grotesk',Inter,sans-serif;text-decoration:none}
+.cta:hover{filter:brightness(1.08)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px}
+.tile{aspect-ratio:1;border-radius:12px;display:flex;flex-direction:column;justify-content:space-between;padding:12px;box-sizing:border-box;font-size:12px;font-weight:600}
+.tile-b{background:#17161C;color:#F4F2FA;border:1px solid #3A3750}
+.tile-w{background:#FFFFFF;color:#14121C;border:1px solid #C9C2DA}
+.tile.sold{opacity:.35;text-decoration:line-through}
+.duo{position:relative;border-radius:22px;padding:0;border:2px solid var(--line);background:#EFEBF6;color:#14121C;font:inherit;text-align:left;cursor:pointer;overflow:hidden}
+.duo.on{border-color:var(--accent)}
+.lr details{border-top:1px solid var(--line);padding:20px 0}
+.lr summary{cursor:pointer;font:500 19px 'Space Grotesk',Inter,sans-serif;min-height:28px}
+.bf{background:var(--cta);color:var(--ctaText);font:700 14px 'Space Grotesk',Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:12px 16px}
+.badge{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:8px;background:var(--cta);color:var(--ctaText);font:700 16px 'Space Grotesk',Inter,sans-serif}
+.pricebox{border:2px solid var(--accent);border-radius:18px;padding:22px;background:var(--surface)}
+.trust{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.stage{perspective:1100px;touch-action:pan-y;user-select:none;cursor:grab}
+.stage:active{cursor:grabbing}
+.angs{display:flex;align-items:center;gap:10px;margin-top:14px}
+.ang{flex:1;max-width:92px;aspect-ratio:1;padding:0;border-radius:14px;border:2px solid var(--line);background:#EFEBF6;cursor:pointer;overflow:hidden}
+.ang.on{border-color:var(--accent)}
+.ang img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.rig{position:absolute;inset:0;background:#EFEBF6;transform:rotateY(calc(var(--ry,0)*1deg)) rotateX(calc(var(--rx,0)*1deg)) scale(var(--sc,1));transition:transform var(--dur,.9s) cubic-bezier(.2,1.25,.3,1);will-change:transform}
+.glow{position:absolute;left:12%;right:12%;top:16%;bottom:16%;border-radius:50%;background:radial-gradient(closest-side,rgba(96,84,255,.26),rgba(255,79,163,.10) 62%,transparent);translate:calc(var(--ry,0)*-1.6px) calc(var(--rx,0)*1.6px);transition:translate var(--dur,.9s) ease-out}
+.shadow{position:absolute;left:24%;right:24%;bottom:5%;height:6%;border-radius:50%;background:rgba(24,12,60,.42);filter:blur(16px);translate:calc(var(--ry,0)*-2px) 0;transition:translate var(--dur,.9s) ease-out;animation:zsh 5s ease-in-out infinite}
+.ph{animation:zfloat 5s ease-in-out infinite;transform:perspective(1100px) rotateY(-90deg) scale(.9);opacity:0;transition:transform .28s ease-in,opacity .01s linear .28s}
+.ph.on{transform:perspective(1100px) rotateY(0deg) scale(1);opacity:1;transition:transform .65s cubic-bezier(.2,1.3,.3,1) .28s,opacity .01s linear .28s}
+.glare{position:absolute;inset:-20%;pointer-events:none;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.5) 50%,transparent 58%);translate:calc(var(--ry,0)*9px) 0;opacity:var(--gl,0);transition:translate var(--dur,.9s) ease-out,opacity .4s ease}
+@keyframes zfloat{0%,100%{translate:0 6px;rotate:-0.8deg}50%{translate:0 -10px;rotate:0.8deg}}
+@keyframes zsh{0%,100%{scale:1;opacity:1}50%{scale:.86;opacity:.7}}
+@media (prefers-reduced-motion:reduce){.ph,.shadow{animation:none}}
+.rot{width:44px;height:44px;border-radius:50%;border:1px solid #C9C2DA;background:#FFFFFF;color:#14121C;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.ugc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.proof{position:relative;margin:0;border-radius:20px;overflow:hidden;aspect-ratio:9/14;background:var(--surface);border:1px solid var(--line)}
+.proof img{display:block;width:100%;height:100%;object-fit:cover}
+.proof figcaption{position:absolute;left:12px;right:12px;bottom:12px;display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:rgba(11,10,18,.82);color:#FFFFFF;font:600 14px Inter,sans-serif}
+.slot{aspect-ratio:4/5;border-radius:16px;border:2px dashed var(--line);background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;box-sizing:border-box;text-align:center;font-size:13px;font-weight:600;color:var(--muted)}
+.prod{display:flex;flex-direction:column;gap:14px;padding:20px}
+.prodimg{aspect-ratio:4/3;border-radius:12px;border:2px dashed var(--line);display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;box-sizing:border-box;font-size:13px;font-weight:600;color:var(--muted)}
+.tag{align-self:flex-start;padding:5px 10px;border-radius:6px;border:1px solid var(--line);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2)}
+.cta2{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:12px;border:2px solid var(--accent);color:var(--fg) !important;font:700 16px 'Space Grotesk',Inter,sans-serif;text-decoration:none}
+.cta2:hover{background:var(--accent);color:var(--ctaText) !important}
+.hbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--fg);font:600 15px Inter,sans-serif;cursor:pointer}
+.hbtn:hover{border-color:var(--accent)}
+.hbtn.fill{background:var(--cta);border-color:var(--cta);color:var(--ctaText)}
+.modal{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(8,6,16,.72)}
+.sheet{width:100%;max-width:440px;box-sizing:border-box;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.tab{flex:1;min-height:44px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--muted);font:600 15px Inter,sans-serif;cursor:pointer}
+.tab.on{border-color:var(--accent);color:var(--fg)}
+.field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+.field input{min-height:48px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:400 16px Inter,sans-serif}
+.count{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--cta);color:var(--ctaText);font:700 12px Inter,sans-serif}
+.scrim{position:fixed;inset:0;z-index:20;border:0;padding:0;background:rgba(8,6,16,.72);cursor:pointer}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:21;width:100%;max-width:440px;box-sizing:border-box;background:var(--surface);color:var(--fg);border-left:1px solid var(--line);display:flex;flex-direction:column}
+.citem{display:flex;flex-direction:column;gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}
+.linkbtn{border:0;background:transparent;padding:0;min-height:44px;color:var(--muted);font:500 13px Inter,sans-serif;text-decoration:underline;cursor:pointer}
+button.cta2{background:transparent;cursor:pointer}
+.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;margin:0}
+.spec{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.45}
+.spec dt{color:var(--muted);flex:none}
+.spec dd{margin:0;font-weight:600;text-align:right}
+@media (max-width:860px){.specs{grid-template-columns:minmax(0,1fr)}}
+.co{position:fixed;inset:0;z-index:30;overflow-y:auto;background:var(--bg);color:var(--fg)}
+.cogrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:start}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.full{grid-column:1 / -1}
+.stepn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--cta);color:var(--ctaText);font:700 16px 'Space Grotesk',Inter,sans-serif;flex:none}
+.sumrow{display:flex;justify-content:space-between;gap:16px;font-size:15px;line-height:1.45}
+@media (max-width:860px){.cogrid,.fgrid{grid-template-columns:minmax(0,1fr)}.cosum{order:-1}}
+.accgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:28px;align-items:start}
+.ordbtn{display:flex;flex-direction:column;gap:8px;width:100%;text-align:left;padding:18px 20px;border-radius:16px;border:2px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;cursor:pointer}
+.ordbtn.on{border-color:var(--accent)}
+.tl{display:flex;gap:16px;padding-bottom:22px;position:relative}
+.tldot{width:30px;height:30px;border-radius:50%;flex:none;border:3px solid var(--line);background:var(--surface);box-sizing:border-box;position:relative;z-index:1}
+.tl.done .tldot{background:var(--accent);border-color:var(--accent)}
+.tl.now .tldot{border-color:var(--accent);box-shadow:0 0 0 6px rgba(255,79,163,.22)}
+.tl::before{content:'';position:absolute;left:14px;top:30px;bottom:0;width:3px;background:var(--line)}
+.tl.done::before{background:var(--accent)}
+.tl.last::before{display:none}
+.tl.todo{color:var(--muted)}
+@media (max-width:860px){.accgrid{grid-template-columns:minmax(0,1fr)}}
+.bump{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--line);border-radius:14px}
+.bump img{width:72px;height:72px;flex:none;border-radius:10px;background:#EFEBF6;object-fit:contain}
+.sticky{position:sticky;bottom:0;z-index:5;background:var(--surface);border-top:1px solid var(--line)}
+@media (max-width:860px){
+.stagecol{order:-1}
+.stage{max-height:340px}
+.ugc{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding-bottom:6px}
+.proof{flex:0 0 78%;scroll-snap-align:start}
+.sticky .hide-sm{display:none}
+.cta{width:100%;box-sizing:border-box}
+.cols2,.cols3{grid-template-columns:minmax(0,1fr);gap:32px}
+.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+.h1{font-size:44px}.h2{font-size:30px}
+}
+</style>
+</helmet>
+<div class="lr {{themeClass}}" style="min-height: 100vh">
+
+<div class="bf">Black Friday · {{bfLine}}</div>
+<header class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 22px; padding-bottom: 22px">
+<div style="display: flex; align-items: center; gap: 10px">
+<img src="assets/img/marca/zera-icone.jpg" alt="" width="40" height="40" style="display: block; border-radius: 10px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em">ZERA GAMES</span>
+</div>
+<nav aria-label="Conta" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<a class="hbtn" href="index.html" style="text-decoration: none; color: var(--fg)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.500 8.500L9 3l6.500 5.500V15h-4.500v-4h-4v4H2.500z"></path></svg>Início</a>
+<button type="button" class="hbtn" onClick="{{demoAccount}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.500L9 2l7 3.500v7L9 16l-7-3.500zM2 5.500L9 9l7-3.500M9 9v7"></path></svg>Meus pedidos</button>
+<button type="button" class="hbtn" onClick="{{openCart}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 2h2.2l2 9h8.2l1.6-6H5"></path><circle cx="7" cy="14.5" r="1.2"></circle><circle cx="13" cy="14.5" r="1.2"></circle></svg>Carrinho<span class="count">{{cartCount}}</span></button>
+<button type="button" class="hbtn" onClick="{{accAct1}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="3.2"></circle><path d="M2.5 16a6.5 6.5 0 0 1 13 0"></path></svg>{{accBtn1}}</button>
+<button type="button" class="hbtn fill" onClick="{{accAct2}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6" r="3.2"></circle><path d="M1 16a6 6 0 0 1 11-3M14 9v6M11 12h6"></path></svg>{{accBtn2}}</button>
+</nav>
+</header>
+<div aria-hidden="true" style="height: 4px; background: linear-gradient(90deg, #2A6BFF, #7A3FD1)"></div>
+
+<section id="comprar" class="wrap" style="padding-top: 56px; padding-bottom: 80px">
+<div class="cols2">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent)">Edição limitada · Lote único de 14 unidades</span>
+<h1 class="h1">Vice City na palma da sua mão.</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.55; color: var(--muted); max-width: 520px">Controle sem fio DualSense Edição Limitada Grand Theft Auto VI, nas duas versões. Escolha o seu lado da cidade — a página muda junto com você.</p>
+
+<div role="group" aria-label="Escolha a cor" style="display: flex; flex-wrap: wrap; gap: 12px">
+<sc-for list="{{options}}" as="o" hint-placeholder-count="2">
+<button type="button" class="{{o.cls}}" aria-pressed="{{o.pressed}}" disabled="{{o.soldOut}}" onClick="{{o.pick}}">
+<span class="{{o.swCls}}" aria-hidden="true"></span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="display: flex; align-items: baseline; gap: 8px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px">{{o.name}}</span>
+<span style="font-size: 13px; color: var(--muted)">{{o.mood}}</span>
+</span>
+<span class="stkline"><span class="dot" aria-hidden="true"></span>{{o.left}}</span>
+</span>
+</button>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; font-size: 14px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; color: var(--accent)">{{stockLine}}</span>
+<span style="color: var(--muted)">Estoque real, atualizado à mão</span>
+</div>
+<div aria-hidden="true" style="display: flex; gap: 6px">
+<sc-for list="{{pips}}" as="p" hint-placeholder-count="8">
+<span class="{{p.cls}}"></span>
+</sc-for>
+</div>
+</div>
+
+<div class="pricebox" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{hasFrom}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; align-items: center; gap: 12px">
+<span class="badge">{{offLabel}}</span>
+<span style="font-size: 17px; color: var(--muted)">de <s>{{fromLabel}}</s> por</span>
+</div>
+</sc-if>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 60px; line-height: 1; letter-spacing: -0.02em">{{totalLabel}}</span>
+<sc-if value="{{instOn}}" hint-placeholder-val="{{true}}">
+<span style="font-size: 18px; font-weight: 600">ou em até <span style="color: var(--accent); font-weight: 700">{{instCount}}x de {{instValue}}</span> no cartão</span>
+</sc-if>
+<sc-if value="{{hasFrom}}" hint-placeholder-val="{{true}}">
+<span style="font-size: 15px; font-weight: 600; color: var(--accent)">Você economiza {{saveLabel}}</span>
+</sc-if>
+<span style="font-size: 13px; color: var(--muted)">{{totalCaption}}</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<button type="button" class="qbtn" aria-label="Diminuir quantidade" onClick="{{less}}">−</button>
+<span aria-live="polite" style="min-width: 28px; text-align: center; font-weight: 600; font-size: 18px">{{qty}}</span>
+<button type="button" class="qbtn" aria-label="Aumentar quantidade" onClick="{{more}}">+</button>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 15px"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent2)"><path d="M1.5 5h10v8h-10zM11.500 8h4l3 3v2h-7"></path><circle cx="5" cy="14.5" r="1.6"></circle><circle cx="14.5" cy="14.5" r="1.6"></circle></svg>Onde deseja receber seu pedido?</span>
+<button type="button" class="linkbtn" style="font-size: 15px; font-weight: 700; color: var(--accent)" onClick="{{cepToggle}}">{{cepLink}}</button>
+</div>
+<sc-if value="{{cepOpen}}" hint-placeholder-val="{{false}}">
+<form onSubmit="{{cepSubmit}}" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px">
+<label class="field" style="flex: 1 1 160px">CEP<input type="text" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" required onChange="{{cepType}}"></label>
+<button type="submit" class="cta2" style="min-height: 48px">Calcular frete</button>
+</form>
+</sc-if>
+<sc-if value="{{cepErr}}" hint-placeholder-val="{{false}}">
+<span role="alert" style="font-size: 14px; color: var(--accent)">Digite um CEP com 8 números.</span>
+</sc-if>
+<sc-if value="{{cepLoading}}" hint-placeholder-val="{{false}}">
+<div role="status" style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--muted)">
+<span class="spin" aria-hidden="true"></span>
+<span>Calculando o frete para {{cepShown}}…</span>
+</div>
+</sc-if>
+<sc-if value="{{cepDone}}" hint-placeholder-val="{{false}}">
+<div role="status" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px">
+<span style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 13px; color: var(--muted)">Entrega para o CEP {{cepShown}}</span>
+<span style="font-size: 16px; font-weight: 700">{{cepPlace}}</span>
+</span>
+<span class="badge" style="min-height: 40px; padding: 0 16px; font-size: 17px; letter-spacing: 0.04em">FRETE GRÁTIS</span>
+</div>
+</sc-if>
+</div>
+<button type="button" class="cta" style="border: 0; cursor: pointer" onClick="{{addController}}">
+<span>{{ctaLabel}}</span>
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
+</button>
+<div style="display: flex; flex-wrap: wrap; gap: 10px 22px">
+<span class="trust"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="12" height="8" rx="2"></rect><path d="M6 8V5a3 3 0 0 1 6 0v3"></path></svg>Pagamento em ambiente seguro</span>
+<span class="trust"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a6 6 0 1 0 2-4.5M3 3v3h3"></path></svg>7 dias para desistir da compra</span>
+<span class="trust"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l3.5 3.5L14 6"></path></svg>Estoque real, sem contador falso</span>
+</div>
+<span style="font-size: 13px; color: var(--muted)">Loja independente, sem vínculo com Sony ou Rockstar Games.</span>
+</div>
+
+<div class="stagecol">
+<div class="stage" onPointerDown="{{angDown}}" onPointerMove="{{tiltMove}}" onPointerLeave="{{tiltReset}}" onPointerUp="{{tiltUp}}" onPointerCancel="{{tiltReset}}" style="position: relative; aspect-ratio: 1; border-radius: 28px; background: #EFEBF6; overflow: hidden; border: 1px solid var(--line)">
+<div style="position: absolute; right: 16px; bottom: 14px; z-index: 2; display: flex; align-items: center; gap: 8px">
+<span style="font-size: 13px; font-weight: 600; color: #4A4560">{{hintText}}</span>
+</div>
+<sc-if value="{{hasFrom}}" hint-placeholder-val="{{true}}">
+<span class="badge" style="position: absolute; top: 18px; right: 18px; z-index: 2; min-height: 44px; font-size: 20px; padding: 0 16px">{{offLabel}}</span>
+</sc-if>
+<div class="rig">
+<div class="glow" aria-hidden="true"></div>
+<div class="shadow" aria-hidden="true"></div>
+<img class="{{f0}}" src="assets/img/controle-gta6/preto-frente.jpg" alt="Controle DualSense Edição Limitada Grand Theft Auto VI na cor preta, de frente" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none">
+<img class="{{f1}}" src="assets/img/controle-gta6/preto-diagonal.jpg" alt="Controle preto visto na diagonal" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none">
+<img class="{{f2}}" src="assets/img/controle-gta6/preto-lateral.jpg" alt="Controle preto visto de lado" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none">
+<img class="{{f3}}" src="assets/img/controle-gta6/preto-gatilhos.jpg" alt="Controle preto visto por cima, com gatilhos e entrada USB-C" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none">
+<img class="{{f4}}" src="assets/img/controle-gta6/preto-costas.jpg" alt="Costas do controle preto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none">
+<img class="{{whiteCls}}" src="assets/img/controle-gta6/branco-frente.jpg" alt="Controle DualSense Edição Limitada Grand Theft Auto VI na cor branca, de frente" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none">
+<img class="{{g1}}" src="assets/img/controle-gta6/branco-lateral.jpg" alt="Controle branco visto de lado" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none">
+<img class="{{g2}}" src="assets/img/controle-gta6/branco-gatilhos.jpg" alt="Controle branco visto por cima, com gatilhos e entrada USB-C" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none">
+<img class="{{g3}}" src="assets/img/controle-gta6/branco-costas.jpg" alt="Costas do controle branco" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none">
+<div class="glare" aria-hidden="true"></div>
+</div>
+<span style="position: absolute; left: 20px; bottom: 18px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: #14121C">{{stageLabel}}</span>
+</div>
+<sc-if value="{{showAngles}}" hint-placeholder-val="{{true}}">
+<div class="angs" role="group" aria-label="Ângulos do controle">
+<button type="button" class="{{t0}}" aria-label="Ver de frente" aria-pressed="{{p0}}" onClick="{{a0}}"><img src="assets/img/controle-gta6/preto-frente.jpg" alt=""></button>
+<button type="button" class="{{t1}}" aria-label="Ver na diagonal" aria-pressed="{{p1}}" onClick="{{a1}}"><img src="assets/img/controle-gta6/preto-diagonal.jpg" alt=""></button>
+<button type="button" class="{{t2}}" aria-label="Ver de lado" aria-pressed="{{p2}}" onClick="{{a2}}"><img src="assets/img/controle-gta6/preto-lateral.jpg" alt=""></button>
+<button type="button" class="{{t3}}" aria-label="Ver os gatilhos" aria-pressed="{{p3}}" onClick="{{a3}}"><img src="assets/img/controle-gta6/preto-gatilhos.jpg" alt=""></button>
+<button type="button" class="{{t4}}" aria-label="Ver as costas" aria-pressed="{{p4}}" onClick="{{a4}}"><img src="assets/img/controle-gta6/preto-costas.jpg" alt=""></button>
+<span style="margin-left: 6px; font-size: 14px; font-weight: 600; color: var(--muted)">{{angLabel}}</span>
+</div>
+</sc-if>
+<sc-if value="{{showAnglesW}}" hint-placeholder-val="{{false}}">
+<div class="angs" role="group" aria-label="Ângulos do controle branco">
+<button type="button" class="{{t0}}" aria-label="Ver de frente" aria-pressed="{{p0}}" onClick="{{a0}}"><img src="assets/img/controle-gta6/branco-frente.jpg" alt=""></button>
+<button type="button" class="{{t1}}" aria-label="Ver de lado" aria-pressed="{{p1}}" onClick="{{a1}}"><img src="assets/img/controle-gta6/branco-lateral.jpg" alt=""></button>
+<button type="button" class="{{t2}}" aria-label="Ver os gatilhos" aria-pressed="{{p2}}" onClick="{{a2}}"><img src="assets/img/controle-gta6/branco-gatilhos.jpg" alt=""></button>
+<button type="button" class="{{t3}}" aria-label="Ver as costas" aria-pressed="{{p3}}" onClick="{{a3}}"><img src="assets/img/controle-gta6/branco-costas.jpg" alt=""></button>
+<span style="margin-left: 6px; font-size: 14px; font-weight: 600; color: var(--muted)">{{angLabel}}</span>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+
+<section id="ficha" class="wrap" style="padding-top: 0; padding-bottom: 80px">
+<div class="card" style="padding: 36px">
+<h2 style="font-size: 28px; margin-bottom: 12px">Informações técnicas</h2>
+<dl class="specs">
+<div class="spec"><dt>Modelo</dt><dd>DualSense Edição Limitada Grand Theft Auto VI</dd></div>
+<div class="spec"><dt>Cores</dt><dd>Preto e Branco</dd></div>
+<div class="spec"><dt>Compatibilidade</dt><dd>PS5, PC, Mac e celulares compatíveis</dd></div>
+<div class="spec"><dt>Conexão</dt><dd>Sem fio (Bluetooth) ou cabo USB-C</dd></div>
+<div class="spec"><dt>Resposta tátil</dt><dd>Atuadores duplos</dd></div>
+<div class="spec"><dt>Gatilhos</dt><dd>Adaptáveis (L2 e R2)</dd></div>
+<div class="spec"><dt>Sensores</dt><dd>Sensor de movimento e touch pad</dd></div>
+<div class="spec"><dt>Áudio</dt><dd>Alto-falante, microfone e entrada de fone 3,5 mm</dd></div>
+<div class="spec"><dt>Bateria</dt><dd>Recarregável embutida, 1.560 mAh</dd></div>
+<div class="spec"><dt>Dimensões aproximadas</dt><dd>160 × 66 × 106 mm</dd></div>
+<div class="spec"><dt>Peso aproximado</dt><dd>280 g</dd></div>
+<div class="spec"><dt>Conteúdo da caixa</dt><dd>1 controle e materiais impressos (sem cabo USB)</dd></div>
+<div class="spec"><dt>Garantia</dt><dd>[SUA POLÍTICA DE GARANTIA]</dd></div>
+<div class="spec"><dt>Origem</dt><dd>[CONFIRME: produto oficial Sony, novo e lacrado]</dd></div>
+</dl>
+</div>
+</section>
+
+<section class="wrap" style="padding-top: 40px; padding-bottom: 80px">
+<div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; max-width: 640px">
+<h2 class="h2">Dois lados da mesma cidade.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--muted)">Toque em um deles para escolher. O miolo iridescente, que vai do azul ao violeta, é o mesmo nos dois.</p>
+</div>
+<div class="cols2" style="gap: 24px; align-items: stretch">
+<button type="button" class="{{duoBlackCls}}" aria-pressed="{{blackPressed}}" onClick="{{pickBlack}}">
+<img src="assets/img/controle-gta6/preto-frente.jpg" alt="" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; mix-blend-mode: multiply">
+<span style="display: flex; flex-direction: column; gap: 6px; padding: 0 28px 28px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 26px">Preto · Noite</span>
+<span style="font-size: 15px; line-height: 1.5; color: #4A4560">A vida noturna de Vice City: corpo escuro, palmeiras em relevo e símbolos em rosa neon.</span>
+<span style="font-size: 14px; font-weight: 600; color: #8E0F57">{{blackLeft}}</span>
+</span>
+</button>
+<button type="button" class="{{duoWhiteCls}}" aria-pressed="{{whitePressed}}" onClick="{{pickWhite}}">
+<img src="assets/img/controle-gta6/branco-frente.jpg" alt="" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; mix-blend-mode: multiply">
+<span style="display: flex; flex-direction: column; gap: 6px; padding: 0 28px 28px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 26px">Branco · Amanhecer</span>
+<span style="font-size: 15px; line-height: 1.5; color: #4A4560">O nascer do sol na praia: areia branca, céu em tons pastel e o mesmo relevo de palmeiras.</span>
+<span style="font-size: 14px; font-weight: 600; color: #8E0F57">{{whiteLeft}}</span>
+</span>
+</button>
+</div>
+</section>
+
+<section class="wrap" style="padding-top: 40px; padding-bottom: 80px">
+<h2 class="h2" style="margin-bottom: 36px; max-width: 640px">Bonito por fora, DualSense completo por dentro.</h2>
+<div class="cols3">
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="color: var(--accent2)"><path d="M4 14h3l2-6 4 12 3-9 2 3h6"></path></svg>
+<h3 style="font-size: 20px">Resposta tátil</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Vibração de alta definição que acompanha o que acontece na tela, do motor do carro ao asfalto molhado.</p>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent2)"><path d="M8 4h12v9a6 6 0 0 1-12 0z"></path><path d="M14 19v5M9 24h10"></path></svg>
+<h3 style="font-size: 20px">Gatilhos adaptáveis</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">L2 e R2 mudam de resistência conforme a ação, em jogos compatíveis.</p>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent2)"><path d="M14 25V12M14 12c0-5 3-8 8-9M14 12c0-5-3-8-8-9M14 14c4-3 7-3 10-1M14 14c-4-3-7-3-10-1"></path></svg>
+<h3 style="font-size: 20px">Palmeiras em relevo</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">O desenho é moldado no próprio corpo do controle: dá para ver e para sentir na pegada.</p>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent2)"><rect x="3" y="9" width="19" height="10" rx="2"></rect><path d="M25 12v4M11 12l-2 3h4l-2 3"></path></svg>
+<h3 style="font-size: 20px">Bateria com USB-C</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Bateria recarregável embutida, com carga por cabo USB-C.</p>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent2)"><path d="M5 17v-3a9 9 0 0 1 18 0v3"></path><rect x="3" y="16" width="5" height="8" rx="2"></rect><rect x="20" y="16" width="5" height="8" rx="2"></rect></svg>
+<h3 style="font-size: 20px">Áudio no controle</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Alto-falante e microfone embutidos, mais entrada para fone de ouvido.</p>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent2)"><rect x="3" y="5" width="22" height="14" rx="2"></rect><path d="M10 24h8M14 19v5"></path></svg>
+<h3 style="font-size: 20px">Além do PS5</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Funciona também em PC, Mac e celulares compatíveis.</p>
+</div>
+</div>
+</section>
+
+<section class="wrap" style="padding-top: 40px; padding-bottom: 80px">
+<div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; max-width: 640px">
+<h2 class="h2">Quem já está jogando com o seu.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--muted)">Clientes que levaram o controle na nossa loja em Praia Grande.</p>
+</div>
+<div class="ugc">
+<figure class="proof"><img src="assets/img/clientes/cliente-1.jpg" alt="Cliente segurando o controle preto Edição Limitada GTA VI" loading="lazy"><figcaption><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#FF6DB5" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.500l3.500 3.500L14 6"></path></svg>Comprou na loja · Preto</figcaption></figure>
+<figure class="proof"><img src="assets/img/clientes/cliente-2.jpg" alt="Cliente mostrando o controle preto Edição Limitada GTA VI" loading="lazy"><figcaption><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#FF6DB5" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.500l3.500 3.500L14 6"></path></svg>Comprou na loja · Preto</figcaption></figure>
+<figure class="proof"><img src="assets/img/clientes/cliente-3.jpg" alt="Cliente sorrindo com o controle preto Edição Limitada GTA VI" loading="lazy"><figcaption><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#FF6DB5" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.500l3.500 3.500L14 6"></path></svg>Comprou na loja · Preto</figcaption></figure>
+</div>
+</section>
+
+<section class="wrap" style="padding-top: 40px; padding-bottom: 80px">
+<h2 class="h2" style="margin-bottom: 36px">Como funciona</h2>
+<div class="cols3">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 44px; color: var(--accent2)">1</span>
+<h3 style="font-size: 20px">Escolha a cor</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Preto ou branco, e quantas unidades quer, até o limite do estoque.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 44px; color: var(--accent2)">2</span>
+<h3 style="font-size: 20px">Pague com segurança</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">[SUAS FORMAS DE PAGAMENTO: Pix, cartão, parcelamento]</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 44px; color: var(--accent2)">3</span>
+<h3 style="font-size: 20px">Receba em casa</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">[SEU PRAZO DE ENVIO E ENTREGA, com código de rastreio]</p>
+</div>
+</div>
+</section>
+
+<section id="relacionados" class="wrap" style="padding-top: 40px; padding-bottom: 80px">
+<div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; max-width: 640px">
+<h2 class="h2">Produtos relacionados</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: var(--muted)">O controle já está escolhido. Falta o jogo: Grand Theft Auto VI chega em 19 de novembro.</p>
+</div>
+<div class="cols3">
+<div class="card prod">
+<img src="assets/img/jogos/gta6-ps5-caixa-antiga.jpg" alt="Caixa do Grand Theft Auto VI para PS5" style="display: block; width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 12px; background: #FFFFFF">
+<span class="tag">PS5 · Físico</span>
+<h3 style="font-size: 21px">Grand Theft Auto VI — PS5</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Edição física para PlayStation 5. [CONFIRME O QUE VEM NA CAIXA]</p>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px">{{ps5Price}}</span>
+<button type="button" class="cta2" onClick="{{addPs5}}">Adicionar ao carrinho</button>
+</div>
+<div class="card prod">
+<img src="assets/img/jogos/gta6-xbox-caixa.jpg" alt="Caixa do Grand Theft Auto VI para Xbox Series X|S" style="display: block; width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 12px; background: #FFFFFF">
+<span class="tag">Xbox Series X|S · Físico</span>
+<h3 style="font-size: 21px">Grand Theft Auto VI — Xbox Series</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Edição física para Xbox Series X|S. [CONFIRME O QUE VEM NA CAIXA]</p>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px">{{xboxPrice}}</span>
+<button type="button" class="cta2" onClick="{{addXbox}}">Adicionar ao carrinho</button>
+</div>
+<div class="card prod">
+<img src="assets/img/jogos/gta6-digital.png" alt="Arte do Grand Theft Auto VI, versão digital" style="display: block; width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 12px; background: #1B0B33">
+<span class="tag">Digital</span>
+<h3 style="font-size: 21px">Grand Theft Auto VI — Digital</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">Versão digital. [PLATAFORMA, COMO O CÓDIGO É ENTREGUE E EM QUANTO TEMPO]</p>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px">{{digitalPrice}}</span>
+<button type="button" class="cta2" onClick="{{addDigital}}">Adicionar ao carrinho</button>
+</div>
+</div>
+</section>
+
+<section class="wrap" style="padding-top: 40px; padding-bottom: 80px; max-width: 860px">
+<h2 class="h2" style="margin-bottom: 24px">Perguntas frequentes</h2>
+<details>
+<summary>O controle é original?</summary>
+<p style="margin: 14px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted)">[CONFIRME COM SEU FORNECEDOR ANTES DE PUBLICAR: produto oficial Sony, novo e lacrado, com nota fiscal]</p>
+</details>
+<details>
+<summary>Vai ter reposição?</summary>
+<p style="margin: 14px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted)">Este lote tem 14 unidades: 8 pretas e 6 brancas. Não prometemos um segundo lote.</p>
+</details>
+<details>
+<summary>Qual é o prazo de entrega?</summary>
+<p style="margin: 14px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted)">[SEU PRAZO DE ENVIO E ENTREGA]</p>
+</details>
+<details>
+<summary>Tem garantia e posso devolver?</summary>
+<p style="margin: 14px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted)">[SUA POLÍTICA DE GARANTIA]. Em compras online você tem 7 dias após o recebimento para desistir, conforme o Código de Defesa do Consumidor.</p>
+</details>
+<details>
+<summary>Funciona no PC?</summary>
+<p style="margin: 14px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted)">Sim. Além do PS5, o DualSense conecta em PC, Mac e celulares compatíveis, por cabo USB-C ou Bluetooth.</p>
+</details>
+</section>
+
+<section class="wrap" style="padding-top: 24px; padding-bottom: 88px">
+<div class="card" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 40px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h2 class="h2">{{totalLeftLine}}</h2>
+<span style="font-size: 16px; color: var(--muted)">Selecionado agora: {{stageLabel}} · {{unitLabel}} no preço de Black Friday</span>
+</div>
+<a class="cta" href="#comprar">Escolher o meu</a>
+</div>
+</section>
+
+<section class="wrap" style="padding-top: 0; padding-bottom: 88px">
+<div class="cols2" style="gap: 24px; align-items: stretch">
+<div class="card" style="display: flex; flex-direction: column; gap: 16px; padding: 36px">
+<svg aria-hidden="true" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><rect x="4" y="7" width="24" height="18" rx="3"></rect><path d="M5 9l11 9 11-9"></path></svg>
+<h2 style="font-size: 30px; line-height: 1.15">Receba as próximas ofertas antes de todo mundo.</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--muted)">Edições limitadas acabam rápido. Deixe seu e-mail e avisamos quando chegar um lote novo.</p>
+<form onSubmit="{{newsSubmit}}" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px">
+<label class="field" style="flex: 1 1 240px">Seu melhor e-mail<input type="email" name="email" autocomplete="email" placeholder="voce@email.com" required></label>
+<button type="submit" class="cta" style="border: 0; cursor: pointer; min-height: 48px; padding: 0 24px; font-size: 16px">Quero receber</button>
+</form>
+<sc-if value="{{newsDone}}" hint-placeholder-val="{{false}}">
+<span role="status" style="font-size: 14px; line-height: 1.5; color: var(--accent)">Demonstração: o cadastro passa a funcionar quando o formulário for conectado à sua ferramenta de e-mail.</span>
+</sc-if>
+<span style="font-size: 13px; line-height: 1.5; color: var(--muted)">Ao se cadastrar, você aceita receber e-mails da Zera Games. Dá para sair da lista quando quiser.</span>
+</div>
+<div class="card" style="display: flex; flex-direction: column; padding: 0; overflow: hidden">
+<div style="position: relative; flex: 1; min-height: 240px; background: #E8EAED">
+<svg aria-hidden="true" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%" fill="none" stroke="#FFFFFF" stroke-linecap="round"><path d="M330 -10C320 60 300 110 310 160S350 250 340 310" stroke-width="16"></path><path d="M-10 90C80 70 160 120 250 100S420 60 610 110" stroke-width="9"></path><path d="M-10 220C90 200 180 240 300 215S480 190 610 230" stroke-width="9"></path><path d="M120 -10C130 70 100 150 130 310M480 -10C470 80 500 170 470 310M40 150C120 140 200 170 300 160M320 60C400 40 460 80 560 50M200 20C220 80 190 130 220 200M400 130C430 170 410 230 440 290" stroke-width="5"></path></svg>
+<div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; gap: 2px">
+<svg aria-hidden="true" width="40" height="52" viewBox="0 0 40 52"><path d="M20 1C9.5 1 1 9.3 1 19.6 1 33 20 51 20 51s19-18 19-31.4C39 9.3 30.500 1 20 1z" fill="#C2187A" stroke="#FFFFFF" stroke-width="2"></path><circle cx="20" cy="19" r="6.5" fill="#FFFFFF"></circle></svg>
+</div>
+<span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, 8px); padding: 4px 10px; border-radius: 8px; background: #FFFFFF; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #14121C; white-space: nowrap">Zera Games</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 28px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent)">Nossa loja · Praia Grande</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 24px">Rua Fumio Miyazi, 752</span>
+<span style="font-size: 15px; color: var(--muted)">Praia Grande – SP · CEP 11701-160</span>
+<span style="display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 15px; font-weight: 600"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><circle cx="9" cy="9" r="7"></circle><path d="M9 5v4l2.500 2"></path></svg>Segunda a sábado, das 08h30 às 18h30</span>
+</div>
+<a class="cta2" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Fumio+Miyazi%2C+752%2C+Praia+Grande+-+SP%2C+11701-160">Ver no mapa</a>
+</div>
+</div>
+</div>
+</section>
+
+<footer style="border-top: 1px solid var(--line)">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 10px; padding-top: 32px; padding-bottom: 40px; font-size: 13px; line-height: 1.6; color: var(--muted)">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.08em; color: var(--fg)">ZERA GAMES</span>
+<span>Rua Fumio Miyazi, 752, Praia Grande – SP, CEP 11701-160 · Segunda a sábado, das 08h30 às 18h30</span>
+<span>[RAZÃO SOCIAL] · CNPJ [SEU CNPJ] · [E-MAIL OU WHATSAPP DE ATENDIMENTO]</span>
+<span>A Zera Games é uma loja independente e não tem vínculo com a Sony Interactive Entertainment nem com a Rockstar Games. PlayStation, DualSense e Grand Theft Auto são marcas de seus respectivos donos.</span>
+</div>
+</footer>
+
+<sc-if value="{{showAuth}}" hint-placeholder-val="{{false}}">
+<div class="modal">
+<div class="sheet" role="dialog" aria-modal="true" aria-label="Conta Zera Games">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="font-size: 26px">{{authTitle}}</h2>
+<span style="font-size: 14px; line-height: 1.5; color: var(--muted)">Com a sua conta você acompanha o rastreio de cada pedido depois do pagamento.</span>
+</div>
+<button type="button" class="qbtn" aria-label="Fechar" onClick="{{closeAuth}}">×</button>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" class="{{tabLoginCls}}" aria-pressed="{{loginPressed}}" onClick="{{openLogin}}">Entrar</button>
+<button type="button" class="{{tabRegCls}}" aria-pressed="{{regPressed}}" onClick="{{openRegister}}">Criar conta</button>
+</div>
+<form onSubmit="{{authSubmit}}" style="display: flex; flex-direction: column; gap: 14px">
+<sc-if value="{{isRegister}}" hint-placeholder-val="{{false}}">
+<label class="field">Nome completo<input type="text" name="nome" autocomplete="name" required></label>
+</sc-if>
+<label class="field">E-mail<input type="email" name="email" autocomplete="email" required></label>
+<label class="field">Senha<input type="password" name="senha" required minlength="8"></label>
+<button type="submit" class="cta" style="border: 0; cursor: pointer; width: 100%">{{authCta}}</button>
+</form>
+<sc-if value="{{authDone}}" hint-placeholder-val="{{false}}">
+<span role="status" style="font-size: 14px; line-height: 1.5; color: var(--accent)">Demonstração: o cadastro passa a funcionar quando a loja for conectada ao sistema de contas e pedidos.</span>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showCart}}" hint-placeholder-val="{{false}}">
+<button type="button" class="scrim" aria-label="Fechar carrinho" onClick="{{closeCart}}"></button>
+<aside class="drawer" role="dialog" aria-modal="true" aria-label="Carrinho">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 24px; border-bottom: 1px solid var(--line)">
+<h2 style="font-size: 24px">Seu carrinho</h2>
+<button type="button" class="qbtn" aria-label="Fechar carrinho" onClick="{{closeCart}}">×</button>
+</div>
+<div style="flex: 1; overflow-y: auto; padding: 4px 24px">
+<sc-if value="{{cartEmpty}}" hint-placeholder-val="{{false}}">
+<p style="margin: 28px 0; font-size: 16px; line-height: 1.55; color: var(--muted)">Seu carrinho está vazio. Escolha a cor do controle e adicione para começar.</p>
+</sc-if>
+<sc-for list="{{cartItems}}" as="c" hint-placeholder-count="2">
+<div class="citem">
+<div style="display: flex; justify-content: space-between; gap: 12px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px">{{c.name}}</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; white-space: nowrap">{{c.line}}</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; align-items: center; gap: 10px">
+<button type="button" class="qbtn" aria-label="Diminuir quantidade" onClick="{{c.dec}}">−</button>
+<span style="min-width: 24px; text-align: center; font-weight: 600">{{c.qty}}</span>
+<button type="button" class="qbtn" aria-label="Aumentar quantidade" onClick="{{c.inc}}">+</button>
+<span style="font-size: 13px; color: var(--muted)">{{c.unit}}</span>
+</div>
+<button type="button" class="linkbtn" onClick="{{c.remove}}">Remover</button>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 24px; border-top: 1px solid var(--line)">
+<form onSubmit="{{couponSubmit}}" style="display: flex; align-items: flex-end; gap: 10px">
+<label class="field" style="flex: 1">Cupom de desconto<input type="text" name="cupom" autocomplete="off" placeholder="Digite seu cupom" style="text-transform: uppercase"></label>
+<button type="submit" class="cta2" style="min-height: 48px">Aplicar</button>
+</form>
+<sc-if value="{{couponErr}}" hint-placeholder-val="{{false}}">
+<span role="alert" style="font-size: 14px; color: var(--accent)">Cupom inválido. Confira o código e tente de novo.</span>
+</sc-if>
+<sc-if value="{{couponOn}}" hint-placeholder-val="{{false}}">
+<div role="status" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px">
+<span style="display: flex; align-items: center; gap: 10px"><span style="font-weight: 700; color: var(--accent)">{{couponLine}}</span><button type="button" class="linkbtn" onClick="{{couponRemove}}">Remover</button></span>
+<span style="font-weight: 700; color: var(--accent); white-space: nowrap">{{couponValue}}</span>
+</div>
+</sc-if>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<span style="font-size: 15px; color: var(--muted)">Total</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">{{cartTotal}}</span>
+</div>
+<span style="font-size: 13px; color: var(--muted)">{{cartShipLine}}</span>
+<button type="button" class="cta" onClick="{{openCheckout}}" style="border: 0; cursor: pointer; width: 100%; box-sizing: border-box">Finalizar compra</button>
+<button type="button" class="linkbtn" onClick="{{closeCart}}">Continuar comprando</button>
+</div>
+</aside>
+</sc-if>
+
+<sc-if value="{{showCheckout}}" hint-placeholder-val="{{false}}">
+<div class="co" role="dialog" aria-modal="true" aria-label="Finalizar compra">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; padding-bottom: 20px">
+<span style="display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em"><img src="assets/img/marca/zera-icone.jpg" alt="" width="36" height="36" style="display: block; border-radius: 9px">ZERA GAMES</span>
+<span class="trust"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="12" height="8" rx="2"></rect><path d="M6 8V5a3 3 0 0 1 6 0v3"></path></svg>Compra segura</span>
+<button type="button" class="hbtn" onClick="{{closeCheckout}}">Voltar à loja</button>
+</div>
+<div aria-hidden="true" style="height: 4px; background: linear-gradient(90deg, #2A6BFF, #7A3FD1)"></div>
+<div class="wrap" style="padding-top: 36px; padding-bottom: 72px">
+<h1 style="font-size: 40px; line-height: 1.1; margin-bottom: 28px">Finalizar compra</h1>
+<sc-if value="{{orderDone}}" hint-placeholder-val="{{false}}">
+<div class="card" role="status" style="display: flex; flex-direction: column; gap: 14px; padding: 36px; max-width: 640px">
+<h2 style="font-size: 28px">Pedido {{lastOrderId}} registrado.</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted)">Você acompanha cada etapa na sua conta. Demonstração: o checkout ainda não está ligado a um processador de pagamento, então nenhuma cobrança foi feita.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<button type="button" class="cta" onClick="{{openAccount}}" style="border: 0; cursor: pointer; min-height: 52px; font-size: 16px">Acompanhar pedido</button>
+<button type="button" class="cta2" onClick="{{closeCheckout}}">Voltar à loja</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{orderOpen}}" hint-placeholder-val="{{true}}">
+<form class="cogrid" onSubmit="{{orderSubmit}}">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div class="card" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; gap: 12px"><span class="stepn">1</span><h2 style="font-size: 22px">Seus dados</h2></div>
+<div class="fgrid">
+<label class="field full">Nome completo<input type="text" name="nome" autocomplete="name" required></label>
+<label class="field">E-mail<input type="email" name="email" autocomplete="email" required></label>
+<label class="field">Celular / WhatsApp<input type="tel" name="celular" autocomplete="tel" placeholder="(00) 00000-0000" required></label>
+<label class="field">CPF<input type="text" name="cpf" inputmode="numeric" placeholder="000.000.000-00" required></label>
+</div>
+<span style="font-size: 13px; color: var(--muted)">O código de rastreio vai para este e-mail e WhatsApp.</span>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; gap: 12px"><span class="stepn">2</span><h2 style="font-size: 22px">Entrega</h2></div>
+<div class="fgrid">
+<label class="field">CEP<input type="text" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" defaultValue="{{cepShown}}" onChange="{{cepType}}" required></label>
+<label class="field">Número<input type="text" name="numero" required></label>
+<label class="field full">Rua<input type="text" name="rua" autocomplete="address-line1" required></label>
+<label class="field">Complemento (opcional)<input type="text" name="complemento" autocomplete="address-line2"></label>
+<label class="field">Bairro<input type="text" name="bairro" required></label>
+<label class="field">Cidade<input type="text" name="cidade" autocomplete="address-level2" required></label>
+<label class="field">Estado (UF)<input type="text" name="uf" autocomplete="address-level1" maxlength="2" style="text-transform: uppercase" required></label>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; border: 2px solid var(--accent); border-radius: 12px">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 15px">Envio padrão com rastreio</span><span style="font-size: 13px; color: var(--muted)">{{shipDest}} · [SEU PRAZO DE ENTREGA]</span></span>
+<span class="badge">FRETE GRÁTIS</span>
+</div>
+</div>
+<sc-if value="{{hasBump}}" hint-placeholder-val="{{false}}">
+<div class="card" style="display: flex; flex-direction: column; gap: 14px; border: 2px solid var(--accent)">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px">
+<h2 style="font-size: 22px">Leve junto na Black Friday</h2>
+<span class="badge">Maiores descontos primeiro</span>
+</div>
+<span style="font-size: 14px; color: var(--muted)">Adicione ao pedido com um toque. Vai tudo no mesmo envio.</span>
+<sc-for list="{{bump}}" as="u" hint-placeholder-count="3">
+<div class="bump">
+<img src="{{u.img}}" alt="">
+<span style="flex: 1 1 180px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 700; font-size: 16px">{{u.name}}</span>
+<span style="font-size: 14px; color: var(--muted)">de <s>{{u.old}}</s> por <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--fg)">{{u.price}}</span></span>
+</span>
+<span class="badge">{{u.off}}</span>
+<button type="button" class="cta2" onClick="{{u.add}}" style="min-height: 44px; padding: 0 16px">Adicionar</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<div class="card" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; gap: 12px"><span class="stepn">3</span><h2 style="font-size: 22px">Pagamento</h2></div>
+<div role="group" aria-label="Forma de pagamento" style="display: flex; flex-wrap: wrap; gap: 12px">
+<button type="button" class="{{payPixCls}}" aria-pressed="{{payPixOn}}" onClick="{{pickPix}}" style="min-height: 60px; flex: 1 1 150px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">Pix</span></button>
+<button type="button" class="{{payCardCls}}" aria-pressed="{{payCardOn}}" onClick="{{pickCard}}" style="min-height: 60px; flex: 1 1 150px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">Cartão de crédito</span></button>
+<button type="button" class="{{payBolCls}}" aria-pressed="{{payBolOn}}" onClick="{{pickBol}}" style="min-height: 60px; flex: 1 1 150px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">Boleto</span></button>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted)">{{payInfo}}</p>
+</div>
+</div>
+<div class="card cosum" style="display: flex; flex-direction: column; gap: 16px; position: sticky; top: 20px">
+<h2 style="font-size: 22px">Resumo do pedido</h2>
+<sc-for list="{{cartItems}}" as="c" hint-placeholder-count="2">
+<div class="sumrow"><span>{{c.qty}} × {{c.name}}</span><span style="font-weight: 700; white-space: nowrap">{{c.line}}</span></div>
+</sc-for>
+<div style="height: 1px; background: var(--line)"></div>
+<sc-if value="{{couponOn}}" hint-placeholder-val="{{false}}">
+<div class="sumrow" style="color: var(--accent); font-weight: 700"><span>{{couponLine}}</span><span style="white-space: nowrap">{{couponValue}}</span></div>
+</sc-if>
+<div class="sumrow"><span>Frete</span><span style="font-weight: 700; color: var(--accent)">GRÁTIS</span></div>
+<sc-if value="{{bfSaveOn}}" hint-placeholder-val="{{true}}">
+<div class="sumrow" style="color: var(--muted)"><span>Economia de Black Friday</span><span style="white-space: nowrap">{{bfSaveLabel}}</span></div>
+</sc-if>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 6px">
+<span style="font-size: 16px; font-weight: 600">Total</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 36px; line-height: 1">{{cartTotal}}</span>
+</div>
+<button type="submit" class="cta" style="border: 0; cursor: pointer; width: 100%; box-sizing: border-box">{{payBtnLabel}}</button>
+<span class="trust"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a6 6 0 1 0 2-4.5M3 3v3h3"></path></svg>7 dias para desistir da compra após receber</span>
+<span style="font-size: 12px; line-height: 1.5; color: var(--muted)">Loja independente, sem vínculo com Sony ou Rockstar Games.</span>
+</div>
+</form>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showAccount}}" hint-placeholder-val="{{false}}">
+<div class="co" role="dialog" aria-modal="true" aria-label="Minha conta">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; padding-bottom: 20px">
+<span style="display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em"><img src="assets/img/marca/zera-icone.jpg" alt="" width="36" height="36" style="display: block; border-radius: 9px">ZERA GAMES</span>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<button type="button" class="hbtn" onClick="{{closeAccount}}">Voltar à loja</button>
+<button type="button" class="hbtn" onClick="{{logout}}">Sair</button>
+</div>
+</div>
+<div aria-hidden="true" style="height: 4px; background: linear-gradient(90deg, #2A6BFF, #7A3FD1)"></div>
+<div class="wrap" style="padding-top: 36px; padding-bottom: 72px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent)">Minha conta</span>
+<h1 style="font-size: 40px; line-height: 1.1; margin: 8px 0 28px">Olá, {{userName}}.</h1>
+<div class="accgrid">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div class="card" style="display: flex; flex-direction: column; gap: 6px; padding: 22px">
+<span style="font-size: 13px; color: var(--muted)">Seus dados</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px">{{userName}}</span>
+<span style="font-size: 15px; color: var(--muted); overflow-wrap: anywhere">{{userEmail}}</span>
+</div>
+<h2 style="font-size: 22px; margin-top: 8px">Meus pedidos</h2>
+<sc-if value="{{noOrders}}" hint-placeholder-val="{{false}}">
+<div class="card" style="display: flex; flex-direction: column; gap: 14px; padding: 22px">
+<span style="font-size: 15px; line-height: 1.55; color: var(--muted)">Você ainda não tem pedidos. Quando comprar, o acompanhamento aparece aqui.</span>
+<button type="button" class="cta2" onClick="{{closeAccount}}" style="align-self: flex-start">Ir para a loja</button>
+</div>
+</sc-if>
+<sc-for list="{{orders}}" as="o" hint-placeholder-count="1">
+<button type="button" class="{{o.cls}}" aria-pressed="{{o.pressed}}" onClick="{{o.pick}}">
+<span style="display: flex; justify-content: space-between; gap: 12px"><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px">Pedido {{o.id}}</span><span style="font-weight: 700">{{o.total}}</span></span>
+<span style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px"><span style="color: var(--muted)">{{o.date}}</span><span style="font-weight: 700; color: var(--accent)">{{o.status}}</span></span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{hasOrder}}" hint-placeholder-val="{{false}}">
+<div class="card" style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<h2 style="font-size: 26px">Pedido {{selId}}</h2>
+<span class="badge">{{selStatus}}</span>
+</div>
+<div>
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="5">
+<div class="{{s.cls}}">
+<span class="tldot" aria-hidden="true"></span>
+<span style="display: flex; flex-direction: column; gap: 3px; padding-top: 2px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px">{{s.label}}</span>
+<span style="font-size: 14px; color: var(--muted)">{{s.desc}}</span>
+</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px">
+<span style="font-size: 13px; color: var(--muted)">Código de rastreio</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px">{{trackCode}}</span>
+<span style="font-size: 14px; color: var(--muted)">{{trackNote}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: var(--muted)">Itens</span>
+<sc-for list="{{selItems}}" as="it" hint-placeholder-count="1">
+<div class="sumrow"><span>{{it.qty}} × {{it.name}}</span><span style="font-weight: 700; white-space: nowrap">{{it.line}}</span></div>
+</sc-for>
+<div style="height: 1px; background: var(--line)"></div>
+<div class="sumrow"><span>Entrega</span><span style="font-weight: 600; text-align: right">{{selShip}}</span></div>
+<div class="sumrow"><span>Pagamento</span><span style="font-weight: 600">{{selPay}}</span></div>
+<div class="sumrow" style="font-size: 18px"><span style="font-weight: 700">Total</span><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700">{{selTotal}}</span></div>
+</div>
+<span style="font-size: 13px; line-height: 1.5; color: var(--muted)">Dúvida sobre este pedido? [SEU WHATSAPP OU E-MAIL DE ATENDIMENTO]</span>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+
+<div class="sticky">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px">
+<div class="hide-sm" style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px">{{stageLabel}}</span>
+<span style="font-size: 13px; color: var(--muted)">{{stockLine}}</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; flex: 1; justify-content: flex-end">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; white-space: nowrap">{{totalLabel}}</span>
+<button type="button" class="cta" onClick="{{addController}}" style="border: 0; cursor: pointer; min-height: 48px; padding: 0 22px; font-size: 16px; width: auto">{{ctaLabel}}</button>
+</div>
+</div>
+</div>
+
+</div>
+</template>
+<script type="text/x-dc" data-dc-script data-props='{"price":{"editor":"float","default":547.9,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"demoStep":{"editor":"int","default":0,"min":0,"max":4,"section":"Demonstração"},"installments":{"editor":"int","default":6,"min":1,"max":24,"section":"Venda"},"priceFrom":{"editor":"float","default":997.9,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"stockBlack":{"editor":"int","default":8,"min":0,"max":8,"section":"Estoque"},"stockWhite":{"editor":"int","default":6,"min":0,"max":6,"section":"Estoque"},"priceGamePs5":{"editor":"float","default":258.7,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"priceGameXbox":{"editor":"float","default":258.7,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"priceGameDigital":{"editor":"float","default":230.93,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"checkoutCart":{"editor":"text","default":"","section":"Venda"},"couponCode":{"editor":"text","default":"TESTE10","section":"Cupom"},"couponPct":{"editor":"int","default":10,"min":0,"max":90,"unit":"%","section":"Cupom"},"$preview":{"width":1440,"height":4100}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var st = this.state || {};
+var sb = Math.max(0, Math.min(8, this.props.stockBlack ?? 8));
+var sw = Math.max(0, Math.min(6, this.props.stockWhite ?? 6));
+var price = Number(this.props.price ?? 547.9) || 0;
+var from = Number(this.props.priceFrom ?? 997.9) || 0;
+var hasFrom = price > 0 && from > price;
+var pct = hasFrom ? Math.round((1 - price / from) * 100) : 0;
+var color = st.color || (sb > 0 ? 'black' : 'white');
+var isBlack = color === 'black';
+var stock = isBlack ? sb : sw;
+var initial = isBlack ? 8 : 6;
+var qty = Math.max(1, Math.min(st.qty || 1, Math.max(stock, 1)));
+var left = function (n) { return n === 0 ? 'Esgotado' : (n === 1 ? 'Última unidade' : n + ' disponíveis'); };
+var money = function (v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+var pick = function (c) { return function () { self.setState({ color: c, qty: 1, ang: 0 }); }; };
+var options = [
+{ id: 'black', name: 'Preto', mood: 'Noite', n: sb, swCls: 'sw sw-b' },
+{ id: 'white', name: 'Branco', mood: 'Amanhecer', n: sw, swCls: 'sw sw-w' }
+].map(function (o) {
+var on = o.id === color;
+return { name: o.name, mood: o.mood, num: String(o.n), unit: o.n === 0 ? 'esgotado' : (o.n === 1 ? 'disponível' : 'disponíveis'), left: left(o.n), swCls: o.swCls, cls: 'opt' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', soldOut: o.n === 0, pick: pick(o.id) };
+});
+var pips = [];
+for (var i = 0; i < initial; i++) { pips.push({ cls: 'pip' + (i < stock ? ' on' : '') }); }
+var total = sb + sw;
+var nAng = isBlack ? 5 : 4;
+var ang = Math.min(st.ang || 0, nAng - 1);
+var cart = st.cart || {};
+var pPs5 = Number(this.props.priceGamePs5 ?? 258.7) || 0;
+var pXbox = Number(this.props.priceGameXbox ?? 258.7) || 0;
+var pDig = Number(this.props.priceGameDigital ?? 230.93) || 0;
+var catalog = [
+{ id: 'black', name: 'DualSense GTA VI · Preto', price: price, max: sb },
+{ id: 'white', name: 'DualSense GTA VI · Branco', price: price, max: sw },
+{ id: 'ps5', name: 'Grand Theft Auto VI · PS5 (físico)', price: pPs5, max: 99 },
+{ id: 'xbox', name: 'Grand Theft Auto VI · Xbox Series (físico)', price: pXbox, max: 99 },
+{ id: 'digital', name: 'Grand Theft Auto VI · Digital', price: pDig, max: 99 },
+{ id: 'fc27', name: 'EA Sports FC 27 · PS5', price: 144.98, max: 99 },
+{ id: 'cps5', name: 'Controle sem fio para PS5', price: 279.93, max: 99 },
+{ id: 'cxbox', name: 'Controle sem fio para Xbox Series', price: 202.93, max: 99 }
+];
+var setQty = function (id, n, open) { var c = Object.assign({}, cart); if (n <= 0) { delete c[id]; } else { c[id] = n; } var ns = { cart: c }; if (open) { ns.showCart = true; } self.setState(ns); };
+var addFn = function (id, n, max) { return function () { if (max <= 0) { return; } setQty(id, Math.min(max, (cart[id] || 0) + n), true); }; };
+var cartCount = 0;
+var cartSum = 0;
+var allPriced = true;
+var cartItems = [];
+catalog.forEach(function (c) {
+var q = Math.min(cart[c.id] || 0, c.max);
+if (q <= 0) { return; }
+cartCount += q;
+if (c.price > 0) { cartSum += c.price * q; } else { allPriced = false; }
+cartItems.push({ name: c.name, qty: q, unit: c.price > 0 ? money(c.price) + ' cada' : 'Preço a definir', line: c.price > 0 ? money(c.price * q) : '—', inc: function () { setQty(c.id, Math.min(c.max, q + 1)); }, dec: function () { setQty(c.id, q - 1); }, remove: function () { setQty(c.id, 0); } });
+});
+var bumpAll = [
+{ id: 'fc27', name: 'EA Sports FC 27 · PS5', old: 289.95, price: 144.98, img: 'assets/img/jogos/fc27-capa.jpg' },
+{ id: 'cps5', name: 'Controle sem fio para PS5', old: 399.9, price: 279.93, img: 'assets/img/controles/ps5-1.jpg' },
+{ id: 'cxbox', name: 'Controle sem fio para Xbox Series', old: 289.9, price: 202.93, img: 'assets/img/controles/xbox-1.jpg' },
+{ id: 'ps5', name: 'Grand Theft Auto VI · PS5', old: 369.57, price: pPs5, img: 'assets/img/jogos/gta6-ps5-caixa.jpg' },
+{ id: 'xbox', name: 'Grand Theft Auto VI · Xbox Series', old: 369.57, price: pXbox, img: 'assets/img/jogos/gta6-xbox-caixa.jpg' },
+{ id: 'digital', name: 'Grand Theft Auto VI · Digital', old: 329.9, price: pDig, img: 'assets/img/jogos/gta6-digital.png' }
+];
+var bump = bumpAll.filter(function (b) { return !(cart[b.id] > 0) && b.price > 0 && b.old > b.price; }).map(function (b) { return { id: b.id, name: b.name, img: b.img, pct: Math.round((1 - b.price / b.old) * 100), old: money(b.old), price: money(b.price) }; }).sort(function (a, b) { return b.pct - a.pct; }).slice(0, 4).map(function (b) { b.off = '-' + b.pct + '%'; b.add = function () { setQty(b.id, (cart[b.id] || 0) + 1); }; return b; });
+var gameLabel = function (p) { return p > 0 ? money(p) : 'R$ [SEU PREÇO]'; };
+var ufOf = function (cep) {
+var n = parseInt(String(cep || '').replace(/[^0-9]/g, '').slice(0, 5), 10);
+if (isNaN(n)) { return ''; }
+var r = [[1000, 19999, 'São Paulo (SP)'], [20000, 28999, 'Rio de Janeiro (RJ)'], [29000, 29999, 'Espírito Santo (ES)'], [30000, 39999, 'Minas Gerais (MG)'], [40000, 48999, 'Bahia (BA)'], [49000, 49999, 'Sergipe (SE)'], [50000, 56999, 'Pernambuco (PE)'], [57000, 57999, 'Alagoas (AL)'], [58000, 58999, 'Paraíba (PB)'], [59000, 59999, 'Rio Grande do Norte (RN)'], [60000, 63999, 'Ceará (CE)'], [64000, 64999, 'Piauí (PI)'], [65000, 65999, 'Maranhão (MA)'], [66000, 68899, 'Pará (PA)'], [68900, 68999, 'Amapá (AP)'], [69000, 69299, 'Amazonas (AM)'], [69300, 69399, 'Roraima (RR)'], [69400, 69899, 'Amazonas (AM)'], [69900, 69999, 'Acre (AC)'], [70000, 72799, 'Distrito Federal (DF)'], [72800, 72999, 'Goiás (GO)'], [73000, 73699, 'Distrito Federal (DF)'], [73700, 76799, 'Goiás (GO)'], [76800, 76999, 'Rondônia (RO)'], [77000, 77999, 'Tocantins (TO)'], [78000, 78899, 'Mato Grosso (MT)'], [79000, 79999, 'Mato Grosso do Sul (MS)'], [80000, 87999, 'Paraná (PR)'], [88000, 89999, 'Santa Catarina (SC)'], [90000, 99999, 'Rio Grande do Sul (RS)']];
+for (var i = 0; i < r.length; i++) { if (n >= r[i][0] && n <= r[i][1]) { return r[i][2]; } }
+return 'Brasil';
+};
+var applyCep = function (d) {
+var fmt = d.slice(0, 5) + '-' + d.slice(5);
+self.setState({ cep: fmt, cepOpen: false, cepErr: false, cepAddr: null, cepLoading: true });
+clearTimeout(self._cepT);
+self._cepT = setTimeout(function () { self.setState({ cepLoading: false }); }, 2000);
+try {
+fetch('https://viacep.com.br/ws/' + d + '/json/').then(function (res) { return res.json(); }).then(function (j) {
+if (!j || j.erro || !self.state || self.state.cep !== fmt) { return; }
+var parts = [j.logradouro, j.bairro, (j.localidade || '') + (j.uf ? ' - ' + j.uf : '')].filter(function (p) { return p && String(p).trim(); });
+if (parts.length) { self.setState({ cepAddr: parts.join(', ') }); }
+}).catch(function () {});
+} catch (err) {}
+};
+var cCode = String(this.props.couponCode ?? 'TESTE10').trim().toUpperCase();
+var cPct = Math.max(0, Math.min(90, Number(this.props.couponPct ?? 10) || 0));
+var couponOn = !!st.coupon && !!cCode && st.coupon === cCode && cPct > 0;
+var disc = couponOn ? cartSum * cPct / 100 : 0;
+var pay = st.pay || 'pix';
+var ctrlQty = Math.min(cart.black || 0, sb) + Math.min(cart.white || 0, sw);
+var payInfos = { pix: 'O código Pix aparece na próxima tela, logo depois de confirmar o pedido.', card: 'Os dados do cartão são digitados na próxima etapa, direto no ambiente seguro do processador de pagamento. [SUAS CONDIÇÕES DE PARCELAMENTO]', boleto: 'O boleto é gerado na próxima tela. O pedido é separado depois da compensação do pagamento.' };
+var payNames = { pix: 'Pagar com Pix', card: 'Ir para o pagamento com cartão', boleto: 'Gerar boleto' };
+var pickPay = function (p) { return function () { self.setState({ pay: p }); }; };
+var nInst = Math.max(1, Math.min(24, Math.round(Number(this.props.installments ?? 6) || 6)));
+var user = st.user || null;
+var ordersRaw = st.orders || [];
+var selIdx = Math.max(0, Math.min(ordersRaw.length - 1, st.selOrder == null ? ordersRaw.length - 1 : st.selOrder));
+var sel = ordersRaw[selIdx] || null;
+var stepNames = ['Pedido recebido', 'Pagamento aprovado', 'Em separação', 'Enviado', 'Entregue'];
+var stepDescs = ['Recebemos o seu pedido.', 'Pagamento confirmado.', 'Estamos embalando o seu controle.', 'Saiu para entrega com código de rastreio.', 'Pedido entregue. Bom jogo!'];
+var cur = Math.max(0, Math.min(4, Math.round(Number(this.props.demoStep ?? 0) || 0)));
+var payShort = { pix: 'Pix', card: 'Cartão de crédito', boleto: 'Boleto' };
+return {
+bump: bump,
+hasBump: bump.length > 0,
+showAccount: !!st.showAccount && !!user,
+demoAccount: function () { var has = (st.orders || []).length > 0; self.setState({ showAccount: true, user: st.user || { name: 'Cliente de exemplo', email: 'cliente@exemplo.com' }, orders: has ? st.orders : [{ id: 'ZG-1000', date: new Date().toLocaleDateString('pt-BR'), total: price > 0 ? money(price) : 'A definir', pay: 'Pix', ship: 'Frete grátis', items: [{ name: 'DualSense GTA VI · Preto (pedido de exemplo)', qty: 1, line: price > 0 ? money(price) : '—' }] }], selOrder: has ? st.selOrder : 0 }); },
+userName: user ? user.name : '',
+userEmail: user ? user.email : '',
+accBtn1: user ? 'Minha conta' : 'Entrar',
+accBtn2: user ? 'Sair' : 'Criar conta',
+accAct1: function () { if (user) { self.setState({ showAccount: true }); } else { self.setState({ auth: 'login', authDone: false }); } },
+accAct2: function () { if (user) { self.setState({ user: null, showAccount: false }); } else { self.setState({ auth: 'register', authDone: false }); } },
+openAccount: function () { self.setState({ showAccount: true, showCheckout: false, orderDone: false }); },
+closeAccount: function () { self.setState({ showAccount: false }); },
+logout: function () { self.setState({ user: null, showAccount: false }); },
+lastOrderId: st.lastOrderId || '',
+noOrders: ordersRaw.length === 0,
+hasOrder: !!sel,
+orders: ordersRaw.map(function (o, i) { return { id: o.id, date: o.date, total: o.total, status: stepNames[cur], cls: 'ordbtn' + (i === selIdx ? ' on' : ''), pressed: i === selIdx ? 'true' : 'false', pick: function () { self.setState({ selOrder: i }); } }; }),
+selId: sel ? sel.id : '',
+selStatus: stepNames[cur],
+selItems: sel ? sel.items : [],
+selShip: sel ? sel.ship : '',
+selPay: sel ? sel.pay : '',
+selTotal: sel ? sel.total : '',
+steps: stepNames.map(function (n, i) { return { label: n, desc: stepDescs[i], cls: 'tl ' + (i < cur ? 'done' : (i === cur ? 'now' : 'todo')) + (i === 4 ? ' last' : '') }; }),
+trackCode: cur >= 3 ? '[CÓDIGO DE RASTREIO]' : 'Ainda não disponível',
+trackNote: cur >= 3 ? 'Use o código no site da transportadora para ver onde está o pacote.' : 'O código aparece aqui assim que o pedido for enviado.',
+instOn: price > 0 && nInst > 1,
+instCount: String(nInst),
+instValue: money(price * qty / nInst),
+showCheckout: !!st.showCheckout,
+orderDone: !!st.orderDone,
+orderOpen: !st.orderDone,
+openCheckout: function () { if (cartItems.length === 0) { return; } self.setState({ showCheckout: true, showCart: false, orderDone: false }); },
+closeCheckout: function () { self.setState({ showCheckout: false, orderDone: false }); },
+orderSubmit: function (e) { e.preventDefault(); var f = e.currentTarget.elements || {}; var em = String((f.email && f.email.value) || '').trim(); var nm = String((f.nome && f.nome.value) || '').trim() || 'cliente'; var list = (st.orders || []).slice(); var oid = 'ZG-' + (1001 + list.length); list.push({ id: oid, date: new Date().toLocaleDateString('pt-BR'), total: cartItems.length && allPriced ? money(cartSum - disc) : 'A definir', pay: payShort[pay], ship: st.cep ? 'Frete grátis · CEP ' + st.cep : 'Frete grátis', items: cartItems.map(function (c) { return { name: c.name, qty: c.qty, line: c.line }; }) }); self.setState({ orderDone: true, orders: list, selOrder: list.length - 1, lastOrderId: oid, cart: {}, coupon: null, user: st.user || { name: nm, email: em } }); },
+payPixCls: 'opt' + (pay === 'pix' ? ' on' : ''),
+payCardCls: 'opt' + (pay === 'card' ? ' on' : ''),
+payBolCls: 'opt' + (pay === 'boleto' ? ' on' : ''),
+payPixOn: pay === 'pix' ? 'true' : 'false',
+payCardOn: pay === 'card' ? 'true' : 'false',
+payBolOn: pay === 'boleto' ? 'true' : 'false',
+pickPix: pickPay('pix'),
+pickCard: pickPay('card'),
+pickBol: pickPay('boleto'),
+payInfo: payInfos[pay],
+payBtnLabel: payNames[pay],
+shipDest: st.cep ? (st.cepAddr || ufOf(st.cep)) : 'Informe o CEP acima',
+bfSaveOn: hasFrom && ctrlQty > 0,
+bfSaveLabel: hasFrom ? money((from - price) * ctrlQty) : '',
+cepOpen: !!st.cepOpen,
+cepErr: !!st.cepErr,
+cepLoading: !!st.cepLoading && !st.cepOpen,
+cepDone: !!st.cep && !st.cepOpen && !st.cepLoading,
+cepShown: st.cep || '',
+cepLink: st.cepOpen ? 'Fechar' : (st.cep ? 'Alterar CEP' : 'Inserir CEP'),
+cepToggle: function () { self.setState({ cepOpen: !st.cepOpen, cepErr: false }); },
+cepSubmit: function (e) { e.preventDefault(); var f = e.currentTarget; var d = String((f.elements && f.elements.cep && f.elements.cep.value) || '').replace(/[^0-9]/g, ''); if (d.length !== 8) { self.setState({ cepErr: true }); return; } applyCep(d); },
+cepType: function (e) { var d = String(e.target.value || '').replace(/[^0-9]/g, ''); if (d.length === 8) { applyCep(d); } },
+cepPlace: st.cepAddr || ufOf(st.cep),
+newsDone: !!st.newsDone,
+newsSubmit: function (e) { e.preventDefault(); self.setState({ newsDone: true }); },
+cartItems: cartItems,
+cartShipLine: st.cep ? 'Frete grátis para ' + st.cep : 'Informe seu CEP na página para calcular o frete.',
+cartCount: cartCount,
+cartEmpty: cartItems.length === 0,
+cartTotal: cartItems.length === 0 ? money(0) : (allPriced ? money(cartSum - disc) : 'A definir'),
+couponOn: couponOn,
+couponErr: !!st.couponErr,
+couponLine: 'Cupom ' + cCode + ' (-' + cPct + '%)',
+couponValue: '− ' + money(disc),
+couponSubmit: function (e) { e.preventDefault(); var f = e.currentTarget; var v = String((f.elements && f.elements.cupom && f.elements.cupom.value) || '').trim().toUpperCase(); if (v && cCode && v === cCode && cPct > 0) { self.setState({ coupon: v, couponErr: false }); } else { self.setState({ coupon: null, couponErr: true }); } },
+couponRemove: function () { self.setState({ coupon: null, couponErr: false }); },
+showCart: !!st.showCart,
+openCart: function () { self.setState({ showCart: true }); },
+closeCart: function () { self.setState({ showCart: false }); },
+addController: addFn(color, qty, stock),
+addPs5: addFn('ps5', 1, 99),
+addXbox: addFn('xbox', 1, 99),
+addDigital: addFn('digital', 1, 99),
+ps5Price: gameLabel(pPs5),
+xboxPrice: gameLabel(pXbox),
+digitalPrice: gameLabel(pDig),
+themeClass: isBlack ? 'night' : 'day',
+options: options,
+pips: pips,
+qty: qty,
+showAuth: !!st.auth,
+isRegister: st.auth === 'register',
+authTitle: st.auth === 'register' ? 'Criar conta' : 'Entrar',
+authCta: st.auth === 'register' ? 'Criar minha conta' : 'Entrar na minha conta',
+tabLoginCls: 'tab' + (st.auth === 'login' ? ' on' : ''),
+tabRegCls: 'tab' + (st.auth === 'register' ? ' on' : ''),
+loginPressed: st.auth === 'login' ? 'true' : 'false',
+regPressed: st.auth === 'register' ? 'true' : 'false',
+authDone: !!st.authDone,
+openLogin: function () { self.setState({ auth: 'login', authDone: false }); },
+openRegister: function () { self.setState({ auth: 'register', authDone: false }); },
+closeAuth: function () { self.setState({ auth: null, authDone: false }); },
+authSubmit: function (e) { e.preventDefault(); var f = e.currentTarget.elements || {}; var em = String((f.email && f.email.value) || '').trim(); var nm = String((f.nome && f.nome.value) || '').trim() || em.split('@')[0] || 'cliente'; self.setState({ user: { name: nm, email: em }, auth: null, authDone: false, showAccount: true }); },
+f0: 'ph' + (isBlack && ang === 0 ? ' on' : ''),
+f1: 'ph' + (isBlack && ang === 1 ? ' on' : ''),
+f2: 'ph' + (isBlack && ang === 2 ? ' on' : ''),
+f3: 'ph' + (isBlack && ang === 3 ? ' on' : ''),
+f4: 'ph' + (isBlack && ang === 4 ? ' on' : ''),
+t4: 'ang' + (ang === 4 ? ' on' : ''),
+p4: ang === 4 ? 'true' : 'false',
+a4: function () { self.setState({ ang: 4 }); },
+t0: 'ang' + (ang === 0 ? ' on' : ''), t1: 'ang' + (ang === 1 ? ' on' : ''), t2: 'ang' + (ang === 2 ? ' on' : ''), t3: 'ang' + (ang === 3 ? ' on' : ''),
+p0: ang === 0 ? 'true' : 'false', p1: ang === 1 ? 'true' : 'false', p2: ang === 2 ? 'true' : 'false', p3: ang === 3 ? 'true' : 'false',
+a0: function () { self.setState({ ang: 0 }); }, a1: function () { self.setState({ ang: 1 }); }, a2: function () { self.setState({ ang: 2 }); }, a3: function () { self.setState({ ang: 3 }); },
+showAngles: isBlack,
+angLabel: (isBlack ? ['Frente', 'Diagonal', 'Lateral', 'Gatilhos', 'Costas'] : ['Frente', 'Lateral', 'Gatilhos', 'Costas'])[ang],
+hintText: 'Arraste para girar · ' + nAng + ' ângulos',
+angDown: function (e) { self._ax = e.clientX; },
+whiteCls: 'ph' + (!isBlack && ang === 0 ? ' on' : ''),
+g1: 'ph' + (!isBlack && ang === 1 ? ' on' : ''),
+g2: 'ph' + (!isBlack && ang === 2 ? ' on' : ''),
+g3: 'ph' + (!isBlack && ang === 3 ? ' on' : ''),
+showAnglesW: !isBlack,
+tiltMove: function (e) { if (self._ax != null) { var dx = e.clientX - self._ax; if (Math.abs(dx) > 70) { self._ax = e.clientX; self.setState({ ang: (ang + (dx < 0 ? 1 : nAng - 1)) % nAng }); } } var el = e.currentTarget; var r = el.getBoundingClientRect(); if (!r.width || !r.height) { return; } var px = (e.clientX - r.left) / r.width - 0.5; var py = (e.clientY - r.top) / r.height - 0.5; var s = el.style; s.setProperty('--dur', '.14s'); s.setProperty('--ry', (px * 44).toFixed(2)); s.setProperty('--rx', (py * -22).toFixed(2)); s.setProperty('--sc', '1.05'); s.setProperty('--gl', '1'); },
+tiltReset: function (e) { self._ax = null; var s = e.currentTarget.style; s.setProperty('--dur', '.9s'); s.setProperty('--ry', '0'); s.setProperty('--rx', '0'); s.setProperty('--sc', '1'); s.setProperty('--gl', '0'); },
+tiltUp: function (e) { self._ax = null; if (e.pointerType === 'mouse') { return; } var s = e.currentTarget.style; s.setProperty('--dur', '.9s'); s.setProperty('--ry', '0'); s.setProperty('--rx', '0'); s.setProperty('--sc', '1'); s.setProperty('--gl', '0'); },
+hasFrom: hasFrom,
+offLabel: '-' + pct + '%',
+fromLabel: hasFrom ? money(from * qty) : '',
+saveLabel: hasFrom ? money((from - price) * qty) : '',
+unitLabel: price > 0 ? money(price) : 'R$ [SEU PREÇO]',
+bfLine: hasFrom ? pct + '% off enquanto durar o lote de 14 unidades' : 'lote único de 14 unidades',
+stockLine: stock === 0 ? 'Esgotado nesta cor' : (stock === 1 ? 'Estoque baixo: última unidade nesta cor' : 'Estoque baixo: só ' + stock + ' disponíveis nesta cor'),
+totalCaption: qty > 1 ? 'Total para ' + qty + ' unidades' : 'Preço por unidade',
+totalLabel: price > 0 ? money(price * qty) : 'R$ [SEU PREÇO]',
+ctaLabel: stock === 0 ? 'Esgotado nesta cor' : 'Adicionar ao carrinho',
+stageLabel: isBlack ? 'Preto · Noite' : 'Branco · Amanhecer',
+duoBlackCls: 'duo' + (isBlack ? ' on' : ''),
+duoWhiteCls: 'duo' + (isBlack ? '' : ' on'),
+blackPressed: isBlack ? 'true' : 'false',
+whitePressed: isBlack ? 'false' : 'true',
+blackLeft: left(sb) + ' de 8',
+whiteLeft: left(sw) + ' de 6',
+pickBlack: pick('black'),
+pickWhite: pick('white'),
+totalLeftLine: total === 0 ? 'Lote esgotado.' : (total === 1 ? 'Resta 1 controle no lote.' : 'Restam ' + total + ' de 14 controles.'),
+less: function () { self.setState({ color: color, qty: Math.max(1, qty - 1) }); },
+more: function () { self.setState({ color: color, qty: Math.min(Math.max(stock, 1), qty + 1) }); }
+};
+}
+}
+</script>
+</body>
+</html>
