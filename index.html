@@ -122,9 +122,16 @@ section[id]{scroll-margin-top:100px}
 .zpromo i{flex:none;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);font-style:normal}
 @keyframes zpin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 .zfree{align-self:flex-start;padding:3px 8px;border-radius:8px;background:#E3F7EC;color:#0B5A33;font:800 12px Archivo,Inter,sans-serif}
+.zabout{margin:0;font-size:18px;line-height:1.6;color:#0E0E12;font-weight:500}
 .zperks{display:flex;flex-direction:column;gap:10px;padding:18px 20px;border-radius:16px;background:linear-gradient(135deg,#FFF0F7,#FFF4EA);border:1px solid #FFD3E6}
 .zperksh{font:900 16px Archivo,Inter,sans-serif;letter-spacing:.02em;color:#C2185B;text-transform:uppercase}
 .zperks ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.5;color:#3A3832}
+.zcw{position:relative;display:flex;flex-direction:column;min-width:0}
+.zcw>.zprod{flex:1}
+.zcw.hasq>.zprod{padding-bottom:72px}
+.zqadd{position:absolute;left:16px;right:16px;bottom:16px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border:0;border-radius:999px;background:#FF4FA3;color:#0E0E12;font:800 14px Archivo,Inter,sans-serif;cursor:pointer;transition:background .15s}
+.zqadd:hover{background:#FF6DB5}
+.zqadd:focus-visible{outline:3px solid #2A6BFF;outline-offset:2px}
 .zmore{display:flex;justify-content:center;margin-top:28px}
 .zmorebtn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;border:2px solid #0E0E12;background:#FFFFFF;color:#0E0E12;font:800 16px Archivo,Inter,sans-serif;cursor:pointer;transition:background .15s,color .15s}
 .zmorebtn:hover{background:#0E0E12;color:#FFFFFF}
@@ -383,7 +390,7 @@ section[id]{scroll-margin-top:12px}
 <sc-if value="{{g.hasTitle}}" hint-placeholder-val="{{true}}"><div class="zbfgh"><h3>{{g.title}}</h3><span>{{g.count}}</span></div></sc-if>
 <div class="zg4">
 <sc-for list="{{g.items}}" as="p" hint-placeholder-count="4">
-<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<div class="{{p.wrapCls}}"><button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
 <sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span><span class="zstk" aria-label="{{p.offAria}}"><b>{{p.offLabel}}</b><small>OFF</small></span><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{false}}"><span class="zpimg zph" style="position: relative"><span class="zstk" aria-label="{{p.offAria}}"><b>{{p.offLabel}}</b><small>OFF</small></span><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
@@ -394,7 +401,7 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><span class="zoff">{{p.offLabel}}</span></span>
 <sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
-</button>
+</button><sc-if value="{{p.canBuy}}" hint-placeholder-val="{{false}}"><button type="button" class="zqadd" aria-label="{{p.quickAria}}" onClick="{{p.quickAdd}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button></sc-if></div>
 </sc-for>
 </div>
 <sc-if value="{{g.hasMore}}" hint-placeholder-val="{{false}}">
@@ -411,7 +418,7 @@ section[id]{scroll-margin-top:12px}
 <h2 style="font-size: 44px; font-weight: 900; margin-bottom: 24px">Consoles</h2>
 <div class="zg4">
 <sc-for list="{{consoles}}" as="p" hint-placeholder-count="4">
-<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<div class="{{p.wrapCls}}"><button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -421,7 +428,7 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
 <sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
-</button>
+</button><sc-if value="{{p.canBuy}}" hint-placeholder-val="{{false}}"><button type="button" class="zqadd" aria-label="{{p.quickAria}}" onClick="{{p.quickAdd}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button></sc-if></div>
 </sc-for>
 </div>
 </section>
@@ -445,7 +452,7 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; color: #5E5B52">de <s>R$ 997,90</s></span><span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">R$ 299,37</span><span class="zoff">-70%</span></span><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de R$ 166,32 no cartão</span></span>
 </a>
 <sc-for list="{{controls}}" as="p" hint-placeholder-count="2">
-<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<div class="{{p.wrapCls}}"><button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -455,7 +462,7 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
 <sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
-</button>
+</button><sc-if value="{{p.canBuy}}" hint-placeholder-val="{{false}}"><button type="button" class="zqadd" aria-label="{{p.quickAria}}" onClick="{{p.quickAdd}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button></sc-if></div>
 </sc-for>
 </div>
 </section>
@@ -469,7 +476,7 @@ section[id]{scroll-margin-top:12px}
 </div>
 <div class="zg4">
 <sc-for list="{{gtaPs}}" as="p" hint-placeholder-count="3">
-<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<div class="{{p.wrapCls}}"><button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
 <sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
@@ -480,10 +487,10 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
 <sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
-</button>
+</button><sc-if value="{{p.canBuy}}" hint-placeholder-val="{{false}}"><button type="button" class="zqadd" aria-label="{{p.quickAria}}" onClick="{{p.quickAdd}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button></sc-if></div>
 </sc-for>
 <sc-for list="{{newGames}}" as="p" hint-placeholder-count="1">
-<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<div class="{{p.wrapCls}}"><button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
 <sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
@@ -494,7 +501,7 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
 <sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
-</button>
+</button><sc-if value="{{p.canBuy}}" hint-placeholder-val="{{false}}"><button type="button" class="zqadd" aria-label="{{p.quickAria}}" onClick="{{p.quickAdd}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button></sc-if></div>
 </sc-for>
 </div>
 <sc-if value="{{gHasMore}}" hint-placeholder-val="{{true}}">
@@ -509,7 +516,7 @@ section[id]{scroll-margin-top:12px}
 </div>
 <div class="zg4">
 <sc-for list="{{pcGames}}" as="p" hint-placeholder-count="15">
-<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<div class="{{p.wrapCls}}"><button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
 <sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
@@ -520,7 +527,7 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
 <sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
-</button>
+</button><sc-if value="{{p.canBuy}}" hint-placeholder-val="{{false}}"><button type="button" class="zqadd" aria-label="{{p.quickAria}}" onClick="{{p.quickAdd}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button></sc-if></div>
 </sc-for>
 </div>
 <sc-if value="{{pcHasMore}}" hint-placeholder-val="{{true}}">
@@ -535,7 +542,7 @@ section[id]{scroll-margin-top:12px}
 </div>
 <div class="zg4">
 <sc-for list="{{nintendo}}" as="p" hint-placeholder-count="6">
-<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<div class="{{p.wrapCls}}"><button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
 <sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
@@ -546,7 +553,7 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
 <sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
-</button>
+</button><sc-if value="{{p.canBuy}}" hint-placeholder-val="{{false}}"><button type="button" class="zqadd" aria-label="{{p.quickAria}}" onClick="{{p.quickAdd}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button></sc-if></div>
 </sc-for>
 </div>
 </section>
@@ -555,7 +562,7 @@ section[id]{scroll-margin-top:12px}
 <h2 style="font-size: 44px; font-weight: 900; margin-bottom: 24px">Acessórios</h2>
 <div class="zg4">
 <sc-for list="{{accessories}}" as="p" hint-placeholder-count="9">
-<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<div class="{{p.wrapCls}}"><button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -565,7 +572,7 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
 <sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
-</button>
+</button><sc-if value="{{p.canBuy}}" hint-placeholder-val="{{false}}"><button type="button" class="zqadd" aria-label="{{p.quickAria}}" onClick="{{p.quickAdd}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button></sc-if></div>
 </sc-for>
 </div>
 </section>
@@ -577,7 +584,7 @@ section[id]{scroll-margin-top:12px}
 </div>
 <div class="zg4">
 <sc-for list="{{cards}}" as="p" hint-placeholder-count="7">
-<button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<div class="{{p.wrapCls}}"><button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -587,7 +594,7 @@ section[id]{scroll-margin-top:12px}
 <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span style="font-family: Archivo, sans-serif; font-weight: 900; font-size: 26px">{{p.priceLabel}}</span><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zoff">{{p.offLabel}}</span></sc-if></span>
 <sc-if value="{{p.hasInst}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5E5B52">à vista no Pix · ou 6x de {{p.instLabel}} no cartão</span></sc-if>
 </span>
-</button>
+</button><sc-if value="{{p.canBuy}}" hint-placeholder-val="{{false}}"><button type="button" class="zqadd" aria-label="{{p.quickAria}}" onClick="{{p.quickAdd}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.500 2h2.200l2 9h8.200l1.600-6H5"></path><circle cx="7" cy="14.500" r="1.200"></circle><circle cx="13" cy="14.500" r="1.200"></circle></svg>Adicionar ao carrinho</button></sc-if></div>
 </sc-for>
 </div>
 </section>
@@ -667,7 +674,8 @@ section[id]{scroll-margin-top:12px}
 <sc-if value="{{pdInstOnly}}" hint-placeholder-val="{{false}}"><span style="font-size: 16px; color: #3A3832">À vista no Pix ou em até <span style="font-weight: 700">6x de {{pdInst}}</span> no cartão</span></sc-if>
 </div>
 <span class="ztag" style="background: #1B3FD6">{{pdStatus}}</span>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3A3832">{{pdDesc}}</p>
+<sc-if value="{{pdHasAbout}}" hint-placeholder-val="{{false}}"><p class="zabout">{{pdAbout}}</p></sc-if>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A3832">{{pdDesc}}</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5E5B52">{{pdNote}}</p>
 <sc-if value="{{pdHasPerks}}" hint-placeholder-val="{{false}}">
 <div class="zperks"><span class="zperksh">O que vem na Ultimate Edition</span>
@@ -909,6 +917,108 @@ var DESC = {
 'Controles': ['Controle sem fio para jogar com conforto, do primeiro ao último chefe.', '[MARCA, MODELO, COR E COMPATIBILIDADE]'],
 'Jogos': ['Um dos jogos mais jogados da plataforma, para entrar na fila do seu próximo zeramento.', '[EDIÇÃO, MÍDIA FÍSICA OU DIGITAL E CLASSIFICAÇÃO INDICATIVA]'],
 'Acessórios': ['Acessório para deixar o seu setup mais completo e o controle sempre pronto.', '[MARCA, MODELO, MEDIDAS E COMPATIBILIDADE]']
+};
+// ---------- Sobre o produto ----------
+// Texto de apresentação que aparece em destaque na janela de cada produto.
+// A chave é o nome do jogo (sem a plataforma) ou o nome do produto.
+var ABOUT = {
+// Jogos
+'Grand Theft Auto VI': 'O jogo mais aguardado da década chegou. Lucia e Jason caem numa conspiração criminosa no estado de Leonida, com a volta de Vice City: praias, neon, pântanos e um mundo aberto enorme, vivo e cheio de detalhes. É GTA no nível mais alto que a Rockstar já fez.',
+'Call of Duty: Modern Warfare 4': 'A nova guerra moderna de Call of Duty: campanha cinematográfica cheia de reviravoltas, multiplayer rápido e competitivo e modos cooperativos para jogar com os amigos. O Call of Duty mais recente, para jogar desde o primeiro dia.',
+'Battlefield 6': 'Guerra total em larga escala: prédios que desabam, tanques, helicópteros e partidas gigantes onde cada time trabalha em equipe por classes. Tem campanha e multiplayer, e foi o jogo mais vendido de 2025 nos Estados Unidos.',
+'Battlefield 2042': 'Batalhas futuristas com até 128 jogadores (no PS5, no Xbox Series e no PC), Especialistas com habilidades únicas e tempestades e tornados que mudam o rumo da partida. Caos em escala máxima.',
+'Battlefield V': 'A Segunda Guerra Mundial como você nunca jogou: Grandes Operações que atravessam vários dias de batalha, construção de defesas no campo e o modo battle royale Firestorm.',
+'Battlefield 1': 'A Primeira Guerra Mundial em batalhas épicas com cavalos, dirigíveis, trincheiras e tanques primitivos. Um clássico com uma das campanhas mais elogiadas da série.',
+'Call of Duty: Black Ops 7': 'Black Ops vai para 2035: campanha que pode ser jogada em cooperativo, multiplayer com movimentação total em qualquer direção e o modo Zombies por rodadas que os fãs amam.',
+'Call of Duty: Black Ops 6': 'Espionagem no começo dos anos 90, na época da Guerra do Golfo. Traz o novo sistema de movimento omnidirecional, multiplayer intenso e a volta do Zombies clássico por rodadas.',
+'Call of Duty: Modern Warfare III': 'O confronto final da Força-Tarefa 141 contra o terrorista Makarov. Tem um multiplayer cheio de mapas clássicos e um modo Zombies de mundo aberto.',
+'Call of Duty: Black Ops II': 'Um dos Call of Duty mais amados de todos os tempos, agora relançado para PS4 e PS5. Campanha com escolhas que mudam o final, multiplayer lendário e o Zombies original.',
+'Red Dead Redemption 2': 'Faroeste em 1899: Arthur Morgan e o bando de Van der Linde fogem da lei num dos mundos abertos mais bonitos e detalhados já feitos. Uma das maiores histórias dos videogames, com o Red Dead Online incluído.',
+'Grand Theft Auto V': 'Michael, Franklin e Trevor em Los Santos: três criminosos, uma cidade enorme e assaltos cinematográficos. Inclui o GTA Online, com anos de conteúdo para jogar com os amigos.',
+'Resident Evil Requiem': 'O novo capítulo de Resident Evil leva a analista do FBI Grace Ashcroft de volta às ruínas de Raccoon City. Terror de sobrevivência no estilo que consagrou a série, com tensão do começo ao fim.',
+'EA Sports FC 27': 'O futebol mais completo do videogame, com os clubes, ligas e jogadores licenciados. Monte seu time no Ultimate Team, leve um clube ao topo no Modo Carreira ou jogue com os amigos no Clubs.',
+'EA Sports FC 26': 'Futebol com milhares de jogadores licenciados e as principais ligas do mundo. Ultimate Team, Modo Carreira e Clubs para jogar sozinho ou online.',
+'NBA 2K27': 'O basquete mais realista do videogame. Crie sua lenda no MyCAREER, monte seu time dos sonhos no MyTEAM e jogue com a galera nas quadras online.',
+'NBA 2K26': 'Basquete da NBA com jogabilidade realista, o MyCAREER para criar seu jogador e o MyTEAM para montar um elenco com estrelas de todas as épocas. Foi o 2º jogo mais vendido de 2025 nos EUA.',
+'Ghost of Yōtei': 'Japão, 1603. Atsu é uma guerreira solitária em busca de vingança nas terras ao redor do Monte Yōtei. Lutas de espada, paisagens de tirar o fôlego e liberdade para explorar. Exclusivo de PlayStation.',
+'Minecraft': 'Construa o que imaginar, explore mundos infinitos e sobreviva às noites cheias de criaturas. Diversão para todas as idades, sozinho ou com amigos em qualquer plataforma.',
+'Forza Horizon 6': 'O festival Horizon chega ao Japão: estradas de montanha, cidades iluminadas e centenas de carros licenciados para pilotar num mundo aberto enorme. O jogo de corrida mais divertido da geração.',
+'Forza Horizon 5': 'Corridas em mundo aberto pelas paisagens do México, com centenas de carros reais, estações do ano que mudam o mapa e eventos para jogar sozinho ou online.',
+'007 First Light': 'A origem de James Bond: viva a primeira missão de um jovem agente 007, com espionagem, disfarces, perseguições e ação no estilo dos filmes. Feito pela IO Interactive, criadora de Hitman.',
+'Borderlands 4': 'O looter shooter mais caótico está de volta: quatro novos Caçadores da Câmara, um planeta novo para explorar e bilhões de armas para encontrar. Ainda melhor jogando em cooperativo com os amigos.',
+'Monster Hunter Wilds': 'Cace monstros gigantes em terras selvagens que mudam com o clima. Crie armas e armaduras com o que você caçar e enfrente as feras sozinho ou com até 3 amigos.',
+'Crimson Desert': 'Um mundo aberto de fantasia enorme, com combate cheio de impacto. Siga Kliff, líder de um grupo de mercenários, numa aventura épica pelo continente de Pywel.',
+'Elden Ring Nightreign': 'O universo de Elden Ring em versão cooperativa para 3 jogadores. Cada partida é uma corrida para ficar mais forte antes da noite cair e enfrentar chefes terríveis.',
+'The Elder Scrolls IV: Oblivion Remastered': 'O clássico RPG da Bethesda totalmente refeito, com gráficos da geração atual. Explore Cyrodiil, feche os portões de Oblivion e viva centenas de horas de aventura.',
+'Split Fiction': 'Aventura cooperativa para duas pessoas, dos criadores de It Takes Two. Mio e Zoe ficam presas nas próprias histórias e pulam entre mundos de ficção científica e fantasia. Ganhador de prêmios e perfeito para jogar com alguém.',
+'Madden NFL 27': 'O futebol americano oficial da NFL, com todos os times e jogadores. Comande uma franquia, monte seu Ultimate Team ou jogue partidas rápidas com os amigos.',
+'Madden NFL 26': 'Futebol americano oficial da NFL com jogabilidade realista, modo Franquia e Ultimate Team.',
+'LEGO Batman: Legacy of the Dark Knight': 'A história do Batman em versão LEGO, do começo da carreira até virar a lenda de Gotham. Explore a cidade, monte equipamentos e enfrente os vilões mais famosos, com muito humor. Diversão para toda a família.',
+'Tomodachi Life: Living the Dream': 'Crie Miis de você, dos seus amigos e de quem quiser e veja a vida deles acontecer numa ilha: amizades, namoros, brigas e situações absurdas que rendem muitas risadas.',
+'Kingdom Come: Deliverance II': 'RPG de mundo aberto realista na Boêmia do século XV. Viva a jornada de Henry com combate de espada desafiador e escolhas que mudam a história. Um dos RPGs mais elogiados de 2025.',
+'RuneScape: Dragonwilds': 'Sobrevivência e construção no mundo de RuneScape: colete recursos, construa sua base, evolua habilidades e enfrente dragões, sozinho ou com até 3 amigos.',
+'MLB The Show 26': 'O beisebol mais realista do videogame. Crie seu jogador no Road to the Show, monte seu time no Diamond Dynasty e jogue as grandes ligas.',
+'MLB The Show 25': 'Beisebol oficial da MLB com o Road to the Show para criar sua carreira e o Diamond Dynasty para montar seu time.',
+'EA Sports College Football 26': 'Futebol americano universitário com mais de 130 times, estádios lotados e muita tradição. Monte sua dinastia ou leve seu atleta à glória no Road to Glory.',
+'WWE 2K25': 'Luta livre da WWE com os maiores astros de todos os tempos. Reviva momentos históricos, crie sua carreira no MyRISE e comande a empresa no MyGM.',
+'Mario Kart World': 'Mario Kart em um mundo aberto inteiro para dirigir, com até 24 corredores por corrida e o modo Eliminatória. O jogo perfeito para jogar com a família e os amigos no Switch 2.',
+"Marvel's Spider-Man 2": 'Peter Parker e Miles Morales juntos contra o Venom, numa Nova York ainda maior. Balance entre os prédios, plane com as asas de teia e alterne entre os dois Homens-Aranha.',
+'Pokémon Legends: Z-A': 'Uma nova aventura Pokémon em Lumiose City, com batalhas em tempo real e a volta das Megaevoluções. Capture, treine e explore a cidade inteira.',
+'Mortal Kombat 1': 'O Mortal Kombat renasce em uma nova era criada por Liu Kang. Fatalities brutais, os lutadores clássicos de volta e os Kameos para ajudar no meio da luta.',
+'Donkey Kong Bananza': 'Donkey Kong destrói tudo pelo caminho numa aventura 3D em que dá para quebrar quase o mapa inteiro. Divertido, criativo e um dos destaques do Switch 2.',
+'Marathon': 'Tiro de extração dos criadores de Halo e Destiny: entre num planeta perdido, junte o melhor equipamento que encontrar e tente sair vivo antes que os outros times peguem você.',
+'Pragmata': 'Ficção científica da Capcom numa estação lunar: um astronauta e uma androide em forma de menina precisam trabalhar juntos para sobreviver e voltar para a Terra.',
+'Onimusha: Way of the Sword': 'A volta de Onimusha: o lendário samurai Miyamoto Musashi enfrenta demônios numa Kyoto sombria, com combate de espada preciso e muito estilo.',
+'Phantom Blade Zero': 'Ação de kung fu em ritmo alucinante, com lutas de espada coreografadas como num filme de artes marciais e um mundo sombrio de fantasia chinesa.',
+'Ace Combat 8: Wings of Theve': 'Combate aéreo no estilo cinematográfico que fez a fama da série: pilote caças reais em missões espetaculares, com uma história dramática de guerra nos céus.',
+'The First Berserker: Khazan': 'Ação desafiadora no estilo soulslike: o general Khazan, traído e dado como morto, volta em busca de vingança com combates intensos contra chefes enormes.',
+'The Blood of Dawnwalker': 'RPG sombrio de mundo aberto na Europa medieval. De dia você é humano, de noite é um vampiro com poderes sobrenaturais, e o tempo que passa muda a história.',
+'Control Resonant': 'A nova aventura no universo de Control, da Remedy: poderes sobrenaturais, ação intensa e um mundo estranho que desafia a realidade a cada esquina.',
+'Halloween': 'Viva a noite de terror de Haddonfield do filme clássico: jogue como os moradores tentando sobreviver ou encare Michael Myers. Perfeito para jogar com os amigos.',
+'Reanimal': 'Terror cooperativo dos criadores de Little Nightmares. Dois irmãos atravessam uma ilha perturbadora para resgatar os amigos, num clima sombrio e cheio de criaturas.',
+'The Legend of Zelda: Ocarina of Time': 'Um dos maiores jogos de todos os tempos, para jogar no Switch 2. Link viaja pelo tempo em Hyrule para impedir Ganondorf, com dungeons memoráveis e a famosa ocarina.',
+// Consoles
+'PlayStation 5 Pro': 'O PlayStation mais potente já feito: gráficos mais nítidos, mais quadros por segundo e ray tracing avançado nos jogos com melhorias para PS5 Pro. Ideal para quem tem TV 4K e quer o máximo de qualidade.',
+'PlayStation 5 Slim': 'O PS5 em um formato menor e mais leve, com carregamento quase instantâneo, controle DualSense com resposta tátil e acesso a todos os exclusivos de PlayStation.',
+'Xbox Series S': 'O jeito mais barato de entrar na nova geração: compacto, rápido e perfeito com o Game Pass, que dá acesso a centenas de jogos.',
+'Xbox Series X': 'O Xbox mais potente, com jogos em 4K, carregamento rápido e compatibilidade com quatro gerações de jogos Xbox.',
+'Nintendo Switch 2 + Mario Kart World': 'O novo console da Nintendo, para jogar na TV ou levar para qualquer lugar, já com Mario Kart World. Tela maior, mais desempenho e os novos Joy-Con 2 que viram mouse.',
+// Controles
+'Controle GTA VI': 'Edição limitada com o visual de Vice City, para combinar com o jogo do ano. Peça de colecionador, com unidades contadas.',
+'Controle sem fio para PS5': 'O controle oficial do PS5: resposta tátil e gatilhos adaptáveis que fazem você sentir cada tiro, cada freada e cada passo no jogo.',
+'Controle sem fio DualSense · Midnight Black': 'O DualSense oficial em preto total, com resposta tátil e gatilhos adaptáveis. Um segundo controle para jogar com os amigos ou deixar o setup mais bonito.',
+'Controle sem fio DualSense · Cosmic Red': 'O DualSense oficial em vermelho e preto, para dar estilo ao seu setup sem perder nada da resposta tátil e dos gatilhos adaptáveis.',
+'Controle sem fio DualSense Edge': 'O controle profissional do PS5: botões traseiros, perfis personalizados, analógicos trocáveis e ajuste dos gatilhos. Para quem leva o jogo a sério.',
+'Controle sem fio para Xbox Series': 'O controle oficial do Xbox: confortável, preciso e compatível com Xbox Series, Xbox One, PC e celular.',
+'Controle sem fio Xbox · Carbon Black': 'O controle oficial do Xbox em preto, com pegada texturizada, direcional híbrido e conexão com Xbox, PC e celular.',
+'Controle Pro Nintendo Switch 2': 'O controle mais completo para o Switch 2: pegada confortável para jogar por horas, botões traseiros programáveis e entrada para fone de ouvido.',
+// Acessórios
+'PlayStation Portal · Reprodutor remoto': 'Jogue os jogos do seu PS5 numa tela de 8 polegadas em qualquer cômodo da casa pelo Wi-Fi, com todos os recursos do DualSense.',
+'Headset sem fio Sony Pulse Elite · PS5 · Branco': 'Som de alta definição com áudio 3D do PS5: você ouve de onde vem cada passo e cada tiro. Sem fio e com microfone retrátil com cancelamento de ruído.',
+'Headset sem fio Xbox': 'O headset oficial do Xbox, sem fio, com som espacial e microfone que silencia automaticamente. Conecta no Xbox, no PC e no celular.',
+'Headset HyperX Cloud Stinger 2': 'Leve, confortável e com ótimo som pelo preço. Funciona em qualquer console, no PC e no celular.',
+'Headset HyperX Cloud III': 'O famoso conforto da linha Cloud com som surround e microfone de qualidade. Um dos headsets mais recomendados para jogar.',
+'SSD WD_BLACK SN850X 1TB com dissipador': 'Mais 1TB para o seu PS5, com a mesma velocidade do armazenamento interno. Instalação simples e nunca mais precisa apagar jogo para baixar outro.',
+'SSD WD_BLACK SN850X 2TB com dissipador': 'Mais 2TB para o seu PS5, com velocidade de ponta. Espaço para guardar a biblioteca inteira sem apagar nada.',
+'Cartão de expansão Seagate 1TB para Xbox Series X|S': 'Expansão oficial para Xbox Series: encaixa atrás do console e roda os jogos na mesma velocidade do SSD interno.',
+'Unidade de disco para PS5 · Sony': 'Transforme o seu PS5 Digital ou PS5 Pro em um console com leitor de disco e jogue com mídia física.',
+'Bateria recarregável para controle Xbox + cabo USB-C': 'Chega de pilha: recarregue o controle do Xbox até jogando, pelo cabo USB-C.',
+'Cartão microSD Express SanDisk 256GB para Nintendo Switch 2': 'Mais espaço para os jogos do Switch 2, no formato microSD Express que o console exige.',
+'Base de carregamento Sony para controle DualSense · CFI-ZDS1': 'Encaixou, carregou: deixe dois controles do PS5 sempre prontos para jogar.',
+'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54': 'Carregue até quatro controles do PS5 ao mesmo tempo, com luz RGB para deixar o setup mais bonito.',
+'Base de resfriamento multifuncional para PS5': 'Ventilação extra para o PS5 jogar mais fresco, com carregador de controles e espaço para organizar jogos e headset.',
+'Suporte para controle DualSense · Tema GTA VI': 'Deixe o controle em destaque na mesa com o visual de GTA VI.',
+'Suporte vertical para controle de PS5 · Branco': 'Organize dois controles na mesa, com o visual branco que combina com o PS5.',
+'Cabo USB-C para carregar controle de PS5': 'Cabo trançado e resistente para carregar o controle sem parar de jogar.',
+'Capa de proteção antipoeira para PlayStation 5 Slim · Preta': 'Proteja o PS5 Slim da poeira quando não estiver jogando.',
+// Cartões e assinaturas
+'Cartão PlayStation Store R$ 100': 'Crédito para comprar o que quiser na PlayStation Store: jogos, expansões, moedas e assinaturas. Ótimo presente para quem joga no PlayStation.',
+'Cartão PlayStation Store R$ 250': 'Crédito maior para a PlayStation Store: dá para comprar um lançamento ou vários jogos em promoção. Presente certeiro para quem tem PS5 ou PS4.',
+'PlayStation Plus Essential · 12 meses': 'Um ano inteiro jogando online com os amigos, com jogos novos para resgatar todo mês e descontos exclusivos na PlayStation Store.',
+'PlayStation Plus Extra · 12 meses': 'Um ano de PlayStation Plus com um catálogo de centenas de jogos de PS5 e PS4 para baixar e jogar à vontade, além do multiplayer online.',
+'Xbox Game Pass Ultimate · 1 mês': 'Um mês com acesso a centenas de jogos no Xbox, no PC e na nuvem, incluindo os lançamentos da Xbox no dia em que saem.',
+'Xbox Game Pass Ultimate · 3 meses': 'Três meses de Game Pass Ultimate: centenas de jogos no Xbox, no PC e na nuvem, com os lançamentos da Xbox no primeiro dia e multiplayer online.',
+'Cartão Steam R$ 100': 'Crédito para a carteira Steam, a maior loja de jogos de PC. Use em jogos, expansões e itens, ou dê de presente.'
 };
 var IMGS = {
 'PlayStation 5 Pro': ['assets/img/consoles/ps5-pro-1.jpg', 'assets/img/consoles/ps5-pro-3.jpg', 'assets/img/consoles/ps5-pro-2.jpg', 'assets/img/consoles/ps5-pro-4.jpg']
@@ -1161,9 +1271,27 @@ NEW_GAMES.forEach(function (g) { var ls = PLATS[g[2]]; if (!ls) { return; } g[1]
 NEW_GAMES.forEach(function (g) {
 COVER[g[2]] = true;
 IMGS[g[2]] = ['assets/img/jogos/' + g[5] + '.jpg'];
-INFO[g[2]] = [g[2] + ' para ' + g[3] + '. Jogo de ' + g[4] + '.', g[6] ? '[CONFIRME SE É MÍDIA FÍSICA OU DIGITAL E A CLASSIFICAÇÃO INDICATIVA]' : '[CONFIRME O PREÇO, A PLATAFORMA DISPONÍVEL, SE É MÍDIA FÍSICA OU DIGITAL E A CLASSIFICAÇÃO INDICATIVA]'];
+INFO[g[2]] = ['Versões: ' + g[3] + '.', g[6] ? '[CONFIRME SE É MÍDIA FÍSICA OU DIGITAL E A CLASSIFICAÇÃO INDICATIVA]' : '[CONFIRME O PREÇO, A PLATAFORMA DISPONÍVEL, SE É MÍDIA FÍSICA OU DIGITAL E A CLASSIFICAÇÃO INDICATIVA]'];
 });
-var newGames = add('Jogos', [['FC 27', 'PS5 · Físico', 'EA Sports FC 27 · PS5']].concat(NEW_GAMES.map(function (g) { return [g[0], g[1], g[2]]; })));
+// Cada versão de console vira um produto separado ("Battlefield 6 · PS5", "Battlefield 6 · Xbox Series"...),
+// para o cliente achar e colocar no carrinho direto. A versão de PC vem de PC_GAMES ("Battlefield 6 · PC").
+var PLAT_FULL = { 'PS5': 'PlayStation 5', 'PS4': 'PlayStation 4 (também roda no PS5)', 'Xbox Series': 'Xbox Series X|S', 'Xbox One': 'Xbox One (também roda no Xbox Series X|S)', 'Switch': 'Nintendo Switch (também roda no Switch 2)', 'Switch 2': 'Nintendo Switch 2', 'PC': 'PC, em key digital' };
+var splitGame = function (base, ls, note, extra) {
+return ls.filter(function (l) { return l !== 'PC'; }).map(function (l) {
+var n = base + ' · ' + l;
+PRICES[n] = PRICES[base]; PDISC[n] = PDISC[base]; IMGS[n] = IMGS[base]; COVER[n] = true;
+INFO[n] = ['Versão para ' + PLAT_FULL[l] + '.' + (extra ? ' ' + extra : ''), note];
+return n;
+});
+};
+var GAME_ROWS = [];
+NEW_GAMES.forEach(function (g) {
+var ls = PLATS[g[2]] || (/Xbox/.test(g[3]) ? ['PS5', 'Xbox Series'] : ['PS5']);
+var genre = g[4].charAt(0).toUpperCase() + g[4].slice(1);
+var extra = /PS4 e Xbox One/.test(g[3]) ? 'Jogo de ' + g[3] + '.' : '';
+splitGame(g[2], ls, INFO[g[2]][1], extra).forEach(function (n) { GAME_ROWS.push([g[0], n.split(' · ').pop() + ' · ' + genre, n]); });
+});
+var newGames = add('Jogos', [['FC 27', 'PS5 · Esporte', 'EA Sports FC 27 · PS5']].concat(GAME_ROWS));
 // Versões para PC (key digital). O preço e o desconto seguem automaticamente os da versão de PS5
 // (o nome da última coluna). Para mudar, altere o jogo de PS5 em PRICES e PDISC.
 // [TEXTO CURTO, Gênero, Nome do jogo, Foto, Nome da versão de PS5]
@@ -1222,10 +1350,11 @@ INFO[n] = [g[2] + ' para PC, entregue como key digital para ativar na sua conta.
 });
 var pcGames = add('Jogos', PC_GAMES.map(function (g) { return [g[0], 'PC · Key digital · ' + g[1], g[2] + ' · PC']; }));
 var accessories = add('Acessórios', [['CAPA', 'PS5 Slim', 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta'], ['BASE', 'PS5 · Sony', 'Base de carregamento Sony para controle DualSense · CFI-ZDS1'], ['HEADSET', 'PS5 · Sony · CFI-ZWH2L', 'Headset sem fio Sony Pulse Elite · PS5 · Branco'], ['BASE', 'PS5 · Ventilação', 'Base de resfriamento multifuncional para PS5'], ['SUPORTE', 'PS5 · 2 controles', 'Suporte vertical para controle de PS5 · Branco'], ['SUPORTE', 'PS5 · Tema GTA VI', 'Suporte para controle DualSense · Tema GTA VI'], ['CABO', 'PS5 · USB-C', 'Cabo USB-C para carregar controle de PS5'], ['ESTAÇÃO', 'PS5 · Krab · RGB', 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54'], ['DISCO', 'PS5 Slim Digital · PS5 Pro', 'Unidade de disco para PS5 · Sony'], ['SSD', 'PS5 · 1TB · Dissipador', 'SSD WD_BLACK SN850X 1TB com dissipador'], ['SSD', 'PS5 · 2TB · Dissipador', 'SSD WD_BLACK SN850X 2TB com dissipador'], ['PORTAL', 'PS5 · Sony', 'PlayStation Portal · Reprodutor remoto'], ['BATERIA', 'Xbox · USB-C', 'Bateria recarregável para controle Xbox + cabo USB-C'], ['SSD', 'Xbox Series · 1TB', 'Cartão de expansão Seagate 1TB para Xbox Series X|S'], ['HEADSET', 'Xbox · Sem fio', 'Headset sem fio Xbox'], ['HEADSET', 'PS5 · Xbox · PC · Switch', 'Headset HyperX Cloud Stinger 2'], ['HEADSET', 'PS5 · Xbox · PC · Switch', 'Headset HyperX Cloud III']]);
+var tomodachi = splitGame('Tomodachi Life: Living the Dream', PLATS['Tomodachi Life: Living the Dream'], '[CONFIRME SE É MÍDIA FÍSICA OU DIGITAL]', '');
 var nintendo = [].concat(
 add('Consoles', [['SWITCH 2', 'Nintendo · Mario Kart World', 'Nintendo Switch 2 + Mario Kart World']]),
 add('Controles', [['PRO', 'Nintendo Switch 2', 'Controle Pro Nintendo Switch 2']]),
-add('Jogos', [['MARIO KART', 'Switch 2 · Corrida', 'Mario Kart World · Switch 2'], ['DK', 'Switch 2 · Aventura', 'Donkey Kong Bananza · Switch 2'], ['POKÉMON', 'Switch 2 · RPG', 'Pokémon Legends: Z-A · Switch 2'], ['TOMODACHI', 'Switch/Switch 2 · Simulação', 'Tomodachi Life: Living the Dream'], ['ZELDA', 'Switch 2 · Aventura · Lançamento', 'The Legend of Zelda: Ocarina of Time · Switch 2']]),
+add('Jogos', [['MARIO KART', 'Switch 2 · Corrida', 'Mario Kart World · Switch 2'], ['DK', 'Switch 2 · Aventura', 'Donkey Kong Bananza · Switch 2'], ['POKÉMON', 'Switch 2 · RPG', 'Pokémon Legends: Z-A · Switch 2'], ['TOMODACHI', 'Switch · Simulação', tomodachi[0]], ['TOMODACHI', 'Switch 2 · Simulação', tomodachi[1]], ['ZELDA', 'Switch 2 · Aventura · Lançamento', 'The Legend of Zelda: Ocarina of Time · Switch 2']]),
 add('Acessórios', [['MICROSD', 'Switch 2 · 256GB', 'Cartão microSD Express SanDisk 256GB para Nintendo Switch 2']])
 );
 var cards = add('Cartões', [['PS STORE', 'PlayStation · Crédito', 'Cartão PlayStation Store R$ 100'], ['PS STORE', 'PlayStation · Crédito', 'Cartão PlayStation Store R$ 250'], ['PS PLUS', 'PlayStation · Assinatura', 'PlayStation Plus Essential · 12 meses'], ['PS PLUS', 'PlayStation · Assinatura', 'PlayStation Plus Extra · 12 meses'], ['GAME PASS', 'Xbox · Assinatura', 'Xbox Game Pass Ultimate · 1 mês'], ['GAME PASS', 'Xbox · Assinatura', 'Xbox Game Pass Ultimate · 3 meses'], ['STEAM', 'PC · Crédito', 'Cartão Steam R$ 100']]);
@@ -1233,7 +1362,7 @@ var cards = add('Cartões', [['PS STORE', 'PlayStation · Crédito', 'Cartão Pl
 // Plataforma de cada produto (para escolher a versão e montar os itens relacionados).
 var GENRE = { 'Grand Theft Auto VI · PS5': 'mundo aberto', 'Grand Theft Auto VI · Xbox Series': 'mundo aberto', 'Grand Theft Auto VI · Digital PS5': 'mundo aberto', 'Grand Theft Auto VI · Digital Xbox': 'mundo aberto', 'Grand Theft Auto VI Ultimate · PS5': 'mundo aberto', 'Grand Theft Auto VI Ultimate · Xbox Series': 'mundo aberto', 'Grand Theft Auto VI Ultimate · Digital PS5': 'mundo aberto', 'Grand Theft Auto VI Ultimate · Digital Xbox': 'mundo aberto', 'EA Sports FC 27 · PS5': 'esporte' };
 var MULTI = {};
-NEW_GAMES.forEach(function (g) { GENRE[g[2]] = g[4].toLowerCase(); MULTI[g[2]] = /Xbox/.test(g[3]); });
+NEW_GAMES.forEach(function (g) { GENRE[g[2]] = g[4].toLowerCase(); });
 PC_GAMES.forEach(function (g) { GENRE[g[2] + ' · PC'] = g[1].toLowerCase(); });
 // Jogos lançados em 2026: ganham o selo "Lançamento 2026" (o GTA VI ganha "Super lançamento").
 var LAUNCH_2026 = ['Call of Duty: Modern Warfare 4', 'Resident Evil Requiem', 'Crimson Desert', '007 First Light', 'Pragmata', 'Marathon', 'Onimusha: Way of the Sword', 'The Blood of Dawnwalker', 'Control Resonant', 'Halloween', 'Phantom Blade Zero', 'Ace Combat 8: Wings of Theve', 'Reanimal', 'EA Sports FC 27', 'NBA 2K27', 'Madden NFL 27', 'MLB The Show 26', 'Forza Horizon 6', 'LEGO Batman: Legacy of the Dark Knight', 'Tomodachi Life: Living the Dream', 'The Legend of Zelda: Ocarina of Time'];
@@ -1242,9 +1371,10 @@ catalog.forEach(function (p) {
 var n = p.name;
 p.plat = / · PC$|Steam/.test(n) ? 'pc' : (/Switch/.test(n) ? 'switch' : (/HyperX/.test(n) ? 'all' : (/Xbox/.test(n) ? 'xbox' : 'ps')));
 if (MULTI[n] === true) { p.plat = 'both'; }
-p.genre = GENRE[n] || '';
+p.genre = GENRE[n] || GENRE[n.split(' · ')[0]] || '';
 // Versões (labels) e famílias de plataforma (ps, xbox, switch, pc) do produto.
-var ls = PLATS[n] ? PLATS[n].slice() : (p.plat === 'both' ? ['PS5', 'Xbox Series'] : (p.plat === 'xbox' ? ['Xbox Series'] : (p.plat === 'switch' ? ['Switch 2'] : (p.plat === 'pc' ? ['PC'] : (p.plat === 'all' ? [] : ['PS5'])))));
+var last = n.split(' · ').pop();
+var ls = FAM[last] ? [last] : PLATS[n] ? PLATS[n].slice() : (p.plat === 'both' ? ['PS5', 'Xbox Series'] : (p.plat === 'xbox' ? ['Xbox Series'] : (p.plat === 'switch' ? ['Switch 2'] : (p.plat === 'pc' ? ['PC'] : (p.plat === 'all' ? [] : ['PS5'])))));
 p.labels = ls;
 p.consoles = ls.filter(function (l) { return l !== 'PC'; });
 p.fams = {};
@@ -1264,7 +1394,6 @@ var byName = {};
 catalog.forEach(function (p) { byName[p.name] = p; });
 // Jogos que também têm key de PC ganham a opção "PC" na janela do produto (adiciona a versão "· PC" ao carrinho).
 var pcBySrc = {};
-PC_GAMES.forEach(function (g) { pcBySrc[g[4]] = g[2] + ' · PC'; });
 catalog.forEach(function (p) {
 if (p.cat !== 'Jogos' || p.plat === 'pc' || !pcBySrc[p.name]) { return; }
 var pc = byName[pcBySrc[p.name]];
@@ -1294,6 +1423,7 @@ var ex = { showCart: true, pid: null, showCheckout: false, orderDone: false };
 if (isAnchor) { ex.anchor = k; }
 setCart(c, ex);
 };
+catalog.forEach(function (p) { p.quickAdd = function () { addToCart(p, 0, true); }; p.wrapCls = 'zcw' + (p.canBuy ? ' hasq' : ''); p.quickAria = 'Adicionar ' + p.name + ' ao carrinho'; });
 var setQty = function (k, n) { var c = Object.assign({}, cart); if (n <= 0) { delete c[k]; } else { c[k] = Math.min(maxOf(k), n); } setCart(c); };
 // Ficha dos produtos para a página do controle mostrar o mesmo carrinho (nome, preço no Pix, preço cheio e foto).
 if (!self._snapDone) {
@@ -1370,11 +1500,11 @@ var GPLATS = ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'Switch', 'Switch 2', 'PC
 var gplat = GPLATS.indexOf(st.gplat) >= 0 ? st.gplat : 'all';
 var platOk = function (p, pl) { return pl === 'all' || p.labels.indexOf(pl) >= 0; };
 var byPlat = function (list) { return list.filter(function (p) { return platOk(p, gplat); }); };
-var consoleGames = gtaGames.concat(newGames);
+var consoleGames = gtaGames.concat(newGames, pcGames);
 var nintendoGames = nintendo.filter(function (p) { return p.cat === 'Jogos'; });
 var pcSrc = {};
 PC_GAMES.forEach(function (g) { pcSrc[g[2] + ' · PC'] = g[4]; });
-var pcOnlyGames = pcGames.filter(function (p) { return pcSrc[p.name] === p.name; });
+var pcOnlyGames = []; // as versões de PC já estão na lista de jogos
 // Jogos que entram a mais quando o filtro é Switch (os da seção Nintendo) ou PC (os que só têm versão de PC).
 var extraFor = function (pl) { return pl === 'Switch' || pl === 'Switch 2' ? nintendoGames : (pl === 'PC' ? pcOnlyGames : []); };
 var gameChips = [['all', 'Todos']].concat(GPLATS.map(function (l) { return [l, l]; })).map(function (c) {
@@ -1395,6 +1525,7 @@ o[prefix + 'MoreLabel'] = open ? 'Ver menos ' + noun : 'Ver mais ' + noun + ' ('
 o[prefix + 'Toggle'] = function () { if (open) { collapse(key, anchor); } else { var patch = {}; patch[key] = true; self.setState(patch); } };
 return o;
 };
+var aboutOf = function (p) { var b = p.name.split(' · ')[0].replace(/ Ultimate$/, ''); return ABOUT[p.name] || ABOUT[b] || ''; };
 var openAt = function (p, label) { var i = p.vers.map(function (v) { return v.label; }).indexOf(label); self.setState({ pid: p.id, pimg: 0, pver: i < 0 ? 0 : i, searchOpen: false, q: '' }); };
 catalog.forEach(function (p) { if (p.cat === 'Jogos' && gplat !== 'all') { p.open = function () { openAt(p, gplat); }; } });
 // Frete: duas opções. Só é cobrado quando o pedido tem item físico (itens digitais vão por e-mail).
@@ -1417,7 +1548,10 @@ var pixDiff = fullTotal - pixTotal;
 // Ordem dos jogos: os mais famosos primeiro. Para mudar, mexa nesta lista (o nome é o começo do nome do produto).
 var POPULAR = ['Grand Theft Auto VI', 'Grand Theft Auto VI Ultimate', 'Call of Duty: Modern Warfare 4', 'Battlefield 6', 'Call of Duty: Black Ops 7', 'Red Dead Redemption 2', 'The Legend of Zelda: Ocarina of Time', 'Halloween', 'Grand Theft Auto V', 'Resident Evil Requiem', 'EA Sports FC 27', 'NBA 2K27', 'Ghost of Yōtei', 'Minecraft', 'Forza Horizon 6', '007 First Light', 'Call of Duty: Black Ops 6', 'Borderlands 4', 'Monster Hunter Wilds', 'Crimson Desert', 'Elden Ring Nightreign', 'Call of Duty: Black Ops II', 'The Elder Scrolls IV: Oblivion Remastered', 'Split Fiction', 'Madden NFL 27', 'LEGO Batman: Legacy of the Dark Knight', 'Tomodachi Life: Living the Dream', 'Battlefield 2042', 'Call of Duty: Modern Warfare III', 'Kingdom Come: Deliverance II', 'Forza Horizon 5', 'RuneScape: Dragonwilds', 'EA Sports FC 26', 'NBA 2K26', 'MLB The Show 26', 'EA Sports College Football 26', 'Madden NFL 26', 'WWE 2K25', 'MLB The Show 25', 'Battlefield V', 'Battlefield 1', 'Mario Kart World', "Marvel's Spider-Man 2", 'Pokémon Legends: Z-A', 'Mortal Kombat 1', '007 First Light', 'Donkey Kong Bananza', 'Crimson Desert', 'Marathon', 'Pragmata', 'Onimusha: Way of the Sword', 'Phantom Blade Zero', 'Ace Combat 8: Wings of Theve', 'The First Berserker: Khazan', 'The Blood of Dawnwalker', 'Control Resonant', 'Reanimal'];
 var rankOf = function (p) { var b = p.name.split(' · ')[0]; var i = POPULAR.indexOf(b); return i < 0 ? 999 : i; };
-var byRank = function (a, b) { return (rankOf(a) - rankOf(b)) || (a.id - b.id); };
+// Mesma ordem de plataforma para todos os jogos: PS5, PS4, Xbox Series, Xbox One, Switch, Switch 2, PC.
+var PORDER = ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'Switch', 'Switch 2', 'PC'];
+var platRank = function (p) { var i = PORDER.indexOf(p.name.split(' · ').pop()); return i < 0 ? 9 : i; };
+var byRank = function (a, b) { return (rankOf(a) - rankOf(b)) || a.name.split(' · ')[0].localeCompare(b.name.split(' · ')[0]) || (platRank(a) - platRank(b)) || (a.id - b.id); };
 newGames.sort(byRank);
 pcGames.sort(byRank);
 nintendo = nintendo.filter(function (p) { return p.cat === 'Consoles'; }).concat(nintendo.filter(function (p) { return p.cat === 'Jogos'; }).sort(byRank), nintendo.filter(function (p) { return p.cat !== 'Consoles' && p.cat !== 'Jogos'; }));
@@ -1468,7 +1602,7 @@ var bfSortChips = [['rel', 'Por categoria'], ['disc', 'Maior desconto'], ['low',
 var on = bfSort === c[0];
 return { label: c[1], cls: 'zfopt' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { bfSet({ bfSort: c[0] }); } };
 });
-var gGta = byPlat(gtaGames), gRest = byPlat(newGames).concat(byPlat(extraFor(gplat)));
+var gGta = byPlat(gtaGames), gRest = byPlat(newGames.concat(pcGames).sort(byRank)).concat(byPlat(extraFor(gplat)));
 var gTotal = gGta.length + gRest.length;
 var gShown = st.gMore ? { gta: gGta, rest: gRest } : { gta: gGta, rest: gRest.slice(0, Math.max(4, LIMIT - gGta.length)) };
 var gShownCount = gShown.gta.length + gShown.rest.length;
@@ -1483,7 +1617,7 @@ var qLabels = PQ[q.replace(/^(os |as )?(jogos?|games?)( de| do| da| para| pra| p
 var qPick = function (p) { return qLabels.filter(function (l) { return p.labels.indexOf(l) >= 0; }); };
 var results = q.length < 2 ? [] : (qLabels
 ? consoleGames.concat(nintendoGames, pcOnlyGames).filter(function (p) { return qPick(p).length > 0; }).sort(byRank)
-: catalog.filter(function (p) { return norm(p.name + ' ' + p.cat + ' ' + p.tag + ' ' + p.labels.join(' ')).indexOf(q) >= 0; }).slice(0, 12));
+: catalog.filter(function (p) { return norm(p.name + ' ' + p.cat + ' ' + p.tag + ' ' + p.labels.join(' ')).indexOf(q) >= 0; }).slice(0, 30));
 var pd = st.pid == null ? null : catalog[st.pid];
 var N = 5;
 return Object.assign(moreVals, {
@@ -1512,6 +1646,8 @@ pdPrice: pd ? pd.priceLabel : '',
 pdHasOld: !!(pd && pd.hasOld), pdInstOnly: !!(pd && !pd.hasOld && pd.hasInst), pdOld: pd ? pd.oldLabel : '', pdOff: pd ? pd.offLabel : '', pdInst: pd ? pd.instLabel : '', pdSave: pd ? money(pd.old - pd.price) : '',
 pdStatus: pd && STATUS[pd.name] ? STATUS[pd.name] : pd && pd.page ? 'Disponível na Black Friday' : (pd && pd.out ? 'Sem estoque no momento' : (pd && pd.price > 0 ? 'Disponível' : 'Em breve na Zera')),
 pdDesc: pd ? (INFO[pd.name] ? INFO[pd.name][0] : (pd.page ? 'Produto em destaque na Zera Games. Veja fotos, detalhes e condições na página completa.' : DESC[pd.cat][0])) : '',
+pdAbout: pd ? aboutOf(pd) : '',
+pdHasAbout: !!(pd && aboutOf(pd)),
 pdHasPerks: !!(pd && PERKS[pd.name]),
 pdPerks: pd && PERKS[pd.name] ? PERKS[pd.name].map(function (t) { return { text: t }; }) : [],
 pdNote: pd ? (INFO[pd.name] ? INFO[pd.name][1] : (pd.page ? '' : DESC[pd.cat][1])) : '',
