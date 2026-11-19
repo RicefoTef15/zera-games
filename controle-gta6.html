@@ -248,7 +248,7 @@ button.cta2{background:transparent;cursor:pointer}
 </span>
 <span class="badge" style="min-height: 40px; padding: 0 16px; font-size: 17px; letter-spacing: 0.04em">FRETE GRÁTIS</span>
 </div>
-<span style="font-size: 13px; line-height: 1.5; color: var(--muted)">Grátis em até 10 dias úteis · Normal R$ 30,00 em até 5 dias úteis · Premium R$ 90,00 com entrega no dia seguinte. Você escolhe no checkout.</span>
+<span style="font-size: 13px; line-height: 1.5; color: var(--muted)">Grátis em até 10 dias úteis · Normal R$ 30,00 em até 5 dias úteis. Você escolhe no checkout.</span>
 </sc-if>
 </div>
 <button type="button" class="cta" style="border: 0; cursor: pointer" onClick="{{addController}}">
@@ -852,6 +852,15 @@ button.cta2{background:transparent;cursor:pointer}
 </template>
 <script type="text/x-dc" data-dc-script data-props='{"price":{"editor":"float","default":299.37,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"demoStep":{"editor":"int","default":0,"min":0,"max":4,"section":"Demonstração"},"installments":{"editor":"int","default":6,"min":1,"max":24,"section":"Venda"},"priceFrom":{"editor":"float","default":997.9,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"stockBlack":{"editor":"int","default":8,"min":0,"max":8,"section":"Estoque"},"stockWhite":{"editor":"int","default":6,"min":0,"max":6,"section":"Estoque"},"priceGamePs5":{"editor":"float","default":258.7,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"priceGameXbox":{"editor":"float","default":258.7,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"priceGameDigital":{"editor":"float","default":230.93,"min":0,"step":0.1,"unit":"R$","section":"Venda"},"checkoutCart":{"editor":"text","default":"","section":"Venda"},"couponCode":{"editor":"text","default":"TESTE10","section":"Cupom"},"couponPct":{"editor":"int","default":10,"min":0,"max":90,"unit":"%","section":"Cupom"},"$preview":{"width":1440,"height":4100}}'>
 class Component extends DCLogic {
+componentDidMount() {
+var self = this;
+// Carrinho único da loja: lê o mesmo carrinho salvo pela página inicial.
+var load = function () { var c = {}, n = {}; try { c = JSON.parse(localStorage.getItem('zera-cart') || '{}') || {}; } catch (e) {} try { n = JSON.parse(localStorage.getItem('zera-catalog') || '{}') || {}; } catch (e) {} self.setState({ store: c, snap: n }); };
+load();
+this._onStorage = function (e) { if (e.key === 'zera-cart' || e.key === 'zera-catalog') { load(); } };
+window.addEventListener('storage', this._onStorage);
+}
+componentWillUnmount() { window.removeEventListener('storage', this._onStorage); }
 renderVals() {
 var self = this;
 var st = this.state || {};
@@ -881,7 +890,13 @@ for (var i = 0; i < initial; i++) { pips.push({ cls: 'pip' + (i < stock ? ' on' 
 var total = sb + sw;
 var nAng = isBlack ? 5 : 4;
 var ang = Math.min(st.ang || 0, nAng - 1);
-var cart = st.cart || {};
+// Carrinho único da loja: o mesmo da página inicial, salvo no navegador. Cada produto desta página tem a sua chave lá.
+var KEYS = { black: 'Controle GTA VI · Preto||', white: 'Controle GTA VI · Branco||', ps5: 'Grand Theft Auto VI · PS5||', xbox: 'Grand Theft Auto VI · Xbox Series||', digital: 'Grand Theft Auto VI · Digital PS5||', digitalx: 'Grand Theft Auto VI · Digital Xbox||', fc27: 'EA Sports FC 27 · PS5||PS5', cps5: 'Controle sem fio para PS5||', cxbox: 'Controle sem fio para Xbox Series||', suporte: 'Suporte para controle DualSense · Tema GTA VI||', krab: 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54||', baseds: 'Base de carregamento Sony para controle DualSense · CFI-ZDS1||', pulse: 'Headset sem fio Sony Pulse Elite · PS5 · Branco||', stinger: 'Headset HyperX Cloud Stinger 2||', ssd1: 'SSD WD_BLACK SN850X 1TB com dissipador||', psplus: 'PlayStation Plus Essential · 12 meses||' };
+var store = st.store || {};
+var snap = st.snap || {};
+var known = {}, cart = {};
+Object.keys(KEYS).forEach(function (id) { known[KEYS[id]] = id; if (store[KEYS[id]] > 0) { cart[id] = store[KEYS[id]]; } });
+var saveStore = function (c, ns) { try { localStorage.setItem('zera-cart', JSON.stringify(c)); } catch (e) {} self.setState(Object.assign({ store: c }, ns || {})); };
 var pPs5 = Number(this.props.priceGamePs5 ?? 258.7) || 0;
 var pXbox = Number(this.props.priceGameXbox ?? 258.7) || 0;
 var pDig = Number(this.props.priceGameDigital ?? 230.93) || 0;
@@ -904,7 +919,8 @@ var catalog = [
 { id: 'ssd1', name: 'SSD WD_BLACK SN850X 1TB com dissipador', old: 1100, price: 660, max: 99, img: 'assets/img/acessorios/wd-black-sn850x.jpg', why: 'Mais 1TB no PS5: espaço de sobra para o GTA VI' },
 { id: 'psplus', name: 'PlayStation Plus Essential · 12 meses', old: 360, price: 334.8, max: 99, img: 'assets/img/cartoes/ps-plus-essential-12.jpg', why: 'Libera o multiplayer online no PS5', digital: true }
 ];
-var setQty = function (id, n, open) { var c = Object.assign({}, cart); if (n <= 0) { delete c[id]; } else { c[id] = n; } var ns = { cart: c }; if (open) { ns.showCart = true; } self.setState(ns); };
+var setQty = function (id, n, open) { var c = Object.assign({}, store), k = KEYS[id]; if (n <= 0) { delete c[k]; } else { c[k] = n; } saveStore(c, open ? { showCart: true } : null); };
+var setKey = function (k, n) { var c = Object.assign({}, store); if (n <= 0) { delete c[k]; } else { c[k] = Math.min(99, n); } saveStore(c); };
 var addFn = function (id, n, max) { return function () { if (max <= 0) { return; } setQty(id, Math.min(max, (cart[id] || 0) + n), true); }; };
 var cartCount = 0;
 var cartSum = 0, cartFull = 0;
@@ -919,6 +935,15 @@ if (q <= 0) { return; }
 cartCount += q;
 if (c.price > 0) { cartSum += c.price * q; cartFull += fullOf(c) * q; } else { allPriced = false; }
 cartItems.push({ name: c.name, qty: q, unit: c.price > 0 ? money(c.price) + ' cada' : 'Preço a definir', line: c.price > 0 ? money(c.price * q) : '—', lineFull: c.price > 0 ? money(fullOf(c) * q) : '—', inc: function () { setQty(c.id, Math.min(c.max, q + 1)); }, dec: function () { setQty(c.id, q - 1); }, remove: function () { setQty(c.id, 0); } });
+});
+// Produtos que vieram da página inicial (jogos, acessórios etc.): aparecem aqui com o preço de lá.
+var hasPhysOther = false;
+Object.keys(store).forEach(function (k) {
+var q = store[k], info = snap[k];
+if (known[k] || !(q > 0) || !info) { return; }
+if (!info.digital) { hasPhysOther = true; }
+cartCount += q; cartSum += info.price * q; cartFull += info.full * q;
+cartItems.push({ name: info.name, qty: q, unit: money(info.price) + ' cada', line: money(info.price * q), lineFull: money(info.full * q), inc: function () { setKey(k, q + 1); }, dec: function () { setKey(k, q - 1); }, remove: function () { setKey(k, 0); } });
 });
 var bumpAll = [
 { id: 'fc27', name: 'EA Sports FC 27 · PS5', old: 289.95, price: 144.98, img: 'assets/img/jogos/fc27-capa.jpg' },
@@ -960,17 +985,16 @@ var ctrlQty = Math.min(cart.black || 0, sb) + Math.min(cart.white || 0, sw);
 var payInfos = { pix: 'O código Pix aparece na próxima tela, logo depois de confirmar o pedido.', card: 'Os dados do cartão são digitados na próxima etapa, direto no ambiente seguro do processador de pagamento. [SUAS CONDIÇÕES DE PARCELAMENTO]' };
 var payNames = { pix: 'Pagar com Pix', card: 'Ir para o pagamento com cartão' };
 var pickPay = function (p) { return function () { self.setState({ pay: p }); }; };
-// Frete: três opções. Só é cobrado quando o pedido tem item físico (o GTA VI digital vai por e-mail).
+// Frete: duas opções. Só é cobrado quando o pedido tem item físico (o GTA VI digital vai por e-mail).
 var SHIP = [
 { id: 'free', name: 'Frete grátis', time: 'Até 10 dias úteis', price: 0 },
-{ id: 'normal', name: 'Frete normal', time: 'Até 5 dias úteis', price: 30 },
-{ id: 'premium', name: 'Frete premium', time: 'Entrega no dia seguinte', price: 90 }
+{ id: 'normal', name: 'Frete normal', time: 'Até 5 dias úteis', price: 30 }
 ];
 var coShip = SHIP.filter(function (s) { return s.id === st.ship; })[0] || SHIP[0];
 var payIsPix = pay === 'pix';
 var discFull = couponOn ? cartFull * cPct / 100 : 0;
 var pixTotal = cartSum - disc, fullTotal = cartFull - discFull, pixDiff = fullTotal - pixTotal;
-var hasPhys = catalog.some(function (c) { return c.id !== 'digital' && c.id !== 'digitalx' && !c.digital && Math.min(cart[c.id] || 0, c.max) > 0; });
+var hasPhys = hasPhysOther || catalog.some(function (c) { return c.id !== 'digital' && c.id !== 'digitalx' && !c.digital && Math.min(cart[c.id] || 0, c.max) > 0; });
 // Combina com a compra: sugestões no carrinho, na ordem de prioridade. Mostra até 4 que ainda não estão no carrinho.
 var hasCtrl = (cart.black || 0) + (cart.white || 0) > 0;
 var hasGta = (cart.ps5 || 0) + (cart.digital || 0) + (cart.xbox || 0) + (cart.digitalx || 0) > 0;
@@ -1032,7 +1056,7 @@ instValue: money((hasFrom ? from : price) * qty / nInst),
 showCheckout: !!st.showCheckout,
 orderDone: !!st.orderDone,
 orderOpen: !st.orderDone,
-openCheckout: function () { if (cartItems.length === 0) { return; } self.setState({ showCheckout: true, showCart: false, orderDone: false }); },
+openCheckout: function () { if (cartItems.length === 0) { return; } location.href = 'index.html#checkout'; },
 closeCheckout: function () { self.setState({ showCheckout: false, orderDone: false }); },
 orderSubmit: function (e) { e.preventDefault(); var f = e.currentTarget.elements || {}; var em = String((f.email && f.email.value) || '').trim(); var nm = String((f.nome && f.nome.value) || '').trim() || 'cliente'; var list = (st.orders || []).slice(); var oid = 'ZG-' + (1001 + list.length); list.push({ id: oid, date: new Date().toLocaleDateString('pt-BR'), total: cartItems.length && allPriced ? money((payIsPix ? pixTotal : fullTotal) + shipCost) : 'A definir', pay: payShort[pay], ship: (hasPhys ? coShip.name + ' · ' + coShip.time : 'Entrega digital por e-mail') + (st.cep ? ' · CEP ' + st.cep : ''), items: cartItems.map(function (c) { return { name: c.name, qty: c.qty, line: c.line }; }) }); self.setState({ orderDone: true, orders: list, selOrder: list.length - 1, lastOrderId: oid, cart: {}, coupon: null, user: st.user || { name: nm, email: em } }); },
 payPixCls: 'opt' + (pay === 'pix' ? ' on' : ''),
@@ -1059,7 +1083,7 @@ cepPlace: st.cepAddr || ufOf(st.cep),
 newsDone: !!st.newsDone,
 newsSubmit: function (e) { e.preventDefault(); self.setState({ newsDone: true }); },
 cartItems: cartItems,
-cartShipLine: (st.cep ? 'Frete grátis para ' + st.cep + ' em até 10 dias úteis.' : 'Frete grátis em até 10 dias úteis.') + ' Entrega mais rápida a partir de R$ 30,00: você escolhe no checkout.',
+cartShipLine: (st.cep ? 'Frete grátis para ' + st.cep + ' em até 10 dias úteis.' : 'Frete grátis em até 10 dias úteis.') + ' Entrega mais rápida por R$ 30,00: você escolhe no checkout, onde também entra o Leve 3, pague 2 dos jogos.',
 couponFormOn: (!!st.couponOpen && !couponOn) || !!st.couponErr,
 couponLinkOn: !st.couponOpen && !st.couponErr && !couponOn,
 couponOpen: function () { self.setState({ couponOpen: true }); },

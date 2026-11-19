@@ -898,6 +898,13 @@ class Component extends DCLogic {
 componentDidMount() {
 var self = this;
 try { var saved = JSON.parse(localStorage.getItem('zera-cart') || 'null'); if (saved && typeof saved === 'object') { this.setState({ cart: saved }); } } catch (e) {}
+var hash = location.hash;
+if (hash === '#checkout' || hash === '#carrinho') {
+this.setState(hash === '#checkout' ? { showCheckout: true } : { showCart: true });
+try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+}
+this._onStorage = function (e) { if (e.key === 'zera-cart') { try { self.setState({ cart: JSON.parse(e.newValue || '{}') || {} }); } catch (x) {} } };
+window.addEventListener('storage', this._onStorage);
 // Botão "voltar ao topo" aparece depois de rolar a página.
 this._onScroll = function () { var t = window.scrollY > 900; if (!!(self.state && self.state.showTop) !== t) { self.setState({ showTop: t }); } };
 window.addEventListener('scroll', this._onScroll, { passive: true });
@@ -1146,7 +1153,7 @@ p.plat = / · PC$|Steam/.test(n) ? 'pc' : (/Switch/.test(n) ? 'switch' : (/Hyper
 if (MULTI[n] === true) { p.plat = 'both'; }
 p.genre = GENRE[n] || '';
 p.vers = p.plat === 'both' ? [{ label: 'PS5', plat: 'ps' }, { label: 'Xbox Series', plat: 'xbox' }] : [{ label: '', plat: p.plat }];
-p.canBuy = !p.out && p.price > 0 && !(p.page && p.cat === 'Controles');
+p.canBuy = !p.out && p.price > 0;
 p.digital = /Digital| · PC$|^Cartão (PlayStation|Steam)|PlayStation Plus|Game Pass/.test(n);
 p.hasSale = !!STATUS[n] && p.canBuy;
 p.saleLine = p.digital ? 'Já à venda · baixe agora' : 'Já à venda · receba antes do dia 19';
@@ -1167,6 +1174,9 @@ if (INFO[p.name]) { INFO[p.name] = [INFO[p.name][0] + ' Também tem versão para
 });
 var cart = st.cart || {};
 var keyOf = function (p, vi) { return p.name + '||' + p.vers[vi].label; };
+// Limite por produto (lote dos controles GTA VI).
+var MAXQ = { 'Controle GTA VI · Preto': 8, 'Controle GTA VI · Branco': 6 };
+var maxOf = function (k) { return MAXQ[k.split('||')[0]] || 99; };
 var dispName = function (p, v) { var s = v && v.label ? ' · ' + v.label : ''; return s && p.name.slice(-s.length) !== s ? p.name + s : p.name; };
 var setCart = function (c, extra) {
 try { localStorage.setItem('zera-cart', JSON.stringify(c)); } catch (e) {}
@@ -1175,12 +1185,19 @@ self.setState(Object.assign({ cart: c }, extra || {}));
 var addToCart = function (p, vi, isAnchor) {
 if (p.vers[vi] && p.vers[vi].prod) { p = p.vers[vi].prod; vi = 0; }
 var c = Object.assign({}, cart), k = keyOf(p, vi);
-c[k] = Math.min(99, (c[k] || 0) + 1);
+c[k] = Math.min(maxOf(k), (c[k] || 0) + 1);
 var ex = { showCart: true, pid: null, showCheckout: false, orderDone: false };
 if (isAnchor) { ex.anchor = k; }
 setCart(c, ex);
 };
-var setQty = function (k, n) { var c = Object.assign({}, cart); if (n <= 0) { delete c[k]; } else { c[k] = Math.min(99, n); } setCart(c); };
+var setQty = function (k, n) { var c = Object.assign({}, cart); if (n <= 0) { delete c[k]; } else { c[k] = Math.min(maxOf(k), n); } setCart(c); };
+// Ficha dos produtos para a página do controle mostrar o mesmo carrinho (nome, preço no Pix, preço cheio e foto).
+if (!self._snapDone) {
+self._snapDone = true;
+var snap = {};
+catalog.forEach(function (p) { if (!p.canBuy) { return; } p.vers.forEach(function (v, vi) { if (v.prod) { return; } snap[keyOf(p, vi)] = { name: dispName(p, v), price: p.price, full: p.hasOld ? p.old : p.price, img: p.img, digital: p.digital, game: p.cat === 'Jogos' }; }); });
+try { localStorage.setItem('zera-catalog', JSON.stringify(snap)); } catch (e) {}
+}
 var lines = [], cartCount = 0, cartSum = 0, cartOldSum = 0, hasPhysical = false, hasDigital = false;
 Object.keys(cart).forEach(function (k) {
 var parts = k.split('||'), p = byName[parts[0]], q = cart[k];
@@ -1250,11 +1267,10 @@ var gameChips = [['all', 'Todos'], ['ps', 'PlayStation'], ['xbox', 'Xbox']].map(
 var on = gplat === c[0];
 return { label: c[1], count: String(consoleGames.filter(function (p) { return platOk(p, c[0]); }).length), cls: 'zchip' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { self.setState({ gplat: c[0] }); } };
 });
-// Frete: três opções. Só é cobrado quando o pedido tem item físico (itens digitais vão por e-mail).
+// Frete: duas opções. Só é cobrado quando o pedido tem item físico (itens digitais vão por e-mail).
 var SHIP = [
 { id: 'free', name: 'Frete grátis', time: 'Até 10 dias úteis', price: 0 },
-{ id: 'normal', name: 'Frete normal', time: 'Até 5 dias úteis', price: 30 },
-{ id: 'premium', name: 'Frete premium', time: 'Entrega no dia seguinte', price: 90 }
+{ id: 'normal', name: 'Frete normal', time: 'Até 5 dias úteis', price: 30 }
 ];
 var shipSel = SHIP.filter(function (s) { return s.id === st.ship; })[0] || SHIP[0];
 var shipCost = hasPhysical ? shipSel.price : 0;
@@ -1268,6 +1284,13 @@ var pickPay = function (p) { return function () { self.setState({ pay: p }); }; 
 var payIsPix = pay === 'pix';
 var pixTotal = cartSum - freeValue, fullTotal = cartOldSum - freeFull;
 var pixDiff = fullTotal - pixTotal;
+// Ordem dos jogos: os mais famosos primeiro. Para mudar, mexa nesta lista (o nome é o começo do nome do produto).
+var POPULAR = ['Grand Theft Auto VI', 'Call of Duty: Modern Warfare 4', 'Red Dead Redemption 2', 'The Legend of Zelda: Ocarina of Time', 'Halloween', 'Grand Theft Auto V', 'Resident Evil Requiem', 'EA Sports FC 27', 'Minecraft', 'Mario Kart World', "Marvel's Spider-Man 2", 'Pokémon Legends: Z-A', 'Mortal Kombat 1', '007 First Light', 'Donkey Kong Bananza', 'Crimson Desert', 'Marathon', 'Pragmata', 'Onimusha: Way of the Sword', 'Phantom Blade Zero', 'Ace Combat 8: Wings of Theve', 'The First Berserker: Khazan', 'The Blood of Dawnwalker', 'Control Resonant', 'Reanimal'];
+var rankOf = function (p) { var b = p.name.split(' · ')[0]; var i = POPULAR.indexOf(b); return i < 0 ? 999 : i; };
+var byRank = function (a, b) { return (rankOf(a) - rankOf(b)) || (a.id - b.id); };
+newGames.sort(byRank);
+pcGames.sort(byRank);
+nintendo = nintendo.filter(function (p) { return p.cat === 'Consoles'; }).concat(nintendo.filter(function (p) { return p.cat === 'Jogos'; }).sort(byRank), nintendo.filter(function (p) { return p.cat !== 'Consoles' && p.cat !== 'Jogos'; }));
 var GTA_CTRL_DISC = 0.7;
 var bfDeals = catalog.filter(function (p) { return p.hasOld && (p.cat === 'Consoles' || p.cat === 'Controles' || p.cat === 'Jogos' || p.cat === 'Acessórios'); }).sort(function (a, b) { return b.disc - a.disc; });
 bfDeals.forEach(function (p) { p.offAria = Math.round(p.disc * 100) + '% de desconto'; });
@@ -1282,7 +1305,7 @@ var catFits = function (p, cats) { return cats.length === 0 || cats.indexOf(p.ca
 var bfFiltered = bfDeals.filter(function (p) { return catFits(p, bfCats) && platFits(p, bfPlat); });
 var bfSorters = { disc: function (a, b) { return (b.disc - a.disc) || (a.price - b.price); }, low: function (a, b) { return a.price - b.price; }, high: function (a, b) { return b.price - a.price; } };
 var bfGroups = bfSort === 'rel'
-? BF_ORDER.map(function (c) { return { title: c, items: bfFiltered.filter(function (p) { return p.cat === c; }).sort(bfSorters.disc) }; }).filter(function (g) { return g.items.length > 0; })
+? BF_ORDER.map(function (c) { return { title: c, items: bfFiltered.filter(function (p) { return p.cat === c; }).sort(c === 'Jogos' ? function (a, b) { return byRank(a, b) || (b.disc - a.disc); } : bfSorters.disc) }; }).filter(function (g) { return g.items.length > 0; })
 : [{ title: '', items: bfFiltered.slice().sort(bfSorters[bfSort]) }];
 bfGroups.forEach(function (g) { g.hasTitle = !!g.title; g.count = g.items.length + (g.items.length === 1 ? ' oferta' : ' ofertas'); g.anchor = 'bf-' + norm(g.title).replace(/ /g, '-'); });
 var bfSet = function (patch) {
@@ -1374,7 +1397,7 @@ payCardInst: money((fullTotal + shipCost) / 6),
 payNotice: payIsPix ? 'Preço de Black Friday aplicado: pagando no Pix você economiza ' + money(pixDiff) + ' em relação ao cartão.' : 'O preço de Black Friday é exclusivo do Pix. No cartão, os produtos saem pelo preço cheio. Pague no Pix e economize ' + money(pixDiff) + '.',
 payNoticeCls: 'zpaynote' + (payIsPix ? '' : ' warn'),
 orderTotalLabel: payIsPix ? 'Total no Pix' : 'Total no cartão',
-cartShipLine: hasPhysical ? 'Frete grátis em até 10 dias úteis, ou mais rápido a partir de R$ 30,00: você escolhe no checkout.' + (hasDigital ? ' Os itens digitais chegam por e-mail.' : '') : 'Itens digitais: o código chega no seu e-mail, sem frete.',
+cartShipLine: hasPhysical ? 'Frete grátis em até 10 dias úteis, ou em até 5 dias úteis por R$ 30,00: você escolhe no checkout.' + (hasDigital ? ' Os itens digitais chegam por e-mail.' : '') : 'Itens digitais: o código chega no seu e-mail, sem frete.',
 shipOptions: shipOptions,
 shipName: shipSel.name + ' · ' + shipSel.time,
 shipValue: shipCost > 0 ? money(shipCost) : 'Grátis',
