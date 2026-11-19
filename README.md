@@ -82,9 +82,13 @@ Funciona na tela, mas **não está ligado a nenhum sistema**:
 - **Cupom `TESTE10`** → cupom de teste. **Trocar ou apagar antes de ir ao ar** (`couponCode` no `data-props`).
 - **Cadastro de e-mail para ofertas** → não envia para lugar nenhum.
 
+## Garantia
+
+Todos os produtos físicos têm garantia de 1 ano pela Zera Games. Ela aparece na faixa de benefícios da página inicial, na janela de cada produto físico e na página do controle GTA VI.
+
 ## Pendências de conteúdo
 
-Procure por `[` nos arquivos para achar os campos ainda em aberto: razão social, CNPJ, contato de atendimento, prazo de entrega, garantia, o que vem na caixa de cada produto e confirmação de origem dos controles.
+Procure por `[` nos arquivos para achar os campos ainda em aberto: razão social, CNPJ, contato de atendimento, prazo de entrega, o que vem na caixa de cada produto e confirmação de origem dos controles.
 
 ## Publicar na HostGator
 
