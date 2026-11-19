@@ -97,7 +97,7 @@ button.zgame:hover{background:#F5F4F0}
 .zfopt:hover{border-color:#8C897F;color:#FFFFFF}
 .zfopt.on{background:#FFFFFF;border-color:#FFFFFF;color:#0E0E12}
 .zflink{border:0;background:none;padding:0;color:#FF6DB5;font:700 14px Inter,sans-serif;cursor:pointer;text-decoration:underline}
-.zbfg{margin-bottom:44px}
+.zbfg{margin-bottom:44px;scroll-margin-top:20px}
 .zbfg:last-child{margin-bottom:0}
 .zbfgh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid #2A2A33}
 .zbfgh h3{font-size:30px;font-weight:900;color:#FFFFFF}
@@ -122,6 +122,16 @@ section[id]{scroll-margin-top:100px}
 .zpromo i{flex:none;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);font-style:normal}
 @keyframes zpin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 .zfree{align-self:flex-start;padding:3px 8px;border-radius:8px;background:#E3F7EC;color:#0B5A33;font:800 12px Archivo,Inter,sans-serif}
+.zperks{display:flex;flex-direction:column;gap:10px;padding:18px 20px;border-radius:16px;background:linear-gradient(135deg,#FFF0F7,#FFF4EA);border:1px solid #FFD3E6}
+.zperksh{font:900 16px Archivo,Inter,sans-serif;letter-spacing:.02em;color:#C2185B;text-transform:uppercase}
+.zperks ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.5;color:#3A3832}
+.zmore{display:flex;justify-content:center;margin-top:28px}
+.zmorebtn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;border:2px solid #0E0E12;background:#FFFFFF;color:#0E0E12;font:800 16px Archivo,Inter,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+.zmorebtn:hover{background:#0E0E12;color:#FFFFFF}
+.zmorebtn svg{transition:transform .2s}
+.zbfg .zmorebtn{background:transparent;border-color:#FFFFFF;color:#FFFFFF}
+.zbfg .zmorebtn:hover{background:#FFFFFF;color:#0E0E12}
+.zmorebtn.open svg{transform:rotate(180deg)}
 .zlaunch{display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:10px;background:#0E0E12;color:#FFFFFF;font:800 12px Archivo,Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;line-height:1.2}
 .zlaunch.super{background:linear-gradient(90deg,#FF4FA3,#FF8A3D);color:#FFFFFF}
 .zlaunch svg{flex:none}
@@ -369,7 +379,7 @@ section[id]{scroll-margin-top:12px}
 <div class="zfempty" role="status">Nenhuma oferta com esses filtros.<button type="button" class="zflink" onClick="{{bfClear}}">Limpar filtros</button></div>
 </sc-if>
 <sc-for list="{{bfGroups}}" as="g" hint-placeholder-count="4">
-<div class="zbfg">
+<div class="zbfg" id="{{g.anchor}}">
 <sc-if value="{{g.hasTitle}}" hint-placeholder-val="{{true}}"><div class="zbfgh"><h3>{{g.title}}</h3><span>{{g.count}}</span></div></sc-if>
 <div class="zg4">
 <sc-for list="{{g.items}}" as="p" hint-placeholder-count="4">
@@ -387,6 +397,9 @@ section[id]{scroll-margin-top:12px}
 </button>
 </sc-for>
 </div>
+<sc-if value="{{g.hasMore}}" hint-placeholder-val="{{false}}">
+<div class="zmore"><button type="button" class="{{g.moreCls}}" aria-expanded="{{g.expanded}}" onClick="{{g.toggle}}"><span>{{g.moreLabel}}</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l5 5 5-5"></path></svg></button></div>
+</sc-if>
 </div>
 </sc-for>
 </div>
@@ -484,6 +497,9 @@ section[id]{scroll-margin-top:12px}
 </button>
 </sc-for>
 </div>
+<sc-if value="{{gHasMore}}" hint-placeholder-val="{{true}}">
+<div class="zmore"><button type="button" class="{{gMoreCls}}" aria-expanded="{{gExpanded}}" onClick="{{gToggle}}"><span>{{gMoreLabel}}</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l5 5 5-5"></path></svg></button></div>
+</sc-if>
 </section>
 
 <section id="pc" class="zw" style="padding-top: 56px; padding-bottom: 24px">
@@ -507,6 +523,9 @@ section[id]{scroll-margin-top:12px}
 </button>
 </sc-for>
 </div>
+<sc-if value="{{pcHasMore}}" hint-placeholder-val="{{true}}">
+<div class="zmore"><button type="button" class="{{pcMoreCls}}" aria-expanded="{{pcExpanded}}" onClick="{{pcToggle}}"><span>{{pcMoreLabel}}</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l5 5 5-5"></path></svg></button></div>
+</sc-if>
 </section>
 
 <section id="nintendo" class="zw" style="padding-top: 56px; padding-bottom: 24px">
@@ -650,6 +669,11 @@ section[id]{scroll-margin-top:12px}
 <span class="ztag" style="background: #1B3FD6">{{pdStatus}}</span>
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3A3832">{{pdDesc}}</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5E5B52">{{pdNote}}</p>
+<sc-if value="{{pdHasPerks}}" hint-placeholder-val="{{false}}">
+<div class="zperks"><span class="zperksh">O que vem na Ultimate Edition</span>
+<ul><sc-for list="{{pdPerks}}" as="k" hint-placeholder-count="3"><li>{{k.text}}</li></sc-for></ul>
+</div>
+</sc-if>
 <sc-if value="{{pdHasVers}}" hint-placeholder-val="{{false}}">
 <div role="group" aria-label="Escolha a versão" style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 14px; font-weight: 700">Escolha a versão</span>
@@ -940,6 +964,24 @@ var src = 'Grand Theft Auto VI · Digital', n = src + ' ' + pl[0];
 PRICES[n] = PRICES[src]; PDISC[n] = PDISC[src]; NOB[n] = NOB[src]; IMGS[n] = IMGS[src]; STATUS[n] = STATUS[src];
 INFO[n] = ['Grand Theft Auto VI em versão digital para ' + pl[1] + ', entregue como código de resgate. Você já pode comprar e baixar; o jogo libera para jogar em 19/11.', '[CONFIRME COMO O CÓDIGO É ENTREGUE E EM QUANTO TEMPO]'];
 });
+// GTA VI Ultimate Edition: física e digital, PS5 e Xbox. Preço cheio 550 e R$ 350 no Pix.
+// O que vem na Ultimate (aparece na janela do produto). Fontes: GTABase e Red Bull Gaming.
+var GTA_ULT_PERKS = [
+'Veículos exclusivos: Grotti Cheetah 1995, Dominator Buggy 1967 com garagem, Ganado Retro Build, moto Dinka Enduro, caiaque, lancha Shitzu Squalo e a Coleção de Carros Clássicos',
+'Armas exclusivas: revólveres Hawk & Little Morgan e versões personalizadas das armas do Jason (Girardi ES9) e da Lucia (Klose K17)',
+'Lojas e negócios liberados: oficinas Rideout Customs e One-Eyed Willie\'s, Sara\'s Unisex Salon, Electric Fang Tattoo (mais de 50 tatuagens) e a loja de roupas Stock 305',
+'Visual Vice City: roupas, tatuagens, cabelos e barbas exclusivos, mais a linha de roupas Goodtime Gear',
+'Atividades extras: a missão da Coleção de Carros Clássicos com o Wyman e o ataque ao PTT Youngin$ Compound',
+'Os itens vão sendo liberados ao longo dos capítulos da história'
+];
+var PERKS = {};
+[['Grand Theft Auto VI Ultimate · PS5', 'PlayStation 5, em caixa física', false], ['Grand Theft Auto VI Ultimate · Xbox Series', 'Xbox Series X|S, em caixa física', false], ['Grand Theft Auto VI Ultimate · Digital PS5', 'PlayStation 5, em versão digital (código de resgate)', true], ['Grand Theft Auto VI Ultimate · Digital Xbox', 'Xbox Series X|S, em versão digital (código de resgate)', true]].forEach(function (r) {
+PRICES[r[0]] = 550; PDISC[r[0]] = 200 / 550;
+IMGS[r[0]] = ['assets/img/jogos/gta6-ultimate.jpg', 'assets/img/jogos/gta6-arte.jpg'];
+COVER[r[0]] = true;
+PERKS[r[0]] = GTA_ULT_PERKS;
+INFO[r[0]] = ['Grand Theft Auto VI Ultimate Edition para ' + r[1] + '. Traz o jogo completo e uma coleção de itens exclusivos espalhados pela história do Jason e da Lucia.', r[2] ? '[CONFIRME COMO O CÓDIGO É ENTREGUE E EM QUANTO TEMPO]' : '[CONFIRME SE A CAIXA TRAZ DISCO OU CÓDIGO DE RESGATE]'];
+});
 // ---------- Produtos novos: controles, acessórios, Nintendo e cartões ----------
 // Foto: [nome do produto, arquivo]. Descrição: INFO[nome] = [texto, observação].
 [
@@ -1026,7 +1068,7 @@ var add = function (cat, rows, page) { return rows.map(function (r) { var p = { 
 var consoles = add('Consoles', [['PS5 PRO', 'PlayStation · SSD 1TB', 'PlayStation 5 Pro'], ['PS5 SLIM', 'PlayStation · Slim', 'PlayStation 5 Slim'], ['SERIES X', 'Xbox', 'Xbox Series X'], ['SERIES S', 'Xbox · SSD 512GB', 'Xbox Series S']]);
 add('Controles', [['GTA VI', 'Edição limitada', 'Controle GTA VI · Preto'], ['GTA VI', 'Edição limitada', 'Controle GTA VI · Branco']], true);
 var controls = add('Controles', [['PS5', 'PlayStation · DualSense', 'Controle sem fio para PS5'], ['PS5', 'PlayStation · Midnight Black', 'Controle sem fio DualSense · Midnight Black'], ['PS5', 'PlayStation · Cosmic Red', 'Controle sem fio DualSense · Cosmic Red'], ['EDGE', 'PlayStation · Profissional', 'Controle sem fio DualSense Edge'], ['XBOX', 'Xbox · Robot White', 'Controle sem fio para Xbox Series'], ['XBOX', 'Xbox · Carbon Black', 'Controle sem fio Xbox · Carbon Black']]);
-var gtaGames = add('Jogos', [['GTA VI', 'PS5 · Físico', 'Grand Theft Auto VI · PS5'], ['GTA VI', 'Xbox Series · Físico', 'Grand Theft Auto VI · Xbox Series'], ['GTA VI', 'PS5 · Digital', 'Grand Theft Auto VI · Digital PS5'], ['GTA VI', 'Xbox Series · Digital', 'Grand Theft Auto VI · Digital Xbox']], true);
+var gtaGames = add('Jogos', [['GTA VI', 'PS5 · Físico', 'Grand Theft Auto VI · PS5'], ['GTA VI', 'PS5 · Físico · Ultimate', 'Grand Theft Auto VI Ultimate · PS5'], ['GTA VI', 'Xbox Series · Físico', 'Grand Theft Auto VI · Xbox Series'], ['GTA VI', 'Xbox Series · Físico · Ultimate', 'Grand Theft Auto VI Ultimate · Xbox Series'], ['GTA VI', 'PS5 · Digital', 'Grand Theft Auto VI · Digital PS5'], ['GTA VI', 'PS5 · Digital · Ultimate', 'Grand Theft Auto VI Ultimate · Digital PS5'], ['GTA VI', 'Xbox Series · Digital', 'Grand Theft Auto VI · Digital Xbox'], ['GTA VI', 'Xbox Series · Digital · Ultimate', 'Grand Theft Auto VI Ultimate · Digital Xbox']], true);
 // Jogos novos: capa oficial da PlayStation Store. Para cada um: [TEXTO CURTO, Etiqueta, Nome, Plataformas, Gênero, Arquivo da capa]
 var NEW_GAMES = [
 ['RE REQUIEM', 'PS5 · Xbox Series · Terror', 'Resident Evil Requiem', 'PS5 e Xbox Series X|S', 'terror', 're-requiem'],
@@ -1189,7 +1231,7 @@ add('Acessórios', [['MICROSD', 'Switch 2 · 256GB', 'Cartão microSD Express Sa
 var cards = add('Cartões', [['PS STORE', 'PlayStation · Crédito', 'Cartão PlayStation Store R$ 100'], ['PS STORE', 'PlayStation · Crédito', 'Cartão PlayStation Store R$ 250'], ['PS PLUS', 'PlayStation · Assinatura', 'PlayStation Plus Essential · 12 meses'], ['PS PLUS', 'PlayStation · Assinatura', 'PlayStation Plus Extra · 12 meses'], ['GAME PASS', 'Xbox · Assinatura', 'Xbox Game Pass Ultimate · 1 mês'], ['GAME PASS', 'Xbox · Assinatura', 'Xbox Game Pass Ultimate · 3 meses'], ['STEAM', 'PC · Crédito', 'Cartão Steam R$ 100']]);
 // ---------- Carrinho ----------
 // Plataforma de cada produto (para escolher a versão e montar os itens relacionados).
-var GENRE = { 'Grand Theft Auto VI · PS5': 'mundo aberto', 'Grand Theft Auto VI · Xbox Series': 'mundo aberto', 'Grand Theft Auto VI · Digital PS5': 'mundo aberto', 'Grand Theft Auto VI · Digital Xbox': 'mundo aberto', 'EA Sports FC 27 · PS5': 'esporte' };
+var GENRE = { 'Grand Theft Auto VI · PS5': 'mundo aberto', 'Grand Theft Auto VI · Xbox Series': 'mundo aberto', 'Grand Theft Auto VI · Digital PS5': 'mundo aberto', 'Grand Theft Auto VI · Digital Xbox': 'mundo aberto', 'Grand Theft Auto VI Ultimate · PS5': 'mundo aberto', 'Grand Theft Auto VI Ultimate · Xbox Series': 'mundo aberto', 'Grand Theft Auto VI Ultimate · Digital PS5': 'mundo aberto', 'Grand Theft Auto VI Ultimate · Digital Xbox': 'mundo aberto', 'EA Sports FC 27 · PS5': 'esporte' };
 var MULTI = {};
 NEW_GAMES.forEach(function (g) { GENRE[g[2]] = g[4].toLowerCase(); MULTI[g[2]] = /Xbox/.test(g[3]); });
 PC_GAMES.forEach(function (g) { GENRE[g[2] + ' · PC'] = g[1].toLowerCase(); });
@@ -1213,9 +1255,10 @@ p.canBuy = !p.out && p.price > 0;
 p.digital = /Digital| · PC$|^Cartão (PlayStation|Steam)|PlayStation Plus|Game Pass/.test(n);
 p.hasSale = !!STATUS[n] && p.canBuy;
 var base = n.split(' · ')[0];
-p.launchLabel = base === 'Grand Theft Auto VI' ? 'Super lançamento' : (LAUNCH_2026.indexOf(base) >= 0 ? 'Lançamento 2026' : '');
+var isGta = /^Grand Theft Auto VI( Ultimate)?$/.test(base);
+p.launchLabel = isGta ? 'Super lançamento' : (LAUNCH_2026.indexOf(base) >= 0 ? 'Lançamento 2026' : '');
 p.hasLaunch = !!p.launchLabel && p.cat === 'Jogos';
-p.launchCls = 'zlaunch' + (base === 'Grand Theft Auto VI' ? ' super' : '');
+p.launchCls = 'zlaunch' + (isGta ? ' super' : '');
 });
 var byName = {};
 catalog.forEach(function (p) { byName[p.name] = p; });
@@ -1337,9 +1380,21 @@ var extraFor = function (pl) { return pl === 'Switch' || pl === 'Switch 2' ? nin
 var gameChips = [['all', 'Todos']].concat(GPLATS.map(function (l) { return [l, l]; })).map(function (c) {
 var on = gplat === c[0];
 var n = consoleGames.filter(function (p) { return platOk(p, c[0]); }).length + (c[0] === 'all' ? 0 : extraFor(c[0]).filter(function (p) { return platOk(p, c[0]); }).length);
-return { label: c[1], count: String(n), cls: 'zchip' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { self.setState({ gplat: c[0] }); } };
+return { label: c[1], count: String(n), cls: 'zchip' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { self.setState({ gplat: c[0], gMore: false }); } };
 });
 // Abre um jogo já com a versão escolhida (pelo filtro ou pela busca).
+// Mostra só os primeiros 8 jogos; o botão "Ver mais jogos" abre a lista completa.
+var LIMIT = 8;
+var collapse = function (key, anchor) { var patch = {}; patch[key] = false; self.setState(patch); setTimeout(function () { var el = document.getElementById(anchor); if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }, 30); };
+var moreBox = function (prefix, key, anchor, total, open, noun, shown) {
+var o = {};
+o[prefix + 'HasMore'] = open || total > shown;
+o[prefix + 'Expanded'] = open ? 'true' : 'false';
+o[prefix + 'MoreCls'] = 'zmorebtn' + (open ? ' open' : '');
+o[prefix + 'MoreLabel'] = open ? 'Ver menos ' + noun : 'Ver mais ' + noun + ' (' + (total - shown) + ')';
+o[prefix + 'Toggle'] = function () { if (open) { collapse(key, anchor); } else { var patch = {}; patch[key] = true; self.setState(patch); } };
+return o;
+};
 var openAt = function (p, label) { var i = p.vers.map(function (v) { return v.label; }).indexOf(label); self.setState({ pid: p.id, pimg: 0, pver: i < 0 ? 0 : i, searchOpen: false, q: '' }); };
 catalog.forEach(function (p) { if (p.cat === 'Jogos' && gplat !== 'all') { p.open = function () { openAt(p, gplat); }; } });
 // Frete: duas opções. Só é cobrado quando o pedido tem item físico (itens digitais vão por e-mail).
@@ -1360,7 +1415,7 @@ var payIsPix = pay === 'pix';
 var pixTotal = cartSum - freeValue, fullTotal = cartOldSum - freeFull;
 var pixDiff = fullTotal - pixTotal;
 // Ordem dos jogos: os mais famosos primeiro. Para mudar, mexa nesta lista (o nome é o começo do nome do produto).
-var POPULAR = ['Grand Theft Auto VI', 'Call of Duty: Modern Warfare 4', 'Battlefield 6', 'Call of Duty: Black Ops 7', 'Red Dead Redemption 2', 'The Legend of Zelda: Ocarina of Time', 'Halloween', 'Grand Theft Auto V', 'Resident Evil Requiem', 'EA Sports FC 27', 'NBA 2K27', 'Ghost of Yōtei', 'Minecraft', 'Forza Horizon 6', '007 First Light', 'Call of Duty: Black Ops 6', 'Borderlands 4', 'Monster Hunter Wilds', 'Crimson Desert', 'Elden Ring Nightreign', 'Call of Duty: Black Ops II', 'The Elder Scrolls IV: Oblivion Remastered', 'Split Fiction', 'Madden NFL 27', 'LEGO Batman: Legacy of the Dark Knight', 'Tomodachi Life: Living the Dream', 'Battlefield 2042', 'Call of Duty: Modern Warfare III', 'Kingdom Come: Deliverance II', 'Forza Horizon 5', 'RuneScape: Dragonwilds', 'EA Sports FC 26', 'NBA 2K26', 'MLB The Show 26', 'EA Sports College Football 26', 'Madden NFL 26', 'WWE 2K25', 'MLB The Show 25', 'Battlefield V', 'Battlefield 1', 'Mario Kart World', "Marvel's Spider-Man 2", 'Pokémon Legends: Z-A', 'Mortal Kombat 1', '007 First Light', 'Donkey Kong Bananza', 'Crimson Desert', 'Marathon', 'Pragmata', 'Onimusha: Way of the Sword', 'Phantom Blade Zero', 'Ace Combat 8: Wings of Theve', 'The First Berserker: Khazan', 'The Blood of Dawnwalker', 'Control Resonant', 'Reanimal'];
+var POPULAR = ['Grand Theft Auto VI', 'Grand Theft Auto VI Ultimate', 'Call of Duty: Modern Warfare 4', 'Battlefield 6', 'Call of Duty: Black Ops 7', 'Red Dead Redemption 2', 'The Legend of Zelda: Ocarina of Time', 'Halloween', 'Grand Theft Auto V', 'Resident Evil Requiem', 'EA Sports FC 27', 'NBA 2K27', 'Ghost of Yōtei', 'Minecraft', 'Forza Horizon 6', '007 First Light', 'Call of Duty: Black Ops 6', 'Borderlands 4', 'Monster Hunter Wilds', 'Crimson Desert', 'Elden Ring Nightreign', 'Call of Duty: Black Ops II', 'The Elder Scrolls IV: Oblivion Remastered', 'Split Fiction', 'Madden NFL 27', 'LEGO Batman: Legacy of the Dark Knight', 'Tomodachi Life: Living the Dream', 'Battlefield 2042', 'Call of Duty: Modern Warfare III', 'Kingdom Come: Deliverance II', 'Forza Horizon 5', 'RuneScape: Dragonwilds', 'EA Sports FC 26', 'NBA 2K26', 'MLB The Show 26', 'EA Sports College Football 26', 'Madden NFL 26', 'WWE 2K25', 'MLB The Show 25', 'Battlefield V', 'Battlefield 1', 'Mario Kart World', "Marvel's Spider-Man 2", 'Pokémon Legends: Z-A', 'Mortal Kombat 1', '007 First Light', 'Donkey Kong Bananza', 'Crimson Desert', 'Marathon', 'Pragmata', 'Onimusha: Way of the Sword', 'Phantom Blade Zero', 'Ace Combat 8: Wings of Theve', 'The First Berserker: Khazan', 'The Blood of Dawnwalker', 'Control Resonant', 'Reanimal'];
 var rankOf = function (p) { var b = p.name.split(' · ')[0]; var i = POPULAR.indexOf(b); return i < 0 ? 999 : i; };
 var byRank = function (a, b) { return (rankOf(a) - rankOf(b)) || (a.id - b.id); };
 newGames.sort(byRank);
@@ -1382,7 +1437,20 @@ var bfSorters = { disc: function (a, b) { return (b.disc - a.disc) || (a.price -
 var bfGroups = bfSort === 'rel'
 ? BF_ORDER.map(function (c) { return { title: c, items: bfFiltered.filter(function (p) { return p.cat === c; }).sort(c === 'Jogos' ? function (a, b) { return byRank(a, b) || (b.disc - a.disc); } : bfSorters.disc) }; }).filter(function (g) { return g.items.length > 0; })
 : [{ title: '', items: bfFiltered.slice().sort(bfSorters[bfSort]) }];
-bfGroups.forEach(function (g) { g.hasTitle = !!g.title; g.count = g.items.length + (g.items.length === 1 ? ' oferta' : ' ofertas'); g.anchor = 'bf-' + norm(g.title).replace(/ /g, '-'); });
+bfGroups.forEach(function (g) { g.hasTitle = !!g.title; g.count = g.items.length + (g.items.length === 1 ? ' oferta' : ' ofertas'); g.anchor = 'bf-' + (norm(g.title).replace(/ /g, '-') || 'todas'); });
+// Jogos da Black Friday: mostra 6 e o botão "Ver mais jogos" abre o resto.
+var BF_LIMIT = 6;
+bfGroups.forEach(function (g) {
+g.hasMore = false;
+if (g.title !== 'Jogos' || g.items.length <= BF_LIMIT) { return; }
+var open = !!st.bfMore, total = g.items.length;
+if (!open) { g.items = g.items.slice(0, BF_LIMIT); }
+g.hasMore = true;
+g.expanded = open ? 'true' : 'false';
+g.moreCls = 'zmorebtn' + (open ? ' open' : '');
+g.moreLabel = open ? 'Ver menos jogos' : 'Ver mais jogos (' + (total - BF_LIMIT) + ')';
+g.toggle = function () { if (!open) { self.setState({ bfMore: true }); return; } self.setState({ bfMore: false }); setTimeout(function () { var el = document.getElementById(g.anchor); if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }, 30); };
+});
 var bfSet = function (patch) {
 self.setState(patch);
 setTimeout(function () { var m = document.querySelector('.zbfmain'); if (!m) { return; } var t = m.getBoundingClientRect().top; if (t < 0) { window.scrollTo({ top: window.scrollY + t - 100, behavior: 'smooth' }); } }, 30);
@@ -1400,6 +1468,11 @@ var bfSortChips = [['rel', 'Por categoria'], ['disc', 'Maior desconto'], ['low',
 var on = bfSort === c[0];
 return { label: c[1], cls: 'zfopt' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { bfSet({ bfSort: c[0] }); } };
 });
+var gGta = byPlat(gtaGames), gRest = byPlat(newGames).concat(byPlat(extraFor(gplat)));
+var gTotal = gGta.length + gRest.length;
+var gShown = st.gMore ? { gta: gGta, rest: gRest } : { gta: gGta, rest: gRest.slice(0, Math.max(4, LIMIT - gGta.length)) };
+var gShownCount = gShown.gta.length + gShown.rest.length;
+var moreVals = Object.assign(moreBox('g', 'gMore', 'jogos', gTotal, !!st.gMore, 'jogos', st.gMore ? LIMIT : gShownCount), moreBox('pc', 'pcMore', 'pc', pcGames.length, !!st.pcMore, 'jogos de PC', LIMIT));
 var q = norm(st.q).trim();
 // Busca por plataforma ("PS5", "jogos de PS4", "Xbox One", "Switch"...): lista todos os jogos com essa versão.
 var PQ = { 'ps5': ['PS5'], 'playstation 5': ['PS5'], 'ps4': ['PS4'], 'playstation 4': ['PS4'], 'playstation': ['PS5', 'PS4'],
@@ -1413,14 +1486,14 @@ var results = q.length < 2 ? [] : (qLabels
 : catalog.filter(function (p) { return norm(p.name + ' ' + p.cat + ' ' + p.tag + ' ' + p.labels.join(' ')).indexOf(q) >= 0; }).slice(0, 12));
 var pd = st.pid == null ? null : catalog[st.pid];
 var N = 5;
-return {
+return Object.assign(moreVals, {
 bfDeals: bfDeals, bfMax: Math.round(bfMax * 100) + '%', bfCount: String(bfDeals.length),
 bfGroups: bfGroups, bfCatChips: bfCatChips, bfPlatChips: bfPlatChips, bfSortChips: bfSortChips,
 bfShown: bfFiltered.length === bfDeals.length ? bfDeals.length + ' ofertas' : bfFiltered.length + ' de ' + bfDeals.length + ' ofertas',
 bfEmpty: bfFiltered.length === 0,
 hasBfFilter: bfCats.length > 0 || bfPlat !== 'all' || bfSort !== 'rel',
 bfClear: function () { bfSet({ bfCats: [], bfPlat: 'all', bfSort: 'rel' }); },
-gtaPs: byPlat(gtaGames), newGames: byPlat(newGames).concat(byPlat(extraFor(gplat))), gameChips: gameChips, pcGames: pcGames, nintendo: nintendo, cards: cards, consoles: consoles, controls: controls, accessories: accessories,
+gtaPs: gShown.gta, newGames: gShown.rest, pcGames: st.pcMore ? pcGames : pcGames.slice(0, LIMIT), gameChips: gameChips, nintendo: nintendo, cards: cards, consoles: consoles, controls: controls, accessories: accessories,
 searchOpen: !!st.searchOpen,
 toggleSearch: function () { self.setState({ searchOpen: !st.searchOpen, q: '' }); },
 searchType: function (e) { self.setState({ q: e.target.value }); },
@@ -1439,6 +1512,8 @@ pdPrice: pd ? pd.priceLabel : '',
 pdHasOld: !!(pd && pd.hasOld), pdInstOnly: !!(pd && !pd.hasOld && pd.hasInst), pdOld: pd ? pd.oldLabel : '', pdOff: pd ? pd.offLabel : '', pdInst: pd ? pd.instLabel : '', pdSave: pd ? money(pd.old - pd.price) : '',
 pdStatus: pd && STATUS[pd.name] ? STATUS[pd.name] : pd && pd.page ? 'Disponível na Black Friday' : (pd && pd.out ? 'Sem estoque no momento' : (pd && pd.price > 0 ? 'Disponível' : 'Em breve na Zera')),
 pdDesc: pd ? (INFO[pd.name] ? INFO[pd.name][0] : (pd.page ? 'Produto em destaque na Zera Games. Veja fotos, detalhes e condições na página completa.' : DESC[pd.cat][0])) : '',
+pdHasPerks: !!(pd && PERKS[pd.name]),
+pdPerks: pd && PERKS[pd.name] ? PERKS[pd.name].map(function (t) { return { text: t }; }) : [],
 pdNote: pd ? (INFO[pd.name] ? INFO[pd.name][1] : (pd.page ? '' : DESC[pd.cat][1])) : '',
 pdHasPage: !!(pd && pd.page),
 closePd: function () { self.setState({ pid: null }); },
@@ -1543,7 +1618,7 @@ prev: go(s - 1),
 next: go(s + 1),
 newsDone: !!st.newsDone,
 newsSubmit: function (e) { e.preventDefault(); self.setState({ newsDone: true }); }
-};
+});
 }
 }
 </script>
