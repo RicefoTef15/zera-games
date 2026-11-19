@@ -122,6 +122,9 @@ section[id]{scroll-margin-top:100px}
 .zpromo i{flex:none;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);font-style:normal}
 @keyframes zpin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 .zfree{align-self:flex-start;padding:3px 8px;border-radius:8px;background:#E3F7EC;color:#0B5A33;font:800 12px Archivo,Inter,sans-serif}
+.zlaunch{display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:10px;background:#0E0E12;color:#FFFFFF;font:800 12px Archivo,Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;line-height:1.2}
+.zlaunch.super{background:linear-gradient(90deg,#FF4FA3,#FF8A3D);color:#FFFFFF}
+.zlaunch svg{flex:none}
 .zsale{display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:10px;background:#E3F7EC;color:#0B5A33;font:800 12px Archivo,Inter,sans-serif;letter-spacing:.02em;line-height:1.2}
 .zbadge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#FF4FA3;color:#16060E;font:800 12px Archivo,Inter,sans-serif}
 .zver{min-height:48px;padding:0 20px;border-radius:12px;border:2px solid #DEDCD5;background:#FFFFFF;color:#0E0E12;font:700 15px Inter,sans-serif;cursor:pointer}
@@ -249,6 +252,7 @@ section[id]{scroll-margin-top:12px}
 <div style="background: #FFFFFF; border-bottom: 1px solid #DEDCD5">
 <div class="zw" style="display: flex; flex-direction: column; gap: 12px; padding-top: 18px; padding-bottom: 18px; max-width: 760px">
 <label class="zfield">Buscar produtos<input type="search" name="q" placeholder="Ex.: headset, PS5, Minecraft" autocomplete="off" onChange="{{searchType}}"></label>
+<sc-if value="{{hasPlatHint}}" hint-placeholder-val="{{false}}"><span role="status" style="font-size: 14px; font-weight: 700; color: #5E5B52">{{platHint}}</span></sc-if>
 <sc-if value="{{hasResults}}" hint-placeholder-val="{{false}}">
 <div style="border: 1px solid #DEDCD5; border-radius: 14px; overflow: hidden; max-height: 340px; overflow-y: auto">
 <sc-for list="{{results}}" as="r" hint-placeholder-count="3">
@@ -370,6 +374,7 @@ section[id]{scroll-margin-top:12px}
 <div class="zg4">
 <sc-for list="{{g.items}}" as="p" hint-placeholder-count="4">
 <button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span><span class="zstk" aria-label="{{p.offAria}}"><b>{{p.offLabel}}</b><small>OFF</small></span><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{false}}"><span class="zpimg zph" style="position: relative"><span class="zstk" aria-label="{{p.offAria}}"><b>{{p.offLabel}}</b><small>OFF</small></span><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -448,13 +453,11 @@ section[id]{scroll-margin-top:12px}
 <sc-for list="{{gameChips}}" as="f" hint-placeholder-count="3">
 <button type="button" class="{{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.label}} <small>{{f.count}}</small></button>
 </sc-for>
-<a class="zchip" href="#nintendo">Nintendo Switch 2</a>
-<a class="zchip" href="#pc">PC</a>
 </div>
 <div class="zg4">
 <sc-for list="{{gtaPs}}" as="p" hint-placeholder-count="3">
 <button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
-<sc-if value="{{p.hasSale}}" hint-placeholder-val="{{false}}"><span class="zsale"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M2.500 7.500l3 3 6-7"></path></svg>{{p.saleLine}}</span></sc-if>
+<sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -468,6 +471,7 @@ section[id]{scroll-margin-top:12px}
 </sc-for>
 <sc-for list="{{newGames}}" as="p" hint-placeholder-count="1">
 <button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -490,6 +494,7 @@ section[id]{scroll-margin-top:12px}
 <div class="zg4">
 <sc-for list="{{pcGames}}" as="p" hint-placeholder-count="15">
 <button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -512,6 +517,7 @@ section[id]{scroll-margin-top:12px}
 <div class="zg4">
 <sc-for list="{{nintendo}}" as="p" hint-placeholder-count="6">
 <button type="button" class="{{p.cardCls}}" onClick="{{p.open}}">
+<sc-if value="{{p.hasLaunch}}" hint-placeholder-val="{{false}}"><span class="{{p.launchCls}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="currentColor"></path></svg>{{p.launchLabel}}</span></sc-if>
 <sc-if value="{{p.hasImg}}" hint-placeholder-val="{{false}}"><span class="{{p.imgCls}}"><sc-if value="{{p.hasOld}}" hint-placeholder-val="{{false}}"><span class="zbn" aria-label="Black November"><svg aria-hidden="true" width="9" height="9" viewBox="0 0 12 12"><path d="M6 0l1.500 4.500L12 6 7.500 7.500 6 12 4.500 7.500 0 6l4.500-1.500z" fill="#FF4FA3"></path></svg><span>BLACK</span><span style="color: #FF6DB5">NOVEMBER</span></span></sc-if><img src="{{p.img}}" alt=""></span></sc-if>
 <sc-if value="{{p.noImg}}" hint-placeholder-val="{{true}}"><span class="zpimg zph"><span class="zphn">{{p.short}}</span><span>[FOTO DO PRODUTO]</span></span></sc-if>
 <span class="ztag">{{p.tag}}</span>
@@ -919,7 +925,7 @@ IMGS['Grand Theft Auto VI · Digital'] = ['assets/img/jogos/gta6-digital.png'];
 INFO['Grand Theft Auto VI · Digital'] = ['Grand Theft Auto VI em versão digital, entregue como código de resgate.', '[CONFIRME A PLATAFORMA DO CÓDIGO E COMO ELE É ENTREGUE]'];
 IMGS['EA Sports FC 27 · PS5'] = ['assets/img/jogos/fc27-capa.jpg', 'assets/img/jogos/fc27-cena-1.jpg', 'assets/img/jogos/fc27-cena-2.jpg', 'assets/img/jogos/fc27-cena-3.jpg', 'assets/img/jogos/fc27-cena-4.jpg'];
 INFO['EA Sports FC 27 · PS5'] = ['EA Sports FC 27 para PlayStation 5, em mídia física.', '[CONFIRME EDIÇÃO, IDIOMAS E CLASSIFICAÇÃO INDICATIVA]'];
-var STATUS = { 'Grand Theft Auto VI · PS5': 'À venda · receba em casa antes do dia 19', 'Grand Theft Auto VI · Xbox Series': 'À venda · receba em casa antes do dia 19', 'Grand Theft Auto VI · Digital': 'À venda · baixe agora e jogue em 19/11' };
+var STATUS = {};
 IMGS['Grand Theft Auto VI · PS5'] = ['assets/img/jogos/gta6-ps5-caixa.jpg', 'assets/img/jogos/gta6-arte.jpg'];
 INFO['Grand Theft Auto VI · PS5'] = ['Grand Theft Auto VI, Edição Standard para PlayStation 5, em caixa física. Já está à venda e em estoque: você recebe a caixa em casa antes do lançamento e começa a jogar a partir de 19/11.', '[CONFIRME SE A CAIXA TRAZ DISCO OU CÓDIGO DE RESGATE]'];
 var PDISC = { 'Controle sem fio para PS5': 0.3, 'Controle sem fio para Xbox Series': 0.3, 'Grand Theft Auto VI · PS5': 0.3, 'EA Sports FC 27 · PS5': 0.5, 'Grand Theft Auto VI · Xbox Series': 0.3, 'Grand Theft Auto VI · Digital': 0.3, 'Capa de proteção antipoeira para PlayStation 5 Slim · Preta': 0, 'Base de carregamento Sony para controle DualSense · CFI-ZDS1': 0, 'Headset sem fio Sony Pulse Elite · PS5 · Branco': 0.7, 'Base de resfriamento multifuncional para PS5': 0.4, 'Suporte vertical para controle de PS5 · Branco': 0, 'Suporte para controle DualSense · Tema GTA VI': 0.3, 'Cabo USB-C para carregar controle de PS5': 0.2, 'Estação de carregamento Krab 4 em 1 RGB para PS5 · KBDCM54': 0.4,
@@ -1003,6 +1009,9 @@ PRICES['Controle sem fio Xbox · Carbon Black'] = 400; PDISC['Controle sem fio X
 [['Unidade de disco para PS5 · Sony', 800], ['SSD WD_BLACK SN850X 1TB com dissipador', 1100], ['SSD WD_BLACK SN850X 2TB com dissipador', 2400], ['PlayStation Portal · Reprodutor remoto', 1800], ['Bateria recarregável para controle Xbox + cabo USB-C', 250], ['Cartão de expansão Seagate 1TB para Xbox Series X|S', 3000], ['Headset sem fio Xbox', 700], ['Headset HyperX Cloud Stinger 2', 250], ['Headset HyperX Cloud III', 410]].forEach(function (r) { PRICES[r[0]] = r[1]; PDISC[r[0]] = 0.4; });
 // Nintendo: preço cheio e desconto.
 [['Nintendo Switch 2 + Mario Kart World', 4550], ['Controle Pro Nintendo Switch 2', 600], ['Cartão microSD Express SanDisk 256GB para Nintendo Switch 2', 800], ['Mario Kart World · Switch 2', 450], ['Donkey Kong Bananza · Switch 2', 410], ['Pokémon Legends: Z-A · Switch 2', 340]].forEach(function (r) { PRICES[r[0]] = r[1]; PDISC[r[0]] = 0.35; });
+IMGS['Tomodachi Life: Living the Dream'] = ['assets/img/jogos/tomodachi-life.jpg'];
+COVER['Tomodachi Life: Living the Dream'] = true;
+INFO['Tomodachi Life: Living the Dream'] = ['Tomodachi Life: Living the Dream para Nintendo Switch e Switch 2: crie Miis e acompanhe a vida deles numa ilha cheia de surpresas.', '[CONFIRME O PREÇO E SE É MÍDIA FÍSICA OU DIGITAL]'];
 // Jogos que vendem o ano todo: preço cheio e desconto (a key de PC segue o mesmo preço).
 [['Minecraft', 230], ['Grand Theft Auto V', 160], ['Red Dead Redemption 2', 150], ["Marvel's Spider-Man 2", 300], ['Mortal Kombat 1', 250]].forEach(function (r) { PRICES[r[0]] = r[1]; PDISC[r[0]] = 0.6; });
 // Zelda: de R$ 450 por R$ 237,90 (o desconto é calculado a partir do preço final).
@@ -1038,12 +1047,79 @@ var NEW_GAMES = [
 ['GTA V', 'PS5 · Xbox Series · Mundo aberto', 'Grand Theft Auto V', 'PS5 e Xbox Series X|S', 'mundo aberto', 'gta-v'],
 ['RDR 2', 'PS5 · Xbox Series · Mundo aberto', 'Red Dead Redemption 2', 'PS4 e Xbox One (roda no PS5 e no Xbox Series X|S)', 'mundo aberto', 'red-dead-redemption-2'],
 ['SPIDER-MAN 2', 'PS5 · Ação', "Marvel's Spider-Man 2", 'PS5', 'ação', 'spider-man-2'],
-['MK1', 'PS5 · Xbox Series · Luta', 'Mortal Kombat 1', 'PS5 e Xbox Series X|S', 'luta', 'mortal-kombat-1']
+['MK1', 'PS5 · Xbox Series · Luta', 'Mortal Kombat 1', 'PS5 e Xbox Series X|S', 'luta', 'mortal-kombat-1'],
+// Battlefield: os 4 últimos lançamentos
+['BF6', 'PS5 · Xbox Series · Tiro', 'Battlefield 6', 'PS5 e Xbox Series X|S', 'tiro', 'battlefield-6'],
+['BF 2042', 'PS5 · Xbox Series · Tiro', 'Battlefield 2042', 'PS5 e Xbox Series X|S', 'tiro', 'battlefield-2042'],
+['BF V', 'PS5 · Xbox Series · Tiro', 'Battlefield V', 'PS4 e Xbox One (roda no PS5 e no Xbox Series X|S)', 'tiro', 'battlefield-v'],
+['BF1', 'PS5 · Xbox Series · Tiro', 'Battlefield 1', 'PS4 e Xbox One (roda no PS5 e no Xbox Series X|S)', 'tiro', 'battlefield-1'],
+// Call of Duty: lançamentos anteriores ao Modern Warfare 4 + o Black Ops II relançado
+['COD BO7', 'PS5 · Xbox Series · Tiro', 'Call of Duty: Black Ops 7', 'PS5 e Xbox Series X|S', 'tiro', 'cod-bo7'],
+['COD BO6', 'PS5 · Xbox Series · Tiro', 'Call of Duty: Black Ops 6', 'PS5 e Xbox Series X|S', 'tiro', 'cod-bo6'],
+['COD MW3', 'PS5 · Xbox Series · Tiro', 'Call of Duty: Modern Warfare III', 'PS5 e Xbox Series X|S', 'tiro', 'cod-mw3'],
+['COD BO2', 'PS5 · Tiro', 'Call of Duty: Black Ops II', 'PS5', 'tiro', 'cod-bo2'],
+// Mais vendidos de 2025 e 2026
+['NBA 2K27', 'PS5 · Xbox Series · Esporte', 'NBA 2K27', 'PS5 e Xbox Series X|S', 'esporte', 'nba-2k27'],
+['NBA 2K26', 'PS5 · Xbox Series · Esporte', 'NBA 2K26', 'PS5 e Xbox Series X|S', 'esporte', 'nba-2k26'],
+['BORDERLANDS 4', 'PS5 · Xbox Series · Tiro', 'Borderlands 4', 'PS5 e Xbox Series X|S', 'tiro', 'borderlands-4'],
+['MH WILDS', 'PS5 · Xbox Series · Ação', 'Monster Hunter Wilds', 'PS5 e Xbox Series X|S', 'ação', 'monster-hunter-wilds'],
+['MADDEN 27', 'PS5 · Xbox Series · Esporte', 'Madden NFL 27', 'PS5 e Xbox Series X|S', 'esporte', 'madden-27'],
+['MADDEN 26', 'PS5 · Xbox Series · Esporte', 'Madden NFL 26', 'PS5 e Xbox Series X|S', 'esporte', 'madden-26'],
+['CFB 26', 'PS5 · Xbox Series · Esporte', 'EA Sports College Football 26', 'PS5 e Xbox Series X|S', 'esporte', 'college-football-26'],
+['FC 26', 'PS5 · Xbox Series · Esporte', 'EA Sports FC 26', 'PS5 e Xbox Series X|S', 'esporte', 'fc-26'],
+['OBLIVION', 'PS5 · Xbox Series · RPG', 'The Elder Scrolls IV: Oblivion Remastered', 'PS5 e Xbox Series X|S', 'RPG', 'oblivion-remastered'],
+['YŌTEI', 'PS5 · Ação', 'Ghost of Yōtei', 'PS5', 'ação', 'ghost-of-yotei'],
+['MLB 26', 'PS5 · Xbox Series · Esporte', 'MLB The Show 26', 'PS5 e Xbox Series X|S', 'esporte', 'mlb-26'],
+['MLB 25', 'PS5 · Xbox Series · Esporte', 'MLB The Show 25', 'PS5 e Xbox Series X|S', 'esporte', 'mlb-25'],
+['NIGHTREIGN', 'PS5 · Xbox Series · RPG', 'Elden Ring Nightreign', 'PS5 e Xbox Series X|S', 'RPG', 'nightreign'],
+['KCD II', 'PS5 · Xbox Series · RPG', 'Kingdom Come: Deliverance II', 'PS5 e Xbox Series X|S', 'RPG', 'kcd2'],
+['FORZA 5', 'PS5 · Xbox Series · Corrida', 'Forza Horizon 5', 'PS5 e Xbox Series X|S', 'corrida', 'forza-horizon-5'],
+['FORZA 6', 'PS5 · Xbox Series · Corrida', 'Forza Horizon 6', 'PS5 e Xbox Series X|S', 'corrida', 'forza-horizon-6'],
+['WWE 2K25', 'PS5 · Xbox Series · Luta', 'WWE 2K25', 'PS5 e Xbox Series X|S', 'luta', 'wwe-2k25'],
+['SPLIT FICTION', 'PS5 · Xbox Series · Aventura', 'Split Fiction', 'PS5 e Xbox Series X|S', 'aventura', 'split-fiction'],
+['LEGO BATMAN', 'PS5 · Xbox Series · Aventura', 'LEGO Batman: Legacy of the Dark Knight', 'PS5 e Xbox Series X|S', 'aventura', 'lego-batman']
 ];
+// Versões que a loja tem de cada jogo. O cliente escolhe a versão na janela do produto,
+// e o filtro da seção Jogos e a busca (ex.: "PS4", "Switch") usam esta lista.
+// Valores possíveis: 'PS5', 'PS4', 'Xbox Series', 'Xbox One', 'Switch', 'Switch 2', 'PC'.
+// Para ter 'PC', o jogo também precisa estar em PC_GAMES (mais abaixo).
+var PLATS = {
+'Battlefield 6': ['PS5', 'Xbox Series', 'PC'],
+'NBA 2K26': ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'Switch', 'Switch 2', 'PC'],
+'Borderlands 4': ['PS5', 'Xbox Series', 'Switch 2', 'PC'],
+'Monster Hunter Wilds': ['PS5', 'Xbox Series', 'PC'],
+'Call of Duty: Black Ops 7': ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'PC'],
+'Madden NFL 26': ['PS5', 'Xbox Series', 'Switch 2', 'PC'],
+'EA Sports College Football 26': ['PS5', 'Xbox Series'],
+'EA Sports FC 26': ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'Switch', 'Switch 2', 'PC'],
+'The Elder Scrolls IV: Oblivion Remastered': ['PS5', 'Xbox Series', 'PC'],
+'Call of Duty: Black Ops 6': ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'PC'],
+'Ghost of Yōtei': ['PS5'],
+'MLB The Show 25': ['PS5', 'Xbox Series', 'Switch'],
+'Elden Ring Nightreign': ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'PC'],
+'Kingdom Come: Deliverance II': ['PS5', 'Xbox Series', 'PC'],
+'Forza Horizon 5': ['PS5', 'Xbox Series', 'Xbox One', 'PC'],
+'WWE 2K25': ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'PC'],
+'Split Fiction': ['PS5', 'Xbox Series', 'Switch 2', 'PC'],
+'NBA 2K27': ['PS5', 'Xbox Series', 'Switch 2', 'PC'],
+'MLB The Show 26': ['PS5', 'Xbox Series', 'Switch'],
+'Call of Duty: Black Ops II': ['PS5', 'PS4'],
+'Forza Horizon 6': ['PS5', 'Xbox Series', 'PC'],
+'Tomodachi Life: Living the Dream': ['Switch', 'Switch 2'],
+'Madden NFL 27': ['PS5', 'Xbox Series', 'Switch 2', 'PC'],
+'LEGO Batman: Legacy of the Dark Knight': ['PS5', 'Xbox Series', 'PC']
+};
+// Preço cheio desses jogos. O desconto de 60% vale no Pix; a key de PC segue o mesmo preço.
+[['Battlefield 2042', 229, 0.55], ['Battlefield V', 180, 0.4], ['Battlefield 1', 130, 0.5], ['Call of Duty: Modern Warfare III', 200, 0.7], ['RuneScape: Dragonwilds · PC', 180, 0.4]].forEach(function (r) { PRICES[r[0]] = r[1]; PDISC[r[0]] = r[2]; });
+[['Battlefield 6', 370], ['NBA 2K26', 360], ['Borderlands 4', 250], ['Monster Hunter Wilds', 249], ['Call of Duty: Black Ops 7', 320], ['Madden NFL 26', 349], ['EA Sports College Football 26', 349], ['EA Sports FC 26', 250], ['The Elder Scrolls IV: Oblivion Remastered', 230], ['Call of Duty: Black Ops 6', 140], ['Ghost of Yōtei', 320], ['MLB The Show 25', 250], ['Elden Ring Nightreign', 170], ['Kingdom Come: Deliverance II', 220], ['Forza Horizon 5', 249], ['WWE 2K25', 200], ['Split Fiction', 230], ['NBA 2K27', 340], ['MLB The Show 26', 350], ['Call of Duty: Black Ops II', 175], ['Forza Horizon 6', 299], ['Tomodachi Life: Living the Dream', 330], ['Madden NFL 27', 299], ['LEGO Batman: Legacy of the Dark Knight', 300]].forEach(function (r) { PRICES[r[0]] = r[1]; PDISC[r[0]] = 0.6; });
+// Etiqueta e descrição montadas a partir das versões.
+var platTag = function (ls) { var h = function (a, b, t) { var x = ls.indexOf(a) >= 0, y = ls.indexOf(b) >= 0; return x && y ? t : (x ? a : (y ? b : '')); }; return [h('PS5', 'PS4', 'PS5/PS4'), h('Xbox Series', 'Xbox One', 'Xbox Series/One'), h('Switch', 'Switch 2', 'Switch/Switch 2'), ls.indexOf('PC') >= 0 ? 'PC' : ''].filter(Boolean).join(' · '); };
+var platText = function (ls) { return ls.length === 1 ? ls[0] : ls.slice(0, -1).join(', ') + ' e ' + ls[ls.length - 1]; };
+NEW_GAMES.forEach(function (g) { var ls = PLATS[g[2]]; if (!ls) { return; } g[1] = platTag(ls) + ' · ' + g[4].charAt(0).toUpperCase() + g[4].slice(1); g[3] = platText(ls); g[6] = true; });
 NEW_GAMES.forEach(function (g) {
 COVER[g[2]] = true;
 IMGS[g[2]] = ['assets/img/jogos/' + g[5] + '.jpg'];
-INFO[g[2]] = [g[2] + ' para ' + g[3] + '. Jogo de ' + g[4] + '.', '[CONFIRME O PREÇO, A PLATAFORMA DISPONÍVEL, SE É MÍDIA FÍSICA OU DIGITAL E A CLASSIFICAÇÃO INDICATIVA]'];
+INFO[g[2]] = [g[2] + ' para ' + g[3] + '. Jogo de ' + g[4] + '.', g[6] ? '[CONFIRME SE É MÍDIA FÍSICA OU DIGITAL E A CLASSIFICAÇÃO INDICATIVA]' : '[CONFIRME O PREÇO, A PLATAFORMA DISPONÍVEL, SE É MÍDIA FÍSICA OU DIGITAL E A CLASSIFICAÇÃO INDICATIVA]'];
 });
 var newGames = add('Jogos', [['FC 27', 'PS5 · Físico', 'EA Sports FC 27 · PS5']].concat(NEW_GAMES.map(function (g) { return [g[0], g[1], g[2]]; })));
 // Versões para PC (key digital). O preço e o desconto seguem automaticamente os da versão de PS5
@@ -1068,7 +1144,31 @@ var PC_GAMES = [
 ['GTA V', 'Mundo aberto', 'Grand Theft Auto V', 'assets/img/jogos/gta-v.jpg', 'Grand Theft Auto V'],
 ['RDR 2', 'Mundo aberto', 'Red Dead Redemption 2', 'assets/img/jogos/red-dead-redemption-2.jpg', 'Red Dead Redemption 2'],
 ['SPIDER-MAN 2', 'Ação', "Marvel's Spider-Man 2", 'assets/img/jogos/spider-man-2.jpg', "Marvel's Spider-Man 2"],
-['MK1', 'Luta', 'Mortal Kombat 1', 'assets/img/jogos/mortal-kombat-1.jpg', 'Mortal Kombat 1']
+['MK1', 'Luta', 'Mortal Kombat 1', 'assets/img/jogos/mortal-kombat-1.jpg', 'Mortal Kombat 1'],
+['BF6', 'Tiro', 'Battlefield 6', 'assets/img/jogos/battlefield-6.jpg', 'Battlefield 6'],
+['BF 2042', 'Tiro', 'Battlefield 2042', 'assets/img/jogos/battlefield-2042.jpg', 'Battlefield 2042'],
+['BF V', 'Tiro', 'Battlefield V', 'assets/img/jogos/battlefield-v.jpg', 'Battlefield V'],
+['BF1', 'Tiro', 'Battlefield 1', 'assets/img/jogos/battlefield-1.jpg', 'Battlefield 1'],
+['COD BO7', 'Tiro', 'Call of Duty: Black Ops 7', 'assets/img/jogos/cod-bo7.jpg', 'Call of Duty: Black Ops 7'],
+['COD BO6', 'Tiro', 'Call of Duty: Black Ops 6', 'assets/img/jogos/cod-bo6.jpg', 'Call of Duty: Black Ops 6'],
+['COD MW3', 'Tiro', 'Call of Duty: Modern Warfare III', 'assets/img/jogos/cod-mw3.jpg', 'Call of Duty: Modern Warfare III'],
+['NBA 2K27', 'Esporte', 'NBA 2K27', 'assets/img/jogos/nba-2k27.jpg', 'NBA 2K27'],
+['NBA 2K26', 'Esporte', 'NBA 2K26', 'assets/img/jogos/nba-2k26.jpg', 'NBA 2K26'],
+['BORDERLANDS 4', 'Tiro', 'Borderlands 4', 'assets/img/jogos/borderlands-4.jpg', 'Borderlands 4'],
+['MH WILDS', 'Ação', 'Monster Hunter Wilds', 'assets/img/jogos/monster-hunter-wilds.jpg', 'Monster Hunter Wilds'],
+['MADDEN 27', 'Esporte', 'Madden NFL 27', 'assets/img/jogos/madden-27.jpg', 'Madden NFL 27'],
+['MADDEN 26', 'Esporte', 'Madden NFL 26', 'assets/img/jogos/madden-26.jpg', 'Madden NFL 26'],
+['FC 26', 'Esporte', 'EA Sports FC 26', 'assets/img/jogos/fc-26.jpg', 'EA Sports FC 26'],
+['OBLIVION', 'RPG', 'The Elder Scrolls IV: Oblivion Remastered', 'assets/img/jogos/oblivion-remastered.jpg', 'The Elder Scrolls IV: Oblivion Remastered'],
+['NIGHTREIGN', 'RPG', 'Elden Ring Nightreign', 'assets/img/jogos/nightreign.jpg', 'Elden Ring Nightreign'],
+['KCD II', 'RPG', 'Kingdom Come: Deliverance II', 'assets/img/jogos/kcd2.jpg', 'Kingdom Come: Deliverance II'],
+['FORZA 5', 'Corrida', 'Forza Horizon 5', 'assets/img/jogos/forza-horizon-5.jpg', 'Forza Horizon 5'],
+['FORZA 6', 'Corrida', 'Forza Horizon 6', 'assets/img/jogos/forza-horizon-6.jpg', 'Forza Horizon 6'],
+['WWE 2K25', 'Luta', 'WWE 2K25', 'assets/img/jogos/wwe-2k25.jpg', 'WWE 2K25'],
+['SPLIT FICTION', 'Aventura', 'Split Fiction', 'assets/img/jogos/split-fiction.jpg', 'Split Fiction'],
+['LEGO BATMAN', 'Aventura', 'LEGO Batman: Legacy of the Dark Knight', 'assets/img/jogos/lego-batman.jpg', 'LEGO Batman: Legacy of the Dark Knight'],
+// Só para PC: o preço fica no próprio nome "· PC" em PRICES.
+['RUNESCAPE', 'RPG', 'RuneScape: Dragonwilds', 'assets/img/jogos/runescape-dragonwilds.jpg', 'RuneScape: Dragonwilds · PC']
 ];
 PC_GAMES.forEach(function (g) {
 var n = g[2] + ' · PC';
@@ -1083,7 +1183,7 @@ var accessories = add('Acessórios', [['CAPA', 'PS5 Slim', 'Capa de proteção a
 var nintendo = [].concat(
 add('Consoles', [['SWITCH 2', 'Nintendo · Mario Kart World', 'Nintendo Switch 2 + Mario Kart World']]),
 add('Controles', [['PRO', 'Nintendo Switch 2', 'Controle Pro Nintendo Switch 2']]),
-add('Jogos', [['MARIO KART', 'Switch 2 · Corrida', 'Mario Kart World · Switch 2'], ['DK', 'Switch 2 · Aventura', 'Donkey Kong Bananza · Switch 2'], ['POKÉMON', 'Switch 2 · RPG', 'Pokémon Legends: Z-A · Switch 2'], ['ZELDA', 'Switch 2 · Aventura · Lançamento', 'The Legend of Zelda: Ocarina of Time · Switch 2']]),
+add('Jogos', [['MARIO KART', 'Switch 2 · Corrida', 'Mario Kart World · Switch 2'], ['DK', 'Switch 2 · Aventura', 'Donkey Kong Bananza · Switch 2'], ['POKÉMON', 'Switch 2 · RPG', 'Pokémon Legends: Z-A · Switch 2'], ['TOMODACHI', 'Switch/Switch 2 · Simulação', 'Tomodachi Life: Living the Dream'], ['ZELDA', 'Switch 2 · Aventura · Lançamento', 'The Legend of Zelda: Ocarina of Time · Switch 2']]),
 add('Acessórios', [['MICROSD', 'Switch 2 · 256GB', 'Cartão microSD Express SanDisk 256GB para Nintendo Switch 2']])
 );
 var cards = add('Cartões', [['PS STORE', 'PlayStation · Crédito', 'Cartão PlayStation Store R$ 100'], ['PS STORE', 'PlayStation · Crédito', 'Cartão PlayStation Store R$ 250'], ['PS PLUS', 'PlayStation · Assinatura', 'PlayStation Plus Essential · 12 meses'], ['PS PLUS', 'PlayStation · Assinatura', 'PlayStation Plus Extra · 12 meses'], ['GAME PASS', 'Xbox · Assinatura', 'Xbox Game Pass Ultimate · 1 mês'], ['GAME PASS', 'Xbox · Assinatura', 'Xbox Game Pass Ultimate · 3 meses'], ['STEAM', 'PC · Crédito', 'Cartão Steam R$ 100']]);
@@ -1093,16 +1193,29 @@ var GENRE = { 'Grand Theft Auto VI · PS5': 'mundo aberto', 'Grand Theft Auto VI
 var MULTI = {};
 NEW_GAMES.forEach(function (g) { GENRE[g[2]] = g[4].toLowerCase(); MULTI[g[2]] = /Xbox/.test(g[3]); });
 PC_GAMES.forEach(function (g) { GENRE[g[2] + ' · PC'] = g[1].toLowerCase(); });
+// Jogos lançados em 2026: ganham o selo "Lançamento 2026" (o GTA VI ganha "Super lançamento").
+var LAUNCH_2026 = ['Call of Duty: Modern Warfare 4', 'Resident Evil Requiem', 'Crimson Desert', '007 First Light', 'Pragmata', 'Marathon', 'Onimusha: Way of the Sword', 'The Blood of Dawnwalker', 'Control Resonant', 'Halloween', 'Phantom Blade Zero', 'Ace Combat 8: Wings of Theve', 'Reanimal', 'EA Sports FC 27', 'NBA 2K27', 'Madden NFL 27', 'MLB The Show 26', 'Forza Horizon 6', 'LEGO Batman: Legacy of the Dark Knight', 'Tomodachi Life: Living the Dream', 'The Legend of Zelda: Ocarina of Time'];
+var FAM = { 'PS5': 'ps', 'PS4': 'ps', 'Xbox Series': 'xbox', 'Xbox One': 'xbox', 'Switch': 'switch', 'Switch 2': 'switch', 'PC': 'pc' };
 catalog.forEach(function (p) {
 var n = p.name;
 p.plat = / · PC$|Steam/.test(n) ? 'pc' : (/Switch/.test(n) ? 'switch' : (/HyperX/.test(n) ? 'all' : (/Xbox/.test(n) ? 'xbox' : 'ps')));
 if (MULTI[n] === true) { p.plat = 'both'; }
 p.genre = GENRE[n] || '';
-p.vers = p.plat === 'both' ? [{ label: 'PS5', plat: 'ps' }, { label: 'Xbox Series', plat: 'xbox' }] : [{ label: '', plat: p.plat }];
+// Versões (labels) e famílias de plataforma (ps, xbox, switch, pc) do produto.
+var ls = PLATS[n] ? PLATS[n].slice() : (p.plat === 'both' ? ['PS5', 'Xbox Series'] : (p.plat === 'xbox' ? ['Xbox Series'] : (p.plat === 'switch' ? ['Switch 2'] : (p.plat === 'pc' ? ['PC'] : (p.plat === 'all' ? [] : ['PS5'])))));
+p.labels = ls;
+p.consoles = ls.filter(function (l) { return l !== 'PC'; });
+p.fams = {};
+ls.forEach(function (l) { p.fams[FAM[l]] = true; });
+if (p.plat !== 'all') { var fk = Object.keys(p.fams); p.plat = fk.length === 1 ? fk[0] : 'multi'; }
+p.vers = p.consoles.length > 1 ? p.consoles.map(function (l) { return { label: l, plat: FAM[l] }; }) : [{ label: '', plat: p.consoles.length ? FAM[p.consoles[0]] : p.plat }];
 p.canBuy = !p.out && p.price > 0;
 p.digital = /Digital| · PC$|^Cartão (PlayStation|Steam)|PlayStation Plus|Game Pass/.test(n);
 p.hasSale = !!STATUS[n] && p.canBuy;
-p.saleLine = p.digital ? 'Já à venda · baixe agora' : 'Já à venda · receba antes do dia 19';
+var base = n.split(' · ')[0];
+p.launchLabel = base === 'Grand Theft Auto VI' ? 'Super lançamento' : (LAUNCH_2026.indexOf(base) >= 0 ? 'Lançamento 2026' : '');
+p.hasLaunch = !!p.launchLabel && p.cat === 'Jogos';
+p.launchCls = 'zlaunch' + (base === 'Grand Theft Auto VI' ? ' super' : '');
 });
 var byName = {};
 catalog.forEach(function (p) { byName[p.name] = p; });
@@ -1113,8 +1226,10 @@ catalog.forEach(function (p) {
 if (p.cat !== 'Jogos' || p.plat === 'pc' || !pcBySrc[p.name]) { return; }
 var pc = byName[pcBySrc[p.name]];
 if (!pc || !pc.canBuy) { return; }
-if (p.vers.length === 1) { p.vers = [{ label: 'PS5', plat: 'ps' }]; }
+if (p.vers.length === 1) { p.vers = [{ label: p.consoles[0], plat: FAM[p.consoles[0]] }]; }
 p.vers.push({ label: 'PC', plat: 'pc', prod: pc });
+if (p.labels.indexOf('PC') < 0) { p.labels.push('PC'); p.fams.pc = true; p.plat = 'multi'; }
+if (PLATS[p.name]) { return; }
 p.tag = MULTI.hasOwnProperty(p.name) ? p.tag.replace(/ · ([^·]+)$/, ' · PC · $1') : p.tag + ' · PC digital';
 if (INFO[p.name]) { INFO[p.name] = [INFO[p.name][0] + ' Também tem versão para PC, em key digital.', INFO[p.name][1]]; }
 });
@@ -1178,14 +1293,16 @@ var anchorLine = lines.filter(function (l) { return l.key === st.anchor; })[0] |
 var related = [], relTitle = '';
 if (anchorLine) {
 var a = anchorLine.p, ap = anchorLine.v.plat;
+// Versão exata do item (PS4, Switch 2...): os jogos sugeridos precisam ter essa mesma versão.
+var al = anchorLine.v.label || (a.labels.length === 1 ? a.labels[0] : '');
 var inCart = {};
 var baseOf = function (n) { return n.split(' · ')[0]; };
 lines.forEach(function (l) { inCart[l.p.name] = true; inCart['base:' + baseOf(l.p.name)] = true; });
 var fits = function (p) {
 if (p.plat === 'all') { return true; }
 if (ap === 'all') { return p.cat !== 'Jogos' && p.cat !== 'Cartões'; }
-if (ap === 'pc' || p.plat === 'pc' || ap === 'switch' || p.plat === 'switch') { return ap === p.plat; }
-return p.plat === 'both' || p.plat === ap;
+if (p.cat === 'Jogos' && al) { return p.labels.indexOf(al) >= 0; }
+return !!p.fams[ap];
 };
 var score = function (p) {
 var g = p.cat === 'Jogos';
@@ -1198,21 +1315,33 @@ return p.cat === 'Acessórios' ? 3 : (p.cat === 'Controles' ? 2 : (g ? 1 : 0));
 related = catalog.filter(function (p) { return p.canBuy && !inCart[p.name] && !(p.cat === 'Jogos' && inCart['base:' + baseOf(p.name)]) && p.cat !== 'Consoles' && fits(p) && score(p) > 0; })
 .sort(function (x, y) { return (score(y) - score(x)) || (y.disc - x.disc); }).slice(0, 4)
 .map(function (p) {
-var vi = Math.max(0, p.vers.map(function (v) { return v.plat; }).indexOf(ap));
+var vi = p.vers.map(function (v) { return v.label; }).indexOf(al);
+if (vi < 0) { vi = Math.max(0, p.vers.map(function (v) { return v.plat; }).indexOf(ap)); }
 var im = shortImg(p);
 return { name: dispName(p, p.vers[vi]), img: im.img, imgCls: im.imgCls, price: money(p.price), old: p.oldLabel, hasOld: p.hasOld, add: function () { addToCart(p, vi, false); } };
 });
 relTitle = (a.cat === 'Jogos' && needMore ? 'Complete o Leve 3, pague 2 · ' : 'Combina com ') + dispName(a, anchorLine.v);
 }
-// Filtro de plataforma da seção Jogos (Todos / PlayStation / Xbox).
-var gplat = st.gplat || 'all';
-var platOk = function (p, pl) { return pl === 'all' || p.plat === pl || p.plat === 'both'; };
+// Filtro de plataforma da seção Jogos: uma opção para cada versão (PS5, PS4, Xbox Series...).
+var GPLATS = ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'Switch', 'Switch 2', 'PC'];
+var gplat = GPLATS.indexOf(st.gplat) >= 0 ? st.gplat : 'all';
+var platOk = function (p, pl) { return pl === 'all' || p.labels.indexOf(pl) >= 0; };
 var byPlat = function (list) { return list.filter(function (p) { return platOk(p, gplat); }); };
 var consoleGames = gtaGames.concat(newGames);
-var gameChips = [['all', 'Todos'], ['ps', 'PlayStation'], ['xbox', 'Xbox']].map(function (c) {
+var nintendoGames = nintendo.filter(function (p) { return p.cat === 'Jogos'; });
+var pcSrc = {};
+PC_GAMES.forEach(function (g) { pcSrc[g[2] + ' · PC'] = g[4]; });
+var pcOnlyGames = pcGames.filter(function (p) { return pcSrc[p.name] === p.name; });
+// Jogos que entram a mais quando o filtro é Switch (os da seção Nintendo) ou PC (os que só têm versão de PC).
+var extraFor = function (pl) { return pl === 'Switch' || pl === 'Switch 2' ? nintendoGames : (pl === 'PC' ? pcOnlyGames : []); };
+var gameChips = [['all', 'Todos']].concat(GPLATS.map(function (l) { return [l, l]; })).map(function (c) {
 var on = gplat === c[0];
-return { label: c[1], count: String(consoleGames.filter(function (p) { return platOk(p, c[0]); }).length), cls: 'zchip' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { self.setState({ gplat: c[0] }); } };
+var n = consoleGames.filter(function (p) { return platOk(p, c[0]); }).length + (c[0] === 'all' ? 0 : extraFor(c[0]).filter(function (p) { return platOk(p, c[0]); }).length);
+return { label: c[1], count: String(n), cls: 'zchip' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { self.setState({ gplat: c[0] }); } };
 });
+// Abre um jogo já com a versão escolhida (pelo filtro ou pela busca).
+var openAt = function (p, label) { var i = p.vers.map(function (v) { return v.label; }).indexOf(label); self.setState({ pid: p.id, pimg: 0, pver: i < 0 ? 0 : i, searchOpen: false, q: '' }); };
+catalog.forEach(function (p) { if (p.cat === 'Jogos' && gplat !== 'all') { p.open = function () { openAt(p, gplat); }; } });
 // Frete: duas opções. Só é cobrado quando o pedido tem item físico (itens digitais vão por e-mail).
 var SHIP = [
 { id: 'free', name: 'Frete grátis', time: 'Até 10 dias úteis', price: 0 },
@@ -1231,7 +1360,7 @@ var payIsPix = pay === 'pix';
 var pixTotal = cartSum - freeValue, fullTotal = cartOldSum - freeFull;
 var pixDiff = fullTotal - pixTotal;
 // Ordem dos jogos: os mais famosos primeiro. Para mudar, mexa nesta lista (o nome é o começo do nome do produto).
-var POPULAR = ['Grand Theft Auto VI', 'Call of Duty: Modern Warfare 4', 'Red Dead Redemption 2', 'The Legend of Zelda: Ocarina of Time', 'Halloween', 'Grand Theft Auto V', 'Resident Evil Requiem', 'EA Sports FC 27', 'Minecraft', 'Mario Kart World', "Marvel's Spider-Man 2", 'Pokémon Legends: Z-A', 'Mortal Kombat 1', '007 First Light', 'Donkey Kong Bananza', 'Crimson Desert', 'Marathon', 'Pragmata', 'Onimusha: Way of the Sword', 'Phantom Blade Zero', 'Ace Combat 8: Wings of Theve', 'The First Berserker: Khazan', 'The Blood of Dawnwalker', 'Control Resonant', 'Reanimal'];
+var POPULAR = ['Grand Theft Auto VI', 'Call of Duty: Modern Warfare 4', 'Battlefield 6', 'Call of Duty: Black Ops 7', 'Red Dead Redemption 2', 'The Legend of Zelda: Ocarina of Time', 'Halloween', 'Grand Theft Auto V', 'Resident Evil Requiem', 'EA Sports FC 27', 'NBA 2K27', 'Ghost of Yōtei', 'Minecraft', 'Forza Horizon 6', '007 First Light', 'Call of Duty: Black Ops 6', 'Borderlands 4', 'Monster Hunter Wilds', 'Crimson Desert', 'Elden Ring Nightreign', 'Call of Duty: Black Ops II', 'The Elder Scrolls IV: Oblivion Remastered', 'Split Fiction', 'Madden NFL 27', 'LEGO Batman: Legacy of the Dark Knight', 'Tomodachi Life: Living the Dream', 'Battlefield 2042', 'Call of Duty: Modern Warfare III', 'Kingdom Come: Deliverance II', 'Forza Horizon 5', 'RuneScape: Dragonwilds', 'EA Sports FC 26', 'NBA 2K26', 'MLB The Show 26', 'EA Sports College Football 26', 'Madden NFL 26', 'WWE 2K25', 'MLB The Show 25', 'Battlefield V', 'Battlefield 1', 'Mario Kart World', "Marvel's Spider-Man 2", 'Pokémon Legends: Z-A', 'Mortal Kombat 1', '007 First Light', 'Donkey Kong Bananza', 'Crimson Desert', 'Marathon', 'Pragmata', 'Onimusha: Way of the Sword', 'Phantom Blade Zero', 'Ace Combat 8: Wings of Theve', 'The First Berserker: Khazan', 'The Blood of Dawnwalker', 'Control Resonant', 'Reanimal'];
 var rankOf = function (p) { var b = p.name.split(' · ')[0]; var i = POPULAR.indexOf(b); return i < 0 ? 999 : i; };
 var byRank = function (a, b) { return (rankOf(a) - rankOf(b)) || (a.id - b.id); };
 newGames.sort(byRank);
@@ -1246,7 +1375,7 @@ var BF_ORDER = ['Jogos', 'Consoles', 'Controles', 'Acessórios'];
 var bfCats = st.bfCats || [];
 var bfPlat = st.bfPlat || 'all';
 var bfSort = st.bfSort || 'rel';
-var platFits = function (p, pl) { return pl === 'all' || p.plat === pl || p.plat === 'all' || (p.plat === 'both' && (pl === 'ps' || pl === 'xbox')); };
+var platFits = function (p, pl) { return pl === 'all' || p.plat === 'all' || !!p.fams[pl]; };
 var catFits = function (p, cats) { return cats.length === 0 || cats.indexOf(p.cat) >= 0; };
 var bfFiltered = bfDeals.filter(function (p) { return catFits(p, bfCats) && platFits(p, bfPlat); });
 var bfSorters = { disc: function (a, b) { return (b.disc - a.disc) || (a.price - b.price); }, low: function (a, b) { return a.price - b.price; }, high: function (a, b) { return b.price - a.price; } };
@@ -1272,7 +1401,16 @@ var on = bfSort === c[0];
 return { label: c[1], cls: 'zfopt' + (on ? ' on' : ''), pressed: on ? 'true' : 'false', pick: function () { bfSet({ bfSort: c[0] }); } };
 });
 var q = norm(st.q).trim();
-var results = q.length < 2 ? [] : catalog.filter(function (p) { return norm(p.name + ' ' + p.cat + ' ' + p.tag).indexOf(q) >= 0; }).slice(0, 12);
+// Busca por plataforma ("PS5", "jogos de PS4", "Xbox One", "Switch"...): lista todos os jogos com essa versão.
+var PQ = { 'ps5': ['PS5'], 'playstation 5': ['PS5'], 'ps4': ['PS4'], 'playstation 4': ['PS4'], 'playstation': ['PS5', 'PS4'],
+'xbox': ['Xbox Series', 'Xbox One'], 'xbox series': ['Xbox Series'], 'xbox series x': ['Xbox Series'], 'xbox series s': ['Xbox Series'], 'xbox one': ['Xbox One'],
+'switch': ['Switch', 'Switch 2'], 'nintendo': ['Switch', 'Switch 2'], 'nintendo switch': ['Switch', 'Switch 2'], 'switch 1': ['Switch'], 'nintendo switch 1': ['Switch'], 'switch 2': ['Switch 2'], 'nintendo switch 2': ['Switch 2'],
+'pc': ['PC'], 'computador': ['PC'] };
+var qLabels = PQ[q.replace(/^(os |as )?(jogos?|games?)( de| do| da| para| pra| pro)? /, '')] || null;
+var qPick = function (p) { return qLabels.filter(function (l) { return p.labels.indexOf(l) >= 0; }); };
+var results = q.length < 2 ? [] : (qLabels
+? consoleGames.concat(nintendoGames, pcOnlyGames).filter(function (p) { return qPick(p).length > 0; }).sort(byRank)
+: catalog.filter(function (p) { return norm(p.name + ' ' + p.cat + ' ' + p.tag + ' ' + p.labels.join(' ')).indexOf(q) >= 0; }).slice(0, 12));
 var pd = st.pid == null ? null : catalog[st.pid];
 var N = 5;
 return {
@@ -1282,11 +1420,13 @@ bfShown: bfFiltered.length === bfDeals.length ? bfDeals.length + ' ofertas' : bf
 bfEmpty: bfFiltered.length === 0,
 hasBfFilter: bfCats.length > 0 || bfPlat !== 'all' || bfSort !== 'rel',
 bfClear: function () { bfSet({ bfCats: [], bfPlat: 'all', bfSort: 'rel' }); },
-gtaPs: byPlat(gtaGames), newGames: byPlat(newGames), gameChips: gameChips, pcGames: pcGames, nintendo: nintendo, cards: cards, consoles: consoles, controls: controls, accessories: accessories,
+gtaPs: byPlat(gtaGames), newGames: byPlat(newGames).concat(byPlat(extraFor(gplat))), gameChips: gameChips, pcGames: pcGames, nintendo: nintendo, cards: cards, consoles: consoles, controls: controls, accessories: accessories,
 searchOpen: !!st.searchOpen,
 toggleSearch: function () { self.setState({ searchOpen: !st.searchOpen, q: '' }); },
 searchType: function (e) { self.setState({ q: e.target.value }); },
-results: results.map(function (p) { return { name: p.name, cat: p.cat, open: p.open }; }),
+results: results.map(function (p) { if (!qLabels) { return { name: p.name, cat: p.cat, open: p.open }; } var m = qPick(p); return { name: p.name, cat: m.join(' · '), open: function () { openAt(p, m[0]); } }; }),
+platHint: qLabels && results.length ? results.length + ' jogos para ' + platText(qLabels) : '',
+hasPlatHint: !!(qLabels && results.length),
 hasResults: results.length > 0,
 noResults: q.length >= 2 && results.length === 0,
 pdOpen: !!pd,

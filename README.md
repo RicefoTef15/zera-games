@@ -50,6 +50,16 @@ O desconto fica logo abaixo, em `var PDISC = {` (0.3 = 30%). Produto que não ap
 
 O nome precisa ser escrito exatamente igual nos quatro lugares.
 
+### Versões de cada jogo (PS5, PS4, Xbox, Switch, PC)
+
+Em `index.html`, procure por `var PLATS = {`. Cada jogo tem a lista das versões que a loja tem, por exemplo:
+
+```js
+'EA Sports FC 26': ['PS5', 'PS4', 'Xbox Series', 'Xbox One', 'Switch', 'Switch 2', 'PC'],
+```
+
+O cliente escolhe a versão na janela do produto. O filtro da seção Jogos e a busca ("PS4", "jogos de Switch 2", "Xbox One") usam essa lista. Para a versão PC funcionar, o jogo também precisa estar em `PC_GAMES`. Logo abaixo de `PLATS` ficam os preços desses jogos (desconto de 60%).
+
 ### Marcar um produto como sem estoque
 
 Em `index.html`, procure por `var OUT = {` e acrescente `'Nome do produto': true`.
